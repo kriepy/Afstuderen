@@ -1,0 +1,17 @@
+# Week 2:
+* Do we want to look at the whole day and find similarities in them? Or just want to cluster the same activities? How could we do this? Because starting and ending time of an activity will differ a lot.
+Take a whole day first into account might be a good idea. You get the indication when a person leaves the house and came back. Look into the busy timeslots more closely.
+Get an impression of big activities first. Then look into smaller activities. This will probably differ a lot between working people and elderly. (Are they even leaving the house?)
+
+* Do we want to describe a day with one vector? Will it be that every timeslot will be filled with the sensor which occured the most? What do we do with multiple sensors over a longer distance? In this case the last fired sensor representation might be a good idea.
+If we describe a day with one long vector we cannot use the bag of word representation to cluster activities. With one big vector we only can find similar days. Which is not the idea I assume.
+
+* An additional coarse-grain timeslot might be a good idea. (0-7am, 7-9am, 9-11am, 11am-2pm, 2-5pm, 5-7pm, 7-9pm, and 9-12pm [from cellphone paper]) These timeslots might not be correct, because in the cell phone paper they compare persons to each other, here we want to focus on one person only. So the coarse-grain might be different for every person. I assume this can be easily adjust with looking at the data of one person and devide the day into bigger timeslots.
+It is necessary to remove noise in the data. Not every activity will start at the same time and will have the same length.
+
+* A 'word' in this representation of a timeslot contains 4 values: for every time slot the sensor data of the previous, the next and now are stored as well as the coarse-grain value. This might need to be extended, because I don't know how long an activity take. (Sleeping is a long activity, tooth brushing not) But this also might not be necessary. Maybe you can cluster activities with just comparing the words to eachother. The sleeping activity will look the same all the time. Then we might want to play with the word length.
+
+* With a timeslot of 60 seconds one day will have 1440 words. We might want to reduce these words where there is no change in sensor data. We can find the length of an activity with that maybe?
+For one day we could cluster all words. A word will be a matrix of 4xm where m is the amount of sensors placed in the home. These can be written as a 1x4*m vector and then ...?
+
+
