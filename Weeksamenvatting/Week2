@@ -13,5 +13,9 @@ It is necessary to remove noise in the data. Not every activity will start at th
 
 * With a timeslot of 60 seconds one day will have 1440 words. We might want to reduce these words where there is no change in sensor data. We can find the length of an activity with that maybe?
 For one day we could cluster all words. A word will be a matrix of 4xm where m is the amount of sensors placed in the home. These can be written as a 1x4*m vector and then ...?
+Hm these words are kind of big and only consist of 0 and 1. Maybe it is better to use the last fired representation and number all sensors and put the number of the sensor in the vector. Then a word will only consist of 4 values, so it will be a vector of 1x4 [x_t-1,x_t,x_t+1,x_T]. So now i'm not sure anymore which value will be contained in x_T. This should be the coarse-grained value, but this does not make sense. So it might be better to only take a vector of 1x3 or maybe 1x5 and add two timeslots.
+In this representation a lot of valuable data will be thrown away, because maybe the combination of active sensors might hold a lot of information. I think this can be easily checked, with doing the same clustering with the small and the long vector representation and see if there is significant difference between them.
+
+*Maybe you can compare activity patterns between person. But i still doubt that.
 
 

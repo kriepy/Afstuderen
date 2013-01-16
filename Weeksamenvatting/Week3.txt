@@ -1,0 +1,16 @@
+# Week 3:
+* The length of a sensordata can be an indication for a different activity. But this is quiet hard to distinguish as how I see it from the PhD thesis.
+
+* Seperating activities in one room are hard. Kitchen and Bathroom are here the most challenging.
+
+* Assume you give for each day one big vector. Where every element is a timeslot. In every timeslot you can enter a value 1..n where n is the amount of sensors in the home. For every timeslot you will take the sensor which is used longest. (I still think that will make no sense, because an open door will be in a lot of times slots.) Maybe bigger timeslots will do the trick to find long activities, like sleeping, being away.
+
+
+
+STEPs to be done:
+
+1. Descritze the data: 
+So every day needs to be split in slices of 60 seconds. First a representation that would not loose a lot of information would be for every slice a vector with the length as amount of sensors. This should be filled with 0 and 1 according if a sensor is triggered or not. 0 or 1 is choosen according which state occured most in the timeslot.
+
+2. Building 'Words' from the descretized data:
+
