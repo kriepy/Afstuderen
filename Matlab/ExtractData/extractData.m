@@ -4,7 +4,7 @@ function extractData
 
 %%
 % Define the variables first
-housenr = 253
+housenr = 247
 
 
 % Load the files
@@ -41,6 +41,12 @@ for i=1:length(info)
     end
 end
 
+Sensors.B=B; %bathroom 
+Sensors.K=K; %kitchen
+Sensors.S=S; %bedroom (sleeping)
+Sensors.L=L; %living room
+Sensors.D=D; %hallway and front door
+
 
 % To half hour seperation the data is looked at.
 % Here the time stamp is changed. TotVec contains the whole data now.
@@ -49,83 +55,108 @@ TotVec = [datevec(unix_time/86400 + datenum(1970,1,1)) data(:,2:3)];
 
 Mat=zeros(48,6);
 over=zeros(1,5);
+hours=[1:24]-1;
+num=0;
 
 monthes=unique(TotVec(:,2));
 for i = 1:length(monthes)
     fprintf('The month is %d .\n',monthes(i));
-    ind1=find(date(:,2)==monthes(i),1,'first');
-    ind2=find(date(:,2)==monthes(i),1,'last');
+    ind1=find(TotVec(:,2)==monthes(i),1,'first');
+    ind2=find(TotVec(:,2)==monthes(i),1,'last');
     mon=TotVec(ind1:ind2,:);
 
     days=unique(mon(:,3));
     for j = 1:length(days)
+        num=num+1;
         fprintf('The day is %d .\n',days(j));
-        in1=find(mon(:,3)==days(i),1,'first');
-        in2=find(mon(:,3)==days(i),1,'last');
+        in1=find(mon(:,3)==days(j),1,'first');
+        in2=find(mon(:,3)==days(j),1,'last');
         day=mon(in1:in2,:);
         
         % This is creating a variable
-        a=strcat(num2str(day(1,1:3)));
-        b=genvarname(a);
+        dayName=strcat(datestr(day(1,1:6),29));
         
-        %eval([b ' = struct([])']) %anders
         
-        hours=unique(day(:,4));
         for k=1:length(hours)
+            fprintf('The hour is %d .\n',hours(k));
             i1=find(day(:,4)==hours(k),1,'first');
             i2=find(day(:,4)==hours(k),1,'last');
-            Hour=day(i1:i2,:)
-            hoda=dayda(i1:i2,:)
-            ix=find(Hour(:,5)<30,1,'last');
+            Hour=day(i1:i2,:);
             
-            % this is for the first half hour
-            [v,~]=size(ix)
-            if v~=0
-                for w=1:5
-                    Mat(Hour(1,4)*2-1,i)=Mat(Hour(1,4)*2-1,i)+over(i);
-                end            
-
-                [BB,KK,SS,LL,DD,over]=compares(B,K,S,L,D,hoda(1:ix,:));
-                Mat(Hour(1,4)*2-1,1)=Mat(Hour(1,4)*2-1,1)+BB;
-                Mat(Hour(1,4)*2-1,2)=Mat(Hour(1,4)*2-1,2)+KK;
-                Mat(Hour(1,4)*2-1,3)=Mat(Hour(1,4)*2-1,3)+SS;
-                Mat(Hour(1,4)*2-1,4)=Mat(Hour(1,4)*2-1,4)+LL;
-                Mat(Hour(1,4)*2-1,5)=Mat(Hour(1,4)*2-1,5)+DD;
-            end
             
-            % this is for the 2nd half hour
-            for w=1:5
-                Mat(Hour(1,4)*2,i)=Mat(Hour(1,4)*2,i)+over(i);
-            end
-            
-            if v==0
-                matse=hoda;
+            amtSens=size(Hour,1); % the length of the sensordata for 1 hr
+            ix1=find(Hour(:,5)<30,1,'first');
+            ix2=find(Hour(:,5)<30,1,'last');
+            iy1=find(Hour(:,5)>=30,1,'first');
+            iy2=find(Hour(:,5)>=30,1,'last');
+           
+            [v,~]=size(ix1);
+            [w,~]=size(iy1);
+            if v>0 && w>0
+                hourCase='both'
+                
+                [BB,KK,SS,LL,DD,newover]=compares(Sensors,Hour(ix1:ix2,:));
+                Mat=toevoegen(BB,KK,SS,LL,DD,Mat,hours(k),1,over);
+                over=newover;
+                [BB,KK,SS,LL,DD,newover]=compares(Sensors,Hour(iy1:iy2,:));
+                Mat=toevoegen(BB,KK,SS,LL,DD,Mat,hours(k),2,over);
+                over=newover;
+            elseif v>0 && w==0
+                hourCase='first'
+                [BB,KK,SS,LL,DD,newover]=compares(Sensors,Hour(ix1:ix2,:));
+                Mat=toevoegen(BB,KK,SS,LL,DD,Mat,hours(k),1,over);
+                over=newover;
+                Mat=toevoegen(0,0,0,0,0,Mat,hours(k),2,over);
+            elseif v==0 && w>0
+                hourCase='second'
+                [BB,KK,SS,LL,DD,newover]=compares(Sensors,Hour(iy1:iy2,:));
+                Mat=toevoegen(0,0,0,0,0,Mat,hours(k),1,over);
+                Mat=toevoegen(BB,KK,SS,LL,DD,Mat,hours(k),2,over);               
+                over=newover;
             else
-                matse=hoda(ix+1:end,:);
+                hourCase='none'
+                Mat=toevoegen(0,0,0,0,0,Mat,hours(k),1,over);
+                Mat=toevoegen(0,0,0,0,0,Mat,hours(k),2,over);
             end
-            
-            [BB,KK,SS,LL,DD,over]=compares(B,K,S,L,D,matse);
-            Mat(Hour(1,4)*2,1)=Mat(Hour(1,4)*2,1)+BB;
-            Mat(Hour(1,4)*2,2)=Mat(Hour(1,4)*2,2)+KK;
-            Mat(Hour(1,4)*2,3)=Mat(Hour(1,4)*2,3)+SS;
-            Mat(Hour(1,4)*2,4)=Mat(Hour(1,4)*2,4)+LL;
-            Mat(Hour(1,4)*2,5)=Mat(Hour(1,4)*2,5)+DD;
         end
-        
+        House.day(num).date=dayName;
+        House.day(num).data=Mat;
+        dayName
         % Here the data is stored for each day:
         
         
+    end
+    
+end
+
+save(strcat([num2str(housenr),'Data/House.mat']),'House');
+
+
+end
+
+function Mat=toevoegen(BB,KK,SS,LL,DD,Mat,hour,half,over)
+hour=hour+1;
+    if half==1
+        Mat(hour*2-1,1)=BB+over(1);
+        Mat(hour*2-1,2)=KK+over(2);
+        Mat(hour*2-1,3)=SS+over(3);
+        Mat(hour*2-1,4)=LL+over(4);
+        Mat(hour*2-1,5)=DD+over(5);
+        Mat(hour*2-1,6)=hour-1;
+    end
+    if half==2
+        Mat(hour*2,1)=BB+over(1);
+        Mat(hour*2,2)=KK+over(2);
+        Mat(hour*2,3)=SS+over(3);
+        Mat(hour*2,4)=LL+over(4);
+        Mat(hour*2,5)=DD+over(5);
+        Mat(hour*2,6)=hour-1;
     end
 end
 
 
 
-
-end
-
-
-
-
+%Mat(Hour(1,4)*2-1,:)=Mat(Hour(1,4)*2-1,:)+over; % first half
 
 
 
