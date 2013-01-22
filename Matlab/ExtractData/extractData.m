@@ -60,7 +60,7 @@ num=0;
 
 monthes=unique(TotVec(:,2));
 for i = 1:length(monthes)
-    fprintf('The month is %d .\n',monthes(i));
+    %fprintf('The month is %d .\n',monthes(i));
     ind1=find(TotVec(:,2)==monthes(i),1,'first');
     ind2=find(TotVec(:,2)==monthes(i),1,'last');
     mon=TotVec(ind1:ind2,:);
@@ -68,7 +68,7 @@ for i = 1:length(monthes)
     days=unique(mon(:,3));
     for j = 1:length(days)
         num=num+1;
-        fprintf('The day is %d .\n',days(j));
+        %fprintf('The day is %d .\n',days(j));
         in1=find(mon(:,3)==days(j),1,'first');
         in2=find(mon(:,3)==days(j),1,'last');
         day=mon(in1:in2,:);
@@ -78,7 +78,7 @@ for i = 1:length(monthes)
         
         
         for k=1:length(hours)
-            fprintf('The hour is %d .\n',hours(k));
+            %fprintf('The hour is %d .\n',hours(k));
             i1=find(day(:,4)==hours(k),1,'first');
             i2=find(day(:,4)==hours(k),1,'last');
             Hour=day(i1:i2,:);
@@ -93,7 +93,7 @@ for i = 1:length(monthes)
             [v,~]=size(ix1);
             [w,~]=size(iy1);
             if v>0 && w>0
-                hourCase='both'
+                hourCase='both';
                 
                 [BB,KK,SS,LL,DD,newover]=compares(Sensors,Hour(ix1:ix2,:));
                 Mat=toevoegen(BB,KK,SS,LL,DD,Mat,hours(k),1,over);
@@ -102,34 +102,59 @@ for i = 1:length(monthes)
                 Mat=toevoegen(BB,KK,SS,LL,DD,Mat,hours(k),2,over);
                 over=newover;
             elseif v>0 && w==0
-                hourCase='first'
+                hourCase='first';
                 [BB,KK,SS,LL,DD,newover]=compares(Sensors,Hour(ix1:ix2,:));
                 Mat=toevoegen(BB,KK,SS,LL,DD,Mat,hours(k),1,over);
                 over=newover;
                 Mat=toevoegen(0,0,0,0,0,Mat,hours(k),2,over);
             elseif v==0 && w>0
-                hourCase='second'
+                hourCase='second';
                 [BB,KK,SS,LL,DD,newover]=compares(Sensors,Hour(iy1:iy2,:));
                 Mat=toevoegen(0,0,0,0,0,Mat,hours(k),1,over);
                 Mat=toevoegen(BB,KK,SS,LL,DD,Mat,hours(k),2,over);               
                 over=newover;
             else
-                hourCase='none'
+                hourCase='none';
                 Mat=toevoegen(0,0,0,0,0,Mat,hours(k),1,over);
                 Mat=toevoegen(0,0,0,0,0,Mat,hours(k),2,over);
             end
         end
+        
+        % Here the data for every day is added to the struct
         House.day(num).date=dayName;
         House.day(num).data=Mat;
-        dayName
-        % Here the data is stored for each day:
         
         
     end
     
 end
 
-save(strcat([num2str(housenr),'Data/House.mat']),'House');
+% This is creating the words data
+for i=1:length(House.day)
+    Mat=House.day(i).data;
+    Words=zeros(48,16);
+    for j=1:48
+        if j==1
+            t_0=[0 0 0 0 0];
+        else
+            t_0=Mat(j,1:5);
+        end
+        if j==48
+            t_2=[0 0 0 0 0];
+        else
+            t_2=Mat(j+1,1:5);
+        end
+        t_1=Mat(j,1:5);
+        timeval=grofTime(Mat(j,6));
+        Words(j,:)=[t_0 t_1 t_2 timeval];
+    end
+    
+    % Here the words are added to the struct
+    House.day(i).Words=Words;
+end
+
+% Here the House Data is stored into a mat-file
+save(strcat(['DataMatlab/House',num2str(housenr),'.mat']),'House');
 
 
 end
@@ -154,10 +179,23 @@ hour=hour+1;
     end
 end
 
+%%
+function T=grofTime(t)
 
-
-%Mat(Hour(1,4)*2-1,:)=Mat(Hour(1,4)*2-1,:)+over; % first half
-
+if t<8
+    T=1;
+elseif t>7 && t<13
+    T=2;
+elseif t>12 && t< 18
+    T=3;
+elseif t>17 && t<21
+    T=4;
+elseif t>20
+    T=5;
+else
+    disp('something went wrong')
+end
+end
 
 
 
