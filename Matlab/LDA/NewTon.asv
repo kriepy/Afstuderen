@@ -1,0 +1,80 @@
+function an=NewTon(Corpus)
+% this function uses gamma, alpha and the length of the Corpus M
+close all
+
+
+
+M=length(Corpus.documents);
+an=Corpus.alpha
+
+
+
+%% This is plotting the Lowerbound depending on alpha
+[a1,a2]=meshgrid(1:20);
+[em,en]=size(a1);
+ L=zeros(em,en);
+ for p=1:em
+     for q=1:en
+        L(p,q)=Low(a1(p,q),a2(p,q),Corpus);
+     end
+ end
+ mesh(a1,a2,L);
+
+% plot the point in the surface
+hold on
+scatter3(an(1),an(2),Low(an(1),an(2),Corpus))
+
+%% calcs a part of the gradient ( will always the same)
+gradDeel=zeros(size(an));
+for i=1:M
+    gala=psi(Corpus.documents(i).gamma)-psi(sum(Corpus.documents(i).gamma));
+    gradDeel=gradDeel+gala;
+end
+
+%% Newton Iteratie
+ao=an;
+an=iets;
+while sum(abs(an-ao))>0.0001
+    ao=an;
+    gra=grdnt(ao,gradDeel,M);
+    for i=1:length(ao)
+        an(i)=ao(i)-getPart(gra,)
+    an=ao-inv(hssn(ao,M))*grdnt(ao,gradDeel,M);
+end
+
+
+end
+
+function g=grdnt(alpha,gradDeel,M)
+    g=M*(psi(sum(alpha))-psi(alpha))+gradDeel;
+end
+
+function [q,z]=hssn(alpha,M)
+    H=M*psi(1,sum(alpha))*ones(length(alpha));
+    for i=1:length(alpha)
+        H(i,i)=H(i,i)-M*psi(1,alpha(i));
+    end
+end
+
+
+%% OLD
+% itN=0;
+% ao=an;
+% an=ao-inv(hssn(ao,M))*grdnt(ao,gradDeel,M);
+% while sum(abs(an-ao))>0.0001
+%     scatter3(an(1),an(2),Low(an(1),an(2),Corpus))
+%     itN=itN+1
+%     ao=an;
+%     
+%     an=ao-inv(hssn(ao,M))*grdnt(ao,gradDeel,M);
+% end
+% 
+% 
+% 
+% end
+% 
+% function g=grdnt(alpha,gradDeel,M)
+%     g=M*(psi(sum(alpha))-psi(alpha))+gradDeel;
+% end
+% 
+

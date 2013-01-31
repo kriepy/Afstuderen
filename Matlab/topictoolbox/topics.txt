@@ -1,0 +1,14 @@
+                  TOPIC_1	0.50000	                  TOPIC_2	0.50000	
+
+                     tien	0.10476	              opschrijven	0.10476	
+                    hallo	0.10000	                    hallo	0.10000	
+                       ik	0.10000	                       ik	0.10000	
+                     moet	0.10000	                     moet	0.10000	
+                  woorden	0.10000	                  woorden	0.10000	
+                     want	0.10000	                     want	0.10000	
+                      dan	0.10000	                      dan	0.10000	
+                    werkt	0.10000	                    werkt	0.10000	
+                      het	0.10000	                      het	0.10000	
+              opschrijven	0.09524	                     tien	0.09524	
+
+
