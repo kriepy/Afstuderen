@@ -4,11 +4,11 @@ pl=0;
 
 
 M=length(Corpus.documents);
-an=Corpus.alpha
+an=Corpus.alpha;
 
 
 
-%% This is plotting the Lowerbound depending on alpha
+%% This is plotting the Lowerbound of the likelihood depending on alpha
 if pl==1
     [a1,a2]=meshgrid(0.1:0.5:20);
     [em,en]=size(a1);
@@ -24,7 +24,7 @@ if pl==1
     hold on
     scatter3(an(1),an(2),Low(an(1),an(2),Corpus))
 end
-%% calcs a part of the gradient ( will always the same)
+%% calcs a part of the gradient (is always the same)
 gradDeel=zeros(size(an));
 for i=1:M
     gala=psi(Corpus.documents(i).gamma)-psi(sum(Corpus.documents(i).gamma));
@@ -50,10 +50,9 @@ while sum(abs(an-ao))>0.0001
     end
     
     ao=an;
+    disp(strcat(['lowwaarde is',num2str(Low(an(1),an(2),Corpus))]))
+    
 end
-an
-disp('The differnce between the two alphas is:')
-disp(an(2)-an(1))
 
 end
 

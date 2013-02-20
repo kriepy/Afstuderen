@@ -30,11 +30,11 @@ for i=1:length(info)
 end
 
 % field -> sensorNr
-Sensors(1).name='Bathroom'
-Sensors(2).name='Kitchen'
-Sensors(3).name='Bedroom'
-Sensors(4).name='Living'
-Sensors(5).name='Hall'
+Sensors(1).name='Bathroom';
+Sensors(2).name='Kitchen';
+Sensors(3).name='Bedroom';
+Sensors(4).name='Living';
+Sensors(5).name='Hall';
 
 
 Sensors(1).sens=B; %bathroom 
@@ -49,8 +49,7 @@ for i=1:5
     len=length(Sensors(i).sens);
     oSens=[oSens; [Sensors(i).sens i*ones(len,1)]];
 end
-oSens
 [~,ind]=sort(oSens(:,1));
-oSens=oSens(ind,:)
+oSens=oSens(ind,:);
 
 end

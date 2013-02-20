@@ -1,18 +1,28 @@
 
+load('C:\Users\Kristin\UVA\Afstuderen\Afstuderen\Matlab\LDA\Generate\CorpusGenKleinAlphaNstat.mat')
 
-DS=[1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 4 4 4 4 4] %4 documents
-WS=[1:5 1:5 6:10 6:10]
+DS=[];
+WS=[];
+for i=1:length(Corpus.documents)
+    a=size(Corpus.documents(i).doc,2);
+    DS=[DS i*ones(1,a)] ;
+    WS=[WS (abs(mod(i,2))+1)*ones(1,a)];
+end
 
-WO={'hallo' 'ik' 'moet' 'tien' 'woorden' 'opschrijven' 'want' 'dan' 'werkt' 'het'};
+
+% DS=[1 1 1 1 1 2 2 2 2 2 3 3 3 3 3 4 4 4 4 4] %4 documents
+% WS=[1:5 1:5 6:10 6:10]
+
+WO={'hallo' 'ik'};% 'moet' 'tien' 'woorden' 'opschrijven' 'want' 'dan' 'werkt' 'het'};
 
 T=2; % number of topics
 
 ALPHA=50/T;
 BETA=200/length(WO);
 
-N=20000; %number of iterations
+N=50000; %number of iterations
 
-SEED=100; %random seed
+SEED=200; %random seed
 
 OUTPUT=2;
 

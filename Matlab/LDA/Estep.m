@@ -1,6 +1,5 @@
 function [phi,gam]=Estep(alpha,beta,Doc)
-close all
-pl=0;
+pl=1; % 1 if you want to draw it
 %%
 % INPUT:
 % alpha:= a vector of length k (amount of topics)
@@ -25,7 +24,7 @@ prevPhi=phi;
 itEStep=0;
 
 conv=100;
-while conv>0.00001
+while conv>0.001
     itEStep=itEStep+1;
     for n = 1:N %iterating over words in document
         wn=find(Doc(:,n));

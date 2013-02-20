@@ -5,7 +5,7 @@ function beta=getBeta(Corpus,k)
 
 
 
-beta=zeros(k,Corpus.V);
+beta=ones(k,Corpus.V);
 
 M=length(Corpus.documents);
 
@@ -20,7 +20,7 @@ for d=1:M
 end
 
 SB=sum(beta,2);
-for i=1:Corpus.V
-    beta(i,:)=beta(:,i)/SB(i);
+for i=1:k
+    beta(i,:)=beta(i,:)./SB(i);
 end
 end
