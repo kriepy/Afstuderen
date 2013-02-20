@@ -16,10 +16,15 @@ end
 n = length(d);
 l = features(d);
 beta = mnormalize(rand(l,k),1);
+Inbeta=beta;
 alpha = normalize(fliplr(sort(rand(1,k))));
+Inalpha=alpha;
 gammas = zeros(n,k);
 ppl = 0;
 pppl = ppl;
+
+LLH=[]; %the likelihood stored all values
+
 tic;
 
 fprintf(1,'number of documents      = %d\n', n);
@@ -30,7 +35,7 @@ for j = 1:emmax
   fprintf(1,'iteration %d/%d..\t',j,emmax);
   
   % vb-estep
-  betas = zeros(l,k);
+  betas = ones(l,k);
   for i = 1:n
     [gamma,q] = vbem(d{i},beta,alpha,demmax); %q:=phi
     gammas(i,:) = gamma; % foreach document a different gamma
@@ -41,10 +46,10 @@ for j = 1:emmax
   % vb-mstep
   alpha = newton_alpha(gammas);
   beta = mnormalize(betas,1);
-  fprintf(1,'alpha 1 is %d..\t',alpha(1));
   % converge?
    ppl = lda_likeli(d, alpha, beta,gammas);
-   fprintf(1,'Likelihood = %g\t',ppl(1));
+   LLH=[LLH ppl];
+   fprintf(1,'Likelihood = %g\t',ppl(8));
   if (j > 1) && converged(ppl,pppl,1.0e-4)
     if (j < 5)
       fprintf(1,'\n');
@@ -52,6 +57,11 @@ for j = 1:emmax
       return;
     end
     fprintf(1,'\nconverged.\n');
+    plot(LLH'); title Likelihood
+    figure(2)
+    plot(beta(:,1),beta(:,2),'xr')
+    Inbeta
+    Inalpha
     return;
   end
   pppl = ppl;
@@ -60,6 +70,12 @@ for j = 1:emmax
   fprintf(1,'ETA:%s (%d sec/step)\r', ...
 	  rtime(elapsed * (emmax / j  - 1)),round(elapsed / j));
 end
+figure(1)
+plot(LLH'); title Likelihood
+figure(2)
+plot(beta(:,1),beta(:,2),'xr')
+Inbeta
+Inalpha
 fprintf(1,'\n');
 
 % $Id: lda.m,v 1.8 2013/01/16 08:11:40 daichi Exp $

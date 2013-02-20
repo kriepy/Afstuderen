@@ -1,12 +1,12 @@
-load('CorpusMoreDims2.mat')
-
-fid = fopen('MoreDims2','a');
+load('CorpusMoreDims3.mat')
+delete MoreDims3
+fid = fopen('MoreDims3','a');
 S=[];
 for i=1:length(Corpus.documents)
-    a=find(Corpus.documents(i).DaNoBi)
+    a=find(Corpus.documents(i).DaNoBi);
     array=[];
     for j=1:size(a)
-        array=[array [' ', num2str(a(j)),':',num2str(Corpus.documents(i).DaNoBi(a(j)))]]
+        array=[array [' ', num2str(a(j)),':',num2str(Corpus.documents(i).DaNoBi(a(j)))]];
     end
     
     
@@ -20,6 +20,8 @@ end
 %sprintf(S)
 %save('complex','S','-ASCII')
 fclose(fid);
+
+ d=fmatrix('MoreDims3');
 
 
 
