@@ -8,21 +8,36 @@
 %----------------------------------INTRODUCTION--------------------------------------------
 \section{Introduction}
 Algemene Inleiding over oude mensen :P
-we zoeken  best mogelijke feature description
+Warrom is dit nodig
+we zoeken  best mogelijke feature description, waarvoor?
 maat hiervoor is de likelihood van LDA
 
 
 
-%--------------------------------METHODs-----------------------------------------------------
+%--------------------------------METHOD:LDA-----------------------------------------------------
 \part{LDA}
-\section{LDA}
-\subsection{Data description}
--Wat krijg ik voor data binnen
+
+
+
+
+\section{Data description}
+-Wat krijg ik voor data binnen (timesequential data, 1 of 0)
 -waar komt die data vandaan
+-vijf verschillende huizen precies aangeven hoeveel dagen per huis. er is maar een persoon in huis, leven zelfstandig, maar er kan niet worden uitgesloten of er andere personen op bezoek komen.
+Volleidig ongelabeld.
+Sensoren zijn ingedeeld in fields (Living, Bathroom, Kitchen, Bedroom, Hallway)
+
 -wat zijn problemen met die data (niet altijd even betrouwbaar, dubbel shots,...)
 
 
-\subsection{Latent dirichlet allocation with our Data}
+\section{Latent dirichlet allocation with our Data}
+In a first step we want to analyse the data. How could we do that? Activity recognition is a big part in this field. But we don't want to now activities. That information is to much detail. To monitor elderly over a long period of time you do not need to see the activities, but you need to recognize differences in their daily behaviour.
+Labeling data cost a lot of time and it also falses the data because the labeling task itself influences the daily behaviour patterns. There for we want to find a good representation of a daily behaviours.
+Like described in [mobile article] a way to do is to find underlying topics in a description of days.
+The problem here is that we have a lot sensors that can be triggered in a infinit amount of times. Length of trigger time is not important.
+
+
+To find a good representation of the data we need to build features. Therefor we descritize the data. 
 To find underlying structures in the data, which means finding habbits in the daily structures of people is the goal.
 -data omzetten om te gebruiken met LDA
 -wat zijn de woorden, wat documenten, wat corpus
@@ -33,9 +48,9 @@ To find underlying structures in the data, which means finding habbits in the da
 
 \subsection{Uitbreiding LDA algorithme}
 
-
+%---------------------------------------------------------METHOD:GENETIC-------------------------------------------------
 \part{Generic Algorithm}
-
+Als de likelihood een maat is dan kan het makkelijk overfitten op deze specifieke data. Dan is het misschien nodig om train, test en validation sets te maken. Hierdoor zul je weinig data hebben en misschien is cross validation ervoor nodig.
 
 %-------------------------------------------RESULTS---------------------------------------
 \section{Results}
@@ -46,3 +61,4 @@ To find underlying structures in the data, which means finding habbits in the da
 
 
 \end{document}
+"C:\Program Files\MATLAB\R2011b\bin\matlab.exe"
