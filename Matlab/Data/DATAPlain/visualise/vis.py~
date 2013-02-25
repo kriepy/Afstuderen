@@ -1,0 +1,751 @@
+#!/usr/bin/python
+
+from Tkinter import *
+from SensorData import *
+from ActData import *
+from InvalidSensors import *
+from ActDialog import ActDialog
+from ModelSensors import *
+from Feat import *
+from SensorInfo import *
+from Graph import *
+
+import tkFileDialog 
+import sys
+import tkFont
+from time import strftime, gmtime, time
+from tictoc import tic,toc
+import os
+import cProfile
+import pstats
+import string
+import numpy
+import imp
+from timefn import *
+
+# Settings
+weekendColour="#ccf"
+globalWidth=1300
+globalHeight=700
+eventBallR=2
+heartbeatBallR=2
+timing=False
+
+
+class EditAct:
+    START=1
+    END=2
+    MOVE=3
+    NONE=10
+
+    
+class Vis(Frame):
+    def __init__(self,info,data,heartbeat,act,inval,feat,directory,master=None):
+        Frame.__init__(self,master)
+        self.info = info
+        self.sensors = data
+        self.heart = heartbeat
+        self.activities = act
+        self.invalids = inval
+        self.feat = feat
+        self.dir=directory
+        self.model = ModelSensors(info,data,self.invalids,1./4)
+        self.graphs = []
+
+        self.cw = globalWidth
+        self.ch = globalHeight
+        self.topShift = 30
+        self.botShift = 20 + globalHeight/3
+        self.sensorHeight = (self.ch-self.topShift-self.botShift) / self.info.getNumSensors()
+        self.sensorTop = self.sensorHeight/5
+        self.sensorBot = self.sensorHeight - self.sensorHeight/5
+
+        self.grid()
+        self.createWidgets()
+        
+        self.dataStartTime = int(self.sensors.getFirstTS())
+        self.startTime = 0.+self.dataStartTime
+        self.dataEndTime = int(self.sensors.getLastTS())+1;
+        self.timeScale = self.cw / (self.dataEndTime - self.startTime)
+        self.maxScale = self.timeScale
+        self.scrolling = False
+        self.addingAct = False
+        self.editingAct = EditAct.NONE
+        self.currentAct = None
+
+        self.actCol = [ "#ffffff", "#a0a0a0",
+                        "#ffa0a0", "#a0ffa0", "#a0a0ff",
+                        "#ffffa0", "#a0ffff", "#ffa0ff",
+                        "#ff50a0", "#ffa050", "#ff5050",
+                        "#a0ff50", "#50ffa0", "#50ff50",
+                        "#50a0ff", "#a050ff", "#5050ff",
+                        "#ffff50", "#50ffff", "#ff50ff",
+                        "#ff8080", "#80ff80", "#8080ff",
+                        "#ffff80", "#80ffff", "#ff80ff",
+                        "#ff5080", "#ff8050", "#ff5050",
+                        "#80ff50", "#50ff80", "#50ff50",
+                        "#5080ff", "#8050ff"
+                        ]
+        
+        self.plotData()
+
+    def setLayout(self, width=globalWidth, height=globalHeight):
+        self.cw = width
+        self.ch = height
+        self.topShift = 30
+        if self.showGraph.get()==1:
+            self.botShift = 20 + height/3
+        else:
+            self.botShift = 20            
+        self.sensorHeight = (self.ch-self.topShift-self.botShift) / self.info.getNumSensors()
+        self.sensorTop = self.sensorHeight/5
+        self.sensorBot = self.sensorHeight - self.sensorHeight/5
+        self.plotData()
+        
+        
+    def createWidgets(self):
+        self.canvas = Canvas(self, width=self.cw,height=globalHeight)
+        self.canvas.grid(row=0,sticky=N+E+S+W,columnspan=20)
+        self.canvas.bind("<Button-1>", self.scroll)
+        self.canvas.bind("<ButtonRelease-1>", self.scroll)
+        self.canvas.bind("<Motion>", self.motion)
+        self.canvas.bind("<Button-3>", self.addAct)
+        self.canvas.bind("<ButtonRelease-3>", self.addAct)
+        self.canvas.bind("<Button-4>", self.zoom)
+        self.canvas.bind("<Button-5>", self.zoom)
+        self.canvas.bind("<MouseWheel>", self.zoom)
+        self.master.bind('<KeyPress>',self.handleKey)
+        self.master.bind('<Control-KeyPress-Q>',self.getOut)
+        self.master.bind('<Control-KeyPress-W>',self.getOut)
+        # self.master.bind("<Configure>",self.resize)
+
+        # self.quitButton = Button(self, text='Quit', command=self.getOut)
+        # self.quitButton.grid(row=1,sticky=N+E+S+W)
+
+        self.plotDaylines = IntVar()
+        self.showDays = Checkbutton(self,text='show days',command=self.plotData,variable=self.plotDaylines)
+        self.showDays.grid(row=1,column=0,sticky=N+E+S+W)
+        self.showDays.select()
+
+        self.plotCurrentTime = IntVar()
+        self.selectDays = Checkbutton(self,text='Indicate now',variable=self.plotCurrentTime,command=self.plotData)
+        self.selectDays.grid(row=1,column=1,sticky=N+E+S+W)
+        self.selectDays.select()
+
+        self.showAct = IntVar()
+        self.selectAct = Checkbutton(self,text='Show activities',command=self.plotData,variable=self.showAct)
+        self.selectAct.grid(row=1,column=2,sticky=N+E+S+W)
+        self.selectAct.select()
+
+        self.editActVar = IntVar()
+        self.editAct = Checkbutton(self, text='Edit Activities', variable=self.editActVar)
+        self.editAct.grid(row=1,column=3,sticky=N+E+S+W)
+
+        self.editSensVar = IntVar()
+        self.editSens = Checkbutton(self, text='Annot. bad s.', variable=self.editSensVar)
+        self.editSens.grid(row=1,column=4,sticky=N+E+S+W)
+
+        self.showInval = IntVar()
+        self.selectInval = Checkbutton(self,text='Show invalids',command=self.plotData,variable=self.showInval)
+        self.selectInval.grid(row=1,column=5,sticky=N+E+S+W)
+        # self.selectInval.select()
+
+        self.showHeart = IntVar()
+        self.selectHeart = Checkbutton(self,text='Show Heartbeat',command=self.plotData,variable=self.showHeart)
+        self.selectHeart.grid(row=1,column=6,sticky=N+E+S+W)
+        # self.selectHeart.select()
+
+        self.showGraph = IntVar()
+        self.selectGraph = Checkbutton(self,text='Show Graph',command=self.setLayout,variable=self.showGraph)
+        self.selectGraph.grid(row=1,column=7,sticky=N+E+S+W)
+        self.selectGraph.select()
+        
+        self.printButton = Button(self, text='Save Activities', command=self.printAct)
+        self.printButton.grid(row=1,column=8,sticky=N+E+S+W)
+        self.printImgBtn = Button(self, text='Save graph', command=self.printImg)
+        self.printImgBtn.grid(row=1,column=9,sticky=N+E+S+W)
+        self.graphBtn = Button(self, text='Update Graphs', command=self.evalGraphs)
+        self.graphBtn.grid(row=1,column=10,sticky=N+E+S+W)
+        
+        
+    def orderElts(self):
+        self.canvas.tag_lower("act")
+        self.canvas.tag_lower("weekend")
+        self.canvas.tag_raise("names")
+
+    def resize(self,event):
+        print '(%d, %d)' % (event.width, event.height)
+
+    def handleKey(self,event):
+        if (event.keysym=='q' or event.keysym=='w') and event.state&4:
+            quit()
+        # print "Key press: ", event.keysym, " modifier ", event.state
+
+    def checkTimeLimits(self):
+        if self.startTime<self.dataStartTime:
+            self.startTime = self.dataStartTime
+        elif self.dataEndTime<self.startTime+self.cw/self.timeScale:
+            self.startTime = self.dataEndTime - self.cw/self.timeScale
+
+    def zoom(self, event):
+        if int(event.type) == 38:    # Windows or OSX
+            if event.delta > 0:
+                event.num = 4
+            else:
+                event.num = 5
+        time = event.x / self.timeScale + self.startTime # This is the time indicated by the mouse x coord
+
+        oldTS = self.timeScale
+        if event.num == 4:  # zoom in (scroll up)
+            self.timeScale *= 2
+        elif event.num == 5:    # zoom out
+            self.timeScale /= 2
+        if self.timeScale < self.maxScale:
+            self.timeScale = self.maxScale
+        if self.timeScale != oldTS:
+            # let the time at the cursor position remain constant
+            self.startTime = time - (event.x / self.timeScale) 
+            self.checkTimeLimits()
+            self.plotData()
+            # print self.timeScale
+
+    def addAct(self, event):
+        if int(event.type) == 4: # button down
+            self.addingAct = True
+            self.editStart = self.coord2time(event.x)
+            self.currentSensor = self.info.getSensorID(int((event.y - self.topShift)/self.sensorHeight))
+        elif int(event.type) == 5: # button up
+            self.addingAct = False
+            editEnd = self.coord2time(event.x)
+            if editEnd < self.editStart:
+                editEnd,self.editStart = self.editStart,editEnd
+            if self.editSensVar.get() == 1:
+                self.invalids.add(self.editStart, editEnd, self.currentSensor)
+                self.plotData()
+            else:
+                d = ActDialog(self, self.activities)
+                s = d.getSelection()
+                if s != None:
+                    self.activities.add(self.editStart, editEnd,
+                                        self.activities.getAct(s))
+                    self.plotData()
+                else:
+                    self.canvas.delete("add")
+
+    def scroll(self, event):
+        if int(event.type) == 4:
+            a = self.findActAt(event.x,event.y)
+            if self.editActVar.get() == 1 and a != None:
+                self.currentAct = a
+                start = self.time2coord(a.start)
+                end = self.time2coord(a.end)
+                if event.x <= start+.2*(end-start):
+                    self.editingAct = EditAct.START
+                    print "Start"
+                elif event.x >= start + .8*(end-start):
+                    self.editingAct = EditAct.END
+                    print "End"
+                else:
+                    self.editingAct = EditAct.MOVE
+                    self.motionStartDelta = event.x-start
+                    self.motionEndDelta = end - event.x
+                    print "Move, dastart=", self.motionStartDelta, ", daend=",self.motionEndDelta
+            else:
+                self.scrolling = True
+                self.location = event.x
+                self.origStart = self.startTime
+        elif int(event.type) == 5:
+            if self.editActVar.get() == 1 and not self.scrolling:
+                self.editingAct = EditAct.NONE
+                self.currentAct = None
+            else:
+                self.scrolling = False
+
+    def motion(self, event):
+        if self.scrolling and event.x != self.location: # Scrolling
+            deltaX = 0. + event.x - self.location
+            deltaT = deltaX / self.timeScale
+            self.startTime = self.origStart - deltaT
+            self.checkTimeLimits()
+            self.plotData()
+        elif self.addingAct == 1:                       # Adding new activity
+            if self.editSensVar.get() == 1:
+                self.showInvalid(self.editStart, self.coord2time(event.x), self.currentSensor)
+            else:
+                self.showActivity(self.editStart, self.coord2time(event.x), 0);
+        elif self.editingAct == EditAct.START:          # Editing activity start time
+            a = self.currentAct
+            a.start = self.coord2time(event.x)
+            self.canvas.delete(a.elt)
+            if a.type == 0:
+                a.elt = self.canvas.create_rectangle(
+                    self.time2coord(a.start),self.getSensorTop(a.sensorID),
+                    self.time2coord(a.end), self.sensorBottom(a.sensorID),
+                    outline="black", fill=a.clr, tag="act")
+            else:
+                a.elt = self.canvas.create_rectangle(
+                    self.time2coord(a.start), self.topShift, self.time2coord(a.end), self.ch-self.botShift,
+                    outline="black", fill=a.clr, tag="act")
+            self.canvas.tag_lower(a.elt)
+            self.orderElts()
+        elif self.editingAct == EditAct.END:            # Editing activity end time
+            a = self.currentAct
+            a.end = self.coord2time(event.x)
+            self.canvas.delete(a.elt)
+            if a.type == 0:
+                a.elt = self.canvas.create_rectangle(
+                    self.time2coord(a.start),self.getSensorTop(a.sensorID),
+                    self.time2coord(a.end), self.sensorBottom(a.sensorID),
+                    outline="black", fill=a.clr, tag="act")
+            else:
+                a.elt = self.canvas.create_rectangle(
+                    self.time2coord(a.start), self.topShift, self.time2coord(a.end), self.ch-self.botShift,
+                    outline="black", fill=a.clr, tag="act")
+            self.canvas.tag_lower(a.elt)
+            self.orderElts()
+        elif self.editingAct == EditAct.MOVE:           # Moving activity around
+            a = self.currentAct
+            a.start = self.coord2time(event.x - self.motionStartDelta)
+            a.end = self.coord2time(event.x + self.motionEndDelta)
+            self.canvas.delete(a.elt)
+            if a.type == 0:
+                a.elt = self.canvas.create_rectangle(
+                    self.time2coord(a.start),self.getSensorTop(a.sensorID),
+                    self.time2coord(a.end), self.sensorBottom(a.sensorID),
+                    outline="black", fill=a.clr, tag="act")
+            else:
+                a.elt = self.canvas.create_rectangle(
+                    self.time2coord(a.start), self.topShift, self.time2coord(a.end), self.ch-self.botShift,
+                    outline="black", fill=a.clr, tag="act")
+            self.canvas.tag_lower(a.elt)
+            self.orderElts()
+        elif self.editingAct == EditAct.NONE and self.editActVar.get() == 1:
+            act = self.findActAt(event.x,event.y)
+            if act != self.currentAct:
+                if self.currentAct != None:
+                    self.canvas.itemconfigure(self.currentAct.elt, outline="")
+                self.currentAct = act
+                if act != None :
+                    self.canvas.itemconfigure(act.elt, outline="black")
+        if self.plotCurrentTime.get() == 1:        # Show the current time point
+            t = self.coord2time(event.x)
+            self.canvas.delete("now")
+            act = ""
+            for a in self.activities.activities:
+                if a.start<=t and a.end>=t:
+                    act = a.getName()
+            self.canvas.create_line(event.x,0,event.x,self.ch,fill="red",dash=(5,),tag="now")
+            self.canvas.create_text(event.x+5,self.ch-10,text=self.time2str(t),anchor=W,fill="red",tag="now")
+            self.canvas.create_text(event.x+5,self.topShift/2,text=act,anchor=W,fill="red",tag="now")
+
+            if self.showGraph.get() == 1:
+                val = self.coord2feat(event.y)
+                closest = None
+                for g in self.graphs:
+                    if g.isClose(t, val):
+                        if closest == None:
+                            closest = g
+                        elif g.dist(t,val) < closest.dist(t,val):
+                            closest = g
+                if closest != None:
+                    self.canvas.create_text(event.x-5,self.ch-10,text=closest.desc(t,val),anchor=E,fill=closest.colour,tag="now")
+                
+
+
+    def getTopByIndex(self, idx):
+        return self.topShift + idx*self.sensorHeight
+
+    def getBottomByIndex(self, idx):
+        return self.topShift + (idx+1)*self.sensorHeight
+
+    def getSensorTop(self, sensor):
+        return self.getTopByIndex(self.info.getSensorIndex(sensor))
+        # return self.topShift + self.sensors.getSensorIndex(sensor)*self.sensorHeight
+
+    def sensorBottom(self, sensor):
+        return self.getBottomByIndex(self.info.getSensorIndex(sensor))
+        # return self.topShift + (self.sensors.getSensorIndex(sensor)+1)*self.sensorHeight
+
+    def showActivity(self, start, end, id):
+        self.canvas.delete("add")
+        xs = self.time2coord(start)
+        xe = self.time2coord(end)
+        dt = end-start
+        if dt<0:
+            dt = -dt
+        if dt >= 1:
+            txt = strftime("%d day %H:%M:%S", gmtime((dt-1)*24*3600))
+        else:
+            txt = strftime("%H:%M:%S", gmtime(dt*24*3600))
+        self.canvas.create_text((xs+xe)/2,self.topShift/2,
+                text=txt, anchor=W,fill="blue", tag="add"),
+        self.canvas.create_line(xs, 2*self.topShift,xe,2*self.topShift,
+                                arrow=BOTH, fill="black", tag="add"),
+        self.canvas.create_rectangle(
+            xs, self.topShift, xe,self.ch-self.botShift,
+            outline="black", fill=self.actCol[id%len(self.actCol)], tag="add")
+        self.orderElts()
+
+    def showInvalid(self, start, end, sensorID):
+        self.canvas.delete("add")
+        xs = self.time2coord(start)
+        xe = self.time2coord(end)
+        yt = self.getSensorTop(sensorID)
+        yb = self.sensorBottom(sensorID)
+        dt = end-start
+        if dt<0:
+            dt = -dt
+        if dt >= 1:
+            txt = strftime("%d day %H:%M:%S", gmtime((dt-1)*24*3600))
+        else:
+            txt = strftime("%H:%M:%S", gmtime(dt*24*3600))
+        self.canvas.create_text((xs+xe)/2,self.topShift/2,
+                text=txt, anchor=W,fill="blue", tag="add"),
+        self.canvas.create_line(xs, 2*self.topShift,xe,2*self.topShift,
+                                arrow=BOTH, fill="black", tag="add"),
+        self.canvas.create_rectangle(
+            xs, yt, xe, yb, outline="black", fill="#faa", tag="add")
+
+        self.canvas.tag_lower("add")
+        self.orderElts()
+
+    def plotData(self):
+        if timing:
+            tic()
+        self.canvas.delete(ALL)
+
+        # Show the activities
+        if self.showAct.get() == 1:
+            act = self.activities.activities
+            for a in act:
+                if a.end > self.startTime:
+                    x1 = self.time2coord(a.start)
+                    x2 = self.time2coord(a.end)
+                    if x2>0 and x1<self.cw:
+                        a.clr = self.actCol[a.id%len(self.actCol)]
+                        a.elt = self.canvas.create_rectangle(x1, self.topShift, x2, self.ch-self.botShift,
+                                                             outline="", fill=a.clr, tag="act")
+        if self.showInval.get() == 1:
+            inv = self.invalids.invalids
+            for i in inv:
+                if i.end > self.startTime and self.time2coord(i.start) < self.cw:
+                    x1 = max(0, self.time2coord(i.start))
+                    x2 = min(self.cw, self.time2coord(i.end))
+                    i.clr = "#faa"
+                    i.elt = self.canvas.create_rectangle(
+                        x1,self.getSensorTop(i.sensorID),x2,self.sensorBottom(i.sensorID),
+                        outline="#f55", fill=i.clr, tag="invalid")
+            det = self.model.invalids
+            for i in det:
+                if i.end > self.startTime and self.time2coord(i.start) < self.cw:
+                    x1 = max(0, self.time2coord(i.start))
+                    x2 = min(self.cw, self.time2coord(i.end))
+                    i.clr = "#88f"
+                    i.elt = self.canvas.create_rectangle(
+                        x1,self.getSensorTop(i.sensorID)+5,x2,self.sensorBottom(i.sensorID)-5,
+                        outline="#55f", fill=i.clr, tag="invalid2")
+
+        # Show the sensor readings
+        index = 0
+        endTime = self.coord2time(self.cw)
+        for s in self.info.getSensorIDs():
+            sx = 0
+            v = 0
+            px = 0
+            Y = (self.topShift+index*self.sensorHeight+self.sensorBot,
+                 self.topShift+index*self.sensorHeight+self.sensorTop)            
+            index += 1
+            skipped = False
+            skiprange=0
+            # for e in self.sensors.getEventListStartingAt(s,self.startTime):
+            for e in self.sensors.getEventListFromTo(s,self.startTime, endTime):
+            # for e in self.sensors.getEventList(s):
+                # skiprange = 0
+                if e.ts < self.startTime:
+                    v = e.val
+                else:
+                    x = self.time2coord(e.ts)
+                    if x > self.cw:
+                        break
+                    else:
+                        # self.canvas.create_oval(x-1,Y[v]-1,x+1,Y[v]+1,outline="red")
+                        if ((x == px) or (x == px+1)):
+                            if not skipped: # It's the first event we're skipping
+                                # self.canvas.create_line(px,Y[v], x,Y[v], x,Y[e.val])
+                                sx = px
+                                skipped = True
+                            if v != e.val:
+                                skiprange = 1
+                        else:
+                            if skipped: # x > x+1 and skipped
+                                if skiprange==1:
+                                    self.canvas.create_rectangle(sx,Y[0],px,Y[1], fill='#555')
+                                else:
+                                    self.canvas.create_line(sx,Y[v],px,Y[v])
+                                self.canvas.create_line(px,Y[v],x,Y[v],x,Y[e.val])
+                                # else:
+                                #     self.canvas.create_line(sx,Y[e.val],px,Y[e.val])
+                                skipped = False
+                                skiprange=0
+                            else:
+                                if v == e.val:
+                                    self.canvas.create_oval(x-eventBallR,Y[v]-eventBallR,x+eventBallR,Y[v]+eventBallR,outline="#00f",fill="#aaf")
+                                    
+                                #     # self.canvas.create_line(px,Y[v], x,Y[v], x,Y[v]+5, x,Y[v]-5,x,Y[v])
+                                #     self.canvas.create_line(px,Y[v], x,Y[v])
+                                # else:
+                                self.canvas.create_line(px,Y[v], x,Y[v], x,Y[e.val])
+                                
+                    px = x;
+                    v = e.val
+
+                    
+            if skipped: # x > x+1 and skipped
+                self.canvas.create_rectangle(sx,Y[0],px,Y[1], fill='#555')
+            self.canvas.create_line(px,Y[v],self.cw,Y[v])
+            sz=8
+            h = (Y[0]+Y[1])/2
+            pix = 1
+            txt = self.canvas.create_text(10,h,text=self.info.getSensorName(s),
+                                          fill="black",anchor=W, font=tkFont.Font(size=sz,weight='normal'),tag="names")
+            bg = self.canvas.create_rectangle(self.canvas.bbox(txt), fill="#ddd",outline="#ddd",tag="names");
+            self.canvas.tag_lower(bg,txt)
+            
+        if self.showHeart.get() == 1:
+            for s in self.info.getSensorIDs():
+                y = self.topShift+self.info.getSensorIndex(s)*self.sensorHeight + self.sensorHeight/2
+                prevX = 0
+                prevTS = 0
+                eList = self.heart.getEventListFromTo(s,self.startTime,endTime)
+                for e in eList:
+                # for e in self.heart.getEventListStartingAt(s,self.startTime):
+                    if e.ts - prevTS > 1.5/24:
+                        x1 = self.time2coord(prevTS)
+                        x2 = self.time2coord(e.ts)
+                        if x2 != prevX:
+                            prevX = x
+                            self.canvas.create_rectangle(x1,y-heartbeatBallR,x2,y+heartbeatBallR,outline="#f00",fill="#faa")
+                    prevTS = e.ts                        
+                    # x = self.time2coord(e.ts)
+                    # self.canvas.create_line(x,y-heartbeatBallR,x,y+heartbeatBallR)
+                if len(eList) < 2:
+                    self.canvas.create_rectangle(1,y-heartbeatBallR,self.cw,y+heartbeatBallR,outline="#f00",fill="#faa")
+                elif endTime-eList[-1].ts > 1.5/24:
+                    x1 = self.time2coord(prevTS)
+                    x2 = self.cw
+                    self.canvas.create_rectangle(x1,y-heartbeatBallR,x2,y+heartbeatBallR,outline="#f00",fill="#faa")
+                    
+                    
+        # Plot the day changes
+        if self.plotDaylines.get() == 1:
+            plotted=False;
+            dstep = 1;
+            for t in range(int(self.startTime)-1,self.dataEndTime):
+                if t>self.startTime:
+                    x = self.time2coord(t)
+                    if x > self.cw:
+                        break
+                    if x < self.cw - 200:
+                        plotted=True;
+                    gmt = time2gmt(t)
+                    if self.timeScale < 5:
+                        if strftime("%d",gmt) == "01": # Only plot months
+                            self.canvas.create_line(x,0,x,self.ch,fill="grey25",dash=(5,))
+                            self.canvas.create_text(x+5,10,text=strftime("%b %Y", gmt),anchor=W)
+                    elif self.timeScale < 40:
+                        if strftime("%a",gmt) == "Mon": # plot weeks
+                            self.canvas.create_line(x,0,x,self.ch,fill="grey25",dash=(5,))
+                            self.canvas.create_text(x+5,10,text=strftime("%d/%m", gmt),anchor=W)
+                        else:
+                            self.canvas.create_line(x,20,x,self.ch,fill="grey25",dash=(5,))
+                            
+                    else:
+                        self.canvas.create_line(x,0,x,self.ch,fill="grey25",dash=(5,))
+                        if self.timeScale > 200:
+                            self.canvas.create_text(x+5,10,text=strftime("%a, %d %B %Y", gmt),anchor=W)
+                        elif self.timeScale > 80:
+                            self.canvas.create_text(x+5,10,text=strftime("%a, %d %b", gmt),anchor=W)
+                        else: #if self.timeScale > 30:
+                            self.canvas.create_text(x+5,10,text=strftime("%d/%m", gmt),anchor=W)
+                    if strftime("%a",gmt) == "Sat":
+                        self.canvas.create_rectangle(x,20,self.time2coord(t+2),self.cw,
+                                                     fill=weekendColour,outline=weekendColour, tag="weekend")
+                            
+                if self.timeScale>300 and t+dstep > self.startTime:
+                    step = 24*3600
+                    start=(t-719529)*24*3600
+                    t2 = start
+                    fmt="%H:%M"
+                    if self.timeScale >= 300:
+                        step /= 2   # midday
+                    if self.timeScale >= 1600:
+                        step /= 12 # hours
+                    if self.timeScale >= 3200:
+                        step /= 2   # half hours
+                    if self.timeScale >= 6400:
+                        step /= 2   # 15 minutes
+                    if self.timeScale >= 25600:
+                        step = 5*60 # 5 minutes
+                    if self.timeScale >= 102400:
+                        step = 60 # minutes
+                    if self.timeScale >= 819200:
+                        step = 30 # 30 seconds
+                        fmt="%H:%M:%S"
+                    if self.timeScale >= 2*819200:
+                        step = 15 # 15 seconds
+                    if self.timeScale >= 4*819200:
+                        step = 5 # 5 seconds
+                    if self.timeScale >= 16*819200:
+                        step = 1 # 1 second, and that's it!
+
+                    while t2 < start+24*3600:
+                        x = self.time2coord(t2/24./3600.+719529);
+                        if x > self.cw:
+                            break;
+                        elif x >= 0:
+                            self.canvas.create_line(x,20,x,self.ch,fill="grey25",dash=(5,))
+                            self.canvas.create_text(x+5,30,text=strftime(fmt, gmtime(t2)),anchor=W)
+                        t2 += step
+            if not(plotted):
+                self.canvas.create_text(10,10,
+                                        text=strftime("%a, %d %B %Y", gmtime(time2unix(self.coord2time(0)))),
+                                        anchor=W)
+            if strftime("%a",time2gmt(self.startTime)) == "Sat":
+                monday = min(self.time2coord(int(self.startTime)+2),self.cw);
+                self.canvas.create_rectangle(0,20,monday,self.cw, fill=weekendColour,outline=weekendColour, tag="weekend")
+            elif strftime("%a",time2gmt(self.startTime)) == "Sun":
+                monday = min(self.time2coord(int(self.startTime)+1),self.cw);
+                self.canvas.create_rectangle(0,20,monday,self.cw, fill=weekendColour,outline=weekendColour, tag="weekend")
+            # self.canvas.tag_lower("weekend");
+        self.orderElts()
+
+        if self.showGraph.get()==1:
+            self.canvas.create_rectangle(1,self.ch-self.botShift, self.cw, self.ch, fill="#efe",outline="#efe",tag="graph")
+            self.canvas.tag_lower("graph")
+            for g in self.graphs:
+                if g.getLen()==0:
+                    continue
+                prevX = self.time2coord(g.getTS(0))
+                prevY = self.feat2coord(g.getVal(0))
+                for t in xrange(1,g.getLen()):
+                    x = self.time2coord(g.getTS(t))
+                    y = self.feat2coord(g.getVal(t))
+                    self.canvas.create_line(prevX,prevY,x,y,fill=g.colour)
+                    self.canvas.create_oval(x-2,y-2,x+2,y+2,fill=g.colour,outline=g.colour)
+                    (prevX,prevY) = (x,y)
+                
+            
+
+        # for i in xrange(len(self.sensors.sensorIDs)):
+        #     p = numpy.exp(self.model.logValidP(i))
+        #     py = self.getBottomByIndex(i)- 10 - p[0]*(self.sensorHeight-20)
+        #     px = self.time2coord(self.model.idx2time(0))
+        #     for j in xrange(1,len(p)):
+        #         t = self.model.idx2time(j)
+        #         y = self.getBottomByIndex(i)-10 - p[j]*(self.sensorHeight-20)
+        #         x = int(self.time2coord(t))
+        #         if t > self.startTime:
+        #             if x > self.cw:
+        #                 break
+        #             self.canvas.create_line(px,py,x,y,fill="red")
+                    
+        #         (px,py) = (x,y)
+
+        if timing:
+            toc()
+
+    def time2coord(self,t):
+        return int(self.timeScale * (t-self.startTime))
+    
+    def coord2time(self,c):
+        return (0.+c)/self.timeScale + self.startTime
+
+    def feat2coord(self, f):
+        return int(self.ch - f*self.botShift)
+
+    def coord2feat(self, y):
+        return float(self.ch - y)/self.botShift
+
+    def time2str(self, t):
+        return strftime("%a, %d %b %Y %H:%M:%S", gmtime((t-719529)*24*3600))
+            
+    def getOut(self):
+        print("Getting out of here.")
+        quit()
+
+    def printAct(self):
+        file = tkFileDialog.asksaveasfilename(parent=self,title='Choose a file')
+        if file != None:
+            print "Saving to ", file
+            if self.editSensVar.get() == 1:
+                self.invalids.save(file)
+            else:
+                self.activities.printAct(file)
+    def printImg(self):
+        file = tkFileDialog.asksaveasfilename(parent=self,title='Choose a file')
+        if file != None:
+            print "Saving to ", file
+            self.canvas.postscript(file=file, colormode='color', rotate='true')
+        
+    def findActAt(self, x, y):
+        t = self.coord2time(x)
+        best = None
+        if self.editSensVar.get() == 1:
+            for a in self.invalids.invalids:
+                if a.start<=t and a.end>=t and self.info.getSensorID((y - self.topShift) / self.sensorHeight) == a.sensorID:
+                    if best == None or (abs(best.start-t) > abs(a.start-t) or abs(best.end-t) > abs(a.end-t)):
+                        best = a
+        else:
+            for a in self.activities.activities:
+                if a.start<=t and a.end>=t:
+                    if best == None or (abs(best.start-t) > abs(a.start-t) or abs(best.end-t) > abs(a.end-t)):
+                        best = a
+        return best
+
+    def evalGraphs(self):
+        self.graphs = __myimp__("plotgraph").computeGraphs(self.feat,self.sensors,self.info)
+        self.plotData()
+    
+    def updateGraphs(self, g):
+        self.graphs = g
+        self.plotData()
+
+
+def __myimp__(name, globals=None, locals=None, fromlist=None):
+    fp, pathname, description = imp.find_module(name, [dir, './'] + sys.path)
+
+    try:
+        return imp.load_module(name, fp, pathname, description)
+    finally:
+        # Since we may exit via an exception, close fp explicitly.
+        if fp:
+            fp.close()
+
+def getApp():
+    dir = os.getcwd()
+    if len(sys.argv) == 2:    
+        dir = sys.argv[1]
+        if dir[-1] == '/':
+            dir = dir[:-1]
+
+    info = SensorInfo(dir+"/sensornames.txt", dir+"/sensorinfo.txt")    
+    data = SensorData(info, dir + "/sensorreadings.txt")
+    heartbeat = SensorData(info, dir+"/heartbeat.txt",True)
+    act =  ActData(dir+"/activities.txt", dir+"/activitynames.txt")
+    inval = InvalidSensors(dir+"/invalid.txt")
+    feat = Feat(data, info)
+
+    app = Vis(info, data, heartbeat, act, inval, feat, dir)
+    app.master.title("Visualiser for " + string.rsplit(dir,'/',1)[-1] + " (" + dir + ")")
+    app.updateGraphs(__myimp__('plotgraph').computeGraphs(feat,data,info))
+    return app
+
+
+if False:
+    cProfile.run('app = getApp()','visprof')
+    p = pstats.Stats('visprof')
+    p.strip_dirs().sort_stats('time').print_stats()
+else:
+    app = getApp()
+app.mainloop()
+    

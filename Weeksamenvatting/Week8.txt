@@ -1,0 +1,19 @@
+Week8:
+
+*LDA werkt tot zo veer goed op zelfgegenereerde data. Als theta=1 dan convergeert de likelihood niet, maar komen er wel goede beta waardes uit. Met overlappende clusters gebeurt het wel eens dat EM niet convergeert. Dit moet aan de random initialisatie liggen.
+
+*LDA is geen algorithme om documenten te clusteren! Hieruit is een mogelijke conclusie: Als er in verhouding te weinig woorden zijn die een cluster vormen tegen over algemene woorden, dan kun je dit cluster moelijk vinden.
+Stel je hebt 2 topics, een dictionary met lengte 10, en elk topic onderscheid zich van de andere met maar een woord. Dus er zijn acht woorden die in alle twee topics voorkomen (overlappen). Dan zijn deze topics moelijk van elkaar te onderscheiden. De reden hiervoor moet ik nog vinden.
+
+*Het is logisch dat een overlap variable geen hoge probability heeft voor een klas. Want deze varabel is voegt geen informatie toe.
+
+*Op de sensor data werkt het nog niet, dat komt omdat de woord frequency echt heel laag is. Dus elk woord wordt maar een keer gezien en alleen maar n heel paar hebben overlap in documenten. Zo als de slaap en weg zijn woorden (heel veel nullen).
+
+*Een manier om hier een oplossing te krijgen is om de data van te voren te clusteren. Hiervoor is het misschien nog wel handig om de coarse grain aan te passen. Nee, wacht want dat wordt ook automatisch geclustered. Gebruik k-means hiervoor.
+
+*Om de goede clusters in de data te vinden zijn een aantal dingen belangrijk. Ten eerste moet je weten hoeveel clusters je zoekt. Dan of altijd dezelfde clusters worden gevonden. Het beste kan je waarschijnlijk heel veel clusters eerst nemen en dan kijken wat de afstand tussen sommige clusters is. Als die te klein is dan kun je een van die clusters verwijderen.
+
+*Van te voren clusteren is niet heel netjes. Je wilt deze clustes direkt in LDA inwerken. Dat betekent dat je de kans van een woord gegeven een topic beta=p(w|z) vervangt door een normalverdeeling over de dimensies van woorden.
+
+*Ik vraag me af of je me de nieuwe LDA versie de data niet te veer gesmoothed wordt. Wat is het effect als de timeslices kleiner worden. Dan zijn de gaussians niet meer echt nodig omdat de woord demensies veel kleiner worden en de aantal unique woorden (length dictionary) kleiner wordt.
+

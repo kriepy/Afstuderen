@@ -7,8 +7,15 @@
 
 %----------------------------------INTRODUCTION--------------------------------------------
 \section{Introduction}
+
 Mijn verwachtingen van het project waren meer dat het veel practischer en meer toepassingsgericht zou zijn. Ik wil liever iets maken waar mensen iets aan hebben en wat nuttig voor hun kan zijn, dan een theoretische opdracht.
 Ik moet een klaar doel voor ogen hebben.
+
+Algemene Inleiding over oude mensen :P
+Warrom is dit nodig
+we zoeken  best mogelijke feature description, waarvoor?
+maat hiervoor is de likelihood van LDA
+
 
 
 Why is activity recognition done?? What is it used for?
@@ -24,7 +31,9 @@ Another problem is that many activity recognition models are based on labeled da
 For these reasons we want to find another way to describe the behaviour of people in their house environment using an unsubervised method.
 
 
-%--------------------------------METHODs-----------------------------------------------------
+
+%--------------------------------METHOD:LDA-----------------------------------------------
+\part{LDA}
 \section{Topicmodel for daily behaviour of people in home enviroments}
 !!!Korte omschrijving wat hier wordt vertelt.
 
@@ -35,9 +44,15 @@ The measurement for every sensor is done ... how? All sensors send to the same r
 A more detailed description of the sensor data can be find in [phd tim].
 
 
--Wat krijg ik voor data binnen
+
+-Wat krijg ik voor data binnen (timesequential data, 1 of 0)
 -waar komt die data vandaan
+-vijf verschillende huizen precies aangeven hoeveel dagen per huis. er is maar een persoon in huis, leven zelfstandig, maar er kan niet worden uitgesloten of er andere personen op bezoek komen.
+Volleidig ongelabeld.
+Sensoren zijn ingedeeld in fields (Living, Bathroom, Kitchen, Bedroom, Hallway)
+
 -wat zijn problemen met die data (niet altijd even betrouwbaar, dubbel shots,...)
+
 
 
 \subsection{Topic model for time sequential data}
@@ -51,6 +66,16 @@ These models are based on document clustering, where a document is a combination
 In our case we have five fields and we count how often a sensor is triggered in a field. That means that it does not matter which sensor in a field is triggered.
 
 
+
+
+\section{Latent dirichlet allocation with our Data}
+In a first step we want to analyse the data. How could we do that? Activity recognition is a big part in this field. But we don't want to now activities. That information is to much detail. To monitor elderly over a long period of time you do not need to see the activities, but you need to recognize differences in their daily behaviour.
+Labeling data cost a lot of time and it also falses the data because the labeling task itself influences the daily behaviour patterns. There for we want to find a good representation of a daily behaviours.
+Like described in [mobile article] a way to do is to find underlying topics in a description of days.
+The problem here is that we have a lot sensors that can be triggered in a infinit amount of times. Length of trigger time is not important.
+
+
+To find a good representation of the data we need to build features. Therefor we descritize the data. 
 
 To find underlying structures in the data, which means finding habbits in the daily structures of people is the goal.
 
@@ -78,6 +103,9 @@ Can not use previous described data because no good structure. That is why we cl
 \subsection{Uitbreiding LDA algorithme}
 Preprocessing the data with k-means may influence the LDA model. To capture the clusters directly in the model we adjusted the LDA approach. 
 
+%---------------------------------------------------METHOD:GENETIC-------------------------------------
+\part{Generic Algorithm}
+Als de likelihood een maat is dan kan het makkelijk overfitten op deze specifieke data. Dan is het misschien nodig om train, test en validation sets te maken. Hierdoor zul je weinig data hebben en misschien is cross validation ervoor nodig.
 
 %-------------------------------------------RESULTS---------------------------------------
 \section{Results}
