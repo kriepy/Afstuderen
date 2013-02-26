@@ -8,18 +8,8 @@
 %----------------------------------INTRODUCTION--------------------------------------------
 \section{Introduction}
 
-Mijn verwachtingen van het project waren meer dat het veel practischer en meer toepassingsgericht zou zijn. Ik wil liever iets maken waar mensen iets aan hebben en wat nuttig voor hun kan zijn, dan een theoretische opdracht.
-Ik moet een klaar doel voor ogen hebben.
-
-Algemene Inleiding over oude mensen :P
-Warrom is dit nodig
-we zoeken  best mogelijke feature description, waarvoor?
-maat hiervoor is de likelihood van LDA
-
-
-
 Why is activity recognition done?? What is it used for?
-Monitor elderly?
+Monitor elderly? To check if they do their daily routine normally. That there are no abnormal behaviours like setting coffee 10 time in an hour.  So mentally and physical fit. Also giving an alarm in dangerous situations?
 
 Activity recognition is hard. Finding the excact activity from sensor data can be difficult for different reasons:
 - fuzzy timelength, it is not always clear when an activity starts or ends.
@@ -28,7 +18,7 @@ A couple of difficults are described in [phd Tim] More??
 
 Another problem is that many activity recognition models are based on labeled data. Labeling is timeconsuming and also effects the behaviour of the people while doing the labeling.
 
-For these reasons we want to find another way to describe the behaviour of people in their house environment using an unsubervised method.
+For these reasons we want to find another way to describe the behaviour of people in their house environment using an unsubervised method. We do not focus so much on the exact activities but more on the global behaviour during a day.
 
 
 
@@ -40,8 +30,8 @@ For these reasons we want to find another way to describe the behaviour of peopl
 
 \subsection{Data description}
 Sensors are placed in the home enviroment of people. The sensors can send the value zero or one. The sensors are placed at different locations in the homes and several sensors are grouped together in a field. A field can be for example the 'kitchen'. All sensors that are placed in the kitchen belongs to this field. The sensors that belong to a field can differ between different houses and are specified manually. In the following descriptions we use five different fields. The fields are \{'kitchen','living','bathroom','bedroom','hallway'\}.
-The measurement for every sensor is done ... how? All sensors send to the same receiver and give the time value in seconds and if the value of the sensor changed from zero to one or the other way around.
-A more detailed description of the sensor data can be find in [phd tim].
+All sensors send to the same receiver and store the time a sensor has changed in seconds. 
+A more detailed description of the sensor data can be find in [phd tim]. The measurement for every sensor is done ... how? Is that even important? 
 
 
 
