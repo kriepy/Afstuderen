@@ -1,7 +1,6 @@
 load('CorpusMoreDims3.mat')
 delete MoreDims3
 fid = fopen('MoreDims3','a');
-S=[];
 for i=1:length(Corpus.documents)
     a=find(Corpus.documents(i).DaNoBi);
     array=[];

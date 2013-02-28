@@ -1,4 +1,4 @@
-run
+
 
 k=2;
 V=3;
@@ -10,8 +10,8 @@ bi=0.8;
 %alpha=[20 20]';
 %beta=rand(k,V); % k x V
 %beta=[bi*ones(1,ai) (1-bi)*ones(1,V-ai);(1-bi)*ones(1,V-ai) bi*ones(1,ai)];
-beta=[1 0.2 0;
-    0 0.2 1];
+beta=[1 1 0;
+    0 1 1];
 % normalize beta
 for i=1:size(beta,1)
     S=sum(beta(i,:));
