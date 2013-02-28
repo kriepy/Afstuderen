@@ -1,0 +1,3 @@
+LDA extension:
+
+* If there is a gaussian used over all field we might also want to look not only the amount of triggers in a sensorfield, but also how long the sensors have a value.
