@@ -1,3 +1,18 @@
 LDA extension:
 
-* If there is a gaussian used over all field we might also want to look not only the amount of triggers in a sensorfield, but also how long the sensors have a value.
+* If there is a gaussian used over all field we might also want to look not only the amount of triggers in a sensorfield, but also how long the sensors have a value.??
+
+
+DOELEN:
+
+* Introduction van Verslag schrijven: Meer onderzoek doen naar monitoring elderly.
+
+* LDA extension implementeren.
+
+* Clusters onder de loop nemen.
+
+GEDAAN:
+
+* intro geschetst. meer onderzoek naar monitoring nodig.
+
+* Visualizatie moet beter.

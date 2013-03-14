@@ -1,6 +1,9 @@
 function VisuResult(Corpus)
 
 % alleen 10 documenten worden gevisualiseert
+if nargin<1
+    load Corpus254
+end
 
 [~,k]=size(Corpus.documents(1).phi);
 cmap=colormap(hsv(k));
@@ -11,8 +14,6 @@ for i=1:10
     [N,~]=size(Corpus.documents(i).phi);
     for j=1:N
         [~,ind]=max(phi(j,:));
-        
-        
         figure(1)
         hold on
         fill(x,y,cmap(ind,:));

@@ -1,0 +1,14 @@
+STEPs to be done:
+
+1. Descritze the data: 
+So every day needs to be split in slices of 30 minutes. All sensors are devided in sections. The sections are S(leeping), B(athroom), L(iving), K(itchen) and D(oor). In every timeslice we will count the amount of times a sensor in a certain section is triggered.
+Problem occured when sometime a sensor fires a 0 while there hasn't been fired a 1.
+
+2. Building 'Words' from the descretized data:
+A word will be the previous, now and next timeslice values. And also the time of a day is taken into account (Course Grain). For now I excactly give the hour.
+So a word for a timeslice will be a vector of length 16 (5,5,5,1) > (5 sensorfields values at t-1, 5 sensorfields values at t, 5 sensorfields values at t+1, time)
+Every day is stored in a matrix of size 48x16. Where every row will represent a word.
+
+3. Building a dictionary:
+Find all possible words in a corpus, maybe also all corpora. A corpus in this case is a data set for one house. Each day will represent a document, which can contain maximum of 48 words.
+I think or at least I hope that words will appear multiple times on different days. New words are not very likely to see in a new document, but it still can appear. If words do not occure multiple

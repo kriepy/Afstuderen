@@ -1,0 +1,13 @@
+Behaviour Analysis for Health Monitoring Elderly with LDA
+
+Monitoring of elderly patients  in a home environment has the potential of enabling fast and accurate detection of problematic situations. Therefor an accurate model of the behaviours is required for each person to detect abnormal behaviour from normal ones. Building such a model is time consuming and the interventions that need to be done, like labbeling can affect the patients, which makes the model less accurate.
+Unsupervised methods do not require intervention, but accurate modelling relies on good feature extraction. The difficulty 
+
+In this master thesis I will analyse the sequential sensor data of real data gained in home enviroments of elderly. These data is gained from different binary sensors that are placed in the homes of different persons. Every time a sensor is triggered (on or off) a value (0 or 1) is received.
+In a first step the Latent Dirichlet Allocation model [1] is applied with simple features gained from the time sequential data. Herefor the data is seperated into timeslices of half an hours and 'words' or features are created in a similar way as described in [2]. 
+In a second step these features are refined and adjusted to find better results and distinction of behaviours.
+
+
+[1] Blei, D., Ng, A. Y., & Jordan, M. (2002). Latent dirichlet allocation.
+
+[2] Katayoun Farrahi & Daniel Gatica-perez (2008). Discovering Human Routines from Cell Phone Data with Topic Models.

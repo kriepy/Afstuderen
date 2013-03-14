@@ -1,0 +1,15 @@
+How to use LDA toolbox with Gibbs sampling:
+
+TEST.m geeft een example hoe je het moet gebruiken.
+
+ WP(i,j) contains the number of times word i has been assigned to topic j
+
+DP(i,j) contains the number of times a word in document d has been assigned to topic j
+
+Z(k) contains the topic assignment for token k.
+
+Voor 100 documenten heb ik 500.000 iteraties genomen, maar de nauwkeurigheid in WP woordt erop niet beter. Vaag. Zou aan de random sampeling kunnen liggen, dat er dus altijd wel wat fout wordt toegewezen, maar de uiteindelijke klasse correct aan de woorde worden gebonden.
+
+De vraag is nu of er ook een beta kan worder gekregen. Aantwoord: NEE
+
+Gibbs sampling werkt dus niet beter. Of tenminste deze implementatie niet.

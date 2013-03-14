@@ -1,0 +1,32 @@
+LDA:
+
+How does it work?
+
+A document is a combination of different topics a topic is specified with a word distribution.
+The EM-algorithm does not cluster the documents but it clusters the underlying topics. That is why there does not need to be clusters in the documents! You can only build them with specifying the theta directly. When you only choose alpha there is only a certain chance that there are also clusters in the documents.
+
+
+Hoe bereken je alpha gegeven theta? Als ik 500 documenten heb en 2 clusters in die documenten, zou alpha dan [250,250]? Ja dat hoort zo te zijn, maar nu wordt alpha steeds grooter.
+
+
+Theta en beta hebben dezelfde invloed op mijn clusters. Grootere alpha waardes geeft minder varianties. Er is dan wel alleen maar een cluster in de documenten. Wel merdere in de topics?
+
+
+Als je twee clusters maakt in de documenten, worden de phis idd goed toegewezen, maar beta wordt 1,0 ipv 0.7,0.3(initialized)
+
+
+Wat gebeurt als je geen clusters van documenten maakt, maar een alpha kiezt en theta eruit trekt? Worden de beta waarden dan wel goed benaderd?
+Nee. Alpha wordt steeds groter met de aantal iteraties. Beta convergeert wel, maar naar niet nader te definerende waardes. Als beta (0.7,0.3 en 0.3,0.7) dan wordt beter in de benadering (1,0 en 0,1). Dit is ook wel logisch omdat de zekerheid welk woord bij welk cluster hoort ook steeds grooter wordt.
+
+
+Het is logisch dat als je twee clusters van documenten kiest en de theta waarden zijn symmetrisch met elkaar (0.7,0.3 en 0.3,0.7) dan wordt alpha ook symmetrisch en steeds grooter met elke iteratie, omdat alpha steeds zekerder wordt en ermee dus grooter.
+
+
+
+NOG EEN KEER (11/2/2013):
+nog een keer simple data aan algorithme voeren: Dit keer echt gescheiden data (itereer over meer stappen >500 of zo) Kijken wat alpha en beta doen: Alpha gaat naar beneded??? En beta wordt langzaam 10 01. Nu was de document length wel variabel.
+
+
+Dan nog een keer iets gemixte data. N vast zetten, want dat is ook zo in ons eigen data. Bij 2 documenten clusters heeft alpha niet veel te zeggen. Beta zal waarschijnlijk ook naar 1,0  0,1 gaan. Ik heb de proeven uitgevoerd met theta 0.1 0.2 0.3 en 0.4. Beta was in dit geval 10 01.
+Bij theta 0.1 0.2 0.3 blijft alpha stabiel. Maar bij theta 0.4 wordt alpha exponentieel grooter met elke iteratie stap.
+De initialisaties van alpha en beta maken heel erg uit of de alpha uiteindelijk convergeert. Als alpha goed dan ook beta goed.

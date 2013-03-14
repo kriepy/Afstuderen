@@ -1,4 +1,4 @@
-function getplotData( houseNr, day )
+function getplotData( houseNr )
 % this function can be used to plot the data. It uses the plain data as
 % input and stores it in the same struct as all other files
 %% TODO:
@@ -8,19 +8,18 @@ function getplotData( houseNr, day )
 
 
 if nargin<1
-    houseNr=254;
-    day=1;
+    houseNr=247;
 end
 
 % constanten
 dagIsec = 86400;
 
-data = importdata(strcat('C:\Users\Kristin\UVA\Afstuderen\data\',num2str(houseNr),'\sensorreadings.txt'));
-info = importdata(strcat('C:\Users\Kristin\UVA\Afstuderen\data\', num2str(houseNr),'\sensorinfo.txt'));
-sensornames = importdata(strcat('C:\Users\Kristin\UVA\Afstuderen\data\',num2str(houseNr),'\sensornames.txt'));
+data = importdata(strcat('C:\Users\Kristin\UVA\Afstuderen\Afstuderen\Matlab\Data\DATAPlain\',num2str(houseNr),'\sensorreadings.txt'));
+info = importdata(strcat('C:\Users\Kristin\UVA\Afstuderen\Afstuderen\Matlab\Data\DATAPlain\', num2str(houseNr),'\sensorinfo.txt'));
+%sensornames = importdata(strcat('C:\Users\Kristin\UVA\Afstuderen\Afstuderen\Matlab\Data\DATAPlain\',num2str(houseNr),'\sensornames.txt'));
 
-
-load(strcat(['DataMatlab/House',num2str(houseNr),'.mat']));
+name=strcat(['C:\Users\Kristin\UVA\Afstuderen\Afstuderen\Matlab\Data\DATACorpus\House',num2str(houseNr),'SliLen30.mat'])
+load(name);
 
 %% Get the Sensor fields
 % Sensor is a struct which contains the field names and the nr of sensors
@@ -84,7 +83,7 @@ while go
         try
             time = unix_time(in);
         catch
-            disp('2nd try')
+            disp('2nd try in getplotData')
             go = false;
             break
         end
@@ -123,7 +122,7 @@ while go
     dag=dag+1;
 end
 
-save(strcat(['DataMatlab/House',num2str(houseNr),'.mat']),'House');
+save(name,'House');
 
 
 

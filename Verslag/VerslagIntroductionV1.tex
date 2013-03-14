@@ -8,22 +8,15 @@
 \begin{document}
 
 \section{Introduction}
+The world population increases unceasingly and thereby the percentage of elderly also increases. The manpower to take care of elderly is diminishing. So it becomes more and more important to give elderly the opportunity to live on there own and be more independent of health care.
+New techniques give the possibility to monitor elderly from the distance or even automatically. Some of these techniques use cameras that are placed in the homes of elderly. But these methods are privacy-sensitive and often not adopted by the elderlies. []
+Other methods use motion sensors that are placed at different locations in the homes of elderly. 
+Reading and interpreting this sensor data is often difficult and that is why often activity recognition is done to make the data more readable. But different approaches show that this is also a though challenge. [ ]
+Machine Learning techniques often require a lot of annotated data, but the task of labeling a data set is time consuming and and can also influence the output of the data while doing so.\\
+Therefore we focus in this thesis on finding features in an unsupervised manner. These features should be meaningful and easy to interpret. We do not focus so much on activity recognition but look more widely on the daily behavior of a person given sensor data. As an inspiration we use the analysis of human routines described in [Farrahi]. With an EM-algorithm for Latent Dirichlet Allocation (LDA) we try to distinguish topics in sensor data. The topics should describe different behaviors in the daily routines of a person. The LDA algorithm described in [Blei] is adjusted to fit the given data.
 
-- Monitoring the health of elderly people, mentaly & pysical\\
-- to check if they can live alone without any additional help\\
-- longtime health monitoring\\
-- also to detect accidents\\
-- health monitoring is done by professional trained people that visit the elderly people at there home and make several physical and mentaly test with them. This is a timeconsuming precedure for both patient and professional and is only a sample and does not represent the average health situation of a patient.\\
-\\
-If you want to do this task, checking if people are fit and can still live on their own, you can use cameras. But these are privacy sensitive and it is still a hard task to do activity reckognition on video material.\\
 
-Therefore sensors are placed at important places in the home of people. Looking at the output of this sensor data is also for human not very informative, so we need to find better feature descriptions that can give more information to professionals who need to judge the patients fitness. These features can also be used for Machine Learning algorithm that fit the fitness of patients to the data.
-So why shouldn't we use just an ML algorithm on this plaine data? A ML alg must be able to find the best features automatically?
-To give good results with an ML alg you need enough labeled data. But labeling data is a expensive task, in the sense that is time consuming. It is also sometimes the case that the labeling task influences the behaviour of the people that do this task. That is why it is advantageous to use an unsupervised approach for finding the best features.
 
-Also it might not be the goal to do activity recognition, but find other features which are more informative about the fitness of people.\\
-
-Might be interesting to check with professionals how they check if a person is fit or not.
 
 
 

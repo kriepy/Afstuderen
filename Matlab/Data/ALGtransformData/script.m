@@ -1,3 +1,5 @@
+% writes data into LDA data format so that it can be loaded with fmatrix
+
 load('CorpusMoreDims3.mat')
 delete MoreDims3
 fid = fopen('MoreDims3','a');
