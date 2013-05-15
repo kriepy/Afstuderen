@@ -1,0 +1,3 @@
+LDAExtension:
+*Het probleem is dat als je de variantie heel groot maakt, dat dan geen goede cluster worden gevonden.
+*als phi nul wordt dan is de log ervan NAN

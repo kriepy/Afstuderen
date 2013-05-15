@@ -1,0 +1,30 @@
+WEEK10:
+
+*Implementing the LDA extension:
+Met makkelijke input, dus twee dimensies in de observaties, 100 documenten en twee duidelijk geschreiden clusters. Na twee iteratie zijn de optimale waarden eigenlijk al bereikt. Maar
+de mean komt niet overeen met de mean van de data. Terwijl die gelijk hoort te zijn. Phi is perfect en de data is niet aan het veranderen. Er moet dus een fout in de berekening zijn!!!
+Me is nog niet duidelijk wat de alpha voor invloede heeft.
+
+
+Het is wel zo dat de initialisatie heel veel invloed heeft of de algorithme convergeert of niet. Dit is vooral het geval als je meer clusters zoekt als dat er zijn. Als de initialisatie goed is dan convergeert in dit geval de uitkomst heel goed, want de phi waarden voor elk document worden perfect, maar twee clusters krijgen aandacht!
+
+*Het woord-model door een gaussian klopt toch helemaal niet. Als een topic gedefineerd woord door meerdere woorden dan kan het toch zijn dat er twee woorden zijn die een topic defineren. En dit kan toch helemaal niet door één gaussian per demensie benadert worden.
+
+*Warrom is het niet goed dat je van te voren clustert en dan LDA gaat gebruiken.
+
+
+ARTIKEL:
+On Finding the Natural Number of Topics with Latent Dirichlet Allocation: Some Observations
+
+*THIS IS LEFT OUT IN REPORT:
+
+ So the only part that is changing in the generative process of LDA decribed above is part 2(b). The word is not choosen from a list of possible words, but it is generated with the six gaussian models.\\
+
+
+Time transitions between time-slices can be added later.
+more transitions
+Further we also want to capture the transition between the time-slices and therefor we take the values of the previous and following time-slices also into account.\\
+Finally we also want to take the time during the day into account. Therefor we divide a day into 5 timezones and add this as an extra dimension of a time-slice.\\
+In total we will have 16 values for every time-slice. Every value can theoretically vary between 0 and infinity, but the maximum value we observe is ..(need to check). All 16 observations together form a word. Every day will have 48 words.\\
+
+

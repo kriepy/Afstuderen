@@ -1,0 +1,5 @@
+Week3/4:
+* Creating words: I dont pay attention to the end and start of a day. This can prevent with a data matrix of 50x6 where the first and the last row belong to the previous and next day respectively.
+* If the timeValue is refined the amount of unique words is 4069 out of 6816 words. With no time value in it the unique words are 3691. And with coarse grain it is 3900.
+* Maybe the timeslice is to big or to small. If you get bigger timeslices you might find the same amount of sensors that is used. With smaller slices you would get more activities than rather behaviour. Maybe the sensor data should be smoothed in some way.
+* It is probably necessary to remove all words that contains 15 zeros at the beginning. This word corresponds to a common words in text corporas.

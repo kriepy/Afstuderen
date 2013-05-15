@@ -1,0 +1,10 @@
+Week 6:
+
+What I did until know:
+
+* I implemented LDA.
+
+* I build the data from the input:
+For now I ignore sensors that are on for a long while and later go off ('over' is the variable that can be used to put it in)
+'last' is the variable that stores the previous values from the day before.
+Building the data is made varible so that the length of the time slices can be adjusted.

@@ -1,0 +1,14 @@
+README
+
+beta.mu l x k (dimensies van observatie x topics) MEAN
+
+beta.sigma l x k (dimensies van observatie x topics) VARIANTIE
+
+q=d{i}.phi is prob(z|w) dus de waarschijnlijkheid op topic gegeven woord
+
+SNEL kun je gebruiken om ff snel iets te testen
+
+%%for Real data example:
+clear all
+addpath C:\Users\Kristin\UVA\Afstuderen\Afstuderen\Matlab\Data\ALGtranExtData
+d=transExtData

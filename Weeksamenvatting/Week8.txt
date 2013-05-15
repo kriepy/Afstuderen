@@ -5,7 +5,7 @@ Week8:
 *LDA is geen algorithme om documenten te clusteren! Hieruit is een mogelijke conclusie: Als er in verhouding te weinig woorden zijn die een cluster vormen tegen over algemene woorden, dan kun je dit cluster moelijk vinden.
 Stel je hebt 2 topics, een dictionary met lengte 10, en elk topic onderscheid zich van de andere met maar een woord. Dus er zijn acht woorden die in alle twee topics voorkomen (overlappen). Dan zijn deze topics moelijk van elkaar te onderscheiden. De reden hiervoor moet ik nog vinden.
 
-*Het is logisch dat een overlap variable geen hoge probability heeft voor een klas. Want deze varabel is voegt geen informatie toe.
+*Het is logisch dat een overlap variable geen hoge probability heeft voor een klas. Want deze variabel voegt geen informatie toe. Je beta in je generative model mag dus voor deze variabel geen hoge probability hebben.
 
 *Op de sensor data werkt het nog niet, dat komt omdat de woord frequency echt heel laag is. Dus elk woord wordt maar een keer gezien en alleen maar n heel paar hebben overlap in documenten. Zo als de slaap en weg zijn woorden (heel veel nullen).
 

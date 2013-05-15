@@ -5,7 +5,7 @@ function createDic(houseNr)
 
 %% houseNr=254
 
-load(strcat(['DataMatlab/House',num2str(houseNr),'.mat']));
+load(strcat(['../DATACorpus/House',num2str(houseNr),'SliLen30','.mat']));
 
 Words=[];
 for i=1:length(House.day)
@@ -17,6 +17,6 @@ size(unWords);
 
 House.DicData=unWords;
 
-save(strcat(['DataMatlab/House',num2str(houseNr),'.mat']),'House');
+save(strcat(['../DATACorpus/House',num2str(houseNr),'SliLen30','.mat']),'House');
 
 end

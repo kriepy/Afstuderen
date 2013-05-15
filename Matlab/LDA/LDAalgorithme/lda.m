@@ -10,7 +10,7 @@ function [alpha,beta] = lda(d,k,emmax,demmax)
 if nargin < 4
   demmax = 20;
   if nargin < 3
-    emmax = 100;
+    emmax = 500;
   end
 end
 n = length(d);
@@ -51,6 +51,16 @@ for j = 1:emmax
    %ppl = lda_lik(d,beta,gammas);
    LLH=[LLH ppl];
    fprintf(1,'Likelihood = %g\t',ppl(1));
+   
+   
+   
+   if (j>50)
+       minLikeli=sum(ppl);
+   end
+   if (j>50 && minLikeli < sum(ppl)) 
+       fprintf(1,'\nThe likelihood is getting smaller. Not good!\n');
+       return
+   end
   if (j > 1) && converged(ppl,pppl,1.0e-4)
     if (j < 5)
       fprintf(1,'\n');
@@ -71,6 +81,7 @@ for j = 1:emmax
   fprintf(1,'ETA:%s (%d sec/step)\r', ...
 	  rtime(elapsed * (emmax / j  - 1)),round(elapsed / j));
 end
+
 figure(1)
 plot(LLH'); title Likelihood
 % figure(2)
@@ -78,5 +89,6 @@ plot(LLH'); title Likelihood
 Inbeta
 Inalpha
 fprintf(1,'\n');
+end
 
 % $Id: lda.m,v 1.8 2013/01/16 08:11:40 daichi Exp $
