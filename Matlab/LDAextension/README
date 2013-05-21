@@ -8,7 +8,19 @@ q=d{i}.phi is prob(z|w) dus de waarschijnlijkheid op topic gegeven woord
 
 SNEL kun je gebruiken om ff snel iets te testen
 
+%The five dimensions are:
+B=[]; %bathroom 
+K=[]; %kitchen
+S=[]; %bedroom (sleeping)
+L=[]; %living room
+D=[]; %hallway and front door
+
+
 %%for Real data example:
 clear all
+HN=247;
 addpath C:\Users\Kristin\UVA\Afstuderen\Afstuderen\Matlab\Data\ALGtranExtData
-d=transExtData
+d=transExtData(HN,30)
+[a,b,l]=ldaExtension(d,20);
+VisuLDA(d,b,a,10)
+MakeDataSaskia(d,b,a,l);

@@ -2,7 +2,7 @@ function [alpha,q] = vbem(d,beta,alpha0,emmax)
 % [alpha,q] = vbem(d,beta,alpha0,[emmax])
 % calculates a document and words posterior for a document d.
 % alpha  : Dirichlet posterior for a document d
-% q      : (L * K) matrix of word posterior over latent classes
+% q      : (L * K)-matrix of word posterior over latent classes
 % d      : document data
 % alpha0 : Dirichlet prior of alpha
 % emmax  : maximum # of VB-EM iteration.

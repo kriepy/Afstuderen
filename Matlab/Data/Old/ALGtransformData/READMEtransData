@@ -1,0 +1,30 @@
+Hier een overzicht van wat de functies allemaal moeten doen:
+
+stamp2vec.mat
+vec2stamp.mat
+> Dit zijn gewoon twee korte functies die een timestamp into een 
+tijdsvector omzetten en ook terug
+
+createDic.mat
+> hiermee kan een Dictionary gemaakt worden. Er wordt naar unique woorden
+in de data gekeken en opgeslagen. Kan voor 6 en 16 dimensies.
+
+run.m
+> hier kan je zien in welke volgorde de functie worden opgeroepen om goede
+data te creeren. De functies worden waarschijnlijk nog aangepast.
+
+BELANGRIJK!!!
+getFlexData.m
+> Dit is de eerste functie die moet worden aangeroepen om data te creeren.
+> gebruikt fillData.mat
+gebruikt getSens.mat
+
+getSens.mat
+> Hier wordt de field informatie out the plain data extraheert.
+
+fillData.mat
+>input is the matrix for one day
+>gebruikt fillSlice.mat
+
+fillSLice.mat
+>bekijkt een timeslice en tellt voor elk field de amount of triggers

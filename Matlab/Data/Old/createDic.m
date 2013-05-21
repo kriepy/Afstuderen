@@ -1,8 +1,8 @@
-function createDic
+function unWords=createDic(House)
 
-houseNr=247
+%houseNr=247
 
-load(strcat(['DataMatlab/House',num2str(houseNr),'.mat']));
+%load(strcat(['DataMatlab/House',num2str(houseNr),'.mat']));
 
 Words=[];
 for i=1:length(House.day)
@@ -14,6 +14,6 @@ size(unWords)
 
 House.DicSWords=unWords;
 
-save(strcat(['DataMatlab/House',num2str(houseNr),'.mat']),'House');
+%save(strcat(['DataMatlab/House',num2str(houseNr),'.mat']),'House');
 
 end

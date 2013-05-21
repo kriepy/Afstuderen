@@ -4,9 +4,10 @@
 % end
 
 %% ALG. TEST op real DATA
-addpath C:\Users\Kristin\UVA\Afstuderen\Afstuderen\Matlab\Data\ALGtranExtData
+close all
+addpath C:\Users\Kristin\UVA\Afstuderen\Afstuderen\Matlab\Data\Old\ALGtranExtData
 d=transExtData;
-
+k=20;
 
 m=[];
 for i=1:length(d)
@@ -15,24 +16,39 @@ end
 m=max(m,[],1);
 
 
-cnt=1;
-for k=3:10
-    for j=1:10
-        for t=1:5 %voor elke run 5 keer testen
-            beta.mu=[];
-            for i=1:length(m)
-                beta.mu=[beta.mu;m(i)*rand(1,k)];
-            end
-            beta.sigma=j*ones(length(m),k);
-            
-            [a,b,l]=ldaExtension(d,k,beta);
-            LDAout{cnt}.alpha=a;
-            LDAout{cnt}.beta=b;
-            LDAout{cnt}.likeli=l;
-            cnt=cnt+1;
-        end
-    end
+beta.mu=[];
+for i=1:length(m)
+    beta.mu=[beta.mu;m(i)*rand(1,k)];
 end
+beta.sigma=ones(length(m),k);
+
+[a,b,l]=ldaExtension(d,k,beta);
+% LDAout{cnt}.alpha=a;
+% LDAout{cnt}.beta=b;
+% LDAout{cnt}.likeli=l;
+% cnt=cnt+1;
+
+%VisuLDA(d,b,a,10)
+
+
+% cnt=1;
+% for k=3:10
+%     for j=1:10
+%         for t=1:5 %voor elke run 5 keer testen
+%             beta.mu=[];
+%             for i=1:length(m)
+%                 beta.mu=[beta.mu;m(i)*rand(1,k)];
+%             end
+%             beta.sigma=j*ones(length(m),k);
+%             
+%             [a,b,l]=ldaExtension(d,k,beta);
+%             LDAout{cnt}.alpha=a;
+%             LDAout{cnt}.beta=b;
+%             LDAout{cnt}.likeli=l;
+%             cnt=cnt+1;
+%         end
+%     end
+% end
 
 %% BANALE TEST
 % twee clusters maken met dimensie 2

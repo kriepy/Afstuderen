@@ -1,3 +1,15 @@
 LDAExtension:
 *Het probleem is dat als je de variantie heel groot maakt, dat dan geen goede cluster worden gevonden.
-*als phi nul wordt dan is de log ervan NAN
+*als phi nul wordt dan is de log ervan NAN want 0*log(0) = NAN
+*there is no covariance between the observation dimensions, this 
+might be interessting to see.
+*Als je de lower bound of the likelihood maximaliseert dan moet je opletten dat je niet overfit op je data. Hier kan je misschien ook met global features en user features gaan werken.
+*Is het niet zo dat de LDAextension hetzelfde is als gewoon woorden clusteren? Hierop checken
+
+
+What to do with the LDAe:
+* make it work so that for generated data there might no be outliers, anlyse why are there outliers!
+*create different data models, with also course grain and greed/motion sensor differences, maybe also transitions(16 dimensions).
+*take the covariance into account for 6 dimensions and also maybe 16. (maybe to little data)
+*testen wat goede initialisatie is voor echte data. (sigma klein houden? of misschien ook niet. mu het midden tussen min en max in elk dimensie keer rand tussen 0 en 1.
+*misschien een modulo mean? Hoe kun je dat voor elkaar krijgen?

@@ -1,5 +1,4 @@
 function [alpha,beta,likeli] = ldaExtension(d,k,beta,emmax,demmax)
-close all
 % Latent Dirichlet Allocation, standard model.
 % Copyright (c) 2004 Daichi Mochihashi, all rights reserved.
 % $Id: lda.m,v 1.8 2013/01/16 08:11:40 daichi Exp $
@@ -23,16 +22,22 @@ n = length(d);
 l = size(d{1}.mat,2); %dimensie van de woorden
 if doBeta
     beta.mu = 10*rand(l,k);
-    beta.sigma = 1*ones(l,k);
+    beta.sigma = 8*ones(l,k);
 end
 Inbeta=beta;
-alpha = fliplr(sort(rand(1,k)));
+alpha = (sort(rand(1,k)));
 Inalpha=alpha;
 gammas = zeros(n,k);
 ppl = 0;
 pppl = ppl;
 
 LLH=[]; %the likelihood stored for every iteration
+l1=[];
+l2=[];
+l3=[];
+l4=[];
+l5=[];
+
 
 tic;
 
@@ -50,10 +55,10 @@ for j = 1:emmax
   tellerMuPhi=zeros(l,k);
   tellerSigPhi=zeros(l,k);
   for i = 1:n
-    [gamma,q] = vbem(d{i},beta,alpha,demmax); %q:=phi
+    [gamma,q] = vbem(d{i},beta,alpha,demmax); %q:=phi E-STEP
     gammas(i,:) = gamma; % foreach document a different gamma
     d{i}.phi=q;
-    %% TOT HIER GOED
+
     
     tempTellerMu = tellerMuPhi;
     tempTellerSig = tellerSigPhi;
@@ -75,15 +80,20 @@ for j = 1:emmax
   % m-step om beta te berekenen, smoothing van sigma om nul te voorkomen
   numeratorPhi=repmat(numeratorPhi,l,1);
   beta.mu=tellerMuPhi./numeratorPhi;
-  beta.sigma=tellerSigPhi./numeratorPhi-((beta.mu).^2)+0.00000001; 
+  beta.sigma=sqrt(tellerSigPhi./numeratorPhi-((beta.mu).^2)+0.00000001); 
   
   
   % m-step om alpha te berekenen
   alpha = newton_alpha(gammas);
   
   % converge?
-   ppl = lda_likeli(d, alpha, beta,gammas); %DEZEFUNCTIE AANPASSEN
+   [ppl,la1,lp2,lp3,lp4,lg5] = lda_likeli(d, alpha, beta,gammas);
    %ppl = lda_lik(d,beta,gammas);
+   l1=[l1,la1];
+   l2=[l2, lp2];
+   l3=[l3, lp3];
+   l4=[l4, lp4];
+   l5=[l5, lg5];
    LLH=[LLH ppl];
    beta.mu;
    beta.sigma;
@@ -91,31 +101,34 @@ for j = 1:emmax
    likeli=sum(ppl);
    
    
-%    if isnan(sum(ppl))
-%        fprintf(1,'No convergence\n');
-%         Inbeta.mu
-%         beta.mu
-%        return
-%    end
+   if isnan(sum(ppl))
+       fprintf(1,'No convergence\n');
+        beta.sigma
+        beta.mu
+        subplot(2,1,1)
+        plot(LLH'); title Likelihood
+        subplot(2,1,2)
+        plot(sum(LLH)); title SumLikelihood
+       return
+   end
 %    if (j>50 && minLikeli < sum(ppl)) 
 %        fprintf(1,'\nThe likelihood is getting smaller. Not good!\n');
 %        return
 %    end
    % Bet=sum(sum(beta.mu));
-  if (j > 1) && (converged(ppl,pppl,1.0e-4))
+  if (j > 1) && (converged(ppl,pppl,1.0e-2))
     if (j < 5)
-      fprintf(1,'\n');
+      fprintf(1,'\n We try the EM again\n');
       [alpha,beta] = ldaExtension(d,k); % try again!
       return;
     end
     fprintf(1,'\nconverged.\n');
-    plot(LLH'); title Likelihood
+    fprintf(1,'Likelihood is %g\t',sum(ppl));
 %     figure(2)
 %     plot(beta(:,1),beta(:,2),'xr')
     beta.sigma
-    Inbeta.mu
     beta.mu
-    return;
+    break
   end
 %   prevBet=Bet;
   pppl = ppl;
@@ -126,12 +139,25 @@ for j = 1:emmax
 end
 
 figure(1)
-plot(LLH'); title Likelihood
-% figure(2)
+%subplot(7,1,1); plot(LLH'); title Likelihood
+subplot(3,2,1); plot(sum(LLH)); title SumLikelihood
+%figure(2)
+subplot(3,2,2); plot(l1); title LikeliAlpha
+%subplot(3,1,2); plot(l5'); title LikeliGamma
+subplot(3,2,3); plot(sum(l5)); title sumGammaLikeli
+%figure(3)
+subplot(3,2,4); plot(sum(l2)); title d1
+subplot(3,2,5); plot(sum(l3)); title d2
+subplot(3,2,6); plot(sum(l4)); title d3
+ figure(2)
+ subplot(5,1,1); plot(LLH'); title perDocLikeli
+ subplot(5,1,2); plot(l5'); title GamPerDoc
+ subplot(5,1,3); plot(l2'); title D1
+ subplot(5,1,4); plot(l3'); title D2
+ subplot(5,1,5); plot(l4'); title D3
 % plot(beta(:,1),beta(:,2),'xr')
 fprintf(1,'Sigma is');
 beta.sigma
-Inbeta.mu
 beta.mu
 fprintf(1,'\n');
 end

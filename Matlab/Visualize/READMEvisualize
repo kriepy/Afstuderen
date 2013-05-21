@@ -1,0 +1,3 @@
+PlotDataPlain 
+>plots the plain data in the five fields
+>needs stamp2vec and vec2stamp and getSens

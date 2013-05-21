@@ -18,13 +18,13 @@ else
 end
 
 %% if all values are zero in one row exchange value with small values
-if length(a)>0
-    for i=1:length(a)
-        if d==1
-            x(:,a)=0.00000001*ones(size(x(:,a)));
-        end
-        if d==2
-            x(a,:)=0.00000001*ones(size(x(a,:)));
-        end
-    end
-end
+% if length(a)>0
+%     for i=1:length(a)
+%         if d==1
+%             x(:,a)=0.00000001*ones(size(x(:,a)));
+%         end
+%         if d==2
+%             x(a,:)=0.00000001*ones(size(x(a,:)));
+%         end
+%     end
+% end
