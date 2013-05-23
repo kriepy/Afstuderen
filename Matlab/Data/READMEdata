@@ -1,0 +1,14 @@
+DataPlain:
+Here the data is stored for all five houses. This is the plain we get from the sensors
+
+DataMain:
+Here we store all data so that we can use them in next steps
+The data is split into days, every day starts at 3 am.
+We do not take the timeslice of the previous day into account,
+because this would take to much trouble with transition calculation
+you have to draw the line somewhere. And nights are not that hard to find topics.
+
+AlgMain:
+Here all algorithms are stored that calculated the mainDate. We assume that these
+algs only have to be used once, but in case that it needs to be looked in again
+the scripts in this folder contains the information how these algs are run.

@@ -1,3 +1,4 @@
+
 function [alpha,beta] = lda(d,k,emmax,demmax)
 % Latent Dirichlet Allocation, standard model.
 % Copyright (c) 2004 Daichi Mochihashi, all rights reserved.
@@ -24,6 +25,11 @@ ppl = 0;
 pppl = ppl;
 
 LLH=[]; %the likelihood stored all values
+l1=[];
+l2=[];
+l3=[];
+l4=[];
+l5=[];
 
 tic;
 
@@ -47,8 +53,13 @@ for j = 1:emmax
   alpha = newton_alpha(gammas);
   beta = mnormalize(betas,1);
   % converge?
-   ppl = lda_likeli(d, alpha, beta,gammas);
+   [ppl,la1,lp2,lp3,lp4,lg5] = lda_likeli(d, alpha, beta,gammas);
    %ppl = lda_lik(d,beta,gammas);
+   l1=[l1,la1];
+   l2=[l2, lp2];
+   l3=[l3, lp3];
+   l4=[l4, lp4];
+   l5=[l5, lg5];
    LLH=[LLH ppl];
    fprintf(1,'Likelihood = %g\t',ppl(1));
    
@@ -83,11 +94,23 @@ for j = 1:emmax
 end
 
 figure(1)
-plot(LLH'); title Likelihood
-% figure(2)
+subplot(3,2,1); plot(sum(LLH)); title SumLikelihood
+subplot(3,2,2); plot(l1); title LikeliAlpha
+%subplot(3,1,2); plot(l5'); title LikeliGamma
+subplot(3,2,3); plot(sum(l5)); title sumGammaLikeli
+%figure(3)
+subplot(3,2,4); plot(sum(l2)); title d1
+subplot(3,2,5); plot(sum(l3)); title d2
+subplot(3,2,6); plot(sum(l4)); title d3
+ figure(2)
+ subplot(5,1,1); plot(LLH'); title perDocLikeli
+ subplot(5,1,2); plot(l5'); title GamPerDoc
+ subplot(5,1,3); plot(l2'); title D1
+ subplot(5,1,4); plot(l3'); title D2
+ subplot(5,1,5); plot(l4'); title D3
 % plot(beta(:,1),beta(:,2),'xr')
-Inbeta
-Inalpha
+%Inbeta
+%Inalpha
 fprintf(1,'\n');
 end
 

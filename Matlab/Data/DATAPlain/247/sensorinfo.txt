@@ -1,20 +1,16 @@
 1       bedroom motion
 21      bedroom motion
 22      bedroom reed
-
 2       bathroom motion hygiene
 14      bathroom hygiene motion
 23      bathroom reed toilet
-
 24      kitchen reed
 25      kitchen motion
 26      kitchen reed
 27      kitchen reed
 3       kitchen motion
-
 4       living motion
 12      living motion
 13      living motion
-
 6       front reed exit
 11      hall motion

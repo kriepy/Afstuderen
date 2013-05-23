@@ -1,0 +1,17 @@
+Every data file contains 4 variables
+a:= a vector of length k=20 (amount of topics). A higher value gives
+        an indiaction that the topic is more important. Topics with values
+        close to zero should be ignored.
+b:= is a 6 x k-matrix. Every entry contains two fields:
+        beta.mu:= is the mean of the dimension given a topic. The six 
+                  dimensions are 
+                  {Bathroom, Kitchen, Bedroom, Living, Hallway, Time}
+        beta.sigma:= contains the standard deviation for each dimension
+l:= is the likelihood (probably of no use) Only an indication of how likeli
+    the data is
+d.data:= contains the sensor counts per dimension for every timeslice
+d.date:= the date of the day
+d.phi:=  The probablities of how much a timeslice belongs to one topic.
+         (This is the fun part :) I assign the topic with the highest 
+         probability to a timeslice.
+

@@ -1,0 +1,31 @@
+plotFields:
+Contains the data of all 5 houses. The data is seperated into the 5 fields.
+There needs to come a function which can visualize this data.
+The structure of this variable is
+House{i}.HouseNr        = INT
+        .Fields{j}      = STRING
+        .day{j}.date    = STRING
+               .plo{k}  = matrix 2-by-len (1st row is time, 2nd row 0/1)
+where k represent the 5 fields
+
+
+plotSensors:
+Contains the plot data for every sensor seperated.
+House
+House{i}.HouseNr        = INT
+        .Fields{j}      = STRING
+        .day{j}.date    = STRING
+               .plo{k}  = matrix 2-by-len (1st row is time, 2nd row 0/1)
+where k represent k sensors
+
+sepDays:
+Contains for every day a matrix of size 8 by N where N is variable with respect
+to the amount of sensor activities fired. The columms are:
+year, month, day, hour, minute, second, sensorNr, value(0/1)
+House{i}.HouseNr            = INT
+        .day{j}.data        = STRING
+               .data        = matrix m-by-8, where is the amount of triggers on a day
+        .Sensors{p}.nr      = INT     (Sensor number)
+                   .field   = STRING  (field of the sensor)
+                   .type    = STRING  (type of the sensor)
+                   .name    = STRING  (name of the sensor)

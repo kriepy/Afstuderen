@@ -2,9 +2,9 @@
 clear all
 close all
 mu=[1 1 1];
-mu2=[8 8 8];
-sig=[1 1 1];
-sig2=[1 1 1];
+mu2=[9 9 9];
+sig=[2 2 2];
+sig2=[2 2 2];
 
 
 

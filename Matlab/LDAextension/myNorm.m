@@ -20,9 +20,9 @@ catch
 end
 
 %% if the estimated probability is zero, return a very small number
-[i,j]=find(y<0.0000000001);
+[i,j]=find(y<0.000000000001);
 if length(i)
     for k=1:length(i)
-        y(i(k),j(k))=0.0000000001;
+        y(i(k),j(k))=0.000000000001;
     end
 end
