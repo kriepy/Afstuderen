@@ -8,7 +8,7 @@ function [llh,Lalpha,d1,d2,d3,Lgamma] = lda_likeli( d , alpha , beta , gam  )
 % the likelihood depending on alpha and gamma
 % will be only one value because alpha is the same for all documents
 Lalpha = repmat(gammaln(sum(alpha)),length(d),1) - repmat(sum(gammaln(alpha)),length(d),1)...
-         + ((alpha-1) *( psi(gam)-repmat(psi(sum(gam,2)),1,size(gam,2)) )')' ;
+         + sum( repmat(alpha-1,length(d),1) .* ( psi(gam)-repmat(psi(sum(gam,2)),1,size(gam,2)) ) ,2);
      
 
      
@@ -18,7 +18,7 @@ Lalpha = repmat(gammaln(sum(alpha)),length(d),1) - repmat(sum(gammaln(alpha)),le
 d1=[];
 d2=[];
 d3=[];
-for i=1:length(d)
+for i=1:length(d) %for every document
     t=d{i};
     
     %d1
@@ -39,6 +39,11 @@ for i=1:length(d)
     d3=[d3;sum(sum(t.phi.*log(t.phi)))];
     d3(isnan([d3]))=0;
 end
+if sum(d2)>0
+    fprintf(1,'Bigger than 0\n');
+end
+
+
 Lphi=d1+d2-d3;%d1+d2+d3;
 test=sum(Lphi);
 if isnan(test)
@@ -53,8 +58,8 @@ end
 
 % the likelihood depending on gamma
 Lgamma = -gammaln(sum(gam,2)) + sum(gammaln(gam),2)...
-         -sum((gam-1)*( psi(gam)-repmat(psi(sum(gam,2)),1,size(gam,2)) )'  ,2);
-
+         -sum((gam-1).*( psi(gam)-repmat(psi(sum(gam,2)),1,size(gam,2)) )  ,2);
+%Lgamma = zeros(size(Lgamma));
 fprintf(1,'\na is %g, d1 is %g, d2 is %g, d3 is %g, g is %g \n',sum(Lalpha),...
     sum(d1),sum(d2),sum(d3),sum(Lgamma));
      

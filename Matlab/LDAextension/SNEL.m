@@ -8,6 +8,7 @@ close all
 addpath C:\Users\Kristin\UVA\Afstuderen\Afstuderen\Matlab\Data\Old\ALGtranExtData
 d=transExtData;
 k=20;
+maxIter=50;
 
 m=[];
 for i=1:length(d)
@@ -22,7 +23,7 @@ for i=1:length(m)
 end
 beta.sigma=ones(length(m),k);
 
-[a,b,l]=ldaExtension(d,k,beta);
+[a,b,l]=ldaExtension(d,k,beta,maxIter);
 % LDAout{cnt}.alpha=a;
 % LDAout{cnt}.beta=b;
 % LDAout{cnt}.likeli=l;

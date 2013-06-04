@@ -34,7 +34,7 @@ for t = 1:maxiter
     alpha(i) = alpha(i) - h(i) * (g(i) - hgz) / M;
   end
   if any(alpha < 0)
-      fprintf(1,'Alpha is trying again!\n');  
+    fprintf(1,'Alpha is trying again!\n');  
     alpha = newton_alpha(gammas,maxiter,ini_alpha / 10); % try again!
     return;
   end

@@ -21,7 +21,7 @@ for j = 1:emmax
   q=zeros(l,k);  % in article wordt dit phi genoemt
   for v=1:l
       w=repmat(mat(v,:)',1,k);
-      qu=prod(myNorm(w,beta.mu,beta.sigma))*diag(exp(psi(alpha0 + nt)));
+      qu=prod(myNorm(w,beta.mu,beta.sigma)).*(exp(psi(alpha0 + nt)));
       q(v,:)=qu;
   end
   

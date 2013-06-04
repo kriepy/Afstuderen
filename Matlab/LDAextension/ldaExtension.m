@@ -9,13 +9,13 @@ function [alpha,beta,likeli] = ldaExtension(d,k,beta,emmax,demmax)
 % demmax : # of maximum VB-EM iteration for a document (default 20)
 if nargin < 5
   demmax = 20;
+  doBeta=0;
   if nargin < 4
+    doBeta=0;
     emmax = 50;
     if nargin < 3
-        doBeta= 1 ; 
-    else
-        doBeta=0;
-    end
+        doBeta= 1 ;
+        %beta=0;
   end
 end
 n = length(d);
@@ -32,11 +32,11 @@ ppl = 0;
 pppl = ppl;
 
 LLH=[]; %the likelihood stored for every iteration
-l1=[];
-l2=[];
-l3=[];
-l4=[];
-l5=[];
+L1=[];
+L2=[];
+L3=[];
+L4=[];
+L5=[];
 
 
 tic;
@@ -45,6 +45,7 @@ fprintf(1,'number of documents      = %d\n', n);
 fprintf(1,'number of words          = %d\n', l);
 fprintf(1,'number of latent classes = %d\n', k);
 prevBet=0;
+AA=[];
 %% begin van EM iteraties
 for j = 1:emmax
   fprintf(1,'iteration %d/%d..\t',j,emmax);
@@ -85,15 +86,16 @@ for j = 1:emmax
   
   % m-step om alpha te berekenen
   alpha = newton_alpha(gammas);
+  AA=[AA;alpha];
   
   % converge?
-   [ppl,la1,lp2,lp3,lp4,lg5] = lda_likeli(d, alpha, beta,gammas);
+   [ppl,l1,l2,l3,l4,l5] = lda_likeli(d, alpha, beta,gammas);
    %ppl = lda_lik(d,beta,gammas);
-   l1=[l1,la1];
-   l2=[l2, lp2];
-   l3=[l3, lp3];
-   l4=[l4, lp4];
-   l5=[l5, lg5];
+   L1=[L1 l1];
+   L2=[L2 l2];
+   L3=[L3 l3];
+   L4=[L4 l4];
+   L5=[L5 l5];
    LLH=[LLH ppl];
    beta.mu;
    beta.sigma;
@@ -119,7 +121,14 @@ for j = 1:emmax
   if (j > 1) && (converged(ppl,pppl,1.0e-2))
     if (j < 5)
       fprintf(1,'\n We try the EM again\n');
-      [alpha,beta] = ldaExtension(d,k); % try again!
+      fprintf(1,'Previous Alphas');
+      Inalpha
+      alpha      
+      fprintf(1,'WRONG mean Beta');
+      beta.mu
+      fprintf(1,'WRONG sigma Beta');
+      beta.sigma
+      [alpha,beta,l] = ldaExtension(d,k); % try again!
       return;
     end
     fprintf(1,'\nconverged.\n');
@@ -138,27 +147,21 @@ for j = 1:emmax
 	  rtime(elapsed * (emmax / j  - 1)),round(elapsed / j));
 end
 
-figure(1)
-%subplot(7,1,1); plot(LLH'); title Likelihood
-subplot(3,2,1); plot(sum(LLH)); title SumLikelihood
-%figure(2)
-subplot(3,2,2); plot(l1); title LikeliAlpha
-%subplot(3,1,2); plot(l5'); title LikeliGamma
-subplot(3,2,3); plot(sum(l5)); title sumGammaLikeli
-%figure(3)
-subplot(3,2,4); plot(sum(l2)); title d1
-subplot(3,2,5); plot(sum(l3)); title d2
-subplot(3,2,6); plot(sum(l4)); title d3
- figure(2)
- subplot(5,1,1); plot(LLH'); title perDocLikeli
- subplot(5,1,2); plot(l5'); title GamPerDoc
- subplot(5,1,3); plot(l2'); title D1
- subplot(5,1,4); plot(l3'); title D2
- subplot(5,1,5); plot(l4'); title D3
+PlotLL(L1,L2,L3,L4,L5,LLH);
 % plot(beta(:,1),beta(:,2),'xr')
-fprintf(1,'Sigma is');
+fprintf(1,'Sigma is\n');
 beta.sigma
+fprintf(1,'Mu is\n');
 beta.mu
+fprintf(1,'alpha is\n');
+alpha
+figure(3)
+plot(AA(:,1),AA(:,2),'x')
+fprintf(1,'previouse mu and sigma\n')
+Inbeta.mu
+Inbeta.sigma
+fprintf(1,'Init alpha\n');
+Inalpha
 fprintf(1,'\n');
 end
 

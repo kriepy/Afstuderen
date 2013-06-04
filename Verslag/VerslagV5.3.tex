@@ -16,29 +16,30 @@
 \pagebreak
 %----------------------------------INTRODUCTION--------------------------------------------
 \section{Introduction}
-The world population increases unceasingly and thereby the percentage of elderly also increases. The manpower to take care of elderly is diminishing. So it becomes more and more important to give elderly the opportunity to live on there own and be more independent of health care. It is also important to monitor elderly in the case that they cannot live on their own anymore and to detect accidents automatically. While monitoring the behavior of elderly it might be possible to detect mental disorders.
+The world population increases unceasingly and thereby the percentage of elderly also increases. The manpower to take care of elderly is diminishing. So it becomes more and more important to give elderly the opportunity to live on there own and be more independent of health care. It might be important to monitor elderly in their homes in order to give an alarm if an accident happens or to detect physical and mental declines.
 
 New techniques give the possibility to monitor elderly from the distance or even automatically. Some of these techniques use cameras that are placed in the homes of elderly. But these methods are privacy-sensitive and often not adopted by the elderly.
 
 Other methods use motion sensors that are placed at different locations in the homes of elderly. %find some example
 Reading and interpreting this sensor data is often difficult and that is why often activity recognition is done to make the data more readable. But different approaches show that this is also a though challenge.
-With many Machine Learning techniques it is also often the case that a lot of annotated data is required.  But the task of labeling a data set is time consuming and can also influence the output of the data while doing so. That is why unsupervised techniques are more preferable.\\
-
-
+With many Machine Learning techniques it is also often the case that a lot of annotated data is required.  But the task of labeling a data set is time consuming and can also influence the output of the data while doing so. That is why unsupervised techniques are more preferable. Apart from activity recognition we deal with the problem of the representation of the data. From simple motion sensors we receive binary, time sequential data, that is gained over some period of time in the homes of elderly. There are a lot of sensors placed in the houses, which leads to high-dimensional data, that is hard to interpret for classifying algorithms as well as for humans. Finding a correct representation is a challenge.\\
 
 In this thesis we develop an unsupervised algorithm that detects patterns in the data automatically.
 In a first step, which is inspired by~\cite{farrahi2008daily}, real live data is used to build a topic model. In a second step a genetic algorithm is used to find the best representation of the data according to the likelihood that is gained from the topic models found in the first step. 
-From simple motion sensors we receive binary, time sequential data, that is gained over some period of time in the homes of elderly. There are a lot of sensors placed in the houses, which leads to highdimensional data, that is hard to interprete for classifying algorithms as well as for humans. A topic model in combination with a genetic algorithm might lead to a representation of the data that gives the opertunity to interprete the data more easily and also finds behaviour patterns in the data automatically. This furthermore makes it possible to detect deviations in the behaviour over a longer period of time. The data that we use is received in the same way as described in ~\cite{van2010activity}, except that our data is not annotated.\\
+ A topic model in combination with a genetic algorithm might lead to a representation of the data that gives the opportunity to interpret the data more easily and also finds behavior patterns in the data automatically. This furthermore makes it possible to detect deviations in the behavior over a longer period of time. The data that we use is received in the same way as described in ~\cite{van2010activity}, except that our data is not annotated.\\
 
-Topic models are usually used in the field of document classification. The idea is that every document might belong to a couple of different topics and a topic can be described with a distribution over words. A newly seen document can than be assigned to some topics according to the words that occure in the document. The document is than described with a distribution of topics. The topics of a model can be found in an unsupervised manner.
+Topic models are usually used in the field of document classification. The idea is that every document might belong to a couple of different topics and a topic can be described with a distribution over words. A newly seen document can than be assigned to some topics according to the words that occur in the document. The document is than described with a distribution of topics. The topics of a model can be found in an unsupervised manner.
 We use this idea to find topics in the given sensor data. So that a day in a persons life can be described with a distribution over topics. And a topic will be described with a distribution over observations. An example of a topic might be 'going to the toilet' or a more global example is 'getting up early'.\\
-Our data differs from the data that is normally used for this kind of models in some way. For text classification the 'bag-of-words' model is often used. This model is not so easily applicable to the given sensor data, because of the multidimensional and the continous description of the data. A Text document usually does or does not contain a word of a given dictionary. Therefore our data needs to be descritized in some way.\\
-In a first approach we first simply count the amount of times that a sensor is triggered in a certain window of time. This still produces a brought varity of observations and that is why we cluster the observations with k-means, so that we are able to use the topic model 'Latent Dirichlet Allocation' described in~\cite{blei2003latent}, on our data.\\
-This approach has some drawbacks and therefore we develop a topic model based on LDA that models the clusters in the model itself with a Gaussian distribution in every dimension of the observation. In this way the topic model is able to handle high dimensional data. The model paramters are found with an EM-procedure, which uses the likelihood of the model to converge to the optimal model parameters.\\
+%%%%%%%%%%%%%%
+%Hier nog even kijken
+Our data differs from the data that is normally used for this kind of models in some way. For text classification the 'bag-of-words' model is often used, where a distribution of the frequency of words is built. This model is not so easily applicable to the given sensor data, because of the multidimensional and the continuous description of the data. A Text document usually does or does not contain a word of a given dictionary. Therefore our data needs to be discretized in some way.\\
+%%%%%%%%%%%%
+In a first approach we first simply count the amount of times that a sensor is triggered in a certain window of time. This still produces a broad variety of observations and that is why we cluster the observations with k-means, so that we are able to use the topic model 'Latent Dirichlet Allocation' described in~\cite{blei2003latent}, on our data.\\
+In a second approach we develop a topic model based on LDA that models the clusters in the model itself with a Gaussian distribution in every dimension of the observation. In this way the topic model is able to handle high dimensional data. The model parameters are found with an EM-procedure, which uses the likelihood of the model to converge to the optimal model parameters.\\
 \\
 In the second part of the thesis we use a genetic algorithm to find the best representation of the data.
-Earlier we described the part of descretizing the data in some way. Choosing the correct length of a timeinterval, in which the sensor activities are count, might be hard. There are also plenty of other variables to choose, that lead to a different representation of the data. For example we can choose to group all sensors together that are in the same room of the house. But we cannot be sure that this leads to a beter representation of the data. Further there are different kind of sensors placed in the houses and we might want to distinguish between these sensors, so that a different weigth is given while counting an activity. For example an activity at a door sensor might give more information of a persons behaviour then a motion sensor, which is triggered more often also by small, not that important movements. It might also a good idea to look at the transition of the observations, so given an observation, what are the observations before and after this one.\\
-So the representation of the data depends from a lot of different variables. This variables are optimized with a genetic algorithm. The loglikelihood, from the previously derived topic models, is used as the fitness function of the genetic algorithm.\\
+Earlier we described the part of discretization the data in some way. Choosing the correct length of a time-interval, in which the sensor activities are counted, might be hard. There are also plenty of other variables to choose, that lead to a different representation of the data. For example we can choose to group all sensors together that are in the same room of the house. But we cannot be sure that this leads to a better representation of the data. Further there are different kind of sensors placed in the houses and we might want to distinguish between these sensors, so that a different weight is given while counting an activity. For example an activity at a door sensor might give more information of a persons behavior then a motion sensor, which is triggered more often also by small, not that important movements. It might also a good idea to look at the transition of the observations, so given an observation, what are the observations before and after this one.\\
+So the representation of the data depends from a lot of different variables. This variables are optimized with a genetic algorithm. The log-likelihood, from the previously derived topic models, is used as the fitness function of the genetic algorithm.\\
 
 In the next chapter of this thesis we give an overview of related approaches. In section \ref{sec:DataDesc} we describe the data that we use in more detail. This is followed by section \ref{sec:TopicModels} which describes the two different ways of the usage of Topic Models with our data. In section \ref{sec:features} we describe the different ways of feature representation of our data and also show how the genetic algorithm is used. The section \ref{sec:Experiments} we describe the different experiments that we perfomed. We finalize the thesis with the section \ref{sec:DisCon}.
 
@@ -241,16 +242,16 @@ Given the parameters $\alpha$, $\mu$ and $\sigma$, the joint distribution of a t
 \end{equation}
 
 
-A visualization of this model is shown in figure \ref{fig:modelExt}.
-
-\begin{figure}[t!]
-\centering
-\def\svgwidth{0.8\textwidth}
-\input{Pictures/ModelExt.pdf_tex}
-\caption{Graphical representation of the LDA model}
-\label{fig:modelExt}
-\end{figure}
-
+%A visualization of this model is shown in figure \ref{fig:modelExt}.
+%
+%\begin{figure}[t!]
+%\centering
+%\def\svgwidth{0.8\textwidth}
+%\input{Pictures/ModelExt.pdf_tex}
+%\caption{Graphical representation of the LDA model}
+%\label{fig:modelExt}
+%\end{figure}
+%
 
   
 Assuming that the generative process described above can describe the available data properly, we now want to find the parameters so that the model best describes our data. We want in fact maximize the probability for the dataset $C$ given the model with respect to the parameters $\alpha$, $\mu$ and $\sigma$. This probability looks like this
@@ -281,15 +282,15 @@ In the next section we describe how we find the optimal parameters.
   \end{equation}
   In this model $\gamma$ represents the Dirichlet parameter and $\phi$ are the multinominal parameter which can be viewed as the probabilty $p(z_i|o_n)$ and is given as a $k \times N$-matrix for every day $m$. The graphical representation of the model is shown in figure \ref{fig:ModelApprox}.
   
-  
-\begin{figure}[t!]
-\centering
-\def\svgwidth{0.4\textwidth}
-\input{Pictures/ModelApprox.pdf_tex}
-\caption{Approximation of the model}
-\label{fig:ModelApprox}
-\end{figure}
-  
+%  
+%\begin{figure}[t!]
+%\centering
+%\def\svgwidth{0.4\textwidth}
+%\input{Pictures/ModelApprox.pdf_tex}
+%\caption{Approximation of the model}
+%\label{fig:ModelApprox}
+%\end{figure}
+%  
   
   
   
