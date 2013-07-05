@@ -1,3 +1,5 @@
+Eerst k-means dan BOW/LDAext runnen
+
 Archive:
 Contains old data and algorithms that are not used anymore.
 

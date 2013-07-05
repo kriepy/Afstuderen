@@ -13,5 +13,5 @@ for i=1:5
     House{i}.HouseNr=h(i);
 end
 
-path='C:\Users\Kristin\UVA\Afstuderen\Afstuderen\Matlab\Data\DATAMain';
-save(strcat([path,'\sepDays.mat']),'House');
+path='../DATAMain';
+save(strcat([path,'/sepDays.mat']),'House');

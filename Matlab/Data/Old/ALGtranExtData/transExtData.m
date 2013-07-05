@@ -12,7 +12,7 @@ function d=transExtData(HouseNr,len)
     len=30;
  end
 
-path='C:\Users\Kristin\UVA\Afstuderen\Afstuderen\Matlab\Data\Old\DATACorpus\';
+path='/home/kristin/UVA/Afstuderen/Afstuderen/Matlab/Data/Old/DATACorpus/';
 
 load(strcat([path,'House',num2str(HouseNr),'SL',num2str(len)]));
 

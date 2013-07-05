@@ -9,7 +9,7 @@ emmax=100;
 cmap=colormap(hsv(k));
 bm=round(beta.mu)'
 
-% Here the labels for the colorbar are gained
+% Here the labels for the colorbar are gained from beta.mu
 for i=1:k
     st=[];
     for j=1:size(bm,2)
@@ -24,7 +24,11 @@ end
 
 bv=round(beta.sigma)
 
-
+% here the labels are gained from the alpha
+[~,idx]=sort(alpha,'descend');
+for i=1:k
+    stringa{i} = num2str(idx(i));
+end
 
 hcb = colorbar('YTickLabel',...
 stringa);

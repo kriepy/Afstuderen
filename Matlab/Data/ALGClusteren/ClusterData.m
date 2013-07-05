@@ -1,4 +1,4 @@
-function d=ClusterData(houseNr,k,N,TC)
+function H=ClusterData(dat,V,TC)
 
 % houseNr
 % k is the amount of clusters for k-means
@@ -9,29 +9,17 @@ function d=ClusterData(houseNr,k,N,TC)
 Visu=0; %if visu 1 dan meteen clusters visualizeren
 % possible options for the case cs are: Data6, Data16, Grof6, Grof16
 %cs= 'Grof6';
-if nargin<1
-    k=20; %amount of clusters
-    N=48;
-    houseNr=251;
-    TC=1;
-end
+
+
 %N is the amount of timeslices
+N=size(dat{1},1);
 len=1440/N;
 
 
-pathPlain='C:\Users\Kristin\UVA\Afstuderen\Afstuderen\Matlab\Data\DATAClustered';
-pathDic='C:\Users\Kristin\UVA\Afstuderen\Afstuderen\Matlab\Data\DATAClustered'
-
-
-storePath='C:\Users\Kristin\UVA\Afstuderen\Afstuderen\Matlab\Data\DATAClustered';
-%name=strcat([storePath,'House',num2str(houseNr),'SL',num2str(len),'Clusters',num2str(k),'simple.mat']);
-
-% load the plain data
-load(strcat([pathPlain,'\House',num2str(houseNr),'ForClustering','.mat']));
 %% create Dictionary
 if TC==1
     %the dimension of the dictionary is 6
-    dic = createDic(H);
+    dic = createDic(dat);
     H.Dic=dic;
     %save(strcat([pathPlain,'\Dic',num2str(houseNr),'Clusters']),'H');
 else
@@ -41,14 +29,14 @@ end
 
 
 
-[idx, c, sumd]=kmeans(H.Dic,k);
+[idx, c]=kmeans(H.Dic,V);
 
 H.Clusters.idx=idx;
 H.Clusters.centroids=c;
 
 
-d=createLDAdata(H);
-
+d=createLDAdata(H,dat);
+H.dat=d;
 
 
 end

@@ -1,6 +1,6 @@
 %With this script the plot data is made and stored for all houses. Here all
 %sensor data is seperated so that every sensor can be plotted apart.
-
+clear all
 h(1)=247;
 h(2)=251;
 h(3)=252;
@@ -14,5 +14,5 @@ for i=1:5
     House{i}.HouseNr=h(i);
 end
 
-path='C:\Users\Kristin\UVA\Afstuderen\Afstuderen\Matlab\Data\DATAMain';
-save(strcat([path,'\plotSensors.mat']),'House');
+path='../DATAMain';
+save(strcat([path,'/plotSensors.mat']),'House');

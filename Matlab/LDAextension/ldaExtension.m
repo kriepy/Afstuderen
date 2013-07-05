@@ -1,4 +1,4 @@
-function [alpha,beta,likeli] = ldaExtension(d,k,beta,emmax,demmax)
+function [alpha,beta,likeli,ppl] = ldaExtension(d,k,beta,emmax,demmax)
 % Latent Dirichlet Allocation, standard model.
 % Copyright (c) 2004 Daichi Mochihashi, all rights reserved.
 % $Id: lda.m,v 1.8 2013/01/16 08:11:40 daichi Exp $
@@ -74,15 +74,20 @@ for j = 1:emmax
     tellerMuPhi=tellerMuPhi+tempTellerMu;
     tellerSigPhi=tellerSigPhi+tempTellerSig;
     numeratorPhi=numeratorPhi+sum(q);
-
-    
+        
+   
   end
-  
+  numeratorPhi(numeratorPhi<0.00000001)=0.00000001;
   % m-step om beta te berekenen, smoothing van sigma om nul te voorkomen
   numeratorPhi=repmat(numeratorPhi,l,1);
   beta.mu=tellerMuPhi./numeratorPhi;
   beta.sigma=sqrt(tellerSigPhi./numeratorPhi-((beta.mu).^2)+0.00000001); 
-  
+  if isnan(sum(sum(beta.mu)))
+      fprintf(1,'I got here!');
+  end
+  if isnan(sum(sum(tellerMuPhi)))
+      fprintf(1,'DUDE, thats not good');
+  end
   
   % m-step om alpha te berekenen
   alpha = newton_alpha(gammas);
@@ -101,6 +106,7 @@ for j = 1:emmax
    beta.sigma;
    fprintf(1,'Likelihood = %g\t',sum(ppl));
    likeli=sum(ppl);
+   prevL3 = l3;
    
    
    if isnan(sum(ppl))
@@ -122,12 +128,12 @@ for j = 1:emmax
     if (j < 5)
       fprintf(1,'\n We try the EM again\n');
       fprintf(1,'Previous Alphas');
-      Inalpha
-      alpha      
-      fprintf(1,'WRONG mean Beta');
-      beta.mu
-      fprintf(1,'WRONG sigma Beta');
-      beta.sigma
+%       Inalpha
+%       alpha      
+%       fprintf(1,'WRONG mean Beta');
+%       beta.mu
+%       fprintf(1,'WRONG sigma Beta');
+%       beta.sigma
       [alpha,beta,l] = ldaExtension(d,k); % try again!
       return;
     end
@@ -135,8 +141,6 @@ for j = 1:emmax
     fprintf(1,'Likelihood is %g\t',sum(ppl));
 %     figure(2)
 %     plot(beta(:,1),beta(:,2),'xr')
-    beta.sigma
-    beta.mu
     break
   end
 %   prevBet=Bet;
@@ -147,22 +151,21 @@ for j = 1:emmax
 	  rtime(elapsed * (emmax / j  - 1)),round(elapsed / j));
 end
 
-PlotLL(L1,L2,L3,L4,L5,LLH);
+%PlotLL(L1,L2,L3,L4,L5,LLH);
 % plot(beta(:,1),beta(:,2),'xr')
-fprintf(1,'Sigma is\n');
-beta.sigma
-fprintf(1,'Mu is\n');
-beta.mu
-fprintf(1,'alpha is\n');
-alpha
-figure(3)
-plot(AA(:,1),AA(:,2),'x')
-fprintf(1,'previouse mu and sigma\n')
-Inbeta.mu
-Inbeta.sigma
-fprintf(1,'Init alpha\n');
-Inalpha
-fprintf(1,'\n');
+% fprintf(1,'Sigma is\n');
+% beta.sigma
+% fprintf(1,'Mu is\n');
+% beta.mu
+% fprintf(1,'alpha is\n');
+% alpha
+% figure(3)
+% plot(AA(:,1),AA(:,2),'x')
+% fprintf(1,'previouse mu and sigma\n')
+% Inbeta.mu
+% Inbeta.sigma
+% fprintf(1,'Init alpha\n');
+% Inalpha
+% fprintf(1,'\n');
 end
 
-% $Id: lda.m,v 1.8 2013/01/16 08:11:40 daichi Exp $

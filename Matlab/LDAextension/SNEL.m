@@ -1,18 +1,48 @@
-%SNELTEST
-% for i=1:length(LDAout)
-%     LDAout{i}.likeli
-% end
-
-%% ALG. TEST op real DATA
+load SEED
 close all
-addpath C:\Users\Kristin\UVA\Afstuderen\Afstuderen\Matlab\Data\Old\ALGtranExtData
-d=transExtData;
+%% INITIALIZE
 k=20;
 maxIter=50;
+HN=3; % there are in total five houses
+TS=48; % Amount of time slices
+V=6;
+coarse=1;
+
+%% LOAD DATA
+% addpath ../Data/Old/ALGtranExtData
+% d=transExtData;
+%% Laad de data
+try
+    %load the clustered Data
+    path = '../Data/DATAClustered/';
+    load(strcat([path,'Clustered',num2str(V),'TS',num2str(TS),'Coarse', num2str(coarse),'.mat']));
+    H=House{HN};
+catch
+    % if that is not possible create the clustered data
+    fprintf(1,'Starting to make the Clusters ');
+    load ../Data/DATAMain/sepDays.mat
+    addpath ../Data/ALGClusteren
+    d=ClusterIt(House,HN,TS,coarse,V);
+end
+
+%% Change the input data for LDA into the good fomat for LDAext
+for i=1:length(H.day)
+    % mat is a N by V matri
+    p{i}.mat=H.day{i}.PreClusteredData;
+    p{i}.mat(:,end)=[1:TS]';
+end
+
+
+
+
+
+
+% seed for the rand function
+%rng(s);
 
 m=[];
-for i=1:length(d)
-    m=[m;max(d{i}.mat)];
+for i=1:length(p)
+    m=[m;max(p{i}.mat)];
 end
 m=max(m,[],1);
 
@@ -23,13 +53,16 @@ for i=1:length(m)
 end
 beta.sigma=ones(length(m),k);
 
-[a,b,l]=ldaExtension(d,k,beta,maxIter);
+% a:= alpha, b:=beta(.mu,.sigma), L:=total Likelihood, l:=per doc likeli
+[a,b,L,l]=ldaExtension(p,k,beta,maxIter);
+
+
 % LDAout{cnt}.alpha=a;
 % LDAout{cnt}.beta=b;
 % LDAout{cnt}.likeli=l;
 % cnt=cnt+1;
 
-%VisuLDA(d,b,a,10)
+VisuLDAMosttopics(10,p,b,a,10)
 
 
 % cnt=1;

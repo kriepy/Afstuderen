@@ -14,8 +14,8 @@ end
 % constanten
 dagIsec = 86400;
 
-data = importdata(strcat('C:\Users\Kristin\UVA\Afstuderen\Afstuderen\Matlab\Data\DATAPlain\',num2str(houseNr),'\sensorreadings.txt'));
-info = importdata(strcat('C:\Users\Kristin\UVA\Afstuderen\Afstuderen\Matlab\Data\DATAPlain\', num2str(houseNr),'\sensorinfo.txt'));
+data = importdata(strcat('../DATAPlain/',num2str(houseNr),'/sensorreadings.txt'));
+info = importdata(strcat('../DATAPlain/', num2str(houseNr),'/sensorinfo.txt'));
 %sensornames = importdata(strcat('C:\Users\Kristin\UVA\Afstuderen\Afstuderen\Matlab\Data\DATAPlain\',num2str(houseNr),'\sensornames.txt'));
 
 

@@ -13,7 +13,7 @@ k=20; % amount of topics
 %% Get the data
 %d{i}.id:= contains the identities of the clusters that is contained on day i
 %d{i}.cnt:= gives the count how often a clusters appears on day i.
-addpath C:\Users\Kristin\UVA\Afstuderen\Afstuderen\Matlab\Data\ALGClusteren
+addpath ../../Data/ALGClusteren
 d=ClusterData(HN,clus,TimeSlices,TimeCoarse);
 
 %% Run LDA

@@ -1,8 +1,5 @@
-%test
-for i=1:4
-    i
-    if i==2
-        break
-    end
-    i
-end
+%test to create LDAext DATA
+load ../DATAMain/sepDays.mat
+
+HN=1;
+d=getLDAextData(House,HN,TS)

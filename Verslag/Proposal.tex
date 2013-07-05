@@ -1,0 +1,61 @@
+\documentclass[a4paper,10pt]{article}
+%\documentclass[a4paper,10pt]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+
+\title{Proposal for the Master Thesis: Behavior Analysis of Elderly using topic models}
+\author{Kristin Rieping}
+\date{\today}
+
+\pdfinfo{%
+  /Title    ()
+  /Author   ()
+  /Creator  ()
+  /Producer ()
+  /Subject  ()
+  /Keywords ()
+}
+
+\begin{document}
+\maketitle
+The world population increases unceasingly and besides the percentage of elderly also increases. The manpower to take care of elderly is diminishing. That is why it becomes more and more important to have the opportunity to monitor people that are in risk of health problems. We want to make sure that people are still capable to live on their own and want to detect if they need health care, which might be in a urgent way, if for example a person is falling, or systematically, if a person needs help on a regular basis. We want to detect physical or mental downturns of their health.\\
+There are different ways to monitor elderly and one possible way is to make use of a sensor system.
+One of these systems is described in \cite{van2010activity}. The problems with the data that is gained in these sort of systems, is that they give a lot of high dimensional data. This data is hard to interpret by people that might monitor the person manually, but it is also hard to find patterns in the data with a computer program. For reliable results you often need annotated data. But labeling the data is time consuming and might alos affect the annotations while doing so.\\
+
+For this master thesis a data set of five different people is available. This data set is gained from a sensor system which is placed in the care homes. The data is gathered over a longer period of time. In this data we want to find behavior patterns in a an unsupervised manner. Therefor we use the topic model 'Latent Dirichlet Allocation' \cite{blei2003latent} and apply it on the data. This approach is inspired by the work of \cite{farrahi2008daily}.
+Topic models are normally used for document classification. Textual data differs a lot from the given sensor data. That is why we need to adjust the topic model in such a way that is applicable to the sensor data. In \cite{Casale:2009} sensor data is clustered in advance and then the LDA model is applied to the clusters.
+In this thesis we want to develop a method that combines the part of clustering and topic detection in one algorithm. The topics are described with a Gaussian distribution, which will replace the the discrete distribution of the topics.
+
+\appendix
+\bibliography{research}{}
+\bibliographystyle{plain}
+
+% Wat moet ik allemaal vertellen??
+
+% wat is het probleem?
+% Dat je veel ouderen hebt en die hebben allemaal zorg nodig, maar of dat zo is, is maar nog de vraag. Je wilt monitoren of het goed met hun gaat en hulp verlenen als nodig. So there are different ways of monitoring elderly. One way to do that is a sensor system placed in the homes of elderly.
+% we have sensors. these sensors give a lot of information but a hard to interpret by human or even by computers. 
+% 
+% wat heb ik gegeven?
+%  - data of sensors that is gained in care homes. There are a couple of persons that have installed sensors in their homes. At different locations there in the house their are different kind of sensors installed. The different kind of sensors are described in ...
+% Wat do we want to do now?
+% We want to find a description of the data that makes it possible to read the data more easily. We want to apply topic models, related to the way that ferahi did. Topic models are often used in document classification. This kind of data differs a lot from our data. Because the data is high dimensional and all sensors corelate a lot.  So we need to find a way to apply a topic model properly.
+%  
+% hoe ik het wil oplossen?
+% We take the LDA model which is descibed here ... and use a lot of different ways to use it. So we want to create a model build on the LDA model that can handle multidimensional data.
+% 
+% wat voor methodes ik ervoor ga gebruiken?
+
+
+
+
+
+
+
+% The world population increases unceasingly and besides the percentage of elderly also increases. The manpower to take care of elderly is diminishing. So it becomes more and more important to give elderly the opportunity to live on their own and be more independent of health care. It might be important to monitor elderly in their homes in order to give an alarm if an accident happens or to detect physical and mental declines.
+% 
+% From a sensor setting that us
+% 
+% The topic model 'Latent Dirichlet Allocation' is applied to real sensor data, that is gained in the homes of elderly people. Different approaches of the models are used to fit the data, including a new developed model. This model encloses a Gaussian Mixture Model into the LDA model, so that the topics are modeled with a Gaussian Distribution. The model parameters are determined with an EM-algorithm.
+% The goal of this algorithm is to find topics that describe the data in a way, so that it is easily interpretable and usable for different kinds of machine learning techniques that can predict different behaviors.
+\end{document}

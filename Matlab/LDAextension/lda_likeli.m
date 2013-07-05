@@ -7,6 +7,7 @@ function [llh,Lalpha,d1,d2,d3,Lgamma] = lda_likeli( d , alpha , beta , gam  )
 
 % the likelihood depending on alpha and gamma
 % will be only one value because alpha is the same for all documents
+
 Lalpha = repmat(gammaln(sum(alpha)),length(d),1) - repmat(sum(gammaln(alpha)),length(d),1)...
          + sum( repmat(alpha-1,length(d),1) .* ( psi(gam)-repmat(psi(sum(gam,2)),1,size(gam,2)) ) ,2);
      
@@ -25,10 +26,10 @@ for i=1:length(d) %for every document
     d1=[d1;sum(sum( (psi(gam(i,:))-psi(sum(gam(i,:)))) * t.phi'  ))]; 
     
     %d2=[d2;sum(sum(  (t.phi'*diag(t.cnt))'.* log(beta(t.id,:)) ))];
-    be=[];%zeros(size(t.phi))
+    be=zeros(size(t.phi));
     for j=1:size(t.mat,1)
         w=repmat(t.mat(j,:)',1,length(alpha));
-        be=[be;sum(log(myNorm(w,beta.mu,beta.sigma)))]; %this might be sum() instead of prod(), because you use the loglikelihood
+        be(j,:)=sum(log(myNorm(w,beta.mu,beta.sigma))); %this might be sum() instead of prod(), because you use the loglikelihood
     end
     %be=be+0.00000001;
  
@@ -60,9 +61,12 @@ end
 Lgamma = -gammaln(sum(gam,2)) + sum(gammaln(gam),2)...
          -sum((gam-1).*( psi(gam)-repmat(psi(sum(gam,2)),1,size(gam,2)) )  ,2);
 %Lgamma = zeros(size(Lgamma));
-fprintf(1,'\na is %g, d1 is %g, d2 is %g, d3 is %g, g is %g \n',sum(Lalpha),...
-    sum(d1),sum(d2),sum(d3),sum(Lgamma));
+%fprintf(1,'\na is %g, d1 is %g, d2 is %g, d3 is %g, g is %g \n',sum(Lalpha),...
+   % sum(d1),sum(d2),sum(d3),sum(Lgamma));
      
 llh= Lalpha +  Lgamma + Lphi;
+if isnan(llh)
+    fprintf(1,'I got here!');
+end
 d3=-d3;
 end

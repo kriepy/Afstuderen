@@ -8,6 +8,8 @@
 \usepackage{graphicx} %plaatjes toevoegen
 \usepackage{fullpage} %minder witte rand
 \usepackage{cite} %voor het citeren
+\usepackage{caption}
+\usepackage{subcaption}
 
 \begin{document}
 \maketitle
@@ -56,58 +58,38 @@ In the next chapter of this thesis we give an overview of related approaches. In
 
 
 \section{Related Work}
-Articles:\\
--die ene\\
--die andere
 
 
 %--------------------------------DATADESCRIPTION--------------------------------------------
 \section{Data Description}
 \label{sec:DataDesc}
-\subsection{Sensors}
-There are two different types of sensors installed in the homes. Reed and motion. Plaatjes ervan en hoe het is geinstaleerd is.
-omschrijven hoe de twee sensoren werken. reed alleen als een deur wordt geopend en motion elke minuut weer kijken of er beweging is.
-Er zijn wel wat problemen
-niet altijd even betrouwbaar. Uitval van sensor. Soms twee keer aan/uit achterelkaar gevuurd.
-two types of sensors installed
-hoe ziet de data eruit wat zijn problemen ermee (continu tijdstippen met sensor aan/uit)
-The sensors that are placed in the homes are placed at different locations, for example at doors, cupboards, microwave, toilet flush or several other places that a frequently used.
-The sensors can have the values 0 and 1. If a sensor is activated it gets the value 1 and 0 if it is deactivated.
+In this section we describe in what kind of houses the data is gathered and what kind of persons live there. We describe the sensors that are used and give an impression of the data that is received from this sensors.
 \subsection{Homes and persons}
-The homes looks like shown in figure ... There might be small differences of the locations of the sensors due to the personal arrangements of peoples stuff.
-The persons that live in the homes are people that need healthcare. The data is gained of in total five different people. The amount of data differs for every person.
-there are five people
-The houses look the same
-the amount of data varies for every person
-Wat zijn het voor mensen
-Hoe ziet hun woning uit
-waar zijn deze sensoren in de woning(weet ik dat??)
-\subsection{Received Data}
-An example of the data is shown in figure ... Here an hour of a typical day is plotted. 
-The sensors are annotated and devided in five fields. The fields are ...
-Wat is de data die we krijgen
-wat zijn de sensor namen geplaatst zijn
+In the homes of five different people sensors are installed. The ground-plan of these homes is for all residents the same and is shown in figure ...(hier zou ik graag een plaategrond van de woningen willen toevoegen als dat mogelijk is) There might be small differences of the locations of the sensors due to the personal arrangements of peoples stuff.
+The persons that live in the homes are people that need healthcare on a daily basis (is this true or is this only a couple of days, what kind of health care is given). But they are further able to live on their own. The amount of data gained differs but there is at least fifty days of data available for every person. The sensors are listening continuously.
+\subsection{Sensors}
+There are two different types of sensors installed in the homes, reed- and motion-sensors. The reed-sensors which are mostly installed at doors get the value 'one' if a door is opened and a the value 'zero' if the door is closed again. The toilet flush has also a reed sensor. (I dont know yet what it does)
+The motion-sensor are placed at different places in the homes, mostly against the walls. They have a range of ... meters. If a motion occurs in the region of a sensor the value of the sensor becomes 'one' and 'zero' again immediately. After that the sensor is set to mute for about 3 minutes (or is this 1 minute), which means that in this time there is no motion captured. This is done to avoid constantly firing of the sensor, which would lead to superfluously activity encounter.
 
- Several sensors are grouped together and form a field. In the following descriptions we use five fields, which are $\{$'kitchen','living room','bathroom','bedroom','hallway'$\}$
-The sensors that define a field are specified manually.
-From the sensors we receive the time when it is triggered and in which value it changes to. Possible values are $\{$0,1$\}$. In figure~\ref{fig:PlaineSensorData} an example of the sensor data over one day is shown.\\
+\subsection{Received Data}
+In figure ~\ref{fig:PlaineSensorData} an example of the received data is given. There are two hours of one day shown for one person. Several sensors that are located in the same room are manually grouped together in a field. The fields are $\{$'kitchen', 'living room', 'bathroom', 'bedroom', 'hallway'$\}$. They are marked in the figure with different colors.
 
 \begin{figure}[h!]
   \centering
-    	\includegraphics[width=0.7\textwidth]{Pictures/plainDataExample.png}
-    \caption{Sensor Data for one day with five fields}
-    \label{fig:PlaineSensorData}
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Pictures/SensorsMorning.png}
+  \end{subfigure}
+  ~
+  \begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Pictures/SensorsNoon.png}
+  \end{subfigure}
+  \caption{Sensor Data for two different hours at a day of one person. The fields `kitchen`,'living room','bathroom','bedroom','hallway' are marked with the colors 'yellow','blue','red','green','purple' respectively.}
+  \label{fig:PlaineSensorData}
 \end{figure}
 
-
-
-
-
-
-
-
-
-
+In the figure you can see that at noon the fridge is used, but the sensor data is not captured correctly. This errors needs to take into account when dealing with the data. Other problems that occur are that one sensor is not working because it is not well connected or the batteries are empty. It also happens that the network is not working or the network cable is pulled out, which means that the data cannot be send to the server that stores the data. These kind of errors need to be handled manually and are not taken into account when modelling the data.
 
 
 \pagebreak
@@ -119,7 +101,7 @@ In the Introduction of this section we describe the general idea of topic models
 \subsection{Introduction to Topic Models}
 Een voorbeeld geven me documenten en woorden en topics. Hier ook LDA Blei model in tonen.
 Neem een set van Newsarticelen. Er bestaan verschillende topic zo als politics, economy. This topics are characterized by several words and between topics there might be overlap between words that characterize a topic, but the distribution over words give a good indication to which topic a document belongs. Further one document might contain multiple different topics. So for example an article about Obama who speaks about the economic grow belongs for some part to the topic 'politics' and also to the topic 'economy'. And there might be several other topics that are included in such an article. Now the words that are contained in the article gives the indication about which topic are included in the article.\\
-The model shown in figure is a way to capture the topics given a set of data (Corpus). Every  
+The model shown in figure is a way to capture the topics given a set of data (Corpus).   
 
 \subsection{Topic models with Sensor Data}
 Topic models are often used in the field of document classification. Given a set of documents (Corpus) it is assumed that every document belongs to one or more topic(s). So for example a news article may belong for some percentage to the topic 'Economy' and also for some percentage to the topic 'Politics'. Every topic can be described with a distribution of words. So if some specific words occur in a news article it is an indication that the article belongs to a certain topic.\\
@@ -152,22 +134,22 @@ That is why we need to reduce the amount of unique observations and group simila
 
 %TOT HIER
 
-This is done with k-
-
-In a first-approach we use k-means clustering to reduce the size of the dictionary, which is the set of all observations that can be found in the data.
-We do not use the time dimension for the clustering part, because this would compromise our data so that clusters are not detected properly. We use the euclidean distance to determine the best mean.
-
-maybe preprocess the data with coarse grain time dimension
-
-size of the dictionary
-is it the case that with a lot of data simialar looking words will be put in the same topic? Or will it just be a different topic?
-
-
-
-In our data the size of the dictionary, which contains all unique observations in the whole corpus is relative large with respect to the size of the data that we have. There are a lot of different observations that are similar to each other, but differ only in one value of the 6 dimensions. So for example the observation $o_1=\{1 ,2 ,5 ,3,14\}$ is similar to the observation $o_2=\{2 ,2 ,5 ,3,14\}$. The only difference of sensor activities is in the first field. In the LDA model these two observations/words will be seen as two different dimensions and the similarities are not captured. In fact a lot of words will only be seen once in the whole corpus and finding good parameters is not possible.
- So we need to find a way to capture similar observations to build a proper topic model. A simple way is to cluster all observations together and then use the EM-algorithm to estimate the parameters of the  LDA model.
- For the clustering part we used the k-means algorithm. We reduced the size of the dictionary to 20. After that we use the EM-algorithm as described above.
- In the clustering we leave out the time dimension because this is fucking up the clusters
+% This is done with k-
+% 
+% In a first-approach we use k-means clustering to reduce the size of the dictionary, which is the set of all observations that can be found in the data.
+% We do not use the time dimension for the clustering part, because this would compromise our data so that clusters are not detected properly. We use the euclidean distance to determine the best mean.
+% 
+% maybe preprocess the data with coarse grain time dimension
+% 
+% size of the dictionary
+% is it the case that with a lot of data simialar looking words will be put in the same topic? Or will it just be a different topic?
+% 
+% 
+% 
+% In our data the size of the dictionary, which contains all unique observations in the whole corpus is relative large with respect to the size of the data that we have. There are a lot of different observations that are similar to each other, but differ only in one value of the 6 dimensions. So for example the observation $o_1=\{1 ,2 ,5 ,3,14\}$ is similar to the observation $o_2=\{2 ,2 ,5 ,3,14\}$. The only difference of sensor activities is in the first field. In the LDA model these two observations/words will be seen as two different dimensions and the similarities are not captured. In fact a lot of words will only be seen once in the whole corpus and finding good parameters is not possible.
+%  So we need to find a way to capture similar observations to build a proper topic model. A simple way is to cluster all observations together and then use the EM-algorithm to estimate the parameters of the  LDA model.
+%  For the clustering part we used the k-means algorithm. We reduced the size of the dictionary to 20. After that we use the EM-algorithm as described above.
+%  In the clustering we leave out the time dimension because this is fucking up the clusters
  
   \subsubsection{Latent Dirichlet Allocation with clustered Data}
 The generative model 'Latent Dirichlet Allocation' [Blei] is a way to describe a topic model. In this model it is assumed that a Corpus can be generated from a distribution of topics, where every topic can be represented with a distribution of words. In our case the documents are days and the words are observations $o_n$. In the previous section we described how we reduced the size of the dictionary $V$.
@@ -181,7 +163,7 @@ For every day that will be generated:
  
  \begin{enumerate}
   \item Choose a topic $z_n \sim Multinomial(\theta)$.
-  \item Choose a set of obeservations $o_n$ from the set of all observations $V$ from $p(o_n |z_n;\beta)$, a multinomial probability conditioned on the topic $z_n$. Where $\beta$ is the distribution over observations given a topic.
+  \item Choose a set of observations $o_n$ from the set of all observations $V$ from $p(o_n |z_n;\beta)$, a multinomial probability conditioned on the topic $z_n$. Where $\beta$ is the distribution over observations given a topic.
  \end{enumerate}
 
 \end{enumerate}

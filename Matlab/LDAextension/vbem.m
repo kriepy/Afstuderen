@@ -6,7 +6,6 @@ function [alpha,q] = vbem(d,beta,alpha0,emmax)
 % d      : document data
 % alpha0 : Dirichlet prior of alpha
 % emmax  : maximum # of VB-EM iteration.
-% $Id: vbem.m,v 1.5 2004/11/08 12:42:18 dmochiha Exp $
 if nargin < 4
   emmax = 20;
 end
@@ -26,6 +25,12 @@ for j = 1:emmax
   end
   
   q = mnormalize(q,2);
+  
+%   if prod(sum(q1))==0
+%      fprintf(1,'I got here!');
+%   end
+%   q=q1;
+%   
 %   figure(2)
 %   hold on
 %   plot(q(1,1),q(1,2),'rx');

@@ -8,7 +8,7 @@ function Sensors=getSensAll(info,names)
 
 
 for i=1:length(info)
-    vec=regexp(info{i},'\s','split');
+    vec=regexp(info{i},'\s+','split');
     Sensors{i}.nr=str2num(vec{1});
     for j=2:length(vec)
         strng = vec{j};
@@ -37,9 +37,9 @@ for i=1:length(info)
     end
     
     for j=1:length(names)
-        nam=regexp(names{j},'\s','split');
+        nam=regexp(names{j},'\s+','split');
         if str2num(nam{1})==Sensors{i}.nr
-            Sensors{i}.name=strjoin(nam(2:end-1),' ')   %c=sprintf('%s %s',a,b); 
+            Sensors{i}.name=strjoin(nam(2:end),' ')   %c=sprintf('%s %s',a,b); 
             break
         end
     end
