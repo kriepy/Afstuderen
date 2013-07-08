@@ -1,4 +1,4 @@
-function P = calcPerpl(alpha,beta,lik,HOS)
+function P = calcPerpl(alpha,beta,HOS)
 
 len = length(HOS);
 demmax = 20;

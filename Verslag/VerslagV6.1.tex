@@ -447,10 +447,14 @@ On this equation we can use the Newton-Rhapson method to calculate the optimal $
 %--------------------------------------FEATURES----------------------------------------------
 \section{Features}
 \label{sec:features}
-The plain data that is gained from the sensors needs to be discretized in some way so that it can be used in the topic models. So first we group all sensors together that belong to the same field. One day is than devided into timeslices of length $l$. In first instance we take $l=30$, which means that there are 48 timeslices on a day. A day starts at 3 a.m. in the morning so that we reduce the chance to cut between activities. It still can occur that a person goes to bed late or that he needs to visit the toilet, but we will ignore this fact for now.\\
-In every time-slice of a field we look at the amount of times that a sensor in this field is activated and count this activities. So we do not look at the length of time that a sensor stays in the active state, but only how often it changes into the active state. So given five fields for one day we have 48 observation $o$ where every observation has five dimension. We do not take the length of the sensor activity into account because this sometimes can lead to unrealistic high values. These values can occur if someone leaves a door open of a cupboard open for example. Then the observations contains a high value but does not contain a lot of information about the behavior. In figure \ref{fig:FeatEx} %Give an example.
+% WHAT DO WE HAVE?
+The data that is received from the sensors generates a continuous data stream for every sensor. We need to find a good feature representation of the data so that we can apply the LDA model to it.
+First we divide the data in five fields and group all the sensors in one field together. In this way we reduce the data to five dimension. We cannot use a continuous data stream in the LDA model. That is why we devided the data into timeslices of length $l$. In first instance we take $l=30$, which means that there are 48 time-slices on a day.A day starts at 3 a.m. in the morning so that we reduce the chance to cut between activities. It still can occur that a person goes to bed late or that he needs to visit the toilet, but we will ignore this fact for now.\\
+In every time-slice of a field we look at the amount of times that a sensor in this field is activated and count this activities. So we do not look at the length of time that a sensor stays in the active state, but only how often it changes into the active state. So given five fields for one day we have 48 observation $o$ where every observation has five dimension. We do not take the length of the sensor activity into account because this sometimes can lead to unrealistic high values. These values can occur if someone leaves a door open of a cupboard for example. Then the observations contains a high value but does not contain a lot of information about the behavior. In figure \ref{fig:FeatEx} %Give an example.
 EXAMPLE\\
-This is the simplest way to use the data, but there are plenty of different ways to combine the time-slices. So for example we can change the size of the time-slices, which leads to a higher resolution and may give more detailed information. Another way to get a different feature representation is to combine sequential time-slices. So for a given time-slice add the values of the previous and the subsequent time-slice, that will lead to a 15 dimensional observation. In this way the transitions are taken more into account, which might contain valuable information over the behaviour.\\
+
+
+This is the basic approach how we use our data. There are plenty of different ways to combine the time-slices. So for example we can change the size of the time-slices, which leads to a higher resolution and may give more detailed information. Another way to get a different feature representation is to combine sequential time-slices. So for a given time-slice add the values of the previous and the subsequent time-slice, that will lead to a 15 dimensional observation. In this way the transitions are taken more into account, which might contain valuable information over the behaviour.\\
 We also might want to combine different sizes of time-slices into one observations, so that the global and detailed view is combined.\\
 You can see that there are plenty of different ways to use the data and finding the best feature representation is a big challenge. What the best feature representation is depends also on the usage of the data. A system that wants to detect the activities might a more detailed feature representation. But a system that only monitors the health of a person might only need a global feature representation.
 
@@ -485,7 +489,7 @@ You can see that there are plenty of different ways to use the data and finding 
 
 \subsection{Experiments with the Topic models}
 To test the performance of the topic models we set the features to a fixed value. The sensors are divided in the five fields $\{$'kitchen', 'living room', 'bathroom', 'bedroom', 'hallway'$\}$. The size of the time-slices is 30 minutes, which means that a day is divided into $N=48$ observations. A day starts and ends at 3 am. An observation has six dimensions, five dimensions for the different fields and one dimension for the time value in which an observation occurs. In the basic LDA model we use a coarse grain value for the time. This means that the sixth dimension can have 5 different values, where the time intervals are $\{ 3am - 8am, 8am - 1pm, 1pm - 18pm, 18pm - 23pm, 23pm - 3am  \}$.
-\subsubsection{Visualization of the Topics}
+\subsubsection{Qualitative Results}
 \paragraph{k-means and LDA}
 Hier het best de clusters en ook de topics visualizeren
 clusters visualizeren is nog wel te doen. Vraag is of deze ook wel consistent blijven.
@@ -534,6 +538,7 @@ Kijken of ik hetzelfde voor k-means kan doen. De likelihood kan ik niet direct m
 \label{sec:DisCon}
 gaussian mixture model is a more logical choice, because you can take correlations between the fields into account. But to train this model you need a lot of data.
 Poisson verdeling is meer logisch because of the way the data is used, with another representation of the data it might not that logical anymore to use. But then we need again look at the Jensen inquality, if it is correct in this way.
+For the sensor values a Poisson distribution is more logical. But for the time a Gau
 
 
 \appendix

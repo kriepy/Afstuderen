@@ -14,10 +14,10 @@ maxIter=50;
 TS=48;
 V=6;
 coarse=1;
-startValue = 35;
+startValue = 10;
 
 %% LOAD DATA
-HN=1; %moet voor alle huizen
+HN=4; %moet voor alle huizen
 
 
 try
@@ -52,11 +52,13 @@ d=p(idxA);
 
 
 InitBet = [];
-
+flap=0;
 for k=startValue:5:100
+    flap=flap+1;
     % hier elke 10 keer uitvoeren of zo (Dude dat zal lang duren)
     fprintf(1,'\n -----------------------The %dth run started----------------\n',k );
-    per = []
+    per = [];
+    B=[];
     for step=1:10
         fprintf(1,'\n -----------------------This is the  %dth iteration.----------------\n',step );
 
@@ -77,17 +79,25 @@ for k=startValue:5:100
 
         InitBet = [InitBet bet];
 
-        [a,b,L,lik]=ldaExtension(d,k,bet,maxIter);
+        [a,b,L,lik]=ldaExtension(d(1:2),k,bet,maxIter);
 
         Perpl = calcPerpl(a,b,lik,HOS);
         per=[per Perpl];
-
+        Bic = calcBiC(a,b,L,length(p)*48*6);
+        
+        DataGaus{HN}.Run{flap}.Step{step}.a=a;
+        DataGaus{HN}.Run{flap}.Step{step}.b=b;
+        DataGaus{HN}.Run{flap}.Step{step}.L=L;
+        B = [B Bic];
     end
     PerGausM = [PerGausM mean(per)];
     PerGausS = [PerGausS std(per)];
     
     DataGaus{HN}.PerGausM = PerGausM;
     DataGaus{HN}.PerGausS = PerGausS;
+    DataGaus{HN}.Run{flap}.amTopics = k;
+    DataGaus{HN}.Run{flap}.Bic = B;
+    
     save('OutcomeExp4_3.mat','DataGaus');
     fprintf(1,'&&&&&&&&&&&&&THE %dth run is saved&&&&&&&&&&&&&',k);
 end
