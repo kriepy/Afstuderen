@@ -1,6 +1,6 @@
 close all
 %% INITIALIZE
-k=30;
+k=9 0;
 maxIter=50;
 HN=1; % there are in total five houses
 TS=48; % Amount of time slices
@@ -29,7 +29,7 @@ end
 for i=1:length(H.day)
     % mat is a N by V matri
     p{i}.mat=H.day{i}.PreClusteredData;
-    p{i}.mat(:,end)=[1:TS]';
+    %p{i}.mat(:,end)=[1:TS]';
 end
 
 

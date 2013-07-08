@@ -27,10 +27,10 @@ y = normcdf(x+0.5,mu,sigma)- normcdf(x-0.5,mu,sigma);
 %y = exp(-0.5 * ((x - mu)./sigma).^2) ./ (sqrt(2*pi) .* sigma);
 
 %% if the estimated probability is zero, return a very small number
-[i,j]=find(y<0.00000001);
+[i,j]=find(y<0.0000000001);
 if length(i)
     for k=1:length(i)
-        y(i(k),j(k))=0.00000001;
+        y(i(k),j(k))=0.0000000001;
     end
 end
 

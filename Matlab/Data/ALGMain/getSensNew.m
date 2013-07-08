@@ -1,4 +1,4 @@
-function Sensors=getSensAll(info,names)
+function Sensors=getSensNew(info,names)
 % Return a struct:
 % Sensors.nr
 %        .fieldName

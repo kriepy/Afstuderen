@@ -5,8 +5,8 @@ end
 
 [a,ind]=sort(a,'descend');
 
-mu=b.mu(:,ind)
-sig=b.sigma(:,ind)
+mu=b.mu(:,ind);
+sig=b.sigma(:,ind);
 D=size(mu,1);
 x=0:24;
 Fields={'Bathroom','Kitchen','Bedroom','Living','Hallway'};

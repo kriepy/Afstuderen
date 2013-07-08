@@ -74,7 +74,7 @@ for HN=1:5
     end
     House{HN}=H;
 end
-path='/home/kristin/UVA/Afstuderen/Afstuderen/Matlab/Data/DATAClustered/'
+path='/home/kristin/UVA/Afstuderen/Afstuderen/Matlab/Data/DATAClustered/NEW/'
 pa=strcat([path,'Clustered',num2str(V),'TS',num2str(TS),'Coarse', num2str(coarse)]);
 save(pa,'House');
 

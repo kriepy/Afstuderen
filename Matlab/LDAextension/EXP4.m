@@ -17,11 +17,11 @@ coarse=1;
 startValue = 10;
 
 %% LOAD DATA
-HN=4; %moet voor alle huizen
-
+HN=1; %moet voor alle huizen
+name = 'OutcomeExp4_TEST.mat'
 
 try
-    load('OutcomeExp4_3.mat');
+    load(name);
     PerGausM = DataGaus{HN}.PerGausM;
     PerGausS = DataGaus{HN}.PerGausS;
 catch
@@ -59,7 +59,7 @@ for k=startValue:5:100
     fprintf(1,'\n -----------------------The %dth run started----------------\n',k );
     per = [];
     B=[];
-    for step=1:10
+    for step=1:1
         fprintf(1,'\n -----------------------This is the  %dth iteration.----------------\n',step );
 
         % initialize beta for LDA initialization
@@ -75,15 +75,15 @@ for k=startValue:5:100
         beta.sigma=ones(length(m),k);
 
         % initialize with 5 documents (always the same)
-        [~,bet,~,~]=ldaExtension(d(1:5),k,beta,maxIter);
+        [al,bet,~,~]=ldaExtension(d(1:5),k,beta,maxIter);
 
         InitBet = [InitBet bet];
 
-        [a,b,L,lik]=ldaExtension(d(1:2),k,bet,maxIter);
+        [a,b,L,lik]=ldaExtension(d,k,bet,maxIter);
 
         Perpl = calcPerpl(a,b,lik,HOS);
         per=[per Perpl];
-        Bic = calcBiC(a,b,L,length(p)*48*6);
+        Bic = calcBiC(a,b,L,length(d)*48*6);
         
         DataGaus{HN}.Run{flap}.Step{step}.a=a;
         DataGaus{HN}.Run{flap}.Step{step}.b=b;
@@ -98,7 +98,7 @@ for k=startValue:5:100
     DataGaus{HN}.Run{flap}.amTopics = k;
     DataGaus{HN}.Run{flap}.Bic = B;
     
-    save('OutcomeExp4_3.mat','DataGaus');
+    save('name','DataGaus');
     fprintf(1,'&&&&&&&&&&&&&THE %dth run is saved&&&&&&&&&&&&&',k);
 end
 

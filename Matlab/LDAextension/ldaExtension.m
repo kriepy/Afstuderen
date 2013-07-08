@@ -77,7 +77,7 @@ for j = 1:emmax
         
    
   end
-  numeratorPhi(numeratorPhi<0.00000001)=0.00000001;
+  %numeratorPhi(numeratorPhi<0.00000001)=1;
   % m-step om beta te berekenen, smoothing van sigma om nul te voorkomen
   numeratorPhi=repmat(numeratorPhi,l,1);
   beta.mu=tellerMuPhi./numeratorPhi;
@@ -124,7 +124,7 @@ for j = 1:emmax
 %        return
 %    end
    % Bet=sum(sum(beta.mu));
-  if (j > 1) && (converged(ppl,pppl,1.0e-2))
+  if (j > 1) && (converged(ppl,pppl,1.0e-3))
     if (j < 5)
       fprintf(1,'\n We try the EM again\n');
       fprintf(1,'Previous Alphas');
@@ -151,7 +151,7 @@ for j = 1:emmax
 	  rtime(elapsed * (emmax / j  - 1)),round(elapsed / j));
 end
 
-%PlotLL(L1,L2,L3,L4,L5,LLH);
+PlotLL(L1,L2,L3,L4,L5,LLH);
 % plot(beta(:,1),beta(:,2),'xr')
 % fprintf(1,'Sigma is\n');
 % beta.sigma

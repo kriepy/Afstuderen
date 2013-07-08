@@ -14,5 +14,5 @@ for i=1:5
     House{i}.HouseNr=h(i);
 end
 
-path='../DATAMain';
+path='../DATAMain/NEW';
 save(strcat([path,'/plotSensors.mat']),'House');

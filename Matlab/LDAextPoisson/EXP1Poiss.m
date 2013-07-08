@@ -8,12 +8,12 @@ maxIter=50;
 TS=48; % Amount of time slices
 V=6;
 coarse=1;
-startValue=20;
+startValue=10;
 %% Laad de data
 
 HN =1;
 try
-    load('OutcomeExp1Pois.mat');
+    load('OutExp1Pois.mat');
     PerPoisM= DataPois{HN}.PerPoisM;
     PerPoisS = DataPois{HN}.PerPoisS;
 catch
@@ -54,9 +54,12 @@ d=p(idxA);
 
 %% Run for verschillende k's
 P=[];
+flap=0;
 for k=startValue:5:100
+    flap=flap+1;
     fprintf(1,'\n -----------------------The %dth run started----------------\n',k );
     per = [];
+    B=[];
     for step=1:10
         fprintf(1,'\n -----------------------The %dth iteration----------------\n',step);
         % initilize EM
@@ -67,21 +70,30 @@ for k=startValue:5:100
         [a,b,L]=ldaExtPoi(d,k,b,maxIter);
 
         Perpl = calcPerpl(a,b,HOS);
+        Bic = calcBiC(a,b,L,length(d)*48*6);
 
         if ~isnan(Perpl)
             per=[per Perpl];
         else
             
+           
         end
-
+        DataPois{HN}.Run{flap}.Step{step}.a=a;
+        DataPois{HN}.Run{flap}.Step{step}.b=b;
+        DataPois{HN}.Run{flap}.Step{step}.L=L;
+        B = [B Bic];
     end
     PerPoisM = [PerPoisM mean(per)];
     PerPoisS = [PerPoisS std(per)];
     
     DataPois{HN}.PerPoisM = PerPoisM;
     DataPois{HN}.PerPoisS = PerPoisS;
-    DataPois{HN}.Pall{k/5-1} = per;
-    save('Test.mat','DataPois');
+    
+    DataPois{HN}.Run{flap}.amTopics = k;
+    DataPois{HN}.Run{flap}.Bic = B;
+    
+    
+    save('OutExp1_2Pois.mat','DataPois');
     fprintf(1,'&&&&&&&&&&&&&THE %dth run is saved&&&&&&&&&&&&&',k);
 end
 

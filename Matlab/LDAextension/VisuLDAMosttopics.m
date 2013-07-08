@@ -8,7 +8,7 @@ close all
 emmax=100;
 [~,k]=size(alpha);
 cmap=colormap(hsv(most));
-bm=round(beta.mu)'
+bm=round(beta.mu)';
 
 % Here the labels for the colorbar are gained from beta.mu
 for i=1:k
@@ -20,10 +20,10 @@ for i=1:k
             st=[ st ','];
         end
     end
-    stringa{i}=st
+    stringa{i}=st;
 end
 
-bv=round(beta.sigma)
+bv=round(beta.sigma);
 
 % here the labels are gained from the alpha
 [aa,idx]=sort(alpha,'descend');
@@ -57,7 +57,7 @@ for i=1:n % for each day
         if no
             fill(x,y,cmap(no,:));
         else
-            fill(x,y,[0.2,0.2,0.2]);
+            fill(x,y,[0.5,0.5,0.5]);
         end
         x=x+24/N;
     end

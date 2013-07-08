@@ -5,7 +5,7 @@ if nargin<1
 end
 
 
-y = poisspdf(x,mu);
+y = PoisPDF(x,mu);
 
 %% if the estimated probability is zero, return a very small number
 [i,j]=find(y<0.000000001);
