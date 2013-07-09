@@ -15,9 +15,10 @@ maxIter=100; %max aantal iteraties van LDA
 startValue=10;
 
 %% Laad de data
-HN=2;
+name='OutcomeExp1Bow.mat';
+HN=5;
 try
-    load('OutcomeExp1Bow.mat');
+    load(name);
     perBOWm = DataBow{HN}.perBOWm;
     perBOWs = DataBow{HN}.perBOWs;
 catch
@@ -64,24 +65,33 @@ d=p(idxA);
 
 
 %% Use LDAbasic on the clustered data
+flap=0;
 for k=startValue:5:100
+    flap = flap+1;
     fprintf(1,'\n -----------------------The %dth run started----------------\n',k );
     per =[];
+    bic=[];
     for step=1:1
         
         % init is done in ldaBasic
         [a,b,l]=ldaBasic(d,k,maxIter,V);
         Perpl = calcPerpl(a,b,l,HOS);
         per = [per Perpl];
+        %B=calcBiC(a,b,l,length(d))
+        DataBow{HN}.Run{flap}.Step{step}.L=l;
+        DataBow{HN}.Run{flap}.Step{step}.a=a;
+        DataBow{HN}.Run{flap}.Step{step}.b=b;
     end
     
     perBOWm=[perBOWm mean(per)];
     perBOWs=[perBOWs std(per)];
     DataBow{HN}.perBOWm = perBOWm;
     DataBow{HN}.perBOWs = perBOWs;
+    
+    DataBow{HN}.Run{flap}.Per=per;
 
 
-    save('OutcomeExp1Bow.mat','DataBow');
+    save(name,'DataBow');
     fprintf(1,'It is saved')
 end
 

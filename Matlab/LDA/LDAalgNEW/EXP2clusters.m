@@ -5,7 +5,7 @@
 clear all
 
 %% Initialize
-HN=1; % there are in total five houses
+HN=3; % there are in total five houses
 TS=48; % Amount of time slices
 coarse = 1; % The time is Coarse if this variable is 1, 0 otherwise
 %V=6; %the amount of clusters
@@ -14,9 +14,18 @@ maxIter=100; %max aantal iteraties van LDA
 
 
 %% Laad de data
+name = 'OutcomeExp2Clus.mat';
+try
+    load(name);
+    MM = DataClus2{HN}.perClusM;
+    SS = DataClus2{HN}.perClusS;
+catch
+    fprintf(1,'The file does not yet exist');
+    MM=[];
+    SS=[];
+end
 
-perCLUSmV = [];
-perCLUSsV = [];
+
 for V=2:10
 
 try
@@ -59,10 +68,19 @@ d=p(idxA);
         [a,b,l]=ldaBasic(d,k,maxIter,V);
         Perpl = calcPerpl(a,b,l,HOS);
         per = [per Perpl];
+        DataClus2{HN}.Run{V}.Step{step}.a=a;
+        DataClus2{HN}.Run{V}.Step{step}.b=b;
+        DataClus2{HN}.Run{V}.Step{step}.l=l;
     end
     
-	perCLUSmV=[perCLUSmV mean(per)];
-    perCLUSsV=[perCLUSsV std(per)];
+	MM=[MM mean(per)];
+    SS=[SS std(per)];
+    
+    DataClus2{HN}.Run{V}.per = per;
+    DataClus2{HN}.perClusM=MM;
+    DataClus2{HN}.perClusS=SS;
+    
+    fprintf(1,'^^^^^^^^^^^^^^^^^^^^^^^^ The %dth run is saved^^^^^^^^^^^^^^^^',V);
+    save(name,'DataClus2');
 end
 
-save('OutcomeExp2Clus.mat','perCLUSmV','perCLUSsV');
