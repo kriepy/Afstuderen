@@ -2,7 +2,7 @@ function d=getSensData(H,HN,TS)
 % TS is the amount of time slices
 % This function devides the data from House H into timeslices and stores it
 % in the DATA folder
-
+path='/home/kristin/UVA/Afstuderen/Afstuderen/Matlab/Data/DATAClustered/'
 DL=86400; % DayLength: amount of seconds on a day
 len=DL/TS;
 
@@ -70,7 +70,7 @@ for HN=1:5
     end
     House{HN}=H;
 end
-path='/home/kristin/UVA/Afstuderen/Afstuderen/Matlab/Data/DATAClustered/'
+
 pa=strcat([path,'Clustered',num2str(V),'TS',num2str(TS),'Coarse', num2str(coarse)]);
 save(pa,'House');
 

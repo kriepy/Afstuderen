@@ -14,10 +14,10 @@ maxIter=50;
 TS=48;
 V=6;
 coarse=1;
-startValue = 10;
+startValue = 5;
 
 %% LOAD DATA
-HN=1; %moet voor alle huizen
+HN=2; %moet voor alle huizen
 name = 'OutcomeExp4_TEST.mat'
 
 try
@@ -59,7 +59,7 @@ for k=startValue:5:100
     fprintf(1,'\n -----------------------The %dth run started----------------\n',k );
     per = [];
     B=[];
-    for step=1:1
+    for step=1:10
         fprintf(1,'\n -----------------------This is the  %dth iteration.----------------\n',step );
 
         % initialize beta for LDA initialization
@@ -82,7 +82,9 @@ for k=startValue:5:100
         [a,b,L,lik]=ldaExtension(d,k,bet,maxIter);
 
         Perpl = calcPerpl(a,b,lik,HOS);
-        per=[per Perpl];
+        if ~isnan(Perpl)
+            per=[per Perpl];
+        end
         Bic = calcBiC(a,b,L,length(d)*48*6);
         
         DataGaus{HN}.Run{flap}.Step{step}.a=a;
@@ -93,12 +95,13 @@ for k=startValue:5:100
     PerGausM = [PerGausM mean(per)];
     PerGausS = [PerGausS std(per)];
     
+    DataGaus{HN}.Run{flap}.Perpl=per;
     DataGaus{HN}.PerGausM = PerGausM;
     DataGaus{HN}.PerGausS = PerGausS;
     DataGaus{HN}.Run{flap}.amTopics = k;
     DataGaus{HN}.Run{flap}.Bic = B;
     
-    save('name','DataGaus');
+    save(name,'DataGaus');
     fprintf(1,'&&&&&&&&&&&&&THE %dth run is saved&&&&&&&&&&&&&',k);
 end
 

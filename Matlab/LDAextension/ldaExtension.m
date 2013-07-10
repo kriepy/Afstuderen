@@ -151,7 +151,7 @@ for j = 1:emmax
 	  rtime(elapsed * (emmax / j  - 1)),round(elapsed / j));
 end
 
-PlotLL(L1,L2,L3,L4,L5,LLH);
+%PlotLL(L1,L2,L3,L4,L5,LLH);
 % plot(beta(:,1),beta(:,2),'xr')
 % fprintf(1,'Sigma is\n');
 % beta.sigma

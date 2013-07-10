@@ -1,7 +1,5 @@
-% TEST
-% Hier we plot the BIC
-
-
+%% TEST GAUSSIAN
+% All tests that are done for the outcomes of LDA-Gaussian
 %% this plots the perplexity
 load OutcomeExp4_TEST;
 D=DataGaus{1};
@@ -17,4 +15,4 @@ for i=1:length(D.Run)
     Plo=[Plo mean(plo)];
 end
 figure(2)
-plot(10:5:90,Plo)
+plot(Plo)

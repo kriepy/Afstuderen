@@ -1,7 +1,7 @@
 load SEED
 close all
 %% INITIALIZE
-k=30;
+k=5;
 maxIter=50;
 HN=1; % there are in total five houses
 TS=48; % Amount of time slices
@@ -28,8 +28,8 @@ end
 %% Change the input data for LDA into the good fomat for LDAext
 for i=1:length(H.day)
     % mat is a N by V matri
-    p{i}.mat=H.day{i}.PreClusteredData;
-    p{i}.mat(:,end)=[1:TS]';
+    p{i}.mat=H.day{i}.PreClusteredData(:,1:end-1);
+   % p{i}.mat(:,end)=[1:TS]';
 end
 
 

@@ -8,12 +8,12 @@ maxIter=50;
 TS=48; % Amount of time slices
 V=6;
 coarse=1;
-startValue=10;
+startValue=5;
 %% Laad de data
-
-HN =1;
+name='OutExp1_2Pois.mat';
+HN =4;
 try
-    load('OutExp1Pois.mat');
+    load(name);
     PerPoisM= DataPois{HN}.PerPoisM;
     PerPoisS = DataPois{HN}.PerPoisS;
 catch
@@ -91,9 +91,10 @@ for k=startValue:5:100
     
     DataPois{HN}.Run{flap}.amTopics = k;
     DataPois{HN}.Run{flap}.Bic = B;
+    DataPois{HN}.Run{flap}.per=per;
     
     
-    save('OutExp1_2Pois.mat','DataPois');
+    save(name,'DataPois');
     fprintf(1,'&&&&&&&&&&&&&THE %dth run is saved&&&&&&&&&&&&&',k);
 end
 

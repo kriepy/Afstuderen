@@ -5,16 +5,21 @@
 clear all
 
 %% Initialize
-HN=5; % there are in total five houses
+HN=1; % there are in total five houses
 TS=48; % Amount of time slices
 coarse = 1; % The time is Coarse if this variable is 1, 0 otherwise
-V=6; %the amount of clusters
+V=8; %the amount of clusters
 %k=20; %aantal topics
 maxIter=100; %max aantal iteraties van LDA
 
 
 %% Laad de data
-load('OutcomeExp1Clus.mat')
+name = 'OutcomeExp1ClusV8.mat';
+try
+    load(name)
+catch
+    fprintf(1,'File not yet exists')
+end
 
 try
     %load the clustered Data
@@ -48,7 +53,9 @@ d=p(idxA);
 
 perCLUSm = [];
 perCLUSs = [];
+flap = 0;
 for k=10:5:100
+    flap=flap+1;
     fprintf(1,'\n -----------------------The %dth run started----------------\n',k );
     per =[];
     
@@ -62,10 +69,11 @@ for k=10:5:100
     
 	perCLUSm=[perCLUSm mean(per)];
     perCLUSs=[perCLUSs std(per)];
+    DataClus{HN}.Run{flap}.per=per;
 end
 DataClus{HN}.perCLUSm = perCLUSm;
 DataClus{HN}.perCLUSs = perCLUSs;
 
 
 
-save('OutcomeExp1Clus.mat','DataClus');
+save(name,'DataClus');

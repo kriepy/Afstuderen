@@ -3,7 +3,7 @@ function d=ClusterIt(House,HouseNr,TS,coarse,V)
 % CG is 1 if you want to add
 % This function translates the data from House so that it can be clustered and
 % then runs the clustered functions
-
+path='/home/kristin/UVA/Afstuderen/Afstuderen/Matlab/Data/DATAClustered/'
 
 DL=86400; % DayLength: amount of seconds on a day
 len=DL/TS;
@@ -74,7 +74,7 @@ for HN=1:5
     end
     House{HN}=H;
 end
-path='/home/kristin/UVA/Afstuderen/Afstuderen/Matlab/Data/DATAClustered/NEW/'
+
 pa=strcat([path,'Clustered',num2str(V),'TS',num2str(TS),'Coarse', num2str(coarse)]);
 save(pa,'House');
 

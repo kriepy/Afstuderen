@@ -5,7 +5,7 @@
 clear all
 
 %% Initialize
-HN=3; % there are in total five houses
+HN=5; % there are in total five houses
 TS=48; % Amount of time slices
 coarse = 1; % The time is Coarse if this variable is 1, 0 otherwise
 %V=6; %the amount of clusters
