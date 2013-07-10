@@ -5,8 +5,8 @@ clear all
 %% Initialize
 HN=1; % there are in total five houses
 TS=48; % Amount of time slices
-coarse = 1; % The time is Coarse if this variable is 1, 0 otherwise
-V=6; %the amount of clusters
+coarse = 0; % The time is Coarse if this variable is 1, 0 otherwise
+V=10; %the amount of clusters
 k=10; %aantal topics
 maxIter=100; %max aantal iteraties van LDA
 

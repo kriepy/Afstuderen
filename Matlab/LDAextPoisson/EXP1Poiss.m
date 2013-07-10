@@ -11,7 +11,7 @@ coarse=1;
 startValue=5;
 %% Laad de data
 name='OutExp1_2Pois.mat';
-HN =4;
+HN =1;
 try
     load(name);
     PerPoisM= DataPois{HN}.PerPoisM;

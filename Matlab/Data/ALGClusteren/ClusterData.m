@@ -1,36 +1,52 @@
-function H=ClusterData(dat,V,TC)
+function H=ClusterData(dat,V,TC,maxa)
 
 % houseNr
 % k is the amount of clusters for k-means
 % N is the amount of time slices on a day
 % TC if this value is 1 the time coarse grain is used
 % Should return the clusterd data in form d.cnt and d.id
-
+fprintf(1,'Starting the Clustering\n');
 Visu=0; %if visu 1 dan meteen clusters visualizeren
 % possible options for the case cs are: Data6, Data16, Grof6, Grof16
 %cs= 'Grof6';
 
 
 %N is the amount of timeslices
-N=size(dat{1},1);
+N=size(dat{1}.dat,1);
 len=1440/N;
+
+% if Norm=1 then the data will be normalized before it is clustered
+Norm=1;
+
+DA=[];
+if Norm
+    for ja = 1:length(dat)
+        dat{ja}.dat =   dat{ja}.dat./repmat(maxa,size(dat{ja}.dat,1),1);
+        
+        DA=[DA;dat{ja}.dat ];
+    end
+end
 
 
 %% create Dictionary
-if TC==1
+%if TC==1
     %the dimension of the dictionary is 6
     dic = createDic(dat);
     H.Dic=dic;
     %save(strcat([pathPlain,'\Dic',num2str(houseNr),'Clusters']),'H');
-else
+%else
     %the dimension of the dictionary becomes 5, we do not take the time
     %into account
+%end
+
+
+
+[idx, c]=kmeans(DA,V);
+
+for la=1:length(dat)
+    dat{la}.idx = idx(1:N);
+    idx = idx(N+1:end);
 end
-
-
-
-[idx, c]=kmeans(H.Dic,V);
-
 H.Clusters.idx=idx;
 H.Clusters.centroids=c;
 

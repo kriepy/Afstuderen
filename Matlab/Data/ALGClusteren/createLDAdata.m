@@ -12,9 +12,7 @@ for i=1:length(dat)
     p=zeros(N,V);
     
     for j=1:N
-        word=dat{i}.dat(j,:);
-        clus = H.Clusters.idx(find(ismember(H.Clusters.idx,word),1));
-        p(j,clus)=1;
+        p(j,dat{i}.idx(j))=1;
     end
     d{i}.dat=p;
 end

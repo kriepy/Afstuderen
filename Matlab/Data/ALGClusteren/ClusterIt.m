@@ -1,9 +1,11 @@
 function d=ClusterIt(House,HouseNr,TS,coarse,V)
 % TS is the amount of time slices
-% CG is 1 if you want to add
+% coarse is 1 if you want to add the coarse grain time.
 % This function translates the data from House so that it can be clustered and
-% then runs the clustered functions
-path='/home/kristin/UVA/Afstuderen/Afstuderen/Matlab/Data/DATAClustered/'
+% then runs the clustered functions for the given HouseNr
+%
+% The data that is created is used for all LDA models
+path='/home/kristin/UVA/Afstuderen/Afstuderen/Matlab/Data/DATAClustered/';
 
 DL=86400; % DayLength: amount of seconds on a day
 len=DL/TS;
@@ -12,7 +14,7 @@ len=DL/TS;
 % for each house
 for HN=1:5
     H=House{HN};
-    
+    maxa=zeros(1,6);
     for i=1:length(H.day)
         dag = H.day{i};
         ttemp = datevec(dag.date);
@@ -54,6 +56,8 @@ for HN=1:5
                     end
                 end
                  O(j,:)=[out ti];
+            else
+                O(j,:)=[out j];
             end
             
             
@@ -62,8 +66,14 @@ for HN=1:5
         end
         H.day{i}.PreClusteredData=O; % dit is geen nul maar een letter O
         PreClus{i}.dat=O;
+        tempMa = max(O,[],1);
+        for la = 1:length(tempMa)
+            if maxa(la)<tempMa(la)
+                maxa(la)=tempMa(la);
+            end
+        end
     end
-    p=ClusterData(PreClus,V,coarse);
+    p=ClusterData(PreClus,V,coarse,maxa);
     H.DicClusters=p.Dic;
     H.Clusters=p.Clusters;
     for i=1:length(H.day)
