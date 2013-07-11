@@ -40,8 +40,15 @@ end
 %end
 
 
+while ~exist('idx','var')
+    try
+    [idx, c]=kmeans(DA,V);
+    catch
+        fprintf(1,'k-means didnt work. We try again');
+    end
+end
+fprintf(1,'k-means worked!!');
 
-[idx, c]=kmeans(DA,V);
 
 for la=1:length(dat)
     dat{la}.idx = idx(1:N);

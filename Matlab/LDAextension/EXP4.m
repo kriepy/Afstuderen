@@ -17,7 +17,7 @@ coarse=1;
 startValue = 5;
 
 %% LOAD DATA
-HN=2; %moet voor alle huizen
+HN=3; %moet voor alle huizen
 name = 'OutcomeExp4_TEST.mat'
 
 try

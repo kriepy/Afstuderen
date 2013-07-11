@@ -73,19 +73,18 @@ In the work of Casale~\cite{Casale:2009} continuous data is modeled with a the t
 %--------------------------------DATADESCRIPTION--------------------------------------------
 \section{Data Description}
 \label{sec:DataDesc}
-In this section we describe in what kind of houses the data is gathered and what kind of persons live there. We describe the sensors that are used and give an impression of the data that is received from this sensors.
+In this section we describe in what kind of houses the data is gathered and what kind of persons live there. We describe the sensors that are used and give an impression of the data that is received from these sensors.
 \subsection{Homes and persons}
 In the homes of five different people sensors are installed. The floor-plan of these homes is for all residents the same and is shown in figure ...(hier zou ik graag een plaategrond van de woningen willen toevoegen als dat mogelijk is) There might be small differences of the locations of the sensors due to the personal arrangements of peoples stuff.
-The persons that live in the homes are people that need healthcare on a regular basis, but they are further able to live on their own. The amount of data gained differs but there is at least fifty days of data available for every person. 
+The persons that live in the homes are people that need healthcare on a regular basis, they are further able to live on their own. The amount of data gained differs but there is at least 63 days of data available for every house. 
 \subsection{Sensors}
-There are two different types of sensors installed in the homes, reed- and motion-sensors. The reed-sensors which are mostly installed at doors get the value 'one' if a door is opened and the value 'zero' if the door is closed again. The toilet flush has also a reed sensor. (A float sensor??)
-The motion-sensor are placed at different places in the homes, mostly against the walls. They have a range of ... meters. If a motion occurs in the region of a sensor the value of the sensor becomes 'one' and 'zero' again immediately. After that the sensor is set to mute for about 3 minutes (or is this 1 minute), which means that in this time there is no motion captured. This is done to avoid constantly firing of the sensor, which would lead to superfluously activity encounter.
-The sensors are listening continuously.
+There are two different types of sensors installed in the homes, reed- and motion-sensors. The reed-sensors which are mostly installed at doors get the value 'one' if a door is opened and the value 'zero' if the door is closed again. The toilet flush has a floating sensor. (A float sensor??)
+The motion-sensor are placed at different places in the homes, mostly against the walls. They have a range of ... meters. If a motion occurs in the region the sensor sends an impulse value, which means that the value becomes 'one' and immediately 'zero' again . After that the sensor is set to mute for about 3 minutes (or is this 1 minute), which means that in this time there is no motion captured. In this way constantly firing of the sensor will be avoided. The sensor system is active 24 hours. However failure can occur due to network problems, sensor failing or other unexpected problems.
 
 \subsection{Received Data}
-In figure ~\ref{fig:PlaineSensorData} an example of the received data is given. There are two hours of one day shown for one person. Several sensors that are located in the same room are manually grouped together in a field. The fields are $\{$'kitchen', 'living room', 'bathroom', 'bedroom', 'hallway'$\}$. They are marked in the figure with different colors.
+In figure \ref{fig:PlaineSensorData} the data stream of two different hours of one day is shown. The data belongs to one person. Several sensors that are located in the same room are manually grouped together in a field. The fields are $\{$'kitchen', 'living room', 'bathroom', 'bedroom', 'hallway'$\}$. They are marked in the figure with different colors.
 
-\begin{figure}[h!]
+\begin{figure}[h]
   \centering
   \begin{subfigure}[b]{0.45\textwidth}
     \centering
@@ -601,7 +600,7 @@ Kijken of ik hetzelfde voor k-means kan doen. De likelihood kan ik niet direct m
 
 - Poisson verdeling is meer logisch because of the way the data is used, with another representation of the data it might not that logical anymore to use.
 
-
+-smaller timeslices, means more overfitting.
 
 \appendix
 

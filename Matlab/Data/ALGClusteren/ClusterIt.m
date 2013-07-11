@@ -1,4 +1,4 @@
-function d=ClusterIt(House,HouseNr,TS,coarse,V)
+function H=ClusterIt(House,HouseNr,TS,coarse,V)
 % TS is the amount of time slices
 % coarse is 1 if you want to add the coarse grain time.
 % This function translates the data from House so that it can be clustered and
@@ -84,7 +84,7 @@ for HN=1:5
     end
     House{HN}=H;
 end
-
+H=House{HouseNr};
 pa=strcat([path,'Clustered',num2str(V),'TS',num2str(TS),'Coarse', num2str(coarse)]);
 save(pa,'House');
 

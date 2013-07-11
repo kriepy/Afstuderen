@@ -1,11 +1,11 @@
 clear all
 close all
 %initialize variables
-path='../DATAMain/plotSensors.mat';
-HN = 3; %this is HouseNr 251
-dag = 18; %this is which day we choose
-start = [15,0,0]; %defines the time from where to start to visualize
-timeSpan = 30; %defines how long the window is to show the data (given in minutes) 
+path='../DATAMain/NEW/plotSensors.mat';
+HN = 5; %this is HouseNr 251
+dag = 50; %this is which day we choose
+start = [7,0,0]; %defines the time from where to start to visualize
+timeSpan = 60; %defines how long the window is to show the data (given in minutes) 
 cmap=colormap(hsv(5));
 
 %Load
@@ -43,7 +43,7 @@ for i=1:siz
         hold on
 end
 % This is for setting the y-as and is always the same
-set(gca,'YLim',[1 33]);
+set(gca,'YLim',[1 34]);
 set(gca,'YTick',2.5:2:32.5);
 set(gca,'YTicklabel',SensNames);
 
