@@ -3,8 +3,8 @@ function VisuLDAMosttopics(most,d,beta,alpha,n)
 % and highlights the 5 most important topics in different colours
 % It runs the e step with calculated alpha and beta.
 % n:= the amount of days you want to plot
-close all
-
+%close all
+figure(2)
 emmax=100;
 [~,k]=size(alpha);
 cmap=colormap(hsv(most));
@@ -44,7 +44,7 @@ for i=1:n % for each day
     [N,~]=size(phi);
     for j=1:N %for each timeslice
         [~,ind]=max(phi(j,:)); 
-        figure(1)
+        figure(2)
         hold on
         no = 0;
         for ja=1:most
@@ -77,7 +77,7 @@ set(gca,'XTicklabel',TickLab);
 
 
 
-figure(2)
-VisuTopicsNew(alpha,beta,most)
+%figure(2)
+%VisuTopicsNew(alpha,beta,most)
 
 end

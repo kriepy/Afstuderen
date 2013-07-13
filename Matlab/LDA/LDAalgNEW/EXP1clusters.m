@@ -5,7 +5,7 @@
 clear all
 
 %% Initialize
-HN=2; % there are in total five houses
+HN=1; % there are in total five houses
 TS=48; % Amount of time slices
 coarse = 0; % The time is Coarse if this variable is 1, 0 otherwise
 V=6; %the amount of clusters
@@ -14,7 +14,7 @@ maxIter=100; %max aantal iteraties van LDA
 
 
 %% Laad de data
-name = 'OutcomeExp1_3ClusV6.mat';
+name = 'OutcomeExp1_4ClusV6.mat';
 try
     load(name)
 catch

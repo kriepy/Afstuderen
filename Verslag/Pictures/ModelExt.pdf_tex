@@ -49,7 +49,7 @@
   \global\let\svgscale\undefined%
   \makeatother%
   \begin{picture}(1,0.60284001)%
-    \put(0,0){\includegraphics[width=\unitlength]{ModelExt.pdf}}%
+    \put(0,0){\includegraphics[width=\unitlength]{Pictures/ModelExt.pdf}}%
     \put(0.32286618,0.58328928){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.16723938\unitlength}\centering $\mu$\end{minipage}}}%
     \put(0.50503124,0.57960124){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.18507824\unitlength}\centering $\sigma$\end{minipage}}}%
     \put(0.74021891,0.13941055){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.12710192\unitlength}\centering o\end{minipage}}}%

@@ -1,10 +1,10 @@
 clear all
 close all
 %initialize variables
-path='../DATAMain/NEW/plotSensors.mat';
-HN = 5; %this is HouseNr 251
-dag = 50; %this is which day we choose
-start = [7,0,0]; %defines the time from where to start to visualize
+path='../DATAMain/plotSensors.mat';
+HN = 3; %this is HouseNr 251
+dag = 34; %this is which day we choose
+start = [6,0,0]; %defines the time from where to start to visualize
 timeSpan = 60; %defines how long the window is to show the data (given in minutes) 
 cmap=colormap(hsv(5));
 
@@ -34,12 +34,16 @@ for i=1:siz
             clear b;
             
             b=a(:,idx);
+            b=[[beginStamp;0],b,[endStamp;0]]
             if (~isempty(b))
                 plot(b(1,:),b(2,:)+2*i,'Color',cmap(House.Sensors{i}.fieldNr,:))
                 hold on
             end
+        else
+            % line tekenen
+            plot([beginStamp endStamp],[2*i 2*i],'Color',cmap(House.Sensors{i}.fieldNr,:))
         end
-        plot([beginStamp endStamp],[2*i 2*i],'Color',cmap(House.Sensors{i}.fieldNr,:))
+        %plot([beginStamp endStamp],[2*i 2*i],'Color',cmap(House.Sensors{i}.fieldNr,:))
         hold on
 end
 % This is for setting the y-as and is always the same

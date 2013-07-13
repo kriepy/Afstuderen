@@ -14,7 +14,11 @@ len=DL/TS;
 % for each house
 for HN=1:5
     H=House{HN};
-    maxa=zeros(1,6);
+    if coarse==0
+        maxa=zeros(1,5);
+    else
+        maxa=zeros(1,6);
+    end
     for i=1:length(H.day)
         dag = H.day{i};
         ttemp = datevec(dag.date);
@@ -23,7 +27,11 @@ for HN=1:5
         dat=dag.data;
         [a,~]=size(dat);
         p=1;
-        O=zeros(TS,6);
+        if coarse==0
+            O=zeros(TS,5);
+        else
+            O=zeros(TS,6);
+        end
         for j=1:TS
             temp=[];
             go=1;
@@ -48,7 +56,7 @@ for HN=1:5
             %hier wordt de tijd aan de data toegevoegd
             % begin om 3 uur in stappen van 5
             % COARSE GRAIN TIME
-            if coarse
+            if coarse==1 %coarse grain time
                 for c=1:5
                     if (threeOclock+j*len)<(threeOclock+5*c*3600)
                         ti = c;
@@ -56,8 +64,10 @@ for HN=1:5
                     end
                 end
                  O(j,:)=[out ti];
-            else
+            elseif coarse ==2 %amount timeslices time
                 O(j,:)=[out j];
+            else % no time at all
+                O(j,:)=out;
             end
             
             

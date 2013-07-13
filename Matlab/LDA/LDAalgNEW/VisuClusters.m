@@ -23,7 +23,11 @@ for s=1:V
         end
     end
     subplot(V,4,4*s)
-    bar(Clus(s,6),'FaceColor',cmap(s,:));
+    try
+        bar(Clus(s,6),'FaceColor',cmap(s,:));
+    catch
+        fprintf(1,'Cannot show the time')
+    end
     axis([0.1 1.9 0 1])
     if s==V
         ax=axis;

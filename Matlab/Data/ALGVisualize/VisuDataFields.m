@@ -35,11 +35,11 @@ for i=1:siz
             
             b=a(:,idx);
             b=[[beginStamp;0],b,[endStamp;0]]
-            if (~isempty(b))
+            %if (~isempty(b))
                 plot(b(1,:),b(2,:)+2*i)
                 % ,'Color',cmap(House.Sensors{i}.fieldNr,:)
                 hold on
-            end
+            %end
         end
         %plot([beginStamp endStamp],[2*i 2*i])
         % ,'Color',cmap(House.Sensors{i}.fieldNr,:)

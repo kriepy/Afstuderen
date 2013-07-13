@@ -1,9 +1,9 @@
 load SEED
 close all
 %% INITIALIZE
-k=5;
+k=20;
 maxIter=50;
-HN=1; % there are in total five houses
+HN=2; % there are in total five houses
 TS=48; % Amount of time slices
 V=6;
 coarse=1;
@@ -22,14 +22,14 @@ catch
     fprintf(1,'Starting to make the Clusters ');
     load ../Data/DATAMain/sepDays.mat
     addpath ../Data/ALGClusteren
-    d=ClusterIt(House,HN,TS,coarse,V);
+    H=ClusterIt(House,HN,TS,coarse,V);
 end
 
 %% Change the input data for LDA into the good fomat for LDAext
 for i=1:length(H.day)
     % mat is a N by V matri
-    p{i}.mat=H.day{i}.PreClusteredData(:,1:end-1);
-   % p{i}.mat(:,end)=[1:TS]';
+    p{i}.mat=H.day{i}.PreClusteredData(:,1:end);
+    p{i}.mat(:,end)=[1:TS]';
 end
 
 

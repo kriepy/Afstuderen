@@ -3,8 +3,8 @@ function VisuLDAbasic(d,beta,alpha,n,V)
 %hiervoor moet de data worden aangepast, ik moet dus ook onthouden voor
 %elke dag en elke timeslice wat de bijbehorende cluster is. Misschien dat
 %ook de vbem functie moet worden aangepast
-close all
-h = figure(1)
+%close all
+%figure(1)
 emmax=100;
 [~,k]=size(alpha);
 cmap=colormap(hsv(k));
@@ -17,12 +17,11 @@ for i=1:n
         [~,ind]=max(phi(j,:));
         
         
-        figure(1)
         hold on
         fill(x,y,cmap(ind,:));
         x=x+1;
     end
     y=y+1;
 end
-name = strcat(['pics/ClusterAantal', num2str(V),'.png']);
-saveas(figure(1),name); %name is a string
+%name = strcat(['pics/ClusterAantal', num2str(V),'.png']);
+%saveas(figure(1),name); %name is a string
