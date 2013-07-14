@@ -557,6 +557,7 @@ And after that we make a small test according to the feature representation.
 To Visualize the topics we give an impression how the topics are distributed over the day. We show 10 different days of one house and mark every time-slice with a color that represents the assigned topic to that time-slice. To find the topic distribution we run the LDA algorithm on the whole data set which leads to the model parameters. With these parameters we then run the E-step again on the data set of the 10 days that are visualized. In this way we find the topic distribution on every time-slice.\\
 In the following figures we used $N=96$ time-slices for a day. Every observation that is used has 6 dimension. The first five dimensions are the sensor information of the fields $\{$'kitchen', 'living room', 'bathroom', 'bedroom', 'hallway'$\}$. The sixth dimension belongs to the time, where we divided a day into the five time intervals $\{ 3am - 8am, 8am - 1pm, 1pm - 18pm, 18pm - 23pm, 23pm - 3am  \}$.
 
+\paragraph{BOW model with and without pre-clustering}
 We visualize the topic distribution on the first 10 days and initialize the LDA model with $k=5$ topics. In figure \ref{fig:bow/kMeans} we show the outcome of the LDA model with data in the form of the Bag-of-Word model and the pre-clustered data with k-means algorithm. Both algorithms are not able to find 5 distinctive topics in the 10 days.\\
 
 \begin{figure}[h!]
@@ -574,7 +575,9 @@ We visualize the topic distribution on the first 10 days and initialize the LDA 
  \caption{}
  \label{fig:bow/kMeans}
 \end{figure}
-In figure \ref{fig:Pois96} the outcome of the LDA-Poisson model is shown, with on the right-hand side of the figure the topic description of the five topics that are found. The colors of the topics in the two images are equal to each other, so every red time slice on the left image is the topic that is shown with red in the right image. The six dimension of the observations are shown in this figure (\ref{fig:PoisTopVisu96}) on the x-axis. On the y-axis of every subfigure the $\lambda$-value of the Poisson distribution is shown. You can see (figure \ref{fig:PoisDay96}) that the LDA-Poisson model gives a relative high priority on the time value, because every day is separated into three timezones (yellow,green,red) and only the two other topics (blue, purple) are generated with respect of the sensor values of the five fields.
+
+\paragraph{LDA-Poisson 96 Time-slices and 5 topics}
+In figure \ref{fig:Pois96} the outcome of the LDA-Poisson model is shown with $N=96$ times-slices and $k=5$ topics. On the right-hand side of the figure the topic description of the five topics that are found. The colors of the topics in the two images are equal to each other, so every red time slice on the left image is the topic that is shown with red in the right image. The six dimension of the observations are shown in this figure (\ref{fig:PoisTopVisu96}) on the x-axis. On the y-axis of every subfigure the $\lambda$-value of the Poisson distribution is shown. You can see (figure \ref{fig:PoisDay96}) that the LDA-Poisson model gives a relative high priority on the time value, because every day is separated into three timezones (yellow,green,red) and only the two other topics (blue, purple) are generated with respect of the sensor values of the five fields.
 
 \begin{figure}[h!]
  \centering
@@ -594,7 +597,9 @@ In figure \ref{fig:Pois96} the outcome of the LDA-Poisson model is shown, with o
  \label{fig:Pois96}
 \end{figure}
 
-Figure \ref{fig:Gaus96} shows the outcome of the LDA-Gaussian model. In the right figure (\ref{fig:GausTopVisu96}) on the x-axis again the 6 dimensions of the observations are shown. On the y-axis the mean value $\mu$ of the Gaussian distribution is shown and in the barchart the standard deviation $\sigma$ is given with a vertical black line. You can see that the red topic here has a high $\sigma$-value and captures all time-slice where no sensor data is measured. The purple topic seems to represent the 'Going to the toilet at night' topic. Here the mean value of the time is low and only a few sensor measurements are captured. You can see that this model captures more sophisticated topics, that represent more meaningful results.
+
+\paragraph{LDA-Gaussian 96 Time-slices and 5 Topics}
+Figure \ref{fig:Gaus96} shows the outcome of the LDA-Gaussian model, $N=96$ and $k=5$. In the right figure (\ref{fig:GausTopVisu96}) on the x-axis again the 6 dimensions of the observations are shown. On the y-axis the mean value $\mu$ of the Gaussian distribution is shown and in the barchart the standard deviation $\sigma$ is given with a vertical black line. You can see that the red topic here has a high $\sigma$-value and captures all time-slice where no sensor data is measured. The purple topic seems to represent the 'Going to the toilet at night' topic. Here the mean value of the time is low and only a few sensor measurements are captured. You can see that this model captures more sophisticated topics, that represent more meaningful results.
 
 \begin{figure}[h!]
  \centering
@@ -613,7 +618,8 @@ Figure \ref{fig:Gaus96} shows the outcome of the LDA-Gaussian model. In the righ
  \label{fig:Gaus96}
 \end{figure}
 
-In figure \ref{fig:Pois48} and \ref{fig:Gaus48} we set the amount of time-slices to $N=48$ and the amount of topics to $k=20$. The results for LDA-Gaussian and LDA-Poisson are both shown. We visualize the 10 most important topic, which are the topics with the highest $\alpha$-values. Time-slices that belong to a different topic than these 10 are marked with the color gray in the left images (\ref{fig:PoisTopVisu48}, \ref{fig:GausTopVisu48}).
+\paragraph{LDA-Poisson 48 Time-Slices and 20 Topics}
+In figure \ref{fig:Pois48} the outcome of the LDA-Poisson model is shown, where the amount of time-slices that is used is $N=48$ and the amount of topics is $k=20$. Again we have 6 dimension in the observations, but now we take a finer grid for the time dimension, which contains now $48$ time intervals, for every time-slice on a day one. We visualize the 10 most important topic, which are the topics with the highest $\alpha$-values. Time-slices that belong to a different topic than these 10 are marked with the color gray in the left images (\ref{fig:PoisTopVisu48}).
 For the Bag-of-Word and the k-means model no reasonable results are found for these amount of time-slices and topics.	
 \begin{figure}[h!]
  \centering
@@ -631,6 +637,9 @@ For the Bag-of-Word and the k-means model no reasonable results are found for th
  \caption{Topic distribution per day and the Topic visualization for LDA-Gaussian}
  \label{fig:Pois48}
 \end{figure}
+
+\paragraph{LDA-Gaussian 48 Time-Slices and 20 topics}
+Figure \ref{fig:Gaus48} show the outcomes of the LDA-Gaussian model with $N=48$, $k=20$. Again only the 10 topics with the highest $\alpha$-value are shown.
 
 \begin{figure}[h!]
  \centering
@@ -677,26 +686,15 @@ The data sets vary in length, but as you can see in the figure, the amount of da
 
 \paragraph{Different length of time-slices}
 
-In figure ... we give the perplexity for different length of time-slices. With more time-slices the perplexity becomes lower for the hold-out set.
+In figure \ref{fig:PerplTS} we give the perplexity for different length of time-slices for the 5 Houses. We take a again the mean over 10 runs. We took for every house the same amount of days to train and test the data. We can see that with more time-slices the perplexity becomes lower for the hold-out set. For house $H2$ and $H4$ the perplexity is way better for a small amount of time-slices. The perplexities for these two houses drop much faster if the amount of time-slices increases.
 
-In figure ~\ref{fig:Perplexity} the Perplexity for the Hold-out-set is shown for the data gained in one House. We take the mean over ten runs. 10\% of the data is used as a hold-out-set. We initialize the EM-algorithm with 5 random days of the training data.
+\begin{figure}
+ \centering
+ \includegraphics[width = 0.7\textwidth]{Pictures/PerplTS.png}
+ \caption{Perplexity (x-axis) for the hold-out-set for different amount of time-slices (y-axis)}
+ \label{fig:PerplTS}
+\end{figure}
 
-% \begin{figure}
-%  \centering
-%  \includegraphics[width = 0.7\textwidth]{Pictures/OutcomeExp4.png}
-%  \caption{Perplexity (x-axis) for the hold-out-set for different amount of topics (y-axis)}
-%  \label{fig:Perplexity}
-% \end{figure}
-
-NOTE:
-Kijken of ik hetzelfde voor k-means kan doen. De likelihood kan ik niet direct met elkaar vergelijken, maar wel met de BOW model. Ik moet het ook nog even voor de andere huizen runnen.
-
-\subsection{Differente sizes of timeslices}
-
-% \subsubsection{Variation of initialization}
-% 
-% worden de zelfde topics altijd weer gevonden of varieert dat heel erg. (hoe kan ik dat testen). Als ik naar de topics kijk in de visualisatie, dan kan ik sommige topics wel terug vinden als ik met verschillende initialisatie LDA-Gaussian run.
-% 
 
 \pagebreak
  
@@ -707,14 +705,17 @@ Kijken of ik hetzelfde voor k-means kan doen. De likelihood kan ik niet direct m
 \subsection{Discussion}
 - the Bow does not work well, why? Describe this here!
 
-- gaussian mixture model is a more logical choice, because you can take correlations between the fields into account. But to train this model you need a lot of data.
+- gaussian mixture model is a suitable model and it works. We might want to extend this version so that the covariance between the dimensions is well captured. But we must notice that this version need a lot of training data to train correctly.
 
-- Poisson verdeling is meer logisch because of the way the data is used, with another representation of the data it might not that logical anymore to use.
+In the way we represent the features, counting the amount of sensor activations in a time interval, the most logical distribution to use is the Poisson distribution. It becomes more unlikely if the amount of sensor activities has a high value. That is maybe why the Poisson distribution works also better with a small size of time-slices. Oeh that would be awesome, if we could show that.
+
+
+- Poisson verdeling is meer logisch because of the way the data is used, with another representation of the data it might not that logical anymore to use. Only the time dimension is not so good modelable with this distribution. It might be a good idea to combine the two models together. So 
 
 -smaller timeslices, means more overfitting.
 
 \subsection{Conclusion}
-We give a novel algorithm how to make use of topic model for sensor data, but be able to model the multipl dimensions together.
+We give two variations of a novel algorithm how to make use of topic model for sensor data, but be able to model the multipl dimensions together.
 It is totally possible to find topics, given them a name is another difficulty
 
 \appendix

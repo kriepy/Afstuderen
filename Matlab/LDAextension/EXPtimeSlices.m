@@ -18,7 +18,7 @@ startValue = 5;
 
 %% LOAD DATA
 HN=5; %moet voor alle huizen
-name = 'OutcomeExpTimeSlices.mat'
+name = 'OutcomeExpTimeSlices2.mat'
 flap=0;
 for ts=1:5
 TS=2^(ts-1)*6;
@@ -48,11 +48,12 @@ catch
 end
 
 %% Change Data into good format
-for i=1:length(H.day)
+for i=1:63
     % mat is a N by V matri
     p{i}.mat=H.day{i}.PreClusteredData;
     p{i}.mat(:,end)=[1:TS]';
 end
+
 
 %getting the hold out set 10%
 
