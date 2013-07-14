@@ -17,7 +17,7 @@ coarse=1;
 startValue = 5;
 
 %% LOAD DATA
-HN=4; %moet voor alle huizen
+HN=5; %moet voor alle huizen
 name = 'OutcomeExpTimeSlices.mat'
 flap=0;
 for ts=1:5

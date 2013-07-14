@@ -19,7 +19,7 @@ for s=1:show
     for d=1:D-1
         bar(lam(1:5,s),'FaceColor',cmap(s,:));
         hold on
-        axis([0.1 5.9 -5 10])
+        axis([0.1 5.9 0 10])
         if s==show
             ax=axis;
             axis(axis); % Set the axis limit modes (e.g. XLimMode) to manual

@@ -1,12 +1,12 @@
-function VisuLDAMosttopics(most,d,beta,alpha,n)
+function VisuLDAMosttopics(most,d,beta,alpha0,n)
 % this function visualizes the first n days of the corpus.
 % and highlights the 5 most important topics in different colours
 % It runs the e step with calculated alpha and beta.
 % n:= the amount of days you want to plot
 %close all
-figure(2)
+figure(1)
 emmax=100;
-[~,k]=size(alpha);
+[~,k]=size(alpha0);
 cmap=colormap(hsv(most));
 bm=round(beta.mu)';
 
@@ -26,7 +26,7 @@ end
 bv=round(beta.sigma);
 
 % here the labels are gained from the alpha
-[aa,idx]=sort(alpha,'descend');
+[aa,idx]=sort(alpha0,'descend');
 for i=1:most
     stringa{i} = strcat(['Topic ',num2str(i)]);
 end
@@ -38,13 +38,12 @@ title('bathroom, kitchen, bedroom, living, hallway')
 
 y=[0 0 1 1];
 for i=1:n % for each day
-    [alpha,phi]=vbem(d{i},beta,alpha,emmax);
+    [alpha,phi]=vbem(d{i},beta,alpha0,emmax);
     d{i}.phi=phi;
     x=[0 0.5 0.5 0];
     [N,~]=size(phi);
     for j=1:N %for each timeslice
         [~,ind]=max(phi(j,:)); 
-        figure(2)
         hold on
         no = 0;
         for ja=1:most
@@ -77,7 +76,7 @@ set(gca,'XTicklabel',TickLab);
 
 
 
-%figure(2)
-%VisuTopicsNew(alpha,beta,most)
+figure(2)
+VisuTopicsNew(alpha0,beta,most)
 
 end

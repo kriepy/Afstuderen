@@ -1,4 +1,4 @@
-function VisuLDAPoisMost(most,d,beta,alpha,n)
+function VisuLDAPoisMost(most,d,beta,alpha0,n)
 % this function visualizes the first n days of the corpus.
 % and highlights the 5 most important topics in different colours
 % It runs the e step with calculated alpha and beta.
@@ -6,13 +6,13 @@ function VisuLDAPoisMost(most,d,beta,alpha,n)
 close all
 
 emmax=100;
-[~,k]=size(alpha);
+[~,k]=size(alpha0);
 cmap=colormap(hsv(most));
 %cmap = cmap(end:-1:1,:);
 
 % here the labels are gained from the alpha
-[aa,idx]=sort(alpha,'descend');
-for i=1:10
+[aa,idx]=sort(alpha0,'descend');
+for i=1:most
     stringa{i} = strcat(['Topic ',num2str(i)]);
 end
 
@@ -23,7 +23,7 @@ title('bathroom, kitchen, bedroom, living, hallway')
 
 y=[0 0 1 1];
 for i=1:n % for each day
-    [alpha,phi]=vbem(d{i},beta,alpha,emmax);
+    [alpha,phi]=vbem(d{i},beta,alpha0,emmax);
     d{i}.phi=phi;
     x=[0 0.5 0.5 0];
     [N,~]=size(phi);
@@ -42,7 +42,7 @@ for i=1:n % for each day
         if no
             fill(x,y,cmap(no,:));
         else
-            fill(x,y,[0.2,0.2,0.2]);
+            fill(x,y,[0.5,0.5,0.5]);
         end
         x=x+24/N;
     end
@@ -63,6 +63,6 @@ set(gca,'XTicklabel',TickLab);
 
 
 figure(2)
-VisuTopicsPois(alpha,beta,most)
+VisuTopicsPois(alpha0,beta,most)
 
 end

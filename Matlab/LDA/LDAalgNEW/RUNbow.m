@@ -4,12 +4,12 @@ clear all
 
 
 %% Initialize
-HN=1; % there are in total five houses
-TS=48; % Amount of time slices
+HN=2; % there are in total five houses
+TS=96; % Amount of time slices
 coarse = 1; % The time is Coarse if this variable is 1, 0 otherwise
 V=6; %the amount of clusters
-k=20; %aantal topics
-maxIter=100; %max aantal iteraties van LDA
+k=5; %aantal topics
+maxIter=10; %max aantal iteraties van LDA
 
 %% Laad de data
 try
@@ -25,13 +25,20 @@ catch
     d=ClusterIt(House,HN,TS,coarse,V);
 end
 
+
+%% Create the dictionary
+Dic=createDic(H);
+
 %% Change the input data for LDA into the good fomat
 for i=1:length(H.day)
     % mat is a N by V matrix
-    mat = zeros(size(H.day{1}.PreClusteredData,1),size(H.DicClusters,1));
+    mat = zeros(size(H.day{1}.PreClusteredData,1),size(Dic,1));
     for j=1:size(mat,1)
+        if j==39
+            yes=1;
+        end
         word=H.day{i}.PreClusteredData(j,:);
-        wo = find(ismember(H.DicClusters,word),1);
+        wo = find(ismember(Dic,word,'rows'),1);
         mat(j,wo)=1;
     end
     p{i}.mat=sparse(mat);

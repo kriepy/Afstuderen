@@ -67,8 +67,8 @@ for j = 1:emmax % iterating until convergence
    
 
 
-  if (j > 1) && converged(ppl,pppl,1.0e-4)
-    if (j < 5)
+  if (j > 1) && converged(ppl,pppl,1.0e-3)
+    if (j < 3)
       fprintf(1,'\n Try again! \n');
       [alpha,beta] = ldaBasic(d,k,emmax,demmax); % try again!
       return

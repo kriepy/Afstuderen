@@ -1,11 +1,12 @@
 close all
+clear all
 %% INITIALIZE
 k=20;
 maxIter=50;
-HN=1; % there are in total five houses
+HN=5; % there are in total five houses
 TS=48; % Amount of time slices
 V=6;
-coarse=1;
+coarse=2;
 
 %% LOAD DATA
 % addpath ../Data/Old/ALGtranExtData
