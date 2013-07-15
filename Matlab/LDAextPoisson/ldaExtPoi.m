@@ -56,7 +56,7 @@ for j = 1:emmax
   PoiDem=zeros(1,k);
   for i = 1:n
    
-    [gamma,q] = vbem(d{i},lam,alpha,demmax); %q:=phi E-STEP
+    [gamma,q] = vbemPoi(d{i},lam,alpha,demmax); %q:=phi E-STEP
    
     gammas(i,:) = gamma; % foreach document a different gamma
     d{i}.phi=q;
@@ -91,7 +91,7 @@ for j = 1:emmax
   AA=[AA;alpha];
   
   % converge?
-   [ppl,l1,l2,l3,l4,l5] = lda_likeli(d, alpha, lam ,gammas);
+   [ppl,l1,l2,l3,l4,l5] = lda_likeliPoi(d, alpha, lam ,gammas);
    %ppl = lda_lik(d,beta,gammas);
    L1=[L1 l1];
    L2=[L2 l2];

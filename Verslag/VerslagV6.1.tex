@@ -18,8 +18,12 @@
 \pagebreak
 
 \begin{abstract}
-The topic model 'Latent Dirichlet Allocation' is applied to real sensor data, that is gained in the homes of elderly people. Different approaches of the models are used to fit the data, including a new developed model. This model encloses a Gaussian Mixture Model into the LDA model, so that the topics are modeled with a Gaussian Distribution. The model parameters are determined with an EM-algorithm.
-The goal of this algorithm is to find topics that describe the data in a way, so that it is easily interpretable and usable for different kinds of machine learning techniques that can predict different behaviors.
+In this thesis two novel variations of the Latent Dirichlet Allocation (LDA) model are presented. The models give the opportunity to detect pattern in multi-dimensional data in an unsupervised manner. LDA-Gaussian is a combination of a Gaussian Mixture Model and a LDA model. Here the multinomial distribution of the topics, that is normally used in the LDA model, is replaced by a set of Gaussian Distributions. In this way similar looking sensor data is automatically grouped together and captured in the same topic.
+LDA-Poisson, the second variation of the model, takes a set of Poisson Distribution for the topic descriptions. This distribution makes it possible to handle discrete multi-dimensional data. The parameters of both models are determined with an EM-algorithm.
+Both models are applied to real sensor data, which is gained in the homes of elderly people.
+
+
+% The goal of this algorithm is to find topics that describe the data in a way, so that it is easily interpretable and usable for different kinds of machine learning techniques that can predict different behaviors.
 \end{abstract}
 
 
@@ -50,7 +54,7 @@ In the second part of the thesis we use a genetic algorithm to find the best rep
 Earlier we described the part of discretization the data in some way. Choosing the correct length of a time-interval, in which the sensor activities are counted, might be hard. There are also plenty of other variables to choose, that lead to a different representation of the data. For example we can choose to group all sensors together that are in the same room of the house. But we cannot be sure that this leads to a better representation of the data. Further there are different kind of sensors placed in the houses and we might want to distinguish between these sensors, so that a different weight is given while counting an activity. For example an activity at a door sensor might give more information of a persons behavior then a motion sensor, which is triggered more often also by small, not that important movements. It might also a good idea to look at the transition of the observations, so given an observation, what are the observations before and after this one.\\
 So the representation of the data depends from a lot of different variables. This variables are optimized with a genetic algorithm. The log-likelihood, from the previously derived topic models, is used as the fitness function of the genetic algorithm.\\
 
-In the next chapter of this thesis we give an overview of related approaches. In section \ref{sec:DataDesc} we describe the data that we use in more detail. This is followed by section \ref{sec:TopicModels} which describes the two different ways of the usage of Topic Models with our data. In section \ref{sec:features} we describe the different ways of feature representation of our data and also show how the genetic algorithm is used. The section \ref{sec:Experiments} we describe the different experiments that we perfomed. We finalize the thesis with the section \ref{sec:DisCon}.
+In the next chapter of this thesis we give an overview of related approaches. In section \ref{sec:DataDesc} we describe the data that we use in more detail. This is followed by section \ref{sec:TopicModels} which describes the two different ways of the usage of Topic Models with our data. In section \ref{sec:features} we describe the different ways of feature representation of our data. The section \ref{sec:Experiments} we describe the different experiments that we perfomed. In section \ref{sec:Disc} we discuss our outcomes and finalize the report with the Conclusion in section \ref{sec:Conc}.
 
 
 %  Instead of a bag-of-word model that describes our data, every observation is model with a Gaussian Distribution in every dimension.
@@ -65,17 +69,18 @@ In the next chapter of this thesis we give an overview of related approaches. In
 \pagebreak
 
 \section{Related Work}
-In this section we give an overview of simialar works. That are related in the type of data that they use and the model that they use.
-Focusing on the model that is used in the similar way and on the data that is used.\\
+In this section an overview of related work is given. The focus is put on work that uses a similar approach but also work that uses similar data.\\
 \\
-In the work of Casale \cite{Casale:2009} continuous data is modeled with a the topic model LDA. The words for the topic models are generated by clustering the data. Two different cluster methods are used, K-means and mean-shift. This approach is highly related with our work. Why? BOW model cannot be applied to the data. The data that they use is from wearable sensors and they evaluated the raw accelerometer data.\\
+In the work of Casale \cite{Casale:2009} continuous data is modeled with the topic model LDA. They have sensor data available gathered from wearable sensors. The words for the topic models are generated through clustering the data beforehand. Two different cluster methods are used, K-means and mean-shift. They show that applying topic models to sensor data is possible.\\
 \\
-Castanedo et al \cite{EXSY:EXSY12033} uses also a LDA model to learn behavior patterns of sensor data that is gained in an office environment. They apply the BOW model to the data. They have a lot of data available.\\
+Castanedo et al \cite{EXSY:EXSY12033} apply a LDA model to learn behavior patterns of sensor data that is gained in an office environment. They apply the Bag-of-word model to the data. A lot of data is available.\\
 \\
-Similar data and model is used in the work of \cite{journals/percom/ChikhaouiWP12}. They have data that is gained of sensors in a home enivironment. The difference is that they have a more variaty of sensors at more places. They also use the LDA model and compare it to other models as Hidden markov models and Conditional Random fields. The difference seams that they use annotated data. How do they use that in LDA?
-They use an appriori algorithm to be able to make use of the LDA model and then developed a new algorithm which can handle the annotations. Ik heb geen idee hoe ze dat doen.\\
+Similar data and model is used in the work of \cite{journals/percom/ChikhaouiWP12}. They have data that is gained of sensors in a home environment. The data contains a brought variety of sensors, that are placed at different locations and objects. They also use the LDA model and compare it to other models as Hidden Markov Models and Conditional Random Fields. The available data is annotated which makes it possible to evaluate the topic model and compare it to other models.\\
 \\
-In the work of \cite{} they also use wearable sensors and use the LDA model with the BOW approach. They annotate the data to check if the topic activitions that are found with the model are correct.
+In the work of \cite{Huynh:2008:DAP:1409635.1409638} also wearable sensors are used to create the data. The LDA model with a Bag-of-words approach is applied and compared with the annotation of the data. It is checked if the topics that are found start end stop at the same time that an activity is annotated.\\
+\\
+Tapia et al. \cite{Tapia04activityrecognition} uses similar data. A Baysian Network is applied to the annotated data.
+
 
 
 
@@ -124,7 +129,7 @@ In the figure you can see the different type of data that is generated by the di
 %-----------------------------------TOPICMODEL----------------------------------------------
 \section{Topic Models}
 \label{sec:TopicModels}
-In the introduction of this section we describe the general idea of topic models followed by a section that describes how this kind of models can be used on the sensor data that we have. After that we introduce the extension of the LDA model which combines the clustering and topic estimation in one algorithm.
+In the introduction of this section we describe the general idea of topic models followed by a section that describes how this kind of models can be used on the sensor data that we have. After that we introduce the extension of the LDA model which combines the clustering and topic estimation in one algorithm. And after that LDA-Poisson model is described.
 
 \subsection{Introduction to Topic Models}
 Topic models are often used in the field of document classification. Given a set of documents (corpus) it is assumed that every document belongs to one or more topic(s). So for example a news article may belong for some percentage, let us say 30 \%,  to the topic 'Economy' and for 70 \%  to the topic 'Politics'. Another document of the same Corpus may belong to the topic 'Economy' with 50 \%, 'Politics' with 30 \% and 'Global Warming' with 20 \%. There might be a lot of different topics and the topics can have different level of details. 
@@ -205,7 +210,7 @@ If the Bag-of-Words model will be applied to the data, a dictionary of all uniqu
 
 To make sure that similar observations will be grouped together and will appear in the same topic, we can apply the k-means algorithm to find clusters in the data. The centroids of the clusters then function as 'words' and can be used in the same way as text data. So if we apply LDA to the clustered data some clusters may fall into the same topic. This is shown in figure ~\ref{fig:FSk-means}.\\
 The outcome of the LDA model does strongly depend on the outcome of the apriori used cluster algorithm. The clusters that are found with k-means are maybe not a good representation of the data. All clusters may have the same amount of influence on the LDA model, which might not be the correct way to describe the data. The Gaussian Mixture model might give a better description of the clusters. Combining the part of clustering directly into the topic model will avoid the apriori clustering and the clusters are then formed due to the topics, which will give a better globalization of the data. In figure \ref{fig:GMM+LDA} we show how the combination of the part of clustering into the Topic Model might improve the Gaussian Mixture Model.\\
-Arcording to the feature representation, which in our case is a discrete derviation of the sensor data and which counts the amount of sensor activities in a dimension, a Poison distribution to model the topic distributions is more convenient.
+According to the feature representation, which in our case is a discrete derivation of the sensor data, a Poison distribution might be a good choice to model the topic distributions. The Poisson distribution can be used instead of the Gaussian distribution.
 
 
 
@@ -270,21 +275,21 @@ Arcording to the feature representation, which in our case is a discrete derviat
 % With the assumption that the data that we got from the sensor system has the same structure than the data created with the generative process we can find the model parameters $\alpha$ and $\beta$ for LDA with the EM-algorithme described in \cite{blei2003latent}.
 
 \subsection{LDA-Gaussian Model}
-In this section we explain how the part of clustering is combined within the LDA model itself. Instead of the k-means clusters we use a Gaussian Distribution to model every dimension within the features.
+In this section we explain how the part of clustering is combined within the LDA model itself. Instead of the k-means clusters we use a Gaussian distribution to model every dimension within the features.
 
 
 \subsubsection{Motivation and Assumptions of the Model}
-  
-In the previous section we clustered the data first with k-means and then used the LDA model to determine the topics of the model. This approach has some drawbacks. First of all the clusters that are found with k-means have a hard separation lines between the clusters. No quality measurement on the clusters is given and every point that falls in the cluster belongs to the cluster with the same probability, no matter how far it is away from the mean. Also every cluster has the same weight so there is no distinction between the clusters.
+ 
+Using the cluster algorithm k-mean in advance has some disadvantages. First of all we need to choose the amount of clusters. This is not always that easy and then it is still not assured that the best clusters are found. Every cluster also has a strict separation line, which does not give any degradation if a value is far away from the mean of the cluster. There is no quality measurement of the clusters given. So every cluster is even probable to occur in the topic model, which is not always desirable.
 
-With a Gaussian Mixture Model we might be able to distinguish between more or less important clusters. But we might want to let the topic model decide which topics have more influence and which not according to the data.\\
-That is why we combined the clustering part and the topic estimation into one step. Instead of a multinomial distribution over the bag-of-words model of the observations given a topic, we model a Gaussian distribution over every dimension of the observations. In this way similar observation can be captured in the model itself and are not generalized in a cluster.\\
-The difference is that instead of a large, fixed set of unique observations (Dictionary), with a multinomial distribution, instead we take a Gaussian distribution over every dimension of the observations. In this way smoothing is not necessary, because unseen observations will be handled properly.
-In the next sections we describe the model in more detail. We first give an overview of the generative process. Then we explain the variational inference that is necessary to make the parameter estimation possible. And finaly explain the EM-algorithm that determines the parameters.
+With a Gaussian Mixture Model we might be able to distinguish between more or less important clusters. But we might want to let the topic model decide which topics have more influence and which have not, according to the data.\\
+That is why we combined the clustering part and the topic estimation into one step. Instead of a multinomial distribution over all observations that occur in the 'Dictionary', we model a Gaussian distribution over every dimension of the observations. In this way similar observation can be captured in the model itself and are not generalized in one cluster beforehand.\\
+The difference is that instead of a large, fixed set of unique observations (Dictionary), with a multinomial distribution, we take a Gaussian distribution over every dimension of the observations. In this way smoothing is not necessary, because unseen observations will be handled properly.
+In the next sections we describe the model in more detail. We first give an overview of the generative process. Then we explain the variational inference that is necessary to make the parameter estimation possible. And finally explain the EM-algorithm that determines the parameters.
 
-Every topic will have its own distribution over the dimensions. A
-topic can be described as shown in figure %\ref{fig:topic}.
-In this figure an example of a topic description is shown
+% Every topic will have its own distribution over the dimensions. A
+% topic can be described as shown in figure %\ref{fig:topic}.
+% In this figure an example of a topic description is shown
 % \begin{figure}
 %  \includegraphics[\width=\textwidth]{Pictures\topics.png}
 %  \caption{An awesome topic}
@@ -293,7 +298,7 @@ In this figure an example of a topic description is shown
 
   \subsubsection{Model Description}
   
-  Our model assumes that every day in a dataset can be represented as random mixtures of latent topics, where every topic can be described as a distribution over observations. We assume the following generative procss for every day $m$ in $M$:
+  Our model assumes that every day in a dataset can be represented as random mixtures of latent topics, where every topic can be described as a distribution over observations. We assume the following generative procss for every day $m$ in the data set $C$:
 \begin{enumerate}
  \item The amount of observations on a day $m$ is fixed with size $N$ (for every day the same size).
  \item A day has a distribution over the topics given with $\theta \sim Dir(\alpha)$.
@@ -301,7 +306,7 @@ In this figure an example of a topic description is shown
  
  \begin{enumerate}
   \item Estimate the topic $z_n \sim Multinomial(\theta)$.
-  \item An observation $o_n$ is generated from $p(o_n |z_n,\boldsymbol\mu,\boldsymbol\sigma)$,  which is a probability that can be drawn from a set of Gaussian distributions. This probability is conditioned on the topic $z_n$ and the Gaussian Parameters $\vec{\mu_i}$ and $\vec{\sigma_i}$ belonging to the chosen topic $i$.
+  \item An observation $o_n$ is gained from $p(o_n |z_n,\boldsymbol\mu,\boldsymbol\sigma)$,  which is a probability that can be drawn from a set of Gaussian distributions. This probability is conditioned on the topic $z_n$ and the Gaussian Parameters $\vec{\mu_i}$ and $\vec{\sigma_i}$ of length $d$ that belong to the estimated topic $i$.
  \end{enumerate}
 
 \end{enumerate}
@@ -310,7 +315,7 @@ In this model the amount of topics $k$ is assumed to be known and fixed and with
 The probability for the observations is parametrized with two matrices $\boldsymbol\mu$ and $\boldsymbol\sigma$, both of size $D\times k$, where $D$ is the amount of dimensions in an observation and $k$ the amount of topics. They present the mean and standard deviation respectively and for every topic $i$ and every dimension $d$ there is a set of parameters, which describes a Gaussian distribution. Every value of a dimension for an observation $o_{ndi}$ can then be drawn from a Gaussian Distribution $\mathcal{N}(\mu_{di},\sigma_{di})$.
 The size of the dimension $D$ is assumed to be fixed and a more extensive description of the representation of the observations is given in section \ref{sec:features}. $\alpha$ represents the Dirichlet parameter and is vector of length $k$.
 
-In figure \ref{fig:modelExt} the graphical representation of the model is shown. It differs from the basic LDA model (figure \ref{fig:modelBasic}) in the description of the topic distribution.
+In figure \ref{fig:modelExt} the graphical representation of the model is shown. It differs from the basic LDA model (figure \ref{fig:modelBasic}) in the description of the topic distribution $\beta$, which is here replaced with $\mu$ and $\sigma$.
 
 \begin{figure}[h!]
 \centering
@@ -364,7 +369,7 @@ In this model $\gamma$ represents the Dirichlet parameter and $\phi$ are the mul
 \centering
 \def\svgwidth{0.4\textwidth}
 \input{Pictures/ModelApprox.pdf_tex}
-\caption{Approximation of the model}
+\caption{Approximation of the model. MOET WORDEN VERBETERD}
 \label{fig:ModelApprox}
 \end{figure}
  
@@ -415,7 +420,7 @@ For $\gamma$  we also take all terms of equation \ref{eq:likeli} that contain th
  \gamma_i = \alpha_i + \sum_{n=1}^N \phi_{ni}
 \end{equation}
 
-  Nu nog de algorithme geven
+  %Nu nog de algorithme geven
 
   \paragraph{M-Step}
   
@@ -435,24 +440,23 @@ To calculate the parameter $\alpha$ we again take all terms of the likelihood th
 On this equation we can use the Newton-Rhapson method to calculate the optimal $\alpha$.
 
 \subsection{LDA-Poisson Model}
-The features are represented in 
-over every dimension a gaussian is model independently on the other dimension.
 
-The features are described in a discrete way, which means that every dimension has an integer value. We count in fact the amount of events in every field. Due to this representation the Poisson distribution is better choice to describe the data. In figure \ref{fig:LDAPoisson} we give the graphical representation of this model.
+
+If the features are described in a discrete way, which means that every dimension has an integer value, the Poisson distributions is a better choice to describe the data. In figure \ref{fig:LDAPoisson} the graphical representation of LDA-Poisson model is shown. 
 
 \begin{figure}[h!]
 \centering
 \def\svgwidth{0.8\textwidth}
 \input{Pictures/ModelExt.pdf_tex}
-\caption{Graphical representation of the LDA-Gaussian model}
+\caption{Graphical representation of the LDA-Gaussian model. MODEL MOET IK NOG VERANDEREN}
 \label{fig:modelExt}
 \end{figure}
 
 The variational Inference and the EM-procedure will be the same as described before, except for the Gaussian distribution that is exchanged with the Poisson distribution. The parameter $lambda$ which describes the Poisson distribution is calculated in the M-step with
 \begin{equation}
- \lambda_{di} = \frac{\sum_{m=1}^M \sum_{n=1}^N o_{dn} \phi_{ni} }{\sum_{m=1}^M \sum_{n=1}^N  \phi_{ni}}
+ \lambda_{di} = \frac{\sum_{m=1}^M \sum_{n=1}^N o_{dn} \phi_{ni} }{\sum_{m=1}^M \sum_{n=1}^N  \phi_{ni}}.
 \end{equation}
-which is the same as the calculation of mean of the Gaussian distribution.
+
 
 
 % For a reason 
@@ -684,11 +688,33 @@ The data sets vary in length, but as you can see in the figure, the amount of da
 
 \paragraph{Comparison LDA-Gaussian and LDA-Poisson}
 
+To compare the two models with each other we drop the time dimensions in the observations and calculate the perplexity for the hold-out set with different amount of time-slices (figure \ref{fig:CompareTS}) and with different amount of topics (figure \ref{fig:CompareK}).
+You can see that the LDA-Gaussian model outperforms the LDA-Poisson model for small amount of time-slices as well as for small amount of topics. When the amount of time-slices increases the performance of both models becomes similar to each other. 
+
+\begin{figure}[h!]
+ \centering
+ \begin{subfigure}[b]{0.45\linewidth}
+  \centering
+  \includegraphics[width=\textwidth]{Pictures/CompareTSgausPois.png}
+  \caption{Perplexity for LDA-Gaussian and LDA-Poisson with different amount of time-slices}
+  \label{fig:CompareTS}
+ \end{subfigure}
+ \begin{subfigure}[b]{0.45\linewidth}
+  \centering
+  \includegraphics[width=\textwidth]{Pictures/CompareKgausPois.png}
+\caption{Perplexity for LDA-Gaussian and LDA-Poisson with different amount of topics}
+  \label{fig:CompareK}
+ \end{subfigure}
+ \caption{}
+ \label{fig:Compare}
+\end{figure}
+
+
 \paragraph{Different length of time-slices}
 
-In figure \ref{fig:PerplTS} we give the perplexity for different length of time-slices for the 5 Houses. We take a again the mean over 10 runs. We took for every house the same amount of days to train and test the data. We can see that with more time-slices the perplexity becomes lower for the hold-out set. For house $H2$ and $H4$ the perplexity is way better for a small amount of time-slices. The perplexities for these two houses drop much faster if the amount of time-slices increases.
+In figure \ref{fig:PerplTS} we give the perplexity for different length of time-slices for the 5 Houses. We take a again the mean over 10 runs. We take for every house the same amount of days to train and test the data. We can see that with more time-slices the perplexity becomes lower for the hold-out set. For house $H2$ and $H4$ the perplexity is much better for a small amount of time-slices. The perplexities for these two houses drop much faster if the amount of time-slices increases.
 
-\begin{figure}
+\begin{figure}[h!]
  \centering
  \includegraphics[width = 0.7\textwidth]{Pictures/PerplTS.png}
  \caption{Perplexity (x-axis) for the hold-out-set for different amount of time-slices (y-axis)}
@@ -699,23 +725,28 @@ In figure \ref{fig:PerplTS} we give the perplexity for different length of time-
 \pagebreak
  
 %---------------------------------------DISCUSSION&CONCLUSION----------------------------------
-\section{Discussion \& Conclusion}
-\label{sec:DisCon}
 
-\subsection{Discussion}
-- the Bow does not work well, why? Describe this here!
+\section{Discussion}
+\label{sec:Disc}
 
-- gaussian mixture model is a suitable model and it works. We might want to extend this version so that the covariance between the dimensions is well captured. But we must notice that this version need a lot of training data to train correctly.
+\subsection{LDA with Bag-of-Words model}
+With our feature representation we were not possible to find a good topic representation of the data. We see that the model works better if the amount of time slices gets bigger. Shorter time-slices means that the variance of the observation becomes not that high. Because it is not very likely that in a time-slice of one minute 20 or more sensor activations are received. At least not in our sensor data.  So if the size of time-slices is small, which equals a lot of time-slices per dat, the the amount of unique observations is reduced with respect to the amount of observations in the whole data set.\\
+So it might be possible that the model will find a good topic representation with a bigger amount of time-slices or another feature representation.
 
-In the way we represent the features, counting the amount of sensor activations in a time interval, the most logical distribution to use is the Poisson distribution. It becomes more unlikely if the amount of sensor activities has a high value. That is maybe why the Poisson distribution works also better with a small size of time-slices. Oeh that would be awesome, if we could show that.
+\subsection{LDA with pre-clustering}
+To use a cluster algorithm apriori does reduce the size of the 'Dictionary'. The LDA model then finds a better topic description of the data, but still there are some problems which makes it hard to get good results. First of all it is not so simple to find the best amount of clusters that should be used. And also the found clusters are not that good to use. Every 
 
+\subsection{LDA-Poisson}
+The Poisson distribution is not the best choice to model the time dimension. Nevertheless the outcome of the LDA-Poisson is still good and comparable with the LDA-Gaussian model.
 
-- Poisson verdeling is meer logisch because of the way the data is used, with another representation of the data it might not that logical anymore to use. Only the time dimension is not so good modelable with this distribution. It might be a good idea to combine the two models together. So 
+\subsection{LDA-Gaussian}
+We can see that the LDA-Gaussian model outperfoms the LDA-Poisson model if the amount of time-slices is small. This is due to the fact that if the time-slices are brought the amount of events counted in this time-interval can be high. The Poisson distribution will automatically have a brought variance for high values, which is not necessarily the case in the Gaussian distribution. The Gaussian distribution is more flexible. Which can also be seen in the fact that we are able to make use of the covariance between dimensions. We have not implemented it because to train this kind of model a lot of data need to be available.
+Using the Gaussian distribution has another advantage. If for example another feature representation is used, which is not based on discrete values, the LDA-Gaussian model is still applicable.
+\\
 
--smaller timeslices, means more overfitting.
-
-\subsection{Conclusion}
-We give two variations of a novel algorithm how to make use of topic model for sensor data, but be able to model the multipl dimensions together.
+\section{Conclusion}
+\label{sec:Conc}
+In this thesis two novel models are represented which are based on the Latent Dirichlet Allocation model. Both models are applied to a real world sensor data, which is gained in the house of elderly people. With the models we are able to find behavior pattern in the data.
 It is totally possible to find topics, given them a name is another difficulty
 
 \appendix

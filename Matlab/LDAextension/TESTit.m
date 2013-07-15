@@ -40,17 +40,50 @@
 %     'H3, 89 days','H4, 63 days','H5, 73 days',...
 %     'Location','NorthEastOutside');
 %% For the timeslice experiment
-load OutcomeExpTimeSlices2;
-ts=1:5;
-x=2.^(ts-1)*6;
-cmap = colormap(hsv(5));
-for i=1:length(DataGaus)
-    dd=DataGaus{i}.PerGausM;
-    plot(x(2:end),dd(2:end),'Color',cmap(i,:))
-    hold on
-end
-hleg = legend('H1, 63 days','H2, 63 days',...
-    'H3, 63 days','H4, 63 days','H5, 63 days',...
-    'Location','NorthEast');
-xlabel('t:=# of timeslices')
+% load OutcomeExpTimeSlices2;
+% ts=1:5;
+% x=2.^(ts-1)*6;
+% cmap = colormap(hsv(5));
+% for i=1:length(DataGaus)
+%     dd=DataGaus{i}.PerGausM;
+%     plot(x(2:end),dd(2:end),'Color',cmap(i,:))
+%     hold on
+% end
+% hleg = legend('H1, 63 days','H2, 63 days',...
+%     'H3, 63 days','H4, 63 days','H5, 63 days',...
+%     'Location','NorthEast');
+% xlabel('t:=# of timeslices')
+% ylabel('Perplexity')
+
+
+%% Gaus & Pois zonder tijd # topics
+load('OutcomeExp_ComparePois.mat')
+dp=DataPois{2}.PerPoisM
+load('OutcomeExp_CompareGaus.mat')
+dg=DataGaus{2}.PerGausM
+
+plot(5:15:155,dg,'r')
+hold on
+plot(5:15:155,dp,'b')
+xlabel('k:=# of topics')
 ylabel('Perplexity')
+hleg = legend('LDA-Gaussian','LDA-Poisson',...
+    'Location','NorthEast');
+
+%% Gaus & Pois zonder tijd # TS
+% close all
+% load OutcomeExp_CompareTSGaus
+% load OutcomeExp_CompareTSPois
+% dp=DataPois{2}.PerGausM
+% dg=DataGaus{2}.PerGausM
+% 
+% ts=1:6
+% TS=2.^(ts-1)*6;
+% 
+% plot(TS(3:end),dg(3:end),'r')
+% hold on
+% plot(TS(3:end),dp(3:end),'b')
+% xlabel('k:=# of TS')
+% ylabel('Perplexity')
+% hleg = legend('LDA-Gaussian','LDA-Poisson',...
+%     'Location','NorthEast');
