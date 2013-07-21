@@ -14,7 +14,7 @@
    id="svg3896"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="ModelExt.svg">
+   sodipodi:docname="ModelPois.pdf">
   <defs
      id="defs3898">
     <marker
@@ -76,7 +76,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -102,13 +102,13 @@
        y="861.44336"
        ry="25.253813" />
     <rect
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.96364343;stroke-linejoin:round;stroke-opacity:1"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.73630244;stroke-linejoin:round;stroke-opacity:1"
        id="rect4416"
-       width="229.30463"
-       height="99.431847"
-       x="163.6447"
-       y="740.79822"
-       ry="16.884655" />
+       width="133.56747"
+       height="99.659187"
+       x="259.49551"
+       y="740.68457"
+       ry="16.92326" />
     <path
        sodipodi:type="arc"
        style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1"
@@ -117,18 +117,8 @@
        sodipodi:cy="61.930408"
        sodipodi:rx="25.253813"
        sodipodi:ry="25.253813"
-       d="m 436.38589,61.930408 c 0,13.947296 -11.30651,25.253813 -25.25381,25.253813 -13.9473,0 -25.25381,-11.306517 -25.25381,-25.253813 0,-13.947295 11.30651,-25.253812 25.25381,-25.253812 13.9473,0 25.25381,11.306517 25.25381,25.253812 z"
-       transform="translate(-88.87901,733.34792)" />
-    <path
-       sodipodi:type="arc"
-       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-opacity:1"
-       id="path4418-2"
-       sodipodi:cx="411.13208"
-       sodipodi:cy="61.930408"
-       sodipodi:rx="25.253813"
-       sodipodi:ry="25.253813"
-       d="m 436.38589,61.930408 c 0,13.947296 -11.30651,25.253813 -25.25381,25.253813 -13.9473,0 -25.25381,-11.306517 -25.25381,-25.253813 0,-13.947295 11.30651,-25.253812 25.25381,-25.253812 13.9473,0 25.25381,11.306517 25.25381,25.253812 z"
-       transform="translate(-175.44295,733.34792)" />
+       d="m 436.38589,61.930408 a 25.253813,25.253813 0 1 1 -50.50762,0 25.253813,25.253813 0 1 1 50.50762,0 z"
+       transform="translate(-65.645502,723.24639)" />
     <path
        sodipodi:type="arc"
        style="fill:#cecece;fill-opacity:1;stroke:#000000;stroke-opacity:1"
@@ -171,7 +161,7 @@
        transform="translate(-333.82301,856.58653)" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker-end:url(#Arrow1Lend)"
-       d="m 337.50951,135.08967 62.90656,82.98611"
+       d="m 357.25173,127.21348 46.65562,88.63696"
        id="path5096"
        inkscape:connector-type="polyline"
        inkscape:connector-curvature="0"
@@ -180,34 +170,11 @@
        inkscape:connection-end="#path4418-7"
        inkscape:connection-end-point="d4"
        transform="translate(0,680.31491)" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;marker-end:url(#Arrow1Lend)"
-       d="M 256.52829,129.23245 394.83335,223.933"
-       id="path5102"
-       inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0"
-       inkscape:connection-end="#path4418-7"
-       inkscape:connection-end-point="d4"
-       transform="translate(0,680.31491)"
-       inkscape:connection-start-point="d4"
-       inkscape:connection-start="#path4418-2" />
     <flowRoot
-       xml:space="preserve"
-       id="flowRoot5842"
-       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
-       transform="translate(67.50456,661.98499)"><flowRegion
-         id="flowRegion5844"><rect
-           id="rect5846"
-           width="75.761444"
-           height="15.152288"
-           x="130.30968"
-           y="87.184227"
-           style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Sans;-inkscape-font-specification:Sans" /></flowRegion><flowPara
-         id="flowPara5848">$\mu$</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot5850"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
-       transform="translate(53.052875,727.29533)"><flowRegion
+       transform="translate(51.03257,729.31564)"><flowRegion
          id="flowRegion5852"><rect
            id="rect5854"
            width="83.842659"
@@ -215,7 +182,7 @@
            x="227.28432"
            y="23.544613"
            style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;font-family:Sans;-inkscape-font-specification:Sans" /></flowRegion><flowPara
-         id="flowPara5856">$\sigma$</flowPara></flowRoot>    <flowRoot
+         id="flowPara5856">$\lambda$</flowPara></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot5858"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
@@ -267,7 +234,7 @@
        xml:space="preserve"
        id="flowRoot5890"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans"
-       transform="translate(70.710679,726.78193)"><flowRegion
+       transform="translate(154.55334,724.76163)"><flowRegion
          id="flowRegion5892"><rect
            id="rect5894"
            width="151.52289"

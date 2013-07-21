@@ -23,7 +23,7 @@ title('bathroom, kitchen, bedroom, living, hallway')
 
 y=[0 0 1 1];
 for i=1:n % for each day
-    [alpha,phi]=vbem(d{i},beta,alpha0,emmax);
+    [alpha,phi]=vbemPoi(d{i},beta,alpha0,emmax);
     d{i}.phi=phi;
     x=[0 0.5 0.5 0];
     [N,~]=size(phi);

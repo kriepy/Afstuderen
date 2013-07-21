@@ -1,7 +1,7 @@
 load SEED
 close all
 %% INITIALIZE
-k=20;
+k=10;
 maxIter=50;
 HN=5; % there are in total five houses
 TS=48; % Amount of time slices
@@ -65,6 +65,6 @@ beta.sigma=ones(length(m),k);
 % LDAout{cnt}.likeli=l;
 % cnt=cnt+1;
 
-VisuLDAMosttopics(10,p,b,a,10)
+VisuLDAMosttopics(10,p,b,a,50)
 
 

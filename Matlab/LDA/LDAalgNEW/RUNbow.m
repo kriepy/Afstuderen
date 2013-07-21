@@ -5,10 +5,10 @@ clear all
 
 %% Initialize
 HN=2; % there are in total five houses
-TS=96; % Amount of time slices
+TS=288; % Amount of time slices
 coarse = 1; % The time is Coarse if this variable is 1, 0 otherwise
 V=6; %the amount of clusters
-k=5; %aantal topics
+k=20; %aantal topics
 maxIter=10; %max aantal iteraties van LDA
 
 %% Laad de data
@@ -27,7 +27,7 @@ end
 
 
 %% Create the dictionary
-Dic=createDic(H);
+Dic=createDic2(H);
 
 %% Change the input data for LDA into the good fomat
 for i=1:length(H.day)

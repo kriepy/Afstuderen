@@ -62,7 +62,7 @@ for i=1:n % for each day
     end
     y=y+1;
 end
-axis([0 24 0 10])
+axis([0 24 0 n])
 xlabel('time of the day')
 ylabel('day')
 
@@ -77,6 +77,6 @@ set(gca,'XTicklabel',TickLab);
 
 
 figure(2)
-VisuTopicsNew(alpha0,beta,most)
+VisuTopicsNew(alpha0,beta,most,size(d{1}.mat,1))
 
 end

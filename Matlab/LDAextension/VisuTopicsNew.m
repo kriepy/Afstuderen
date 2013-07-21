@@ -1,4 +1,4 @@
-function VisuTopicsNew(a,b,show)
+function VisuTopicsNew(a,b,show,timeMax)
 if nargin < 3
     show = 5
 end
@@ -39,7 +39,7 @@ for s=1:show
     bar(mu(6,s),'FaceColor',cmap(s,:));
     hold on
     errorbar(1,mu(6,s),sig(6,s),'.k','LineWidth',2)
-    axis([0.1 1.9 0 48])
+    axis([0.1 1.9 0 timeMax])
     if s==show
         ax=axis;
         axis(axis); % Set the axis limit modes (e.g. XLimMode) to manual

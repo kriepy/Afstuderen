@@ -1,13 +1,14 @@
 clear all
-close all
+%close all
 %initialize variables
 path='../DATAMain/plotFields.mat';
-HN = 5; %this is HouseNr 251
-dag = 8; %this is which day we choose
-start = [12,45,0]; %defines the time from where to start to visualize
-timeSpan = 15; %defines how long the window is to show the data (given in minutes) 
+HN = 3; %this is HouseNr 251
+dag = 21; %this is which day we choose
+start = [4,0,0]; %defines the time from where to start to visualize
+timeSpan = 600; %defines how long the window is to show the data (given in minutes) 
 cmap=colormap(hsv(5));
 
+figure(dag)
 %Load
 House=load(path);
 House=House.House{HN};

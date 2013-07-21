@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[a4paper,fleqn]{article}
 \title{Behavior Analysis of Elderly using topic models}
 \author{Kristin Rieping}
 \usepackage[latin1]{inputenc} %andere lettertype
@@ -18,9 +18,9 @@
 \pagebreak
 
 \begin{abstract}
-In this thesis two novel variations of the Latent Dirichlet Allocation (LDA) model are presented. The models give the opportunity to detect pattern in multi-dimensional data in an unsupervised manner. LDA-Gaussian is a combination of a Gaussian Mixture Model and a LDA model. Here the multinomial distribution of the topics, that is normally used in the LDA model, is replaced by a set of Gaussian Distributions. In this way similar looking sensor data is automatically grouped together and captured in the same topic.
+In this thesis two novel variations of the Latent Dirichlet Allocation (LDA) model are presented. The models give the opportunity to detect patterns in multi-dimensional data in an unsupervised manner. LDA-Gaussian is a combination of a Gaussian Mixture Model and a LDA model. Here the multinomial distribution of the topics, that is normally used in the LDA model, is replaced by a set of Gaussian Distributions. In this way similar looking sensor data is automatically grouped together and captured in the same topic.
 LDA-Poisson, the second variation of the model, takes a set of Poisson Distribution for the topic descriptions. This distribution makes it possible to handle discrete multi-dimensional data. The parameters of both models are determined with an EM-algorithm.
-Both models are applied to real sensor data, which is gained in the homes of elderly people.
+Both models are applied to real sensor data, which is gathered in the homes of elderly people. It is shown that meaningful topics can be found and that a semantic description of these topics can be given.
 
 
 % The goal of this algorithm is to find topics that describe the data in a way, so that it is easily interpretable and usable for different kinds of machine learning techniques that can predict different behaviors.
@@ -29,18 +29,31 @@ Both models are applied to real sensor data, which is gained in the homes of eld
 
 %----------------------------------INTRODUCTION--------------------------------------------
 \section{Introduction}
+% START bekijken 
+The life expectancy of people is assumed to rise continuously \cite{4864}. So the percentage of elderly also increases. This means that
 The world population increases unceasingly and besides the percentage of elderly also increases. The manpower to take care of elderly is diminishing. So it becomes more and more important to give elderly the opportunity to live on their own and be more independent of health care. It might be important to monitor elderly in their homes in order to give an alarm if an accident happens or to detect physical and mental declines.
 
-New techniques give the possibility to monitor elderly from the distance or even automatically. Some of these techniques use cameras that are placed in the homes of elderly. But these methods are privacy-sensitive and often not adopted by the elderly.
+Systems should detect accidents or monitor people over a longer time period, so that changes in the behavior can be found, that may 
+People like to live on their own \cite{Cavallo:1315167}.
+% ENDE bekijken
+
+% START algemene omschrijving van monitoring elderly
+New techniques give the possibility to monitor elderly from the distance or even automatically. These systems give the possible to detect accidents, if a person 
+
+Some of these techniques use cameras that are placed in the homes of elderly. But these methods are privacy-sensitive and often not adopted by the elderly. Less intrusive methods use simple sensors like motion sensors or pressure mats that are placed in the homes of people.
 
 Other methods use motion sensors that are placed at different locations in the homes of elderly. %find some example
 Reading and interpreting this sensor data is often difficult and that is why often activity recognition is done to make the data more readable. But different approaches show that this is also a though challenge.
 With many Machine Learning techniques it is also often the case that a lot of annotated data is required.  But the task of labeling a data set is time consuming and can also influence the output of the data while doing so. That is why unsupervised techniques are preferable. Apart from activity recognition we deal with the problem of the representation of the data. From simple motion sensors we receive binary, time sequential data, that is gained over some period of time in the homes of elderly. There are a lot of sensors placed in the houses, which leads to high-dimensional data, that is hard to interpret for classifying algorithms as well as for humans. Finding a correct representation is a challenge.\\
+% ENDE algmene omschrijving
 
+% START wat doe ik in deze thesis
 In this thesis we develop an unsupervised algorithm that detects patterns in the data automatically.
 In a first step, which is inspired by~\cite{farrahi2008daily}, real live data is used to build a topic model. In a second step a genetic algorithm is used to find the best representation of the data according to the likelihood that is gained from the topic models found in the first step. 
  A topic model in combination with a genetic algorithm might lead to a representation of the data that gives the opportunity to interpret the data more easily and also finds behavior patterns in the data automatically. This furthermore makes it possible to detect deviations in the behavior over a longer period of time. The data that we use is received in the same way as described in ~\cite{van2010activity}, except that our data is not annotated.\\
+% ENDE thesis omschrijving
 
+% START topic omschrijvingen
 Topic models are usually used in the field of document classification. The idea is that every document might belong to a couple of different topics and a topic can be described with a distribution over words. A newly seen document can than be assigned to some topics according to the words that occur in the document. The document is than described with a distribution of topics. The topics of a model can be found in an unsupervised manner.
 We use this idea to find topics in the given sensor data. So that a day in a persons life can be described with a distribution over topics. And a topic will be described with a distribution over observations. An example of a topic might be 'going to the toilet' or a more global example is 'getting up early'.\\
 %%%%%%%%%%%%%%
@@ -54,7 +67,10 @@ In the second part of the thesis we use a genetic algorithm to find the best rep
 Earlier we described the part of discretization the data in some way. Choosing the correct length of a time-interval, in which the sensor activities are counted, might be hard. There are also plenty of other variables to choose, that lead to a different representation of the data. For example we can choose to group all sensors together that are in the same room of the house. But we cannot be sure that this leads to a better representation of the data. Further there are different kind of sensors placed in the houses and we might want to distinguish between these sensors, so that a different weight is given while counting an activity. For example an activity at a door sensor might give more information of a persons behavior then a motion sensor, which is triggered more often also by small, not that important movements. It might also a good idea to look at the transition of the observations, so given an observation, what are the observations before and after this one.\\
 So the representation of the data depends from a lot of different variables. This variables are optimized with a genetic algorithm. The log-likelihood, from the previously derived topic models, is used as the fitness function of the genetic algorithm.\\
 
-In the next chapter of this thesis we give an overview of related approaches. In section \ref{sec:DataDesc} we describe the data that we use in more detail. This is followed by section \ref{sec:TopicModels} which describes the two different ways of the usage of Topic Models with our data. In section \ref{sec:features} we describe the different ways of feature representation of our data. The section \ref{sec:Experiments} we describe the different experiments that we perfomed. In section \ref{sec:Disc} we discuss our outcomes and finalize the report with the Conclusion in section \ref{sec:Conc}.
+% START outline verslag
+In the next chapter of this thesis we give an overview of related approaches. In section \ref{sec:DataDesc} we describe the data that we use in more detail. This is followed by section \ref{sec:TopicModels} which describes the two different ways of the usage of Topic Models with our data. In section \ref{sec:features} we describe the different ways of feature representation of our data. The section \ref{sec:Experiments} we describe the different experiments that we performed. In section \ref{sec:Disc} we discuss our outcomes and finalize the report with the Conclusion in section \ref{sec:Conc}.
+% ENDE outline verslag
+
 
 
 %  Instead of a bag-of-word model that describes our data, every observation is model with a Gaussian Distribution in every dimension.
@@ -68,20 +84,69 @@ In the next chapter of this thesis we give an overview of related approaches. In
 % It might be possible to predict the health of a person and give additinal health care if needed.
 \pagebreak
 
+
+%----------------------------------------------------------RELATED WORK-----------------------------------------------------------------
+
 \section{Related Work}
-In this section an overview of related work is given. The focus is put on work that uses a similar approach but also work that uses similar data.\\
-\\
-In the work of Casale \cite{Casale:2009} continuous data is modeled with the topic model LDA. They have sensor data available gathered from wearable sensors. The words for the topic models are generated through clustering the data beforehand. Two different cluster methods are used, K-means and mean-shift. They show that applying topic models to sensor data is possible.\\
-\\
-Castanedo et al \cite{EXSY:EXSY12033} apply a LDA model to learn behavior patterns of sensor data that is gained in an office environment. They apply the Bag-of-word model to the data. A lot of data is available.\\
-\\
-Similar data and model is used in the work of \cite{journals/percom/ChikhaouiWP12}. They have data that is gained of sensors in a home environment. The data contains a brought variety of sensors, that are placed at different locations and objects. They also use the LDA model and compare it to other models as Hidden Markov Models and Conditional Random Fields. The available data is annotated which makes it possible to evaluate the topic model and compare it to other models.\\
-\\
-In the work of \cite{Huynh:2008:DAP:1409635.1409638} also wearable sensors are used to create the data. The LDA model with a Bag-of-words approach is applied and compared with the annotation of the data. It is checked if the topics that are found start end stop at the same time that an activity is annotated.\\
-\\
-Tapia et al. \cite{Tapia04activityrecognition} uses similar data. A Baysian Network is applied to the annotated data.
+% The story line:
+
+%%%% Monitoring the health of elderly people is done in different ways. Different type of sensors and different types of models are used to see if the people are still healthy (What does monitoring the health of elderly people include?): Give example on very global monitoring (misschien dat dit ook meer referenties zijn die in de intro terecht horen, maar je kunt ze ook vaker noemen)
+
+%%%% A lot of systems focus on activity recognition, because the activities that people still can do give an indication how fit people are. Supervised method are often used: Describe methods that use supervised methods for activity recognition
+
+%[(later opnoemen, omdat dit niet over oude mensen gaat maar meer in het algemeen activity recognition)Wilson \& Atkinson(STAR)]
+
+%%%% Also semi-supervised methods are used:
+
+%%%% The task of annotation can influence the behavior of the people that are monitored and so they not might give good data. The topic model LDA find in an unsupervised way pattern in the data. The topics can be compared to activities that needs to be founded. LDA is used on different type of data and is also applied in different kind of ways. Ga van algemeen activity recognition in huizen over na activity recognition van sensor data.
+%[(gaat niet om oudere maar om activity recognition)Castanedo, they also give a nice overview how LDA is used in different kind of fields especially for activity modelling]
 
 
+
+Monitoring the health of elderly can be done in many different ways. There exist many various approaches. Systems are developed and also implemented in houses of people to monitor mental and physical health. In \cite{Tamura1998573} a system is described that is installed at peoples home. This system focuses on solitary elderly people. They use a variety of sensors and the system can give a detailed information of the health condition of the inhabitants. Sensors where added in bathtub, toilet and bed. These devices where specially build for the experiments which makes this approach quite expensive.\\
+% In \cite{Nagai2010204} a system is describes that uses cameras in the homes of people to monitor their health condition. If an emergency occurs staff can handle appropriate. Also family members have access to the video streams and can report accidents.
+In \cite{Kwon20125774} more simple sensors are used to monitor the health of solitary living people. Different sensors in the houses are tracking the health condition and the system is able to automatically contact emergency services or give the signal to send a caretaker at the home. A combination of static and wearable sensors is used, some of these sensor record automatically and other needs be triggered by the inhabitant.\\
+Systems that monitor the health of people need to be not intrusive, which means that the choice of sensors becomes important. People to not want to feel watched all the time, which makes the use of camera or microphones (\cite{Nagai2010204}, \cite{Wu_2003_4676}) mostly not eligible.
+It is also desirable that sensors are low in cost. Another thing that is desirable is that the system collects data automatically. Inhabitants do not want to need to interact with the system constantly and the system should not affect their daily living. To meet these conditions several researchers focus on the task of activity recognition with simple sensors.\\
+
+To make the recognition of abnormalities on short or long term behavior monitoring possible, most system rely on activity recognition. In \cite{Hong2009236} a system to recognize activities is introduced that is bases on ontolgies. Simple binary sensors, like movement sensors, contact switches and pressure mats, are used. Activities are described with ontolgies that are build from the sensor data.
+In \cite{Tapia04activityrecognition} contact switches that also generate binary data are used. A naive Baysian Network is trained with using annotated data, that is received from the inhabitants of two different houses.
+
+
+All the work that is described above about activity recognition uses a supervised manner to detect activities in the data. Annotating the data has some disadvantages as it is pointed out in the work of Chikhaoui et al. \cite{journals/percom/ChikhaouiWP12}. They use the topic model LDA in combination with sequential pattern mining. These sequential patterns build the words, that are needed as input for the LDA model. The found topics are comparable to the activities of previous approaches of activity recognition.
+Topic models give a great opportunity to find activities in an unsupervised way.
+
+
+Activity recognition is mostly done supervised, as it is done in the previous works. A topic model, often used for document classifaction, is an unsupervised model that gives the oportunity to find topics. These topics are comparable to activities. \cite{journals/percom/ChikhaouiWP12} presents a model that uses LDA to find  
+
+
+A way to do activity recognition in an unsupervised way, like it is done in this work, is the use of topic models. 
+
+
+
+
+
+Activity recognition plays a big part in health monitoring. in ... this is done with cameras. Less intrusive sensors are used in the work of ...
+
+Different type of sensors and different types of models are used to find behavior patterns in data
+
+
+Topic models give a good oportunity to find patterns in the data in an unsupervised way. Topics are found and can be related to 
+
+
+%------------------------------------------------------------OLD----------------------------------------------------
+% In this section an overview of related work is given. The focus is put on work that uses a similar approach but also work that uses similar data.\\
+% \\
+% In the work of Casale \cite{Casale:2009} continuous data is modeled with the topic model LDA. They have sensor data available gathered from wearable sensors. The words for the topic models are generated through clustering the data beforehand. Two different cluster methods are used, K-means and mean-shift. They show that applying topic models to sensor data is possible.\\
+% \\
+% Castanedo et al \cite{EXSY:EXSY12033} apply a LDA model to learn behavior patterns of sensor data that is gained in an office environment. They apply the Bag-of-word model to the data. A lot of data is available.\\
+% \\
+% Similar data and model is used in the work of \cite{journals/percom/ChikhaouiWP12}. They have data that is gained of sensors in a home environment. The data contains a brought variety of sensors, that are placed at different locations and objects. They also use the LDA model and compare it to other models as Hidden Markov Models and Conditional Random Fields. The available data is annotated which makes it possible to evaluate the topic model and compare it to other models.\\
+% \\
+% In the work of \cite{Huynh:2008:DAP:1409635.1409638} also wearable sensors are used to create the data. The LDA model with a Bag-of-words approach is applied and compared with the annotation of the data. It is checked if the topics that are found start end stop at the same time that an activity is annotated.\\
+% \\
+% Tapia et al. \cite{Tapia04activityrecognition} uses similar data. A Baysian Network is applied to the annotated data.
+ 
 
 
 
@@ -93,11 +158,20 @@ Tapia et al. \cite{Tapia04activityrecognition} uses similar data. A Baysian Netw
 \label{sec:DataDesc}
 In this section we describe in what kind of houses the data is gathered and what kind of persons live there. We describe the sensors that are used and give an impression of the data that is received from these sensors.
 \subsection{Homes and persons}
-In the homes of five different people sensors are installed. The floor-plan of these homes is for all residents the same and is shown in figure ...(hier zou ik graag een plaategrond van de woningen willen toevoegen als dat mogelijk is) There might be small differences of the locations of the sensors due to the personal arrangements of peoples stuff.
-The persons that live in the homes are people that need healthcare on a regular basis, they are further able to live on their own. The amount of data gained differs but there is at least 63 days of data available for every house. 
+In the homes of five different people sensors are installed. The floor-plan of these homes is for all residents the same and is shown in figure \ref{fig:floorplan}. There might be small differences of the locations of the sensors due to the personal arrangements of peoples stuff.
+The persons that live in the homes are people that need healthcare on a regular basis, they are further able to live on their own. The amount of data collected differs for the different houses, but there is at least 63 days of data available for every house.
+
+\begin{figure}[h]
+\centering
+ \includegraphics[width=0.7\textwidth]{Pictures/floorplan.png}
+ \caption{Floorplan of the houses with sensor descriptions}
+ \label{fig:floorplan}
+\end{figure}
+
+
 \subsection{Sensors}
-There are two different types of sensors installed in the homes, reed- and motion-sensors. The reed-sensors which are mostly installed at doors get the value 'one' if a door is opened and the value 'zero' if the door is closed again. The toilet flush has a floating sensor. (A float sensor??)
-The motion-sensor are placed at different places in the homes, mostly against the walls. They have a range of ... meters. If a motion occurs in the region the sensor sends an impulse value, which means that the value becomes 'one' and immediately 'zero' again . After that the sensor is set to mute for about 3 minutes (or is this 1 minute), which means that in this time there is no motion captured. In this way constantly firing of the sensor will be avoided. The sensor system is active 24 hours. However failure can occur due to network problems, sensor failing or other unexpected problems.
+There are different types of sensors installed in the homes. The contact switches are mostly installed at doors and cupboards. They get the value 'one' if a door is opened and the value 'zero' if the door is closed again.
+The motion-sensor (PIR) are placed at different places in the homes, mostly against the walls. They have a range of 5 meters. If a motion occurs in the region the sensor sends an impulse value, which means that the value becomes 'one' and immediately 'zero' again . After that the sensor is set to mute for about 3 minutes, which means that in this time there is no motion captured. In this way constantly firing of the sensor will be avoided. Every activity of the sensors is send to the basis-station 3 times, so that the chance is reduced that the data is not received. The sensor system is active 24 hours. However failure can occur due to network problems, sensor failing or other unexpected problems.
 
 \subsection{Received Data}
 In figure \ref{fig:PlaineSensorData} the data stream of two different hours of one day is shown. The data belongs to one person. Several sensors that are located in the same room are manually grouped together in a field. The fields are $\{$'kitchen', 'living room', 'bathroom', 'bedroom', 'hallway'$\}$. They are marked in the figure with different colors.
@@ -117,15 +191,82 @@ In figure \ref{fig:PlaineSensorData} the data stream of two different hours of o
   \label{fig:PlaineSensorData}
 \end{figure}
 
-In the figure you can see the different type of data that is generated by the different sensor types. The fridge sensor is a reed sensor which has the value '1' for a longer period of time. The motion sensors on the other hand only give a impulse value as mentioned before. You can also see that some sensors are not triggered at all in the given time intervals.
+In the figure you can see the different type of data that is generated by the different sensor types. The fridge sensor is a reed sensor which has the value '1' for a longer period of time, when the door is opened for a while. The motion sensors on the other hand only give a impulse value as mentioned before. You can also see that some sensors are not triggered at all in the given time intervals.
 
-% In the figure you can see that at noon the fridge is used, but the sensor data is not captured correctly. This errors needs to take into account when dealing with the data. Other problems that occur are that one sensor is not working because it is not well connected or the batteries are empty. It also happens that the network is not working or the network cable is pulled out, which means that the data cannot be send to the server that stores the data. These kind of errors need to be handled manually and are not taken into account when modeling the data.
-
-% In the following approaches we only take the amount of times into account how often a sensor is triggered. The length on how long a sensor has the value one is not taken into account.
-% The data is discretized in some way, because we only count the amount of times a sensor is triggered. The amount of time that a sensor has the value one is not totally taken into account in our model
-% THIS NEEDS TO BE MENTIONED SOMEWHERE. I am not totally sure if this is the correct place though.
 
 \pagebreak
+
+%--------------------------------------FEATURES----------------------------------------------
+\section{Features}
+\label{sec:features}
+% WHAT DO WE HAVE?
+The data that is received from the sensors generates a continuous data stream for every sensor. A good feature representation of the data is required so that the LDA model can be applied.
+First the data is divided into five fields and all the sensors in one field are grouped together. In this way the data to is reduced to five dimension. The continuous data stream cannot be used as input for the LDA model. That is why the data is divided into time-slices of length $l$. If for example the length of the time-slices is $l=30$ min., the number of time-slices on one day is $n=48$.
+A day starts and ends at 3 a.m. in the morning. In this way the chance to cut between activities is reduced. It still can occur that a person goes to bed late or that he needs to visit the toilet. For now this fact is left out in the part of modeling.\\
+\\
+In every time-slice of a field we look at the amount of times that a sensor in this field is activated and count this activities. So we do not look at the length of time that a sensor stays in the active state, but only how often it changes into the active state. So given five fields every observation $o_n$ has five dimension with integer values.
+We do not take the length of the sensor activity into account because this sometimes can lead to unrealistic high values. These values can occur if someone leaves a door open of a cupboard for example. Then the observations contains a high value but does not contain a lot of information about the behavior. In figure \ref{fig:FeatEx} we give an example how the data is translated into a vector representation for one time-slice.%Give an example.
+
+\begin{figure}[h]
+\centering
+\begin{minipage}{0.55\linewidth}
+\centering
+\includegraphics[width=\textwidth]{Pictures/FeatExample.png}
+\label{fig:FeatEx}
+\end{minipage}
+\begin{minipage}{0.35\linewidth}
+\centering
+\begin{equation*}
+ \begin{bmatrix} 
+ o_{Hall}\\
+ o_{Living}\\
+ o_{Bedroom}\\
+ o_{Kitchen}\\
+ o_{Bathroom}
+ \end{bmatrix}
+ =
+  \begin{bmatrix} 
+ 2\\
+ 4\\
+ 0\\
+ 3\\
+ 2
+ \end{bmatrix}
+\end{equation*}
+\end{minipage}
+\caption{Vector representation of the data. The data of the sensors is shown in the left image. It is translated in the vector shown on the right-hand side.}
+\end{figure}
+
+An additional dimension for the time is used. There are two different ways how the time dimension is added to the observations. The fine-grain representation adds the number of the time-slice in which an observations is captured, at the end of the observation vector. In the coarse-grain representation the 24 hours of a day are divided into the five time intervals $\{ 3am - 8am, 8am - 1pm, 1pm - 18pm, 18pm - 23pm, 23pm - 3am  \}$. So the observation of figure \ref{fig:FeatEx} will become $o_n=\{2,4,0,3,2,2\}$ in the coarse-grain representation. The observation falls into the second time interval. In the fine-grain representation the observation will be $o_n=\{2,4,0,3,2,20\}$ if the total number of time-slices on a day is $n=48$.\\
+
+The given feature representation, with the two variation of the time dimensions, are used in the following chapters. But there are plenty more ways to describe the data so that it can be used in the LDA model. For example the size of the time-slices can be changed. This leads to a higher resolution and may give more detailed information of the behavior.
+Another way to get a different feature representation is to combine sequential time-slices as it is described in the work of Farrahi et al. \cite{farrahi2008daily}. So for a given time-slice add the observation values of the previous and the subsequent time-slice. This will lead to a 15 dimensional observation plus one dimension for the time value. In this way the transitions are taken more into account, which might contain valuable information over the behavior.\\
+We also might want to combine different sizes of time-slices into one observations, so that the global and detailed view is combined.\\
+The different kind of sensor are also maybe important. The reed sensor, which is mostly installed at doors might contain more important information than the motion sensor. The motion sensor is also triggered by small movements, whereelse if a door is opened from a cupboard you can assume that an important action has taken place, as for example the person is grabbing a plate to prepare a meal. So it might be an idea to give a higher weight to sensor activities of reed sensors in house.\\
+It is obvious that the feature space can be made nearly infinity big and it is quite a challenge to find the best feature representation. The likelihood that is gained from the EM-algorithms might be a good indication for a good feature representation.
+
+% % Wat hoort hier in te staan???
+% - data wordt ingedeeld in fields, deze is afhankelijk van de locatie van de sensor
+% - alle observaties in een field worden samen bekeken
+% - een dag wordt ingedeeld in timeslices
+% - the amount of timeslices is variable
+% - we count the amount of 1's in one timeslice of a field
+% - there are a lot more different ways to use the data
+% - we can combine different timeslices, so maybe the best topics are found if their are different timeslice widths are combined.
+% - another way to combine the timeslices is to look at the previous and the subsequent timeslice and combine the three observations of this timeslices into one big observation. In this way the transitions are captured well.
+% - We also may want to look at the way the different sensors in the homes are handled. A reed sensor might be much more important than a motion sensor. The reed sensor is mostly connected to doors and opening the fridge might be of more information than if a person only moves in the living room, this might be only be caused by someone who shifted a little bit on the couch. 
+% 
+
+
+
+% In a first approach we discretize the data into time-slices of half an hour. In each time-slice we count the amount of sensor activations in all the fields. We differentiate between two different kind of sensors. For the reed sensors, which are installed at doors and the toilet flush, we count every change of sensor value. So open and close a door is both count as an activity.\\
+% %How is the toilet sensor been seen? 0 and 1?
+% The motion sensor can sens a new motion every minute. But in between the sensor will still have the same value, which is 1. That is why we count for every minute the sensor has the value 1 a new activity. So if the sensor has the value 1 for three minutes, we count three activities for the particular sensor.\\
+% The amount of activities captured at every sensor is add together for every field. So every time-slice can be represented as a vector $w_n$ of length five, for every field a value $v_i>=0 \in \mathbb{N}$. We add an additional dimension to the vector to capture the the time in which the observation is taken. The values lay between 1 and 48, for every time-slice a value. This is necessary to model the time dependency from the data, which is not automatically captured in the topic model that we are going to use. We say that a day starts at 3 a.m. so that we reduce the chance to cut between activities. It still can occur that a person goes to bed late or that he needs to visit the toilet, but we will ignore this fact for now.
+% 
+
+\pagebreak
+
 %-----------------------------------TOPICMODEL----------------------------------------------
 \section{Topic Models}
 \label{sec:TopicModels}
@@ -178,7 +319,7 @@ The main difference is that words that look similar to each other, like "illusio
 Another difference is that in the topic model, LDA, it is assumed that the order of the words, in that they appear in the text, does not matter. In our case the time when an observation is made is of big influence. We can overcome this problem by adding time as an additional dimension to our observations.
 \\
 
-If the Bag-of-Words model will be applied to the data, a dictionary of all unique observations must be made. All this observations then will be seen independent from each other. This is shown in figure~\ref{fig:FSBOW}. Observations that are assigned to the same topic do not need to lie close to each other in the feature space and the correct topics might not be found with LDA.
+If the Bag-of-Words model will be applied to the data, a dictionary of all unique observations must be made. All this observations then will can be seen as a different dimension which are independent of each other. In figure~\ref{fig:FSBOW} it is shown how the BOW is used!!!!!!!!!. Observations that are assigned to the same topic do not need to lie close to each other in the feature space and the correct topics might not be found with LDA. This approach needs a lot of data to find meaningful results. The size of the 'dictionary' varies depending on the feature representation. 
 
 \begin{figure}[h!]
 \centering
@@ -369,7 +510,7 @@ In this model $\gamma$ represents the Dirichlet parameter and $\phi$ are the mul
 \centering
 \def\svgwidth{0.4\textwidth}
 \input{Pictures/ModelApprox.pdf_tex}
-\caption{Approximation of the model. MOET WORDEN VERBETERD}
+\caption{Approximation of the model.}
 \label{fig:ModelApprox}
 \end{figure}
  
@@ -447,9 +588,9 @@ If the features are described in a discrete way, which means that every dimensio
 \begin{figure}[h!]
 \centering
 \def\svgwidth{0.8\textwidth}
-\input{Pictures/ModelExt.pdf_tex}
-\caption{Graphical representation of the LDA-Gaussian model. MODEL MOET IK NOG VERANDEREN}
-\label{fig:modelExt}
+\input{Pictures/ModelPois.pdf_tex}
+\caption{Graphical representation of the LDA-Poisson model.}
+\label{fig:LDAPoisson}
 \end{figure}
 
 The variational Inference and the EM-procedure will be the same as described before, except for the Gaussian distribution that is exchanged with the Poisson distribution. The parameter $lambda$ which describes the Poisson distribution is calculated in the M-step with
@@ -478,87 +619,41 @@ The variational Inference and the EM-procedure will be the same as described bef
 % - The combination of the k-means clustering and the LDA model might not capture the topics correctly. The k-means clustering gives a hard boundaries on the words, which is also a drawback from the sequential combination of clustering and topic estiamtion. Therefore we want to comine these two step in one.
 
 
-\pagebreak
-
-%--------------------------------------FEATURES----------------------------------------------
-\section{Features}
-\label{sec:features}
-% WHAT DO WE HAVE?
-The data that is received from the sensors generates a continuous data stream for every sensor. We need to find a good feature representation of the data so that we can apply the LDA model to it.
-First we divide the data in five fields and group all the sensors in one field together. In this way we reduce the data to five dimension. We cannot use a continuous data stream in the LDA model. That is why we divide the data into time-slices of length $l$. In first instance we take $l=30$, which means that there are $n=48$ time-slices on a day.
-A day starts at 3 a.m. in the morning so that we reduce the chance to cut between activities. It still can occur that a person goes to bed late or that he needs to visit the toilet, we will ignore this fact for now.\\
-\\
-In every time-slice of a field we look at the amount of times that a sensor in this field is activated and count this activities. So we do not look at the length of time that a sensor stays in the active state, but only how often it changes into the active state. So given five fields for one day we have 48 observation $o_n$ where every observation has five dimension. We do not take the length of the sensor activity into account because this sometimes can lead to unrealistic high values. These values can occur if someone leaves a door open of a cupboard for example. Then the observations contains a high value but does not contain a lot of information about the behavior. In figure \ref{fig:FeatEx} we give an example how the data is translated into a vector representation for one time-slice.%Give an example.
-
-\begin{figure}[h]
-\centering
-\begin{minipage}{0.55\linewidth}
-\centering
-\includegraphics[width=\textwidth]{Pictures/FeatExample.png}
-\label{fig:FeatEx}
-\end{minipage}
-\begin{minipage}{0.35\linewidth}
-\centering
-\begin{equation*}
- \begin{bmatrix} 
- o_{Hall}\\
- o_{Living}\\
- o_{Bedroom}\\
- o_{Kitchen}\\
- o_{Bathroom}
- \end{bmatrix}
- =
-  \begin{bmatrix} 
- 2\\
- 4\\
- 0\\
- 3\\
- 2
- \end{bmatrix}
-\end{equation*}
-\end{minipage}
-\caption{Vector representation of the data. The data of the sensors is shown in the left image. It is translated in the vector shown on the right-hand side.}
-\end{figure}
-
-The way shown in the figure is the basic approach that we used to handle our data. There are plenty more ways to gather the data that is used in the LDA model. So for example we can change the size of the time-slices, which leads to a higher resolution and may give more detailed information of the behavior. Another way to get a different feature representation is to combine sequential time-slices. So for a given time-slice add the values of the previous and the subsequent time-slice, that will lead to a 15 dimensional observation. In this way the transitions are taken more into account, which might contain valuable information over the behavior.\\
-We also might want to combine different sizes of time-slices into one observations, so that the global and detailed view is combined.\\
-The different kind of sensor are also maybe important. The reed sensor, which is mostly installed at doors might contain more important information than the motion sensor. The motion sensor is also triggered by small movements, whereelse if a door is opened from a cupboard you can assume that an important action has taken place, as for example the person is grabbing a plate to prepare a meal. So it might be an idea to give a higher weight to sensor activities of reed sensors in house.\\
-It is obvious that the feature space can be made nearly infinity big and it is quite a challenge to find the best feature representation. The likelihood that is gained from the EM-algorithms might be a good indication for a good feature representation.
-
-% % Wat hoort hier in te staan???
-% - data wordt ingedeeld in fields, deze is afhankelijk van de locatie van de sensor
-% - alle observaties in een field worden samen bekeken
-% - een dag wordt ingedeeld in timeslices
-% - the amount of timeslices is variable
-% - we count the amount of 1's in one timeslice of a field
-% - there are a lot more different ways to use the data
-% - we can combine different timeslices, so maybe the best topics are found if their are different timeslice widths are combined.
-% - another way to combine the timeslices is to look at the previous and the subsequent timeslice and combine the three observations of this timeslices into one big observation. In this way the transitions are captured well.
-% - We also may want to look at the way the different sensors in the homes are handled. A reed sensor might be much more important than a motion sensor. The reed sensor is mostly connected to doors and opening the fridge might be of more information than if a person only moves in the living room, this might be only be caused by someone who shifted a little bit on the couch. 
-% 
-
-
-
-% In a first approach we discretize the data into time-slices of half an hour. In each time-slice we count the amount of sensor activations in all the fields. We differentiate between two different kind of sensors. For the reed sensors, which are installed at doors and the toilet flush, we count every change of sensor value. So open and close a door is both count as an activity.\\
-% %How is the toilet sensor been seen? 0 and 1?
-% The motion sensor can sens a new motion every minute. But in between the sensor will still have the same value, which is 1. That is why we count for every minute the sensor has the value 1 a new activity. So if the sensor has the value 1 for three minutes, we count three activities for the particular sensor.\\
-% The amount of activities captured at every sensor is add together for every field. So every time-slice can be represented as a vector $w_n$ of length five, for every field a value $v_i>=0 \in \mathbb{N}$. We add an additional dimension to the vector to capture the the time in which the observation is taken. The values lay between 1 and 48, for every time-slice a value. This is necessary to model the time dependency from the data, which is not automatically captured in the topic model that we are going to use. We say that a day starts at 3 a.m. so that we reduce the chance to cut between activities. It still can occur that a person goes to bed late or that he needs to visit the toilet, but we will ignore this fact for now.
-% 
 
 \pagebreak
 
 %----------------------------------------EXPERIMENTEN-----------------------------------------
 \section{Experiments}
 \label{sec:Experiments}
-In this section we first give some qualitative results, where the topic distribution on some days are shown. 
-Then we do something else
-Then we compare the BIC's?
-And after that we make a small test according to the feature representation.
+In this section we describe experiments that are performed. In the section of the qualitative results we give some visualizations of the topics that are found with the different models. We show that the topics can be meaningful and that semantic descriptions can be given to some of the topics.
+In the section of the quantitative results we compare the two developed models with each other and show the performance for different amount of topics and different amount of time-slices.
+
+% Wat wil ik nou eigenlijk aantonen en kan ik dat ook aantonen?
+% Ik wil aantonen dat het nieuwe model werkt. Ik wil aantonen dat het beter werkt dan normal LDA model. 
+% Het is al door meerdere mensen aangetoond dat topic modellen wel van nut zijn om behavior patronen in sensor data te vinden.
+% en we kunnen dus aantonen dat onze nieuwe methode OOK werkt, want we kunnen patterns vinden. eg: een dag in de week is de persoon in de middag weg, of 's nachts moet die persoon naar het toilet
+
+% QUALITATIVE EXPERIMENTEN
+%Ik wil aantonen dat mijn model werkt en dat je wel zinnige informatie eruit kunt halen. Je kunt een semantische omschrijving van de topics geven.
+%We vergelijken de nieuwe method met de BOW/k-means methode we kunnen hier ook aangeven wat de verhoudingen zijn van worden in de data en unique worden die zijn gevonden. Dit geeft ook al aan dat BOW waarschijnlijk niet werkt
+
+
+%Met de gegeven data en de gekozen feature representation zijn we niet in staat om zinnige informatie uit de BOW model te halen.
+
+% QUANTITATIVE EXPERIMENTEN
+
+
+% In this section we first give some qualitative results, where the topic distribution on some days are shown. 
+% Then we do something else
+% Then we compare the BIC's?
+% And after that we make a small test according to the feature representation.
 
 
 %To test the performance of the topic models we set the variables of the features to fixed values.  In the basic LDA model we use a coarse grain value for the time. This means that the sixth dimension can have 5 different values, where the time intervals are $\{ 3am - 8am, 8am - 1pm, 1pm - 18pm, 18pm - 23pm, 23pm - 3am  \}$.
 \subsection{Qualitative Results}
-To Visualize the topics we give an impression how the topics are distributed over the day. We show 10 different days of one house and mark every time-slice with a color that represents the assigned topic to that time-slice. To find the topic distribution we run the LDA algorithm on the whole data set which leads to the model parameters. With these parameters we then run the E-step again on the data set of the 10 days that are visualized. In this way we find the topic distribution on every time-slice.\\
+To visualize the topics we give an impression about how the topics are distributed over the day. For the data of one house we show the topic distribution for 10 different days and compare the results for the four different models. The models are the LDA with 
+
+of one house and mark every time-slice with a color that represents the assigned topic to that time-slice. To find the topic distribution we run the LDA algorithm on the whole data set which leads to the model parameters. With these parameters we then run the E-step again on the data set of the 10 days that are visualized. In this way we find the topic distribution on every time-slice.\\
 In the following figures we used $N=96$ time-slices for a day. Every observation that is used has 6 dimension. The first five dimensions are the sensor information of the fields $\{$'kitchen', 'living room', 'bathroom', 'bedroom', 'hallway'$\}$. The sixth dimension belongs to the time, where we divided a day into the five time intervals $\{ 3am - 8am, 8am - 1pm, 1pm - 18pm, 18pm - 23pm, 23pm - 3am  \}$.
 
 \paragraph{BOW model with and without pre-clustering}
@@ -730,6 +825,9 @@ In figure \ref{fig:PerplTS} we give the perplexity for different length of time-
 \label{sec:Disc}
 
 \subsection{LDA with Bag-of-Words model}
+Met de feature representation kunenn we uit BOW niks halen. Als de TS kleiner worden is er niet meer genoeg informatie beschikbaar om zinige informatie eruit te halen.
+Smoothing moet worden gedaan.
+
 With our feature representation we were not possible to find a good topic representation of the data. We see that the model works better if the amount of time slices gets bigger. Shorter time-slices means that the variance of the observation becomes not that high. Because it is not very likely that in a time-slice of one minute 20 or more sensor activations are received. At least not in our sensor data.  So if the size of time-slices is small, which equals a lot of time-slices per dat, the the amount of unique observations is reduced with respect to the amount of observations in the whole data set.\\
 So it might be possible that the model will find a good topic representation with a bigger amount of time-slices or another feature representation.
 
@@ -748,6 +846,8 @@ Using the Gaussian distribution has another advantage. If for example another fe
 \label{sec:Conc}
 In this thesis two novel models are represented which are based on the Latent Dirichlet Allocation model. Both models are applied to a real world sensor data, which is gained in the house of elderly people. With the models we are able to find behavior pattern in the data.
 It is totally possible to find topics, given them a name is another difficulty
+
+% We are not able to detect small activities, because in our data we group all sensors together that are located in the same room. We want to see if there is a behavior pattern on a more global way, that can be found regularly. Is there a topic distribution that returns frequently, can you see if it is a weekday or weekend? Wednesdays?
 
 \appendix
 
