@@ -3,7 +3,7 @@ clear all
 
 
 %% Initialize
-HN=2; % there are in total five houses
+HN=3; % there are in total five houses
 TS=96; % Amount of time slices
 coarse = 1; % The time is Coarse if this variable is 1, 0 otherwise
 V=6; %the amount of clusters
@@ -35,4 +35,4 @@ end
 [a,b,l]=ldaBasic(p,k,maxIter,V);
 
 %% Visualize the topics
-VisuLDAbasic(p,b,a,10,V)
+VisuLDAbasic(p,b,a,50,V)

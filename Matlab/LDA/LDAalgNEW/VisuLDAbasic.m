@@ -23,5 +23,16 @@ for i=1:n
     end
     y=y+1;
 end
+axis([0 24 0 n])
+xlabel('time of the day')
+ylabel('day')
+
+% This is for setting the x-as Tick
+set(gca,'XLim',[0 96]);
+ticky=[0,5,10,15,20,24];
+set(gca,'XTick',4*ticky);
+TickLab = {'3am','8am','1pm','6pm','11pm','3am'};
+set(gca,'XTicklabel',TickLab);
+
 %name = strcat(['pics/ClusterAantal', num2str(V),'.png']);
 %saveas(figure(1),name); %name is a string

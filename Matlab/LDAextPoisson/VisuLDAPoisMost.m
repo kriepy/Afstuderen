@@ -29,7 +29,6 @@ for i=1:n % for each day
     [N,~]=size(phi);
     for j=1:N %for each timeslice
         [~,ind]=max(phi(j,:)); 
-        figure(1)
         hold on
         no = 0;
         for ja=1:most
@@ -48,7 +47,7 @@ for i=1:n % for each day
     end
     y=y+1;
 end
-axis([0 24 0 10])
+axis([0 24 0 n])
 xlabel('time of the day')
 ylabel('day')
 
@@ -63,6 +62,6 @@ set(gca,'XTicklabel',TickLab);
 
 
 figure(2)
-VisuTopicsPois(alpha0,beta,most)
+VisuTopicsPois(alpha0,beta,most,size(d{1}.mat,1))
 
 end

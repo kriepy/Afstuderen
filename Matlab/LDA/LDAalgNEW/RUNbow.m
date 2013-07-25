@@ -4,18 +4,18 @@ clear all
 
 
 %% Initialize
-HN=2; % there are in total five houses
-TS=288; % Amount of time slices
+HN=3; % there are in total five houses
+TS=96; % Amount of time slices
 coarse = 1; % The time is Coarse if this variable is 1, 0 otherwise
 V=6; %the amount of clusters
-k=20; %aantal topics
+k=5; %aantal topics
 maxIter=10; %max aantal iteraties van LDA
 
 %% Laad de data
 try
     %load the clustered Data
-    path = '../../Data/DATAClustered/';
-    load(strcat([path,'Clustered',num2str(V),'TS',num2str(TS),'Coarse', num2str(coarse),'.mat']));
+    pat ='../../Data/DATAClustered/';
+    load(strcat([pat,'Clustered',num2str(V),'TS',num2str(TS),'Coarse', num2str(coarse),'.mat']));
     H=House{HN};
 catch
     % if that is not possible create the clustered data
@@ -50,4 +50,4 @@ end
 [a,b,l]=ldaBasic(p,k,maxIter,V);
 
 %% Visualize the topics
-VisuLDAbasic(p,b,a,10,V)
+VisuLDAbasic(p,b,a,50,V)

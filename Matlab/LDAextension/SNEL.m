@@ -1,7 +1,6 @@
-load SEED
 close all
 %% INITIALIZE
-k=10;
+k=20;
 maxIter=50;
 HN=5; % there are in total five houses
 TS=48; % Amount of time slices

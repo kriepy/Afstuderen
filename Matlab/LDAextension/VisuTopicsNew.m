@@ -21,7 +21,7 @@ for s=1:show
         bar(mu(1:5,s),'FaceColor',cmap(s,:));
         hold on
         errorbar(1:5,mu(1:5,s),sig(1:5,s),'.k','LineWidth',2)
-        axis([0.1 5.9 -5 10])
+        axis([0.1 5.9 -2 10])
         if s==show
             ax=axis;
             axis(axis); % Set the axis limit modes (e.g. XLimMode) to manual

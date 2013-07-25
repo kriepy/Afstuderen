@@ -3,10 +3,10 @@ clear all
 %% INITIALIZE
 k=20;
 maxIter=50;
-HN=5; % there are in total five houses
+HN=1; % there are in total five houses
 TS=48; % Amount of time slices
 V=6;
-coarse=2;
+coarse=1;
 
 %% LOAD DATA
 % addpath ../Data/Old/ALGtranExtData
@@ -40,4 +40,4 @@ lam=10*rand(1,k);
 [a,b,l]=ldaExtPoi(p,k,lam,maxIter);
 
 
-VisuLDAPoisMost(10,p,b,a,10);
+VisuLDAPoisMost(10,p,b,a,50);
