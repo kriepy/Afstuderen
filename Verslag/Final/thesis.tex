@@ -1,0 +1,152 @@
+%
+% TU/e Style Master Thesis template for LaTeX
+%
+% Public version 1.0
+% 2010 - 2013 Thijs Nugteren and Joos Buijs
+%
+% THIS IS THE MAIN FILE (i.e. compile this file, compiling the others directly won't work)
+%
+\documentclass[a4paper,10pt,twoside]{report}
+
+%all the other includes etc. are done in the thesis.sty file.
+\usepackage{thesis}
+
+%
+% These commands need to be defined in order to produce a correct and personalized document
+%
+\newcommand{\shortdoctitle}{}
+\newcommand{\doctitle}{Behavior Analysis of Elderly using Topic Models}
+\newcommand{\docsubtitle}{Master Thesis}
+
+\newcommand{\me}{Kristin Rieping}
+\newcommand{\keywords}{keyword1, keyword2, keyword3}
+\newcommand{\version}{}
+\newcommand{\monthYear}{August 2013}
+
+%Be sure to use all the titles for your committee members!!! (their names show up on the very first page!)
+\newcommand{\firstCommitteeMember}{Dr.ir. B.J.A. Kröse}
+\newcommand{\secondCommitteeMember}{Dr. G. Englebienne}
+\newcommand{\thirdCommitteeMember}{Dr. P.H. Rodenburg}
+
+\author{\me}
+
+%
+% PDF settings
+%
+\hypersetup
+{
+    pdfauthor={\me},
+    pdftitle={\shortdoctitle},
+    pdfsubject={\doctitle},
+    pdfkeywords={\keywords}
+}
+
+\begin{document}
+
+%use this include for PDF and distribution versions
+\pagenumbering{roman}
+\include{titlepage}
+
+\normalsize
+
+\clearemptydoublepage
+
+%Sometimes line numbers are nice, uncomment the next line to enable:
+%\linenumbers
+
+%It could be handy to have a list of todos and brainstorms in your thesis
+%\chapter*{*General todos*}\todo{remove this chapter}
+%\input{chapters/general_todos}
+
+%\chapter*{*Brainstorm results*}\todo{remove this chapter}
+%\input{chapters/brainstorm_results}
+
+\chapter*{Abstract}\label{chapter:abstract}
+\input{chapters/abstract}
+
+\clearemptydoublepage
+
+%An executive summary if you want:
+%\chapter*{Executive summary}\label{chapter:executive_summary}
+%\input{chapters/executive_summary}
+
+%\clearemptydoublepage
+
+
+% \chapter*{Preface}\label{chapter:preface}
+% \input{chapters/preface}
+% 
+% \clearemptydoublepage
+
+\tableofcontents
+
+\clearemptydoublepage
+
+\listoffigures
+
+% \clearemptydoublepage
+% 
+% \listoftables
+% 
+% \clearemptydoublepage
+% 
+% \lstlistoflistings
+
+\clearemptydoublepage
+
+\chapter{Introduction}\label{chapter:introduction}
+\setcounter{page}{0}
+\pagenumbering{arabic}
+%from here on, start the 'real' page numbering, from 1, with normal digits
+\input{chapters/introduction}
+
+\clearemptydoublepage
+
+\chapter{Related Work}\label{chapter:related_work}
+\input{chapters/related_work}
+
+\clearemptydoublepage
+
+\chapter{Data Description}\label{chapter:data_description}
+\input{chapters/data_description}
+
+\clearemptydoublepage
+
+\chapter{Features}\label{chapter:features}
+\input{chapters/features}
+
+\clearemptydoublepage
+
+\chapter{Topic Models}\label{chapter:topic_models}
+\input{chapters/topic_models}
+
+\clearemptydoublepage
+
+\chapter{Experiments}\label{chapter:experiments}
+\input{chapters/experiments}
+
+\clearemptydoublepage
+
+\chapter{Future Work}\label{chapter:future_work}
+\input{chapters/future_work}
+
+\clearemptydoublepage
+
+\chapter{Conclusions}\label{chapter:conclusions}
+\input{chapters/conclusions}
+
+\clearemptydoublepage
+
+%Choose a good bibliography style, plain would do often, but these might be nice too
+%\bibliographystyle{these}
+\bibliographystyle{plain}
+\bibliography{references}
+
+% \clearemptydoublepage
+% 
+% \appendix
+% \addcontentsline{toc}{chapter}{Appendix}
+% 
+% \input{appendices/main}
+
+\end{document}
