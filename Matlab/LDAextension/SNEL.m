@@ -3,7 +3,7 @@ close all
 k=20;
 maxIter=50;
 HN=5; % there are in total five houses
-TS=48; % Amount of time slices
+TS=1440; % Amount of time slices
 V=6;
 coarse=2;
 

@@ -1,7 +1,15 @@
-In the introduction of this section we describe the general idea of topic models followed by a section that describes how this kind of models can be used on the sensor data that we have. After that we introduce the extension of the LDA model which combines the clustering and topic estimation in one algorithm. And after that LDA-Poisson model is described.
+%% MISSCHIEN NOG TOEVOEGEN:
+%Hoe verschilt ons data van text documenten?
+%To make use of this method a suitable feature representation of the available data is required. The features are found by counting the activations of sensor groups. In this way a relative low number of dimensions are found, which can contain positive integers. In theory these numbers have an infinite range, but in practice the count of sensor activations of every dimension is reduced to a maximum.\\
+%This feature representation differs a lot to the Bag-of-words model that is often used for the description of textual data. In this representation a dictionary of all possible words is build and a document can be described with a binary vector of the same length as the size of the dictionary. With respect to our data, text data thus has much more dimension but every dimension only contains a binary value.
+
+
+
+
+In the first section of this chapter the general idea of topic models is introduced. This section is followed by a description of how this kind of models can be applied the sensor data. After that the extension of the LDA model 'LDA-Gaussian' is given, including the EM-algorithm that is used to determine the model parameters. This chapter is finalized with the description of the LDA-Poisson model.
 
 \section{Introduction to Topic Models}
-Topic models are often used in the field of document classification. Given a set of documents (corpus) it is assumed that every document belongs to one or more topic(s). So for example a news article may belong for some percentage, let us say 30 \%,  to the topic 'Economy' and for 70 \%  to the topic 'Politics'. Another document of the same Corpus may belong to the topic 'Economy' with 50 \%, 'Politics' with 30 \% and 'Global Warming' with 20 \%. There might be a lot of different topics and the topics can have different level of details. \\
+Topic models are often used in the field of document classification. Given a set of documents (corpus) it is assumed that every document belongs to one or more topic(s). So for example a news article may belong for some percentage, let us say 30 \%,  to the topic 'Economy' and for 70 \%  to the topic 'Politics'. Another document of the same Corpus may belong to the topic 'Economy' with 50 \%, 'Politics' with 30 \% and 'Finance' with 20 \%. There might be a lot of different topics and the topics can have different level of details. \\
 The topics are defined by several words that can occur in the documents. The topic 'Economy' may be defined by the list of words \{'trade', 'industry','GDP'\}. Other topics have different lists of words that describe them. The list might be longer or shorter and the words in the list will depend on the corpus that is used to generate the topics. It might also be the case that one word belongs to multiple topics. Eventually we can find the topic distribution of a document according to the words that are included in this document.\\
 In the topic model 'Latent Dirichlet Allocation' (LDA) it is assumed that a Corpus can be made out of a generative process. The parameters that generate the corpus are than used to describe the model of the corpus. The generative process which builds a corpus is as follows:\\
 For every document that is generated in the Corpus
@@ -28,24 +36,28 @@ The model is also shown in figure~\ref{fig:modelBasic}. The parameters $\alpha$ 
 \end{figure}
 
 To determine the model parameters an EM-algorithm can be used. How this algorithm can be applied is extensively described in~\cite{blei2003latent}. \\
-In the next section we describe how this model can be used with the sensor data, that is gained in the different houses.
+In the next section it is described how this model can be used with the sensor data, that is gained in the different houses.
 
 
 \section{Topic models with Sensor Data}
 
-In order to employ the topic model with the sensor data we first introduce the different levels of description given our data and relate them to the terms of document classification.
+In order to employ the topic model with the sensor data, first the different levels of description are introduced and relate to the terms of document classification.
 \begin{itemize}
- \item \textbf{Dataset/Corpus}: One dataset $C$ describes the sensor data that is gained in the home of a single person. So for every person there is a separate dataset. This set of data can be compared with a Corpus in document classification.
- \item \textbf{Day/Document}: Every Dataset is divided in days. A day can be compared with one document in a Corpus.
- \item \textbf{Observations/Words}: Finally every day is build of a set of observations. The amount and dimension of the observations depend on the representation of the features, which is described later in chapter \ref{sec:features}. Observations can be roughly compared with words in document classification.
+ \item \textbf{Dataset/Corpus}: One dataset $C$ describes the sensor data that is obtained in the home of a single person. So for every person there is a separate dataset. This set of data can be compared with a Corpus in document classification.
+ \item \textbf{Day/Document}: Every dataset is divided in days, which is a natural choice because daily routines are a good indication for behavior patterns. A day can be compared with a document in a Corpus.
+ \item \textbf{Observations/Words}: Finally every day is build of a set of observations, which are already introduced in chapter \ref{chapter:features}. Observations can be roughly compared with words in document classification. A different name for this observations is  'Artificial words'.
 \end{itemize}
 
-There are some differences between the data that is used for topic detection in documents and our sensor data.\\
-The main difference is that words that look similar to each other, like "illusion" and "allusion", may belong to a totally different topic in the document classification. But in our case, two observation that are similar to each other, are more likely to refer to the same topic. So for example if the topic "preparing food" has the observation using fridge 3 times in it, an observation of using fridge 4 times may also refer to the same topic. That is why we cannot directly compare the words in a text document with the observations used in the sensor data.\\
-Another difference is that in the topic model, LDA, it is assumed that the order of the words, in that they appear in the text, does not matter. In our case the time when an observation is made is of big influence. We can overcome this problem by adding time as an additional dimension to our observations.\\
+There are some differences between the data that is used for topic detection in text documents and in data obtained from binary sensors.\\
+The main difference is that words that look similar to each other, like "illusion" and "allusion", may belong to a totally different topic in the document classification. But in the case of sensor data, two observation that are similar to each other, are more likely to refer to the same topic. So for example if the topic "preparing breakfast" has the observation $o_n = {2,4,0,3,2,2}$ a similar observation like $o_n={2,4,0,4,2,2}$, where only the fourth value of the vector is changed, may also refer to the same topic. With a BOW model, where every unique observation forms a new dimension, this similarity cannot directly be captured. The only way to capture this relationship is by observing the similar observations with another observation. Say observation A and B are similar to each other. So if observation A is seen with observation C and also B is seen with C, then it might be possible that the LDA algorithm assigns the same topic for A and B. A lot of data is necessary to find these kind of relations.\\
+Another difference is that in the topic model LDA, it is assumed that the order of the words in the text is not important. However with sensor data the time when an observation is made is of big influence. By adding the time value to the observation we can overcome this problem. The fine grain time representation (see chapter \ref{chapter:features}) will contain more information about the sequential order of the observations than the coarse grain representation.\\
 
-If the Bag-of-Words model will be applied to the data, a dictionary of all unique observations must be made. All this observations then can be seen as a different dimension which are independent of each other. In figure~\ref{fig:FSBOW} it is shown how the BOW is used. Observations that are assigned to the same topic do not need to lie close to each other in the feature space and the correct topics might not be found with LDA. This approach needs a lot of data to find meaningful results. The size of the 'dictionary' varies depending on the feature representation. 
 
+
+
+
+% Plaatje a) omschrijven
+If the Bag-of-Words model will be applied to the data, a dictionary of all unique observations must be made. All this observations then can be seen as a different dimension which are independent of each other. In figure~\ref{fig:FSBOW} an example is shown how a topic model can assign topics to the different observations. It is not necessary that two observations lay close to each other if they are assigned to the same topics. So the spatial relationship between the observation is not taken into account. Observations can be assigned to multiple topics.\\
 \begin{figure}[h!]
 \centering
 \begin{minipage}[b]{0.3\linewidth}
@@ -61,21 +73,31 @@ If the Bag-of-Words model will be applied to the data, a dictionary of all uniqu
 \caption{Feature space with k-means and topic assignment.}
 \label{fig:FSk-means}
 \end{minipage}
-~
-\begin{minipage}[b]{0.3\textwidth}
+\end{figure}
+
+\begin{figure}[h]
 \centering
 \def\svgwidth{140pt}
 \input{Pictures/GMM.pdf_tex}
-\caption{Gaussian Mixture Model with LDA}
+\caption{Gaussian Mixture Model with LDA. Topic A is marked with red. Topic B is marked with blue (clustering on forehand with GMM) and with green (combination of GMM and LDA)}
 \label{fig:GMM+LDA}
-\end{minipage}
-\caption{The two different topics are marked with red and blue.}
 \end{figure}
 
-To make sure that similar observations will be grouped together and will appear in the same topic, we can apply the k-means algorithm to find clusters in the data. The id's of the centroids of the clusters then function as 'words' and can be used in the same way as Bag-of-words model, but then with reduced dictionary size. So if we apply LDA to the clustered data some clusters may fall into the same topic. This is shown in figure ~\ref{fig:FSk-means}.\\
-The outcome of the LDA model does strongly depend on the outcome of the apriori used cluster algorithm. The clusters that are found with k-means are maybe not a good representation of the data. All clusters may have the same amount of influence on the LDA model, which might not be the correct way to describe the data. The Gaussian Mixture model might give a better description of the clusters. Combining the part of clustering directly into the topic model will avoid the apriori clustering and the clusters are then formed due to the topics, which will give a better globalization of the data. In figure \ref{fig:GMM+LDA} we show how the combination of the part of clustering into the Topic Model might improve the Gaussian Mixture Model.\\
-According to the feature representation, which in our case is a discrete derivation of the sensor data, a Poison distribution might be a good choice to model the topic distributions. The Poisson distribution can be used instead of the Gaussian distribution.
+% plaatje b) omschrijven
+To make sure that similar observations will be grouped together and appear in the same topic, the k-means algorithm can be applied to find clusters in the data. The id's of the centroids of the clusters then function as the 'artificial words'. The size of the dictionary of the BOW model is in this way reduced. Applying LDA on this reduced representation can lead to a better topic description. This is shown in figure \ref{fig:FSk-means}.\\
+% plaatje c) omschrijven
+The outcome of the LDA model does strongly depend on the outcome of the apriori used cluster algorithm. Choosing the correct amount of clusters for the k-means algorithm can be difficult, as it is also pointed out in the work of Casale \cite{Casale:2009}. And still it can occur that the clusters do not give a good representation of the data. All clusters have the same influence on the LDA model, which is not always desirable. A Gaussian Mixture model (GMM) can give a better description of the clusters and give a degradation of the topics. Every Gaussian distribution can be assigned to a topic with the LDA model. This is shown in figure \ref{fig:GMM+LDA} with the red and blue Gaussian distributions. The red distribution is assigned to one topic and the two blue distributions are assigned to another topic.\\
+Combining the clustering and the Topic model directly together can lead to a more global representation of the topics. This is indicated with the green Gaussian distribution in the figure, which combines the two blue distribution into one. 
 
+
+
+ 
+
+% With a Gaussian Mixture Model it might be possible to distinguish between more or less important clusters. But we might want to let the topic model decide which topics have more influence and which have not, according to the data.\\
+% That is why we combined the clustering part and the topic estimation into one step. Instead of a multinomial distribution over all observations that occur in the 'Dictionary', we model a Gaussian distribution over every dimension of the observations. In this way similar observation can be captured in the model itself and are not generalized in one cluster beforehand.\\
+% The difference is that instead of a large, fixed set of unique observations (Dictionary), with a multinomial distribution, we take a Gaussian distribution over every dimension of the observations. In this way unseen observations will be handled properly.
+% In the next sections we describe the model in more detail. We first give an overview of the generative process. Then we explain the variational inference that is necessary to make the parameter estimation possible. And finally explain the EM-algorithm that determines the parameters.
+% 
 
 
 % 
@@ -139,17 +161,9 @@ According to the feature representation, which in our case is a discrete derivat
 % With the assumption that the data that we got from the sensor system has the same structure than the data created with the generative process we can find the model parameters $\alpha$ and $\beta$ for LDA with the EM-algorithme described in \cite{blei2003latent}.
 
 \section{LDA-Gaussian Model}
-In this section we explain how the part of clustering is combined within the LDA model itself. Instead of the k-means clusters we use a Gaussian distribution to model every dimension within the features.
+In this section the LDA-Gaussian model is described. First the model is explained, which is followed by the description of the variational inference. This inferense step is necessary to calculate the model parameters. In this subsection also the two steps of the EM-algorithm are explained.
 
 
-\subsection{Motivation and Assumptions of the Model}
- 
-Using the cluster algorithm k-mean in advance has some disadvantages. First of all we need to choose the number of clusters. This is not always that easy and then it is still not assured that the best clusters are found. Every cluster also has a hard separation line, which does not give any degradation if a value is far away from the mean of the cluster. There is no quality measurement of the clusters given. So every cluster is equally probable to occur in the topic model, which is not always desirable.
-
-With a Gaussian Mixture Model we might be able to distinguish between more or less important clusters. But we might want to let the topic model decide which topics have more influence and which have not, according to the data.\\
-That is why we combined the clustering part and the topic estimation into one step. Instead of a multinomial distribution over all observations that occur in the 'Dictionary', we model a Gaussian distribution over every dimension of the observations. In this way similar observation can be captured in the model itself and are not generalized in one cluster beforehand.\\
-The difference is that instead of a large, fixed set of unique observations (Dictionary), with a multinomial distribution, we take a Gaussian distribution over every dimension of the observations. In this way smoothing is not necessary, because unseen observations will be handled properly.
-In the next sections we describe the model in more detail. We first give an overview of the generative process. Then we explain the variational inference that is necessary to make the parameter estimation possible. And finally explain the EM-algorithm that determines the parameters.
 
 % Every topic will have its own distribution over the dimensions. A
 % topic can be described as shown in figure %\ref{fig:topic}.
@@ -162,7 +176,7 @@ In the next sections we describe the model in more detail. We first give an over
 
   \subsection{Model Description}
   
-  Our model assumes that every day in a dataset can be represented as random mixtures of latent topics, where every topic can be described as a distribution over observations. We assume the following generative procss for every day $m$ in the data set $C$:
+  For the model it is assumed that every day in a dataset can be represented as random mixture of latent topics, where every topic can be described as a distribution over observations. The following generative process is assumed for every day $m$ in the data set $C$:
 \begin{enumerate}
  \item The amount of observations on a day $m$ is fixed with size $N$ (for every day the same size).
  \item A day has a distribution over the topics given with $\theta \sim Dir(\alpha)$.
@@ -170,14 +184,14 @@ In the next sections we describe the model in more detail. We first give an over
  
  \begin{enumerate}
   \item Estimate the topic $z_n \sim Multinomial(\theta)$.
-  \item An observation $o_n$ is gained from $p(o_n |z_n,\boldsymbol\mu,\boldsymbol\sigma)$,  which is a probability that can be drawn from a set of Gaussian distributions. This probability is conditioned on the topic $z_n$ and the Gaussian Parameters $\vec{\mu_i}$ and $\vec{\sigma_i}$ of length $d$ that belong to the estimated topic $i$.
+  \item An observation $o_n$ is gained from $p(o_n |z_n,\boldsymbol\mu,\boldsymbol\sigma)$,  which is a probability that can be drawn from a set of Gaussian distributions. This probability is conditioned on the topic $z_n$ and the Gaussian Parameters $\vec{\mu_i}$ and $\vec{\sigma_i}$ of length $d$ that belong to the estimated topic $i=z_n$.
  \end{enumerate}
 
 \end{enumerate}
   
 In this model the amount of topics $k$ is assumed to be known and fixed and with it the size of the topic variable $z$.
-The probability for the observations is parametrized with two matrices $\boldsymbol\mu$ and $\boldsymbol\sigma$, both of size $D\times k$, where $D$ is the amount of dimensions in an observation and $k$ the amount of topics. They present the mean and standard deviation respectively and for every topic $i$ and every dimension $d$ there is a set of parameters, which describes a Gaussian distribution. Every value of a dimension for an observation $o_{ndi}$ can then be drawn from a Gaussian Distribution $\mathcal{N}(\mu_{di},\sigma_{di})$.
-The size of the dimension $D$ is assumed to be fixed and a more extensive description of the representation of the observations is given in section \ref{sec:features}. $\alpha$ represents the Dirichlet parameter and is vector of length $k$.
+The probability for the observations is parametrized with two matrices $\boldsymbol\mu$ and $\boldsymbol\sigma$, both of size $D\times k$, where $D$ is the amount of dimensions in an observation and $k$ the amount of topics. They present the mean and standard deviation respectively and for every topic $i$ and every dimension $d$ there is a set of parameters, which describes a Gaussian distribution. Every value of a dimension for an observation $o_{ndi}$ can then be drawn from a Gaussian Distribution $\mathcal{N}(\mu_{di},\sigma_{di})$.\\
+With the feature representation given in chapter \ref{chapter:features} the size of the dimension is fixed with $D=6$. $\alpha$ represents the Dirichlet parameter and is vector of length $k$.
 
 In figure \ref{fig:modelExt} the graphical representation of the model is shown. It differs from the basic LDA model (figure \ref{fig:modelBasic}) in the description of the topic distribution $\beta$, which is here replaced with $\mu$ and $\sigma$.
 
@@ -193,7 +207,8 @@ In figure \ref{fig:modelExt} the graphical representation of the model is shown.
 
 
   
-Assuming that the generative process described above can describe the available data properly, we now want to find the parameters so that the model best describes our data. We want in fact maximize the probability for the dataset $C$ given the model with respect to the parameters $\alpha$, $\mu$ and $\sigma$. This probability looks like this
+Assuming that the generative process described above can describe the available data properly, the optimal parameters need to be found. Therefore the probability for the dataset $C$ needs to be maximized, with respect to the parameters $\alpha$, $\mu$ and $\sigma$.
+This probability looks like this
 \begin{equation}
 p(C|\alpha,\mu,\sigma) = \prod_{m=1}^M p(m|\alpha,\mu,\sigma)
 \end{equation}
@@ -201,11 +216,11 @@ where $M$ is the amount of days within the dataset and the probability for a day
 \begin{equation} 
 p(m|\alpha,\mu,\sigma) = \int p(\theta|\alpha)  \left( \prod_{n=1}^N \sum_{z_n} p(z_n|\theta) p(w_n|z_n, \mu,\sigma)  \right) d\theta
 \end{equation}
-This distribution is gained by integrating the joint distribution \ref{eq:Joint} by $\theta$.
+This distribution is obtained by integrating the joint distribution \ref{eq:Joint} by $\theta$.
 \begin{equation} \label{eq:Joint}
  p(\theta,\textbf{z},\textbf{w}|\alpha,\mu,\sigma) = p(\theta|\alpha) \prod_{n=1}^N p(z_n|\theta) p(w_n|z_n,\mu,\sigma)
 \end{equation}
-In the next section we describe how we can find the optimal parameters for the model given a data set.
+In the next section it is described how the optimal parameters for the model given a data set can be found.
 
 
   
@@ -221,18 +236,18 @@ Due to the coupling between $\theta$ and the Gaussian parameters $\mu$ and $\sig
 
 
 
-That is why we use a convexity-based variational algorithm to approximate the log-likelihood of a given dataset. 
+That is why a convexity-based variational algorithm is applied, so that the log-likelihood of a given dataset can be approximated. 
 An approximation of the model is given with 
   \begin{equation}
    q(\theta,z|\gamma,\phi) = q(\theta|\gamma) \prod_{n=1}^N q(z_n|\phi_n).
   \end{equation}
-In this model $\gamma$ represents the Dirichlet parameter and $\phi$ are the multinominal parameter which can be viewed as the probabilty $p(z_i|o_n)$ and is given as a $k \times N$-matrix for every day $m$. The graphical representation of the model is shown in figure \ref{fig:ModelApprox}.
+In this model $\gamma$ represents the Dirichlet parameter and $\phi$ are the multinominal parameter which can be viewed as the probability $p(z_i|o_n)$ and is given as a $k \times N$-matrix for every day $m$. The graphical representation of the model is shown in figure \ref{fig:ModelApprox}.
   
  
 \begin{figure}[h!]
 \centering
 \def\svgwidth{0.4\textwidth}
-\input{Pictures/ModelApprox.pdf_tex}
+\input{Pictures/approxModel2.pdf_tex}
 \caption{Approximation of the model.}
 \label{fig:ModelApprox}
 \end{figure}
@@ -240,7 +255,7 @@ In this model $\gamma$ represents the Dirichlet parameter and $\phi$ are the mul
   
   
   
-  Given the variational distribution for aproximate model we can estimate the lower bound of the log-likelihood with the Jensen inequality as
+  Given the variational distribution for the approximate model the lower bound of the log-likelihood can be estimated with the Jensen inequality
   \begin{equation}
    \begin{split}
     L(\gamma;\phi;\alpha;\mu;\sigma) =& E_q[\log p(\theta|\alpha)] + E_q[\log p(\textbf{z}|\theta)] + E_q[\log p(\textbf{w}|\textbf{z},\mu,\sigma)] \\
@@ -259,26 +274,27 @@ In terms of the model parameters and the variational parameters this becomes
   \end{split}
   \label{eq:likeli}
 \end{equation}
-With an EM process we are then able to maximize this lower bound on the log-likelihood. The two steps are:
+
+An EM-process is able to maximize this lower bound on the log-likelihood. The two steps are:
   \begin{enumerate}
    \item \textbf{E-step:} For each day $m$, optimize the variational parameters $\{ \gamma_{m}*,\phi_{m}* \}$
    \item \textbf{M-step:} Maximize the resulting lower bound on the log-likelihood with respect to the model parameters $\alpha$, $\mu$ and $\sigma$.
   \end{enumerate}
   
-  We now give a more detailed description on both of these steps.
+  Now a more detailed description on both of these steps is given:
   
   \paragraph{E-step}
-In the e-step of the algorithm the variational parameters $\phi$ and $\gamma$ are optimized. To get the update function for $\phi$ we get all terms of the lower bound of the loglikelihood in equation (\ref{eq:likeli}) that contains the variable $\phi$. 
-Take $y_i=\sum_{d=1}^D \mathcal{N}(o_{nd};\mu_{id},\sigma_{id})$
-We add the constraint $\sum_{i=1}^k \phi_{ni}=1 $ to the formula and get
+In the E-step of the algorithm the variational parameters $\phi$ and $\gamma$ are optimized. To get the update function for $\phi$ all terms of the lower bound of the log-likelihood in equation (\ref{eq:likeli}) are gathered, that contain the variable $\phi$. 
+Take $y_i=\sum_{d=1}^D \mathcal{N}(o_{nd};\mu_{id},\sigma_{id})$ and add the constraint $\sum_{i=1}^k \phi_{ni}=1 $ . This results in the following formula
 \begin{equation}
  L_{[\phi_{ni}]} = \phi_{ni}(\Psi(\gamma_i)-\Psi(\sum_{j=1}^k \gamma_j)) + \phi_{ni} \log(y_i) + \lambda_n(\sum_{j=1}^k \phi_{ni} -1)
 \end{equation}
-From this equation we take the derivative of the formula and set it to zero. This leads to the first update function
+From this equation the derivative can be taken and set it to zero. This leads to the first update function
 \begin{equation}
  \phi_{ni} \propto \log(y_i) \exp(\Psi(\gamma_i) - \Psi(\sum_{j=1}^k \gamma_j))
 \end{equation}\\
-For $\gamma$  we also take all terms of equation \ref{eq:likeli} that contain this variable and set the derivate to zero. This leads to the second update equation
+
+A similar approach is handled for $\gamma$. Again all terms of equation \ref{eq:likeli} that contain this variable is selected and the derivative is set to zero. This leads to the second update equation
 \begin{equation}
  \gamma_i = \alpha_i + \sum_{n=1}^N \phi_{ni}
 \end{equation}
@@ -287,7 +303,7 @@ For $\gamma$  we also take all terms of equation \ref{eq:likeli} that contain th
 
   \paragraph{M-Step}
   
-In the m-step the parameters of the Gaussian distribution $\mu$ and $\sigma$ are estimated with the weighted arithmetic mean calculated over all observation in a dataset given the parameter $\phi$, which is gained in the previously e-step. This leads to the update formulas
+In the M-step the parameters of the Gaussian distribution $\mu$ and $\sigma$ are estimated with the weighted arithmetic mean calculated over all observation in a dataset given the parameter $\phi$, which is gained in the previously e-step. This leads to the update formulas
 \begin{equation}
  \mu_{di} = \frac{\sum_{m=1}^M \sum_{n=1}^N o_{dn} \phi_{ni} }{\sum_{m=1}^M \sum_{n=1}^N  \phi_{ni}}
 \end{equation}
@@ -295,16 +311,16 @@ and
 \begin{equation}
  \sigma_{di} = \sqrt{\frac{\sum_{m=1}^M \sum_{n=1}^N o_{dn}^2 \phi_{ni} }{\sum_{m=1}^M \sum_{n=1}^N  \phi_{ni}} - \mu_{di}^2}
 \end{equation}\\
-To calculate the parameter $\alpha$ we again take all terms of the likelihood that contains the variable $\alpha$. The derivative in the Hessian form is
+
+To calculate the parameter $\alpha$ again all terms of the likelihood that contains the variable $\alpha$ are selected. The derivative in the Hessian form is
 \begin{equation}
  \frac{\partial L}{\partial \alpha_i\alpha_j} =  m(i,j) M \Psi'(\alpha_i) - \Psi'(\sum_{j=1}^k \alpha_j)
 \end{equation}
-On this equation we can use the Newton-Rhapson method to calculate the optimal $\alpha$.
+On this equation the Newton-Rhapson method can be used to calculate the optimal $\alpha$.
 
 \section{LDA-Poisson Model}
 
-
-If the features are described in a discrete way, which means that every dimension has an integer value, the Poisson distributions is a better choice to describe the data. In figure \ref{fig:LDAPoisson} the graphical representation of LDA-Poisson model is shown. 
+The feature description in chapter \ref{chapter:features} generates positive integers. Small values are more likely to occur in the observations and that is why a Poisson distribution is a better choice for the description of the topics. In figure \ref{fig:LDAPoisson} the graphical representation of LDA-Poisson model is shown. 
 
 \begin{figure}[h!]
 \centering

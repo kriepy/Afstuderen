@@ -42,7 +42,7 @@ L5=[];
 tic;
 
 fprintf(1,'number of documents      = %d\n', n);
-fprintf(1,'number of words          = %d\n', l);
+fprintf(1,'number of dimensions     = %d\n', l);
 fprintf(1,'number of latent classes = %d\n', k);
 prevBet=0;
 AA=[];

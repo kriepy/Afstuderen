@@ -11,13 +11,12 @@
 %all the other includes etc. are done in the thesis.sty file.
 \usepackage{thesis}
 
-
 %
 % These commands need to be defined in order to produce a correct and personalized document
 %
 \newcommand{\shortdoctitle}{}
 \newcommand{\doctitle}{Behavior Analysis of Elderly using Topic Models}
-\newcommand{\docsubtitle}{Master Thesis}
+\newcommand{\docsubtitle}{Master Thesis of}
 
 \newcommand{\me}{Kristin Rieping}
 \newcommand{\keywords}{keyword1, keyword2, keyword3}
@@ -25,7 +24,7 @@
 \newcommand{\monthYear}{August 2013}
 
 %Be sure to use all the titles for your committee members!!! (their names show up on the very first page!)
-\newcommand{\firstCommitteeMember}{Dr.ir. B.J.A. Kröse}
+\newcommand{\firstCommitteeMember}{Dr.ir. B.J.A. Kr\"{o}	se}
 \newcommand{\secondCommitteeMember}{Dr. G. Englebienne}
 \newcommand{\thirdCommitteeMember}{Dr. P.H. Rodenburg}
 
@@ -74,10 +73,10 @@
 %\clearemptydoublepage
 
 
-\chapter*{Preface}\label{chapter:preface}
-\input{chapters/preface}
-
-\clearemptydoublepage
+% \chapter*{Preface}\label{chapter:preface}
+% \input{chapters/preface}
+% 
+% \clearemptydoublepage
 
 \tableofcontents
 
@@ -85,13 +84,13 @@
 
 \listoffigures
 
-\clearemptydoublepage
-
-\listoftables
-
-\clearemptydoublepage
-
-\lstlistoflistings
+% \clearemptydoublepage
+% 
+% \listoftables
+% 
+% \clearemptydoublepage
+% 
+% \lstlistoflistings
 
 \clearemptydoublepage
 
@@ -143,11 +142,11 @@
 \bibliographystyle{plain}
 \bibliography{references}
 
-\clearemptydoublepage
-
-\appendix
-\addcontentsline{toc}{chapter}{Appendix}
-
-\input{appendices/main}
+% \clearemptydoublepage
+% 
+% \appendix
+% \addcontentsline{toc}{chapter}{Appendix}
+% 
+% \input{appendices/main}
 
 \end{document}

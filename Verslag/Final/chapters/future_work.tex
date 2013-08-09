@@ -1,0 +1,17 @@
+% Hoe hebben ze de features gerepresenteerd in andere aanpakken, wat kan je hiervan overnemen? Wat moet je hier verder mee?
+% bedenk een verhaal lijn
+
+%% OOK nog toevoegen:
+% -casale wijst er ook op dat de resulaten sterk afhankelijk zijn van de gekozen feature representation (misschien meer voor future work interessant)
+% - kasteren gebruikt different kind of sensor readings
+% 
+% 
+% - tijd kan met poisson niet goed worden gemodeleerd. Het is misschien wel een goed idee om de sensor observaties met poisson te modeleren maar de tijd met een Gaussian distributie.
+% - een andere feature representatie kan misschien wel continue data creeren. Dan zal de LDA-Gaussian methode wel handiger zijn. Of anders misschien een gamma distributie.
+% 
+% 
+% But there are plenty more ways to describe the data so that it can be used in the LDA model. For example the size of the time-slices can be changed. This leads to a higher resolution and may give more detailed information of the behavior.
+% Another way to get a different feature representation is to combine sequential time-slices as it is described in the work of Farrahi et al. \cite{farrahi2008daily}. So for a given time-slice add the observation values of the previous and the subsequent time-slice. This will lead to a 15 dimensional observation plus one dimension for the time value. In this way the transitions are taken more into account, which might contain valuable information over the behavior.\\
+% We also might want to combine different sizes of time-slices into one observations, so that the global and detailed view is combined.\\
+% The different kind of sensor are also maybe important. The reed sensor, which is mostly installed at doors might contain more important information than the motion sensor. The motion sensor is also triggered by small movements, whereelse if a door is opened from a cupboard you can assume that an important action has taken place, as for example the person is grabbing a plate to prepare a meal. So it might be an idea to give a higher weight to sensor activities of reed sensors in house.\\
+% It is obvious that the feature space can be made nearly infinity big and it is quite a challenge to find the best feature representation. The likelihood that is gained from the EM-algorithms might be a good indication for a good feature representation.

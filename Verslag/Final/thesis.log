@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.5.16)  5 AUG 2013 16:34
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.5.16)  9 AUG 2013 12:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -663,15 +663,13 @@ LaTeX Info: Redefining \nameref on input line 44.
 \openout2 = `titlepage.aux'.
 
 
-(./titlepage.tex <figures/logo-UvA-wide.jpg, id=96, 1127.21124pt x 168.63pt>
+(./titlepage.tex <figures/logo-UvA-wide.jpg, id=92, 1127.21124pt x 168.63pt>
 File: figures/logo-UvA-wide.jpg Graphic file (type jpg)
 
 <use figures/logo-UvA-wide.jpg>
 Package pdftex.def Info: figures/logo-UvA-wide.jpg used on input line 3.
 (pdftex.def)             Requested size: 380.37437pt x 56.9055pt.
 \backupparindent=\skip73
-Missing character: There is no Ã in font cmr12!
-Missing character: There is no ¶ in font cmr12!
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
@@ -691,13 +689,7 @@ Missing character: There is no ¶ in font cmr12!
 
 ] [6
 
-] (./thesis.lof
-Overfull \hbox (69.77596pt too wide) in paragraph at lines 6--6
- \OT1/cmr/m/n/10 room','bathroom','bedroom','hallway' are marked with the col-o
-rs 'yel-low','blue','red','green','purple' 
- []
-
-)
+] (./thesis.lof)
 \tf@lof=\write5
 \openout5 = `thesis.lof'.
 
@@ -708,156 +700,158 @@ rs 'yel-low','blue','red','green','purple'
 ]
 Chapter 1.
 (./chapters/introduction.tex
+
+LaTeX Warning: Citation `4864' on page 1 undefined on input line 5.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 5--6
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 8--11
+LaTeX Warning: Citation `Mubashir2013144' on page 1 undefined on input line 8.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--18
+LaTeX Warning: Citation `4912776' on page 1 undefined on input line 11.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--13
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--19
 
  []
 
 [1
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 20--21
+Underfull \hbox (badness 10000) in paragraph at lines 21--25
 
  []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 30--31
-
- []
-
-
-LaTeX Warning: Reference `sec:DataDesc' on page 2 undefined on input line 34.
-
-
-LaTeX Warning: Reference `sec:features' on page 2 undefined on input line 34.
-
-
-LaTeX Warning: Reference `sec:TopicModels' on page 2 undefined on input line 34
-.
-
-
-LaTeX Warning: Reference `sec:Experiments' on page 2 undefined on input line 34
-.
-
-
-LaTeX Warning: Reference `sec:Disc' on page 2 undefined on input line 34.
-
-
-LaTeX Warning: Reference `sec:Conc' on page 2 undefined on input line 34.
 
 ) [2]
 Chapter 2.
 (./chapters/related_work.tex
-Underfull \hbox (badness 10000) in paragraph at lines 1--6
+Underfull \hbox (badness 10000) in paragraph at lines 2--4
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 7--11
+LaTeX Warning: Citation `journals/hf/RogersMWF98' on page 3 undefined on input 
+line 6.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--16
 
  []
 
-) [3
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--30
+
+ []
+
+[3
 
 
-] [4]
+]) [4]
 Chapter 3.
 (./chapters/data_description.tex
-<Pictures/floorplan.png, id=272, 542.025pt x 704.6325pt>
+<Pictures/floorplan.png, id=285, 542.025pt x 704.6325pt>
 File: Pictures/floorplan.png Graphic file (type png)
 
 <use Pictures/floorplan.png>
-Package pdftex.def Info: Pictures/floorplan.png used on input line 8.
+Package pdftex.def Info: Pictures/floorplan.png used on input line 9.
 (pdftex.def)             Requested size: 297.20906pt x 386.38788pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[5
+ [5
 
 
 ] [6 <./Pictures/floorplan.png>]
-<Pictures/SensorsMorningHN3Day34.png, id=285, 411.136pt x 432.817pt>
+<Pictures/SensorsMorningHN3Day34.png, id=299, 411.136pt x 432.817pt>
 File: Pictures/SensorsMorningHN3Day34.png Graphic file (type png)
 
 <use Pictures/SensorsMorningHN3Day34.png>
 Package pdftex.def Info: Pictures/SensorsMorningHN3Day34.png used on input line
- 25.
+ 43.
 (pdftex.def)             Requested size: 191.0625pt x 201.13895pt.
 
-<Pictures/SensorsNoonHN3Day34.png, id=286, 411.136pt x 432.817pt>
+<Pictures/SensorsNoonHN3Day34.png, id=300, 411.136pt x 432.817pt>
 File: Pictures/SensorsNoonHN3Day34.png Graphic file (type png)
 
 <use Pictures/SensorsNoonHN3Day34.png>
-Package pdftex.def Info: Pictures/SensorsNoonHN3Day34.png used on input line 30
+Package pdftex.def Info: Pictures/SensorsNoonHN3Day34.png used on input line 48
 .
 (pdftex.def)             Requested size: 191.0625pt x 201.13895pt.
-
-Underfull \hbox (badness 3547) in paragraph at lines 32--32
-[]\OT1/cmr/m/n/10 Figure 3.2: |Sen-sor Data for two dif-fer-ent hours at a day 
-of one per-son. The
- []
-
 ) [7 <./Pictures/SensorsMorningHN3Day34.png (PNG copy)> <./Pictures/SensorsNoon
 HN3Day34.png (PNG copy)>] [8
 
 ]
 Chapter 4.
 (./chapters/features.tex
-Underfull \hbox (badness 10000) in paragraph at lines 2--5
+Underfull \hbox (badness 10000) in paragraph at lines 1--5
 
  []
 
 
-Package caption Warning: \label without proper \caption on input line 13.
+Package caption Warning: \label without proper \caption on input line 14.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `fig:FeatEx' on page 9 undefined on input line 6.
+LaTeX Warning: Reference `fig:FeatEx' on page 9 undefined on input line 7.
 
-<Pictures/FeatExample.png, id=297, 411.136pt x 308.352pt>
+<Pictures/FeatExample.png, id=315, 411.136pt x 308.352pt>
 File: Pictures/FeatExample.png Graphic file (type png)
 
 <use Pictures/FeatExample.png>
-Package pdftex.def Info: Pictures/FeatExample.png used on input line 12.
+Package pdftex.def Info: Pictures/FeatExample.png used on input line 13.
 (pdftex.def)             Requested size: 233.52373pt x 175.14609pt.
 
 
-Package caption Warning: \label without proper \caption on input line 13.
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package caption Warning: \label without proper \caption on input line 14.
 See the caption package documentation for explanation.
 
 
-LaTeX Warning: Reference `fig:FeatEx' on page 9 undefined on input line 38.
+LaTeX Warning: Reference `fig:FeatEx' on page 9 undefined on input line 42.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--43
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--49
+
+ []
 
 [9
 
- <./Pictures/FeatExample.png>]) [10]
+]) [10 <./Pictures/FeatExample.png>]
 Chapter 5.
 (./chapters/topic_models.tex
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 5.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 13.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 5.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 13.
 
 (./Pictures/ModelBasic.pdf_tex
-<Pictures/ModelBasic.pdf, id=313, 363.76862pt x 209.89613pt>
+<Pictures/ModelBasic.pdf, id=334, 397.3244pt x 217.05782pt>
 File: Pictures/ModelBasic.pdf Graphic file (type pdf)
 
 <use Pictures/ModelBasic.pdf>
 Package pdftex.def Info: Pictures/ModelBasic.pdf used on input line 52.
-(pdftex.def)             Requested size: 400.0pt x 230.81279pt.
+(pdftex.def)             Requested size: 400.0pt x 218.52449pt.
 )
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
@@ -866,50 +860,37 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 ]
-
-LaTeX Warning: Reference `sec:features' on page 12 undefined on input line 40.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 43--46
+Underfull \hbox (badness 10000) in paragraph at lines 51--54
 
  []
 
 [12 <./Pictures/ModelBasic.pdf>]
-<Pictures/BOW.png, id=333, 623.32875pt x 793.96625pt>
+<Pictures/BOW.png, id=355, 623.32875pt x 793.96625pt>
 File: Pictures/BOW.png Graphic file (type png)
  <use Pictures/BOW.png>
-Package pdftex.def Info: Pictures/BOW.png used on input line 53.
+Package pdftex.def Info: Pictures/BOW.png used on input line 65.
 (pdftex.def)             Requested size: 127.37717pt x 162.2432pt.
 
-<Pictures/kMeans.png, id=334, 625.33624pt x 790.955pt>
+<Pictures/kMeans.png, id=356, 625.33624pt x 790.955pt>
 File: Pictures/kMeans.png Graphic file (type png)
 
 <use Pictures/kMeans.png>
-Package pdftex.def Info: Pictures/kMeans.png used on input line 60.
+Package pdftex.def Info: Pictures/kMeans.png used on input line 72.
 (pdftex.def)             Requested size: 127.37717pt x 161.10889pt.
 
-Underfull \hbox (badness 1418) in paragraph at lines 61--61
+Underfull \hbox (badness 1418) in paragraph at lines 73--73
 []\OT1/cmr/m/n/10 Figure 5.3: |Fea-ture space
  []
 
-(./Pictures/GMM.pdf_tex <Pictures/GMM.pdf, id=335, 368.2257pt x 453.12144pt>
+(./Pictures/GMM.pdf_tex <Pictures/GMM.pdf, id=357, 368.2257pt x 453.12144pt>
 File: Pictures/GMM.pdf Graphic file (type pdf)
 
 <use Pictures/GMM.pdf>
 Package pdftex.def Info: Pictures/GMM.pdf used on input line 52.
 (pdftex.def)             Requested size: 140.0pt x 172.27782pt.
-)
-Overfull \hbox (12.62283pt too wide) in paragraph at lines 53--69
- [][] 
- []
-
-[13 <./Pictures/BOW.png> <./Pictures/kMeans.png> <./Pictures/GMM.pdf>]
-
-LaTeX Warning: Reference `sec:features' on page 14 undefined on input line 180.
-
-
-(./Pictures/ModelExt.pdf_tex
-<Pictures/ModelExt.pdf, id=347, 363.76862pt x 219.29428pt>
+) [13 <./Pictures/BOW.png> <./Pictures/kMeans.png> <./Pictures/GMM.pdf>] (./Pic
+tures/ModelExt.pdf_tex
+<Pictures/ModelExt.pdf, id=371, 363.76862pt x 219.29428pt>
 File: Pictures/ModelExt.pdf Graphic file (type pdf)
 
 <use Pictures/ModelExt.pdf>
@@ -919,20 +900,29 @@ Package pdftex.def Info: Pictures/ModelExt.pdf used on input line 52.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[14] (./Pictures/ModelApprox.pdf_tex
-<Pictures/ModelApprox.pdf, id=362, 436.02899pt x 326.01799pt>
-File: Pictures/ModelApprox.pdf Graphic file (type pdf)
+[14] (./Pictures/approxModel2.pdf_tex
+<Pictures/approxModel2.pdf, id=385, 476.30939pt x 395.879pt>
+File: Pictures/approxModel2.pdf Graphic file (type pdf)
 
-<use Pictures/ModelApprox.pdf>
-Package pdftex.def Info: Pictures/ModelApprox.pdf used on input line 52.
-(pdftex.def)             Requested size: 169.8319pt x 126.98233pt.
+<use Pictures/approxModel2.pdf>
+Package pdftex.def Info: Pictures/approxModel2.pdf used on input line 52.
+(pdftex.def)             Requested size: 169.8319pt x 141.15114pt.
 )
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[15 <./Pictures/ModelExt.pdf>] [16 <./Pictures/ModelApprox.pdf>]
+[15 <./Pictures/ModelExt.pdf>] [16 <./Pictures/approxModel2.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 295--296
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 313--314
+
+ []
+
 (./Pictures/ModelPois.pdf_tex
-<Pictures/ModelPois.pdf, id=393, 363.76862pt x 219.29428pt>
+<Pictures/ModelPois.pdf, id=418, 363.76862pt x 219.29428pt>
 File: Pictures/ModelPois.pdf Graphic file (type pdf)
 
 <use Pictures/ModelPois.pdf>
@@ -954,7 +944,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 27--29
 
  []
 
-<Pictures/DayTopicsTs96k5bow.png, id=414, 411.136pt x 308.352pt>
+<Pictures/DayTopicsTs96k5bow.png, id=440, 411.136pt x 308.352pt>
 File: Pictures/DayTopicsTs96k5bow.png Graphic file (type png)
 
 <use Pictures/DayTopicsTs96k5bow.png>
@@ -962,7 +952,7 @@ Package pdftex.def Info: Pictures/DayTopicsTs96k5bow.png used on input line 42.
 
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/DayTopicsTs96k5Clus.png, id=415, 411.136pt x 308.352pt>
+<Pictures/DayTopicsTs96k5Clus.png, id=441, 411.136pt x 308.352pt>
 File: Pictures/DayTopicsTs96k5Clus.png Graphic file (type png)
 
 <use Pictures/DayTopicsTs96k5Clus.png>
@@ -973,7 +963,7 @@ Package pdftex.def Info: Pictures/DayTopicsTs96k5Clus.png used on input line 48
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Pictures/TopDayHN3TS96k5Pois.png, id=419, 411.136pt x 308.352pt>
+<Pictures/TopDayHN3TS96k5Pois.png, id=445, 411.136pt x 308.352pt>
 File: Pictures/TopDayHN3TS96k5Pois.png Graphic file (type png)
 
 <use Pictures/TopDayHN3TS96k5Pois.png>
@@ -981,7 +971,7 @@ Package pdftex.def Info: Pictures/TopDayHN3TS96k5Pois.png used on input line 63
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/TopVisuHN3TS96k5Pois.png, id=420, 411.136pt x 308.352pt>
+<Pictures/TopVisuHN3TS96k5Pois.png, id=446, 411.136pt x 308.352pt>
 File: Pictures/TopVisuHN3TS96k5Pois.png Graphic file (type png)
 
 <use Pictures/TopVisuHN3TS96k5Pois.png>
@@ -992,21 +982,21 @@ Package pdftex.def Info: Pictures/TopVisuHN3TS96k5Pois.png used on input line 6
 
 
 ]
-<Pictures/TopDayTS96k5Gaus.png, id=428, 411.136pt x 308.352pt>
+<Pictures/TopDayTS96k5Gaus.png, id=454, 411.136pt x 308.352pt>
 File: Pictures/TopDayTS96k5Gaus.png Graphic file (type png)
 
 <use Pictures/TopDayTS96k5Gaus.png>
 Package pdftex.def Info: Pictures/TopDayTS96k5Gaus.png used on input line 84.
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/TopVisuTS96k5Gaus.png, id=429, 411.136pt x 308.352pt>
+<Pictures/TopVisuTS96k5Gaus.png, id=455, 411.136pt x 308.352pt>
 File: Pictures/TopVisuTS96k5Gaus.png Graphic file (type png)
 
 <use Pictures/TopVisuTS96k5Gaus.png>
 Package pdftex.def Info: Pictures/TopVisuTS96k5Gaus.png used on input line 89.
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/Gaus/DayHN1TS48k20.png, id=430, 411.136pt x 308.352pt>
+<Pictures/Gaus/DayHN1TS48k20.png, id=456, 411.136pt x 308.352pt>
 File: Pictures/Gaus/DayHN1TS48k20.png Graphic file (type png)
 
 <use Pictures/Gaus/DayHN1TS48k20.png>
@@ -1014,7 +1004,7 @@ Package pdftex.def Info: Pictures/Gaus/DayHN1TS48k20.png used on input line 105
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/Gaus/TopHN1TS48k20.png, id=431, 411.136pt x 308.352pt>
+<Pictures/Gaus/TopHN1TS48k20.png, id=457, 411.136pt x 308.352pt>
 File: Pictures/Gaus/TopHN1TS48k20.png Graphic file (type png)
 
 <use Pictures/Gaus/TopHN1TS48k20.png>
@@ -1022,7 +1012,7 @@ Package pdftex.def Info: Pictures/Gaus/TopHN1TS48k20.png used on input line 109
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/Pois/DayHN1TS48k20.png, id=432, 411.136pt x 308.352pt>
+<Pictures/Pois/DayHN1TS48k20.png, id=458, 411.136pt x 308.352pt>
 File: Pictures/Pois/DayHN1TS48k20.png Graphic file (type png)
 
 <use Pictures/Pois/DayHN1TS48k20.png>
@@ -1030,7 +1020,7 @@ Package pdftex.def Info: Pictures/Pois/DayHN1TS48k20.png used on input line 118
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/Pois/TopHN1TS48k20.png, id=433, 411.136pt x 308.352pt>
+<Pictures/Pois/TopHN1TS48k20.png, id=459, 411.136pt x 308.352pt>
 File: Pictures/Pois/TopHN1TS48k20.png Graphic file (type png)
 
 <use Pictures/Pois/TopHN1TS48k20.png>
@@ -1038,7 +1028,7 @@ Package pdftex.def Info: Pictures/Pois/TopHN1TS48k20.png used on input line 122
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/Gaus/DayHN2TS48k20.png, id=434, 411.136pt x 308.352pt>
+<Pictures/Gaus/DayHN2TS48k20.png, id=460, 411.136pt x 308.352pt>
 File: Pictures/Gaus/DayHN2TS48k20.png Graphic file (type png)
 
 <use Pictures/Gaus/DayHN2TS48k20.png>
@@ -1046,7 +1036,7 @@ Package pdftex.def Info: Pictures/Gaus/DayHN2TS48k20.png used on input line 132
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/Gaus/TopHN2TS48k20.png, id=435, 411.136pt x 308.352pt>
+<Pictures/Gaus/TopHN2TS48k20.png, id=461, 411.136pt x 308.352pt>
 File: Pictures/Gaus/TopHN2TS48k20.png Graphic file (type png)
 
 <use Pictures/Gaus/TopHN2TS48k20.png>
@@ -1054,7 +1044,7 @@ Package pdftex.def Info: Pictures/Gaus/TopHN2TS48k20.png used on input line 136
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/Pois/DayHN2TS48k20.png, id=436, 411.136pt x 308.352pt>
+<Pictures/Pois/DayHN2TS48k20.png, id=462, 411.136pt x 308.352pt>
 File: Pictures/Pois/DayHN2TS48k20.png Graphic file (type png)
 
 <use Pictures/Pois/DayHN2TS48k20.png>
@@ -1062,7 +1052,7 @@ Package pdftex.def Info: Pictures/Pois/DayHN2TS48k20.png used on input line 145
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/Pois/TopHN2TS48k20.png, id=437, 411.136pt x 308.352pt>
+<Pictures/Pois/TopHN2TS48k20.png, id=463, 411.136pt x 308.352pt>
 File: Pictures/Pois/TopHN2TS48k20.png Graphic file (type png)
 
 <use Pictures/Pois/TopHN2TS48k20.png>
@@ -1070,7 +1060,7 @@ Package pdftex.def Info: Pictures/Pois/TopHN2TS48k20.png used on input line 149
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/Gaus/DayHN3TS48k20.png, id=438, 411.136pt x 308.352pt>
+<Pictures/Gaus/DayHN3TS48k20.png, id=464, 411.136pt x 308.352pt>
 File: Pictures/Gaus/DayHN3TS48k20.png Graphic file (type png)
 
 <use Pictures/Gaus/DayHN3TS48k20.png>
@@ -1078,7 +1068,7 @@ Package pdftex.def Info: Pictures/Gaus/DayHN3TS48k20.png used on input line 161
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/Gaus/TopHN3TS48k20.png, id=439, 411.136pt x 308.352pt>
+<Pictures/Gaus/TopHN3TS48k20.png, id=465, 411.136pt x 308.352pt>
 File: Pictures/Gaus/TopHN3TS48k20.png Graphic file (type png)
 
 <use Pictures/Gaus/TopHN3TS48k20.png>
@@ -1086,7 +1076,7 @@ Package pdftex.def Info: Pictures/Gaus/TopHN3TS48k20.png used on input line 165
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/Pois/DayHN3TS48k20.png, id=440, 411.136pt x 308.352pt>
+<Pictures/Pois/DayHN3TS48k20.png, id=466, 411.136pt x 308.352pt>
 File: Pictures/Pois/DayHN3TS48k20.png Graphic file (type png)
 
 <use Pictures/Pois/DayHN3TS48k20.png>
@@ -1094,7 +1084,7 @@ Package pdftex.def Info: Pictures/Pois/DayHN3TS48k20.png used on input line 174
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/Pois/TopHN3TS48k20.png, id=441, 411.136pt x 308.352pt>
+<Pictures/Pois/TopHN3TS48k20.png, id=467, 411.136pt x 308.352pt>
 File: Pictures/Pois/TopHN3TS48k20.png Graphic file (type png)
 
 <use Pictures/Pois/TopHN3TS48k20.png>
@@ -1102,7 +1092,7 @@ Package pdftex.def Info: Pictures/Pois/TopHN3TS48k20.png used on input line 178
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/Gaus/DayHN4TS48k20.png, id=442, 411.136pt x 308.352pt>
+<Pictures/Gaus/DayHN4TS48k20.png, id=468, 411.136pt x 308.352pt>
 File: Pictures/Gaus/DayHN4TS48k20.png Graphic file (type png)
 
 <use Pictures/Gaus/DayHN4TS48k20.png>
@@ -1110,7 +1100,7 @@ Package pdftex.def Info: Pictures/Gaus/DayHN4TS48k20.png used on input line 189
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/Gaus/TopHN4TS48k20.png, id=443, 411.136pt x 308.352pt>
+<Pictures/Gaus/TopHN4TS48k20.png, id=469, 411.136pt x 308.352pt>
 File: Pictures/Gaus/TopHN4TS48k20.png Graphic file (type png)
 
 <use Pictures/Gaus/TopHN4TS48k20.png>
@@ -1118,7 +1108,7 @@ Package pdftex.def Info: Pictures/Gaus/TopHN4TS48k20.png used on input line 193
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/Pois/DayHN4TS48k20.png, id=444, 411.136pt x 308.352pt>
+<Pictures/Pois/DayHN4TS48k20.png, id=470, 411.136pt x 308.352pt>
 File: Pictures/Pois/DayHN4TS48k20.png Graphic file (type png)
 
 <use Pictures/Pois/DayHN4TS48k20.png>
@@ -1126,7 +1116,7 @@ Package pdftex.def Info: Pictures/Pois/DayHN4TS48k20.png used on input line 202
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/Pois/TopHN4TS48k20.png, id=445, 411.136pt x 308.352pt>
+<Pictures/Pois/TopHN4TS48k20.png, id=471, 411.136pt x 308.352pt>
 File: Pictures/Pois/TopHN4TS48k20.png Graphic file (type png)
 
 <use Pictures/Pois/TopHN4TS48k20.png>
@@ -1134,7 +1124,7 @@ Package pdftex.def Info: Pictures/Pois/TopHN4TS48k20.png used on input line 206
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/Gaus/DayHN5TS48k20.png, id=446, 411.136pt x 308.352pt>
+<Pictures/Gaus/DayHN5TS48k20.png, id=472, 411.136pt x 308.352pt>
 File: Pictures/Gaus/DayHN5TS48k20.png Graphic file (type png)
 
 <use Pictures/Gaus/DayHN5TS48k20.png>
@@ -1142,7 +1132,7 @@ Package pdftex.def Info: Pictures/Gaus/DayHN5TS48k20.png used on input line 217
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/Gaus/TopHN5TS48k20.png, id=447, 411.136pt x 308.352pt>
+<Pictures/Gaus/TopHN5TS48k20.png, id=473, 411.136pt x 308.352pt>
 File: Pictures/Gaus/TopHN5TS48k20.png Graphic file (type png)
 
 <use Pictures/Gaus/TopHN5TS48k20.png>
@@ -1150,7 +1140,7 @@ Package pdftex.def Info: Pictures/Gaus/TopHN5TS48k20.png used on input line 221
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/Pois/DayHN5TS48k20.png, id=448, 411.136pt x 308.352pt>
+<Pictures/Pois/DayHN5TS48k20.png, id=474, 411.136pt x 308.352pt>
 File: Pictures/Pois/DayHN5TS48k20.png Graphic file (type png)
 
 <use Pictures/Pois/DayHN5TS48k20.png>
@@ -1158,7 +1148,7 @@ Package pdftex.def Info: Pictures/Pois/DayHN5TS48k20.png used on input line 230
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/Pois/TopHN5TS48k20.png, id=449, 411.136pt x 308.352pt>
+<Pictures/Pois/TopHN5TS48k20.png, id=475, 411.136pt x 308.352pt>
 File: Pictures/Pois/TopHN5TS48k20.png Graphic file (type png)
 
 <use Pictures/Pois/TopHN5TS48k20.png>
@@ -1185,14 +1175,14 @@ S48k20.png (PNG copy)>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [25]
-<Pictures/PerplGaus.png, id=478, 573.342pt x 317.185pt>
+<Pictures/PerplGaus.png, id=503, 573.342pt x 317.185pt>
 File: Pictures/PerplGaus.png Graphic file (type png)
 
 <use Pictures/PerplGaus.png>
 Package pdftex.def Info: Pictures/PerplGaus.png used on input line 262.
 (pdftex.def)             Requested size: 297.20906pt x 164.42896pt.
 
-<Pictures/CompareTSgausPois.png, id=481, 411.136pt x 308.352pt>
+<Pictures/CompareTSgausPois.png, id=506, 411.136pt x 308.352pt>
 File: Pictures/CompareTSgausPois.png Graphic file (type png)
 
 <use Pictures/CompareTSgausPois.png>
@@ -1200,7 +1190,7 @@ Package pdftex.def Info: Pictures/CompareTSgausPois.png used on input line 276.
 
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/CompareCrossTops.png, id=482, 449.68pt x 337.26pt>
+<Pictures/CompareCrossTops.png, id=507, 449.68pt x 337.26pt>
 File: Pictures/CompareCrossTops.png Graphic file (type png)
 
 <use Pictures/CompareCrossTops.png>
@@ -1210,7 +1200,7 @@ Package pdftex.def Info: Pictures/CompareCrossTops.png used on input line 282.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Pictures/PerplTS.png, id=484, 411.136pt x 308.352pt>
+<Pictures/PerplTS.png, id=509, 411.136pt x 308.352pt>
 File: Pictures/PerplTS.png Graphic file (type png)
 
 <use Pictures/PerplTS.png>
@@ -1251,9 +1241,9 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 152.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 152.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 152.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 9F90439B172B107CAE26B1AA0A996E0F;1366.
+(rerunfilecheck)             Checksum: AF55CC70B482D35D49F7A0BED9953D36;1273.
 Package rerunfilecheck Info: File `thesis.brf' has not changed.
-(rerunfilecheck)             Checksum: 1F18053A1996CC4B8E7D65D60BE3E9D0;871.
+(rerunfilecheck)             Checksum: E95B9AB9515AF48399848DA735401597;1577.
 
 
 LaTeX Warning: There were undefined references.
@@ -1261,13 +1251,13 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 152.
  ) 
 Here is how much of TeX's memory you used:
- 10896 strings out of 495059
- 167151 string characters out of 3182030
+ 10903 strings out of 495059
+ 167432 string characters out of 3182030
  297997 words of memory out of 3000000
- 13652 multiletter control sequences out of 15000+200000
+ 13657 multiletter control sequences out of 15000+200000
  14121 words of font info for 49 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 43i,17n,51p,1017b,487s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 43i,17n,51p,1063b,486s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
@@ -1282,10 +1272,10 @@ msl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (42 pages, 933079 bytes).
+Output written on thesis.pdf (42 pages, 934739 bytes).
 PDF statistics:
- 628 PDF objects out of 1000 (max. 8388607)
- 517 compressed objects within 6 object streams
- 140 named destinations out of 1000 (max. 500000)
- 395 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 661 PDF objects out of 1000 (max. 8388607)
+ 549 compressed objects within 6 object streams
+ 142 named destinations out of 1000 (max. 500000)
+ 387 words of extra memory for PDF output out of 10000 (max. 10000000)
 

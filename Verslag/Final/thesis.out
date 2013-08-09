@@ -11,13 +11,12 @@
 \BOOKMARK [1][-]{section.5.1}{Introduction to Topic Models}{chapter.5}% 11
 \BOOKMARK [1][-]{section.5.2}{Topic models with Sensor Data}{chapter.5}% 12
 \BOOKMARK [1][-]{section.5.3}{LDA-Gaussian Model}{chapter.5}% 13
-\BOOKMARK [2][-]{subsection.5.3.1}{Motivation and Assumptions of the Model}{section.5.3}% 14
-\BOOKMARK [2][-]{subsection.5.3.2}{Model Description}{section.5.3}% 15
-\BOOKMARK [2][-]{subsection.5.3.3}{Variational Inference}{section.5.3}% 16
-\BOOKMARK [1][-]{section.5.4}{LDA-Poisson Model}{chapter.5}% 17
-\BOOKMARK [0][-]{chapter.6}{Experiments}{}% 18
-\BOOKMARK [1][-]{subsection.6.0.1}{Qualitative Results}{chapter.6}% 19
-\BOOKMARK [2][-]{subsection.6.0.2}{Quantitative Results}{subsection.6.0.1}% 20
-\BOOKMARK [0][-]{chapter.7}{Future Work}{}% 21
-\BOOKMARK [0][-]{chapter.8}{Conclusions}{}% 22
-\BOOKMARK [0][-]{chapter*.35}{Bibliography}{}% 23
+\BOOKMARK [2][-]{subsection.5.3.1}{Model Description}{section.5.3}% 14
+\BOOKMARK [2][-]{subsection.5.3.2}{Variational Inference}{section.5.3}% 15
+\BOOKMARK [1][-]{section.5.4}{LDA-Poisson Model}{chapter.5}% 16
+\BOOKMARK [0][-]{chapter.6}{Experiments}{}% 17
+\BOOKMARK [1][-]{subsection.6.0.1}{Qualitative Results}{chapter.6}% 18
+\BOOKMARK [2][-]{subsection.6.0.2}{Quantitative Results}{subsection.6.0.1}% 19
+\BOOKMARK [0][-]{chapter.7}{Future Work}{}% 20
+\BOOKMARK [0][-]{chapter.8}{Conclusions}{}% 21
+\BOOKMARK [0][-]{chapter*.38}{Bibliography}{}% 22

@@ -3,42 +3,41 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Floorplan of the houses with sensor descriptions\relax }}{6}{figure.caption.4}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Sensor Data for two different hours at a day of one person. The fields `kitchen`,'living room','bathroom','bedroom','hallway' are marked with the colors 'yellow','blue','red','green','purple' respectively.\relax }}{7}{figure.caption.5}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Sensor Data for two different hours at a day of one person. The fields `kitchen`,'living room','bathroom','bedroom','hallway' are marked with the colors 'yellow', 'blue', 'red', 'green', 'purple' respectively.\relax }}{7}{figure.caption.6}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Vector representation of the data. The data of the sensors is shown in the left image. It is translated in the vector shown on the right-hand side.\relax }}{9}{figure.caption.6}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Vector representation of the data. The data of the sensors is shown in the left image. It is translated in the vector shown on the right-hand side.\relax }}{10}{figure.caption.7}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Graphical representation of the LDA model\relax }}{12}{figure.caption.7}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces The Bag-of-words model with topic assignment.\relax }}{13}{figure.caption.8}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Feature space with k-means and topic assignment.\relax }}{13}{figure.caption.8}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Gaussian Mixture Model with LDA\relax }}{13}{figure.caption.8}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces The two different topics are marked with red and blue.\relax }}{13}{figure.caption.8}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Graphical representation of the LDA-Gaussian model\relax }}{15}{figure.caption.9}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Approximation of the model.\relax }}{16}{figure.caption.10}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Graphical representation of the LDA-Poisson model.\relax }}{18}{figure.caption.13}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Graphical representation of the LDA model\relax }}{12}{figure.caption.9}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces The Bag-of-words model with topic assignment.\relax }}{13}{figure.caption.10}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Feature space with k-means and topic assignment.\relax }}{13}{figure.caption.10}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Gaussian Mixture Model with LDA. Topic A is marked with red. Topic B is marked with blue (clustering on forehand with GMM) and with green (combination of GMM and LDA)\relax }}{13}{figure.caption.11}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Graphical representation of the LDA-Gaussian model\relax }}{15}{figure.caption.12}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Approximation of the model.\relax }}{16}{figure.caption.13}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Graphical representation of the LDA-Poisson model.\relax }}{18}{figure.caption.16}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Topic distribution for 50 days for the Bag-of-Words model\relax }}{20}{figure.caption.15}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Topic distribution for 50 days for the k-means model\relax }}{20}{figure.caption.15}
-\contentsline {figure}{\numberline {6.3}{\ignorespaces \relax }}{20}{figure.caption.15}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Topic distribution for 50 days\relax }}{20}{figure.caption.16}
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Visualization of the topics\relax }}{20}{figure.caption.16}
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Poisson\relax }}{20}{figure.caption.16}
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Topic distribution for 10 days\relax }}{21}{figure.caption.17}
-\contentsline {figure}{\numberline {6.8}{\ignorespaces Visualization of the topics\relax }}{21}{figure.caption.17}
-\contentsline {figure}{\numberline {6.9}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Gaussian\relax }}{21}{figure.caption.17}
-\contentsline {figure}{\numberline {6.10}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Gaussian. HouseNr=1\relax }}{21}{figure.caption.19}
-\contentsline {figure}{\numberline {6.11}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Poisson. HouseNr=1\relax }}{21}{figure.caption.20}
-\contentsline {figure}{\numberline {6.12}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Gaussian. HouseNr=2\relax }}{22}{figure.caption.21}
-\contentsline {figure}{\numberline {6.13}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Poisson. HouseNr=2\relax }}{22}{figure.caption.22}
-\contentsline {figure}{\numberline {6.14}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Gaussian. HouseNr=3\relax }}{22}{figure.caption.23}
-\contentsline {figure}{\numberline {6.15}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Poisson. HouseNr=3\relax }}{23}{figure.caption.24}
-\contentsline {figure}{\numberline {6.16}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Gaussian. HouseNr=4\relax }}{23}{figure.caption.25}
-\contentsline {figure}{\numberline {6.17}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Poisson. HouseNr=4\relax }}{23}{figure.caption.26}
-\contentsline {figure}{\numberline {6.18}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Gaussian. HouseNr=5\relax }}{24}{figure.caption.27}
-\contentsline {figure}{\numberline {6.19}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Poisson. HouseNr=5\relax }}{24}{figure.caption.28}
-\contentsline {figure}{\numberline {6.20}{\ignorespaces Perplexity for different initializations of Topics for 5 different House\relax }}{26}{figure.caption.30}
-\contentsline {figure}{\numberline {6.21}{\ignorespaces Perplexity for LDA-Gaussian and LDA-Poisson with different amount of time-slices\relax }}{27}{figure.caption.32}
-\contentsline {figure}{\numberline {6.22}{\ignorespaces Perplexity for LDA-Gaussian and LDA-Poisson with different amount of topics\relax }}{27}{figure.caption.32}
-\contentsline {figure}{\numberline {6.23}{\ignorespaces \relax }}{27}{figure.caption.32}
-\contentsline {figure}{\numberline {6.24}{\ignorespaces Perplexity (x-axis) for the hold-out-set for different amount of time-slices (y-axis)\relax }}{27}{figure.caption.34}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Topic distribution for 50 days for the Bag-of-Words model\relax }}{20}{figure.caption.18}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Topic distribution for 50 days for the k-means model\relax }}{20}{figure.caption.18}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces \relax }}{20}{figure.caption.18}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Topic distribution for 50 days\relax }}{20}{figure.caption.19}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Visualization of the topics\relax }}{20}{figure.caption.19}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Poisson\relax }}{20}{figure.caption.19}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Topic distribution for 10 days\relax }}{21}{figure.caption.20}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Visualization of the topics\relax }}{21}{figure.caption.20}
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Gaussian\relax }}{21}{figure.caption.20}
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Gaussian. HouseNr=1\relax }}{21}{figure.caption.22}
+\contentsline {figure}{\numberline {6.11}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Poisson. HouseNr=1\relax }}{21}{figure.caption.23}
+\contentsline {figure}{\numberline {6.12}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Gaussian. HouseNr=2\relax }}{22}{figure.caption.24}
+\contentsline {figure}{\numberline {6.13}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Poisson. HouseNr=2\relax }}{22}{figure.caption.25}
+\contentsline {figure}{\numberline {6.14}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Gaussian. HouseNr=3\relax }}{22}{figure.caption.26}
+\contentsline {figure}{\numberline {6.15}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Poisson. HouseNr=3\relax }}{23}{figure.caption.27}
+\contentsline {figure}{\numberline {6.16}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Gaussian. HouseNr=4\relax }}{23}{figure.caption.28}
+\contentsline {figure}{\numberline {6.17}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Poisson. HouseNr=4\relax }}{23}{figure.caption.29}
+\contentsline {figure}{\numberline {6.18}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Gaussian. HouseNr=5\relax }}{24}{figure.caption.30}
+\contentsline {figure}{\numberline {6.19}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Poisson. HouseNr=5\relax }}{24}{figure.caption.31}
+\contentsline {figure}{\numberline {6.20}{\ignorespaces Perplexity for different initializations of Topics for 5 different House\relax }}{26}{figure.caption.33}
+\contentsline {figure}{\numberline {6.21}{\ignorespaces Perplexity for LDA-Gaussian and LDA-Poisson with different amount of time-slices\relax }}{27}{figure.caption.35}
+\contentsline {figure}{\numberline {6.22}{\ignorespaces Perplexity for LDA-Gaussian and LDA-Poisson with different amount of topics\relax }}{27}{figure.caption.35}
+\contentsline {figure}{\numberline {6.23}{\ignorespaces \relax }}{27}{figure.caption.35}
+\contentsline {figure}{\numberline {6.24}{\ignorespaces Perplexity (x-axis) for the hold-out-set for different amount of time-slices (y-axis)\relax }}{27}{figure.caption.37}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

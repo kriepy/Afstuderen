@@ -46,17 +46,18 @@ Xin Hong, Chris Nugent, Maurice Mulvenna, Sally McClean, Bryan Scotney, and
 \newblock {\em Pervasive and Mobile Computing}, 5(3):236 -- 252, 2009.
 \newblock <ce:title>Pervasive Health and Wellness Management</ce:title>.
 
+\bibitem{Huynh:2008:DAP:1409635.1409638}
+T\^{a}m Huynh, Mario Fritz, and Bernt Schiele.
+\newblock Discovery of activity patterns using topic models.
+\newblock In {\em Proceedings of the 10th international conference on
+  Ubiquitous computing}, UbiComp '08, pages 10--19, New York, NY, USA, 2008.
+  ACM.
+
 \bibitem{Kwon20125774}
 Ohbyung Kwon, Jae~Moon Shim, and Geunchan Lim.
 \newblock Single activity sensor-based ensemble analysis for health monitoring
   of solitary elderly people.
 \newblock {\em Expert Systems with Applications}, 39(5):5774 -- 5783, 2012.
-
-\bibitem{Mubashir2013144}
-Muhammad Mubashir, Ling Shao, and Luke Seed.
-\newblock A survey on fall detection: Principles and approaches.
-\newblock {\em Neurocomputing}, 100(0):144 -- 152, 2013.
-\newblock <ce:title>Special issue: Behaviours in video</ce:title>.
 
 \bibitem{Nagai2010204}
 Norihiro Nagai, Yusaku Fujii, Hiroshi Ueda, Koichi Maru, and Shigeru Kumakura.
@@ -67,10 +68,9 @@ Norihiro Nagai, Yusaku Fujii, Hiroshi Ueda, Koichi Maru, and Shigeru Kumakura.
 \newblock <ce:title>The 1st International Conference on Security Camera
   Network, Privacy Protection and Community Safety 2009</ce:title>.
 
-\bibitem{4864}
-United Nations.
-\newblock {\em {World population to 2300}}.
-\newblock United Nations, 2004.
+\bibitem{conf/percom/PhungATVK09}
+Dinh~Q. Phung, Brett Adams, Kha Tran, Svetha Venkatesh, and Mohan Kumar.
+\newblock In {\em PerCom}, pages 1--9. IEEE Computer Society.
 
 \bibitem{Tamura1998573}
 Toshiyo Tamura, Tatsuo Togawa, Mitsuhiro Ogawa, and Mikiko Yoda.

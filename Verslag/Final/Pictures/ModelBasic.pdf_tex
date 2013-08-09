@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{362.4095868bp}%
+    \setlength{\unitlength}{395.83998234bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,15 +48,15 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.57700451)%
+  \begin{picture}(1,0.54629873)%
     \put(0,0){\includegraphics[width=\unitlength]{Pictures/ModelBasic.pdf}}%
-    \put(0.32286618,0.58328928){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.16723938\unitlength}\centering $\beta$\end{minipage}}}%
-    \put(0.74021891,0.13941055){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.12710192\unitlength}\centering o\end{minipage}}}%
-    \put(0.50177584,0.13939937){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.11595263\unitlength}\centering z\end{minipage}}}%
-    \put(0.20452209,0.13850036){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.15831995\unitlength}\centering $\theta$\end{minipage}}}%
-    \put(-0.02231131,0.14154563){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.15831995\unitlength}\centering $\alpha$\end{minipage}}}%
-    \put(0.29426579,0.42018474){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.33447876\unitlength}\raggedright \textbf{k}:= all topics\end{minipage}}}%
-    \put(0.61090567,0.09685529){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.2787323\unitlength}\raggedright \textbf{N}:= all observations\end{minipage}}}%
-    \put(0.76476588,0.04333869){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.251974\unitlength}\raggedright \textbf{M}:= all days\end{minipage}}}%
+    \put(0.29559873,0.53402798){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.15311529\unitlength}\centering $\beta$\end{minipage}}}%
+    \put(0.67770423,0.12763673){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.11636762\unitlength}\centering o\end{minipage}}}%
+    \put(0.4593987,0.12762649){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.10615993\unitlength}\centering z\end{minipage}}}%
+    \put(0.18724932,0.12680341){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14494914\unitlength}\centering $\theta$\end{minipage}}}%
+    \put(-0.02042703,0.12959149){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.14494914\unitlength}\centering $\alpha$\end{minipage}}}%
+    \put(0.29391222,0.38265679){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.30623059\unitlength}\raggedright \textbf{k}:= all topics\end{minipage}}}%
+    \put(0.63484892,0.09275853){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.44097205\unitlength}\raggedright \textbf{N}:= all words\end{minipage}}}%
+    \put(0.64301506,0.03967855){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.40626589\unitlength}\raggedright \textbf{M}:= all documents\end{minipage}}}%
   \end{picture}%
 \endgroup%
