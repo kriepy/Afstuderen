@@ -6,12 +6,12 @@
 
 
 
-In the first section of this chapter the general idea of topic models is introduced. This section is followed by a description of how this kind of models can be applied the sensor data. After that the extension of the LDA model 'LDA-Gaussian' is given, including the EM-algorithm that is used to determine the model parameters. This chapter is finalized with the description of the LDA-Poisson model.
+In the first section of this chapter the general idea of topic models is introduced. This section is followed by a description of how this kind of models can be applied the sensor data. After that the extension of the LDA model `LDA-Gaussian' is given, including the EM-algorithm that is used to determine the model parameters. This chapter is finalized with the description of the LDA-Poisson model.
 
 \section{Introduction to Topic Models}
-Topic models are often used in the field of document classification. Given a set of documents (corpus) it is assumed that every document belongs to one or more topic(s). So for example a news article may belong for some percentage, let us say 30 \%,  to the topic 'Economy' and for 70 \%  to the topic 'Politics'. Another document of the same Corpus may belong to the topic 'Economy' with 50 \%, 'Politics' with 30 \% and 'Finance' with 20 \%. There might be a lot of different topics and the topics can have different level of details. \\
-The topics are defined by several words that can occur in the documents. The topic 'Economy' may be defined by the list of words \{'trade', 'industry','GDP'\}. Other topics have different lists of words that describe them. The list might be longer or shorter and the words in the list will depend on the corpus that is used to generate the topics. It might also be the case that one word belongs to multiple topics. Eventually we can find the topic distribution of a document according to the words that are included in this document.\\
-In the topic model 'Latent Dirichlet Allocation' (LDA) it is assumed that a Corpus can be made out of a generative process. The parameters that generate the corpus are than used to describe the model of the corpus. The generative process which builds a corpus is as follows:\\
+Topic models are often used in the field of document classification. Given a set of documents (corpus) it is assumed that every document belongs to one or more topic(s). So for example a news article may belong for some percentage, let us say 30 \%,  to the topic `Economy' and for 70 \%  to the topic `Politics'. Another document of the same Corpus may belong to the topic `Economy' with 50 \%, `Politics' with 30 \% and `Finance' with 20 \%. There might be a lot of different topics and the topics can have different level of details. \\
+The topics are defined by several words that can occur in the documents. The topic `Economy' may be defined by the list of words \{'trade', `industry', `GDP'\}. Other topics have different lists of words that describe them. The list might be longer or shorter and the words in the list will depend on the corpus that is used to generate the topics. It might also be the case that one word belongs to multiple topics. Eventually we can find the topic distribution of a document according to the words that are included in this document.\\
+In the topic model `Latent Dirichlet Allocation' (LDA) it is assumed that a Corpus can be made out of a generative process. The parameters that generate the corpus are than used to describe the model of the corpus. The generative process which builds a corpus is as follows:\\
 For every document that is generated in the Corpus
 \begin{enumerate}
  \item Choose the amount of words in the document from $N \sim Possoin(\xi)$.
@@ -41,67 +41,62 @@ In the next section it is described how this model can be used with the sensor d
 
 \section{Topic models with Sensor Data}
 
-In order to employ the topic model with the sensor data, first the different levels of description are introduced and relate to the terms of document classification.
+In order to employ the topic model with the sensor data, first the different levels of description are introduced and related to the terms of document classification.
 \begin{itemize}
  \item \textbf{Dataset/Corpus}: One dataset $C$ describes the sensor data that is obtained in the home of a single person. So for every person there is a separate dataset. This set of data can be compared with a Corpus in document classification.
  \item \textbf{Day/Document}: Every dataset is divided in days, which is a natural choice because daily routines are a good indication for behavior patterns. A day can be compared with a document in a Corpus.
- \item \textbf{Observations/Words}: Finally every day is build of a set of observations, which are already introduced in chapter \ref{chapter:features}. Observations can be roughly compared with words in document classification. A different name for this observations is  'Artificial words'.
+ \item \textbf{Observations/Words}: Finally every day is build of a set of observations, which are already introduced in chapter \ref{chapter:features}. Observations can be roughly compared with words in document classification. A different name for this observations is  `Artificial words'.
 \end{itemize}
 
-There are some differences between the data that is used for topic detection in text documents and in data obtained from binary sensors.\\
-The main difference is that words that look similar to each other, like "illusion" and "allusion", may belong to a totally different topic in the document classification. But in the case of sensor data, two observation that are similar to each other, are more likely to refer to the same topic. So for example if the topic "preparing breakfast" has the observation $o_n = {2,4,0,3,2,2}$ a similar observation like $o_n={2,4,0,4,2,2}$, where only the fourth value of the vector is changed, may also refer to the same topic. With a BOW model, where every unique observation forms a new dimension, this similarity cannot directly be captured. The only way to capture this relationship is by observing the similar observations with another observation. Say observation A and B are similar to each other. So if observation A is seen with observation C and also B is seen with C, then it might be possible that the LDA algorithm assigns the same topic for A and B. A lot of data is necessary to find these kind of relations.\\
+There are some differences between the data that is used for topic detection in text documents and in data obtained from binary sensors.
+The main difference is that words that look similar to each other, like ``illusion" and ``allusion", may belong to a totally different topic in the document classification. But in the case of sensor data, two observation that are similar to each other, are more likely to refer to the same topic. So for example if the topic ``preparing breakfast" has the observation $o_n = {2,4,0,3,2,2}$ a similar observation like $o_n={2,4,0,4,2,2}$, where only the fourth value of the vector is changed, may also refer to the same topic. With a BOW model, where every unique observation forms a new dimension, this similarity cannot directly be captured. The only way to capture this relationship is by observing the similar observations with another observation. Say observation A and B are similar to each other. So if observation A is seen with observation C and also B is seen with C, then it might be possible that the LDA algorithm assigns the same topic for A and B. A lot of data is necessary to find these kind of relations.
 Another difference is that in the topic model LDA, it is assumed that the order of the words in the text is not important. However with sensor data the time when an observation is made is of big influence. By adding the time value to the observation we can overcome this problem. The fine grain time representation (see chapter \ref{chapter:features}) will contain more information about the sequential order of the observations than the coarse grain representation.\\
 
 
-
-
-
 % Plaatje a) omschrijven
-If the Bag-of-Words model will be applied to the data, a dictionary of all unique observations must be made. All this observations then can be seen as a different dimension which are independent of each other. In figure~\ref{fig:FSBOW} an example is shown how a topic model can assign topics to the different observations. It is not necessary that two observations lay close to each other if they are assigned to the same topics. So the spatial relationship between the observation is not taken into account. Observations can be assigned to multiple topics.\\
-\begin{figure}[h!]
-\centering
-\begin{minipage}[b]{0.3\linewidth}
-\centering
-\includegraphics[width=\textwidth]{Pictures/BOW.png}
-\caption{The Bag-of-words model with topic assignment.}
+If the Bag-of-Words model will be applied to the data, a dictionary of all unique observations must be made. All this observations then can be seen as a different dimension which are independent of each other. In figure \ref{fig:FSBOW} a) an example is shown how a topic model can assign topics to the different observations. It is not necessary that two observations lay close to each other if they are assigned to the same topics. So the spatial relationship between the observation is not taken into account. Observations can be assigned to multiple topics.\\
+\begin{figure}
+ \centering
+ \begin{tabular}{c c}
+  \includegraphics[width=0.5\textwidth]{Pictures/BOW.png} & \includegraphics[width=0.5\textwidth]{Pictures/kMeans.png}\\
+  a) & b)
+ \end{tabular}
+ \caption{a) The Bag-of-words model with topic assignment. b) Feature space with k-means and topic assignment.} 
 \label{fig:FSBOW}
-\end{minipage}
-~
-\begin{minipage}[b]{0.3\linewidth}
-\centering
-\includegraphics[width=\textwidth]{Pictures/kMeans.png}
-\caption{Feature space with k-means and topic assignment.}
-\label{fig:FSk-means}
-\end{minipage}
 \end{figure}
+
+%\def\svgwidth{140pt}Gaussian Mixture Model with LDA. Topic A is marked with red. Topic B is marked with blue (clustering on forehand with GMM) and with green (combination of GMM and LDA)
+% plaatje b) omschrijven
+To make sure that similar observations will be grouped together and appear in the same topic, the k-means algorithm can be applied to find clusters in the data. The id's of the centroids of the clusters then function as the `artificial words'. The size of the dictionary of the BOW model is in this way reduced. Applying LDA on this reduced representation can lead to a better topic description. This is shown in figure \ref{fig:FSBOW} b).\\
 
 \begin{figure}[h]
 \centering
-\def\svgwidth{140pt}
-\input{Pictures/GMM.pdf_tex}
-\caption{Gaussian Mixture Model with LDA. Topic A is marked with red. Topic B is marked with blue (clustering on forehand with GMM) and with green (combination of GMM and LDA)}
+\begin{tabular}{c c} 
+\def\svgwidth{0.45\textwidth} \input{Pictures/GMM1.pdf_tex} & \def\svgwidth{0.45\textwidth} \input{Pictures/GMM2.pdf_tex}\\
+a) & b)
+\end{tabular}
+\caption{a) GMM and LDA. b) GMM and LDA combined in one model.}
 \label{fig:GMM+LDA}
 \end{figure}
 
-% plaatje b) omschrijven
-To make sure that similar observations will be grouped together and appear in the same topic, the k-means algorithm can be applied to find clusters in the data. The id's of the centroids of the clusters then function as the 'artificial words'. The size of the dictionary of the BOW model is in this way reduced. Applying LDA on this reduced representation can lead to a better topic description. This is shown in figure \ref{fig:FSk-means}.\\
 % plaatje c) omschrijven
-The outcome of the LDA model does strongly depend on the outcome of the apriori used cluster algorithm. Choosing the correct amount of clusters for the k-means algorithm can be difficult, as it is also pointed out in the work of Casale \cite{Casale:2009}. And still it can occur that the clusters do not give a good representation of the data. All clusters have the same influence on the LDA model, which is not always desirable. A Gaussian Mixture model (GMM) can give a better description of the clusters and give a degradation of the topics. Every Gaussian distribution can be assigned to a topic with the LDA model. This is shown in figure \ref{fig:GMM+LDA} with the red and blue Gaussian distributions. The red distribution is assigned to one topic and the two blue distributions are assigned to another topic.\\
-Combining the clustering and the Topic model directly together can lead to a more global representation of the topics. This is indicated with the green Gaussian distribution in the figure, which combines the two blue distribution into one. 
+The outcome of the LDA model does strongly depend on the outcome of the apriori used cluster algorithm. Choosing the correct amount of clusters for the k-means algorithm can be difficult, as it is also pointed out in the work of Casale \cite{Casale:2009}. And still it can occur that the clusters do not give a good representation of the data. All clusters have the same influence on the LDA model, which is not always desirable. A Gaussian Mixture model (GMM) can give a better description of the clusters and give a degradation of the topics. Every Gaussian distribution can be assigned to a topic with the LDA model. This is shown in figure \ref{fig:GMM+LDA} a) with the red and blue Gaussian distributions. The red distribution is assigned to one topic and the two blue distributions are assigned to another topic.\\
+
+Combining the clustering and the Topic model directly together can lead to a more global representation of the topics. This is indicated with the green Gaussian distribution in figure \ref{fig:GMM+LDA} b). 
 
 
 
  
 
 % With a Gaussian Mixture Model it might be possible to distinguish between more or less important clusters. But we might want to let the topic model decide which topics have more influence and which have not, according to the data.\\
-% That is why we combined the clustering part and the topic estimation into one step. Instead of a multinomial distribution over all observations that occur in the 'Dictionary', we model a Gaussian distribution over every dimension of the observations. In this way similar observation can be captured in the model itself and are not generalized in one cluster beforehand.\\
+% That is why we combined the clustering part and the topic estimation into one step. Instead of a multinomial distribution over all observations that occur in the `Dictionary', we model a Gaussian distribution over every dimension of the observations. In this way similar observation can be captured in the model itself and are not generalized in one cluster beforehand.\\
 % The difference is that instead of a large, fixed set of unique observations (Dictionary), with a multinomial distribution, we take a Gaussian distribution over every dimension of the observations. In this way unseen observations will be handled properly.
 % In the next sections we describe the model in more detail. We first give an overview of the generative process. Then we explain the variational inference that is necessary to make the parameter estimation possible. And finally explain the EM-algorithm that determines the parameters.
 % 
 
 
 % 
-% Let us say we have a two dimensional feature space. For example we only have two sensors in our data, than every dimension will refer to one of the sensors. A representation of this model is shown in figure bla (a). A cross marks an observation and is seen as a new 'word' in the bag-of-word method. We can use this data with the LDA model. The problem only with this approach is that similar observations are not group together and it might be possible that a similar observations are not grouped together in the same topic when we apply the LDA model.
+% Let us say we have a two dimensional feature space. For example we only have two sensors in our data, than every dimension will refer to one of the sensors. A representation of this model is shown in figure bla (a). A cross marks an observation and is seen as a new `word' in the bag-of-word method. We can use this data with the LDA model. The problem only with this approach is that similar observations are not group together and it might be possible that a similar observations are not grouped together in the same topic when we apply the LDA model.
 
 % 
 % 
@@ -141,7 +136,7 @@ Combining the clustering and the Topic model directly together can lead to a mor
 %  In the clustering we leave out the time dimension because this is fucking up the clusters
  
 %   \subsubsection{Latent Dirichlet Allocation with clustered Data}
-% The generative model 'Latent Dirichlet Allocation' [Blei] is a way to describe a topic model. In this model it is assumed that a Corpus can be generated from a distribution of topics, where every topic can be represented with a distribution of words. In our case the documents are days and the words are observations $o_n$. In the previous section we described how we reduced the size of the dictionary $V$.
+% The generative model `Latent Dirichlet Allocation' [Blei] is a way to describe a topic model. In this model it is assumed that a Corpus can be generated from a distribution of topics, where every topic can be represented with a distribution of words. In our case the documents are days and the words are observations $o_n$. In the previous section we described how we reduced the size of the dictionary $V$.
 % The generative process that would create the data will look like this:
 % 
 % For every day that will be generated:
@@ -174,7 +169,7 @@ In this section the LDA-Gaussian model is described. First the model is explaine
 %  \label{fig:topic}
 % \end{figure}
 
-  \subsection{Model Description}
+\subsection{Model Description}
   
   For the model it is assumed that every day in a dataset can be represented as random mixture of latent topics, where every topic can be described as a distribution over observations. The following generative process is assumed for every day $m$ in the data set $C$:
 \begin{enumerate}
@@ -184,7 +179,7 @@ In this section the LDA-Gaussian model is described. First the model is explaine
  
  \begin{enumerate}
   \item Estimate the topic $z_n \sim Multinomial(\theta)$.
-  \item An observation $o_n$ is gained from $p(o_n |z_n,\boldsymbol\mu,\boldsymbol\sigma)$,  which is a probability that can be drawn from a set of Gaussian distributions. This probability is conditioned on the topic $z_n$ and the Gaussian Parameters $\vec{\mu_i}$ and $\vec{\sigma_i}$ of length $d$ that belong to the estimated topic $i=z_n$.
+  \item An observation $o_n$ is gained from $p(o_n |z_n,\boldsymbol\mu,\boldsymbol\sigma)$,  which is a probability that can be drawn from a set of Gaussian distributions. This probability is conditioned on the topic $z_n$ and the Gaussian Parameters $\vec{\mu_{z_n}}$ and $\vec{\sigma_{z_n}}$ of length $d$ that belong to the estimated topic $z_n$.
  \end{enumerate}
 
 \end{enumerate}
@@ -274,6 +269,7 @@ In terms of the model parameters and the variational parameters this becomes
   \end{split}
   \label{eq:likeli}
 \end{equation}
+Notice that in the implementation the Gaussian distribution is integrated over a time interval of $[{o_{nd}-0.5},{o_{nd}+0.5}]$, so that the log-likelihood becomes a probability value. In this way numerical errors in the log-likelihood are smoothed.\\
 
 An EM-process is able to maximize this lower bound on the log-likelihood. The two steps are:
   \begin{enumerate}
@@ -292,7 +288,8 @@ Take $y_i=\sum_{d=1}^D \mathcal{N}(o_{nd};\mu_{id},\sigma_{id})$ and add the con
 From this equation the derivative can be taken and set it to zero. This leads to the first update function
 \begin{equation}
  \phi_{ni} \propto \log(y_i) \exp(\Psi(\gamma_i) - \Psi(\sum_{j=1}^k \gamma_j))
-\end{equation}\\
+\end{equation}
+\\
 
 A similar approach is handled for $\gamma$. Again all terms of equation \ref{eq:likeli} that contain this variable is selected and the derivative is set to zero. This leads to the second update equation
 \begin{equation}

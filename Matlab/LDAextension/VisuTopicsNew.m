@@ -15,12 +15,13 @@ cmap=colormap(hsv(show));
 
 maxY=1;
 minY=-1;
-for s=1:show
+for ss=1:show
+    s=show-ss+1;
     subplot(show,4,(4*s-3):(4*s-1))
     for d=1:D-1
-        bar(mu(1:5,s),'FaceColor',cmap(s,:));
+        bar(mu(1:5,ss),'FaceColor',cmap(ss,:));
         hold on
-        errorbar(1:5,mu(1:5,s),sig(1:5,s),'.k','LineWidth',2)
+        errorbar(1:5,mu(1:5,ss),sig(1:5,ss),'.k','LineWidth',2)
         axis([0.1 5.9 -2 10])
         if s==show
             ax=axis;
@@ -36,9 +37,9 @@ for s=1:show
     end
     %for the time
     subplot(show,4,4*s)
-    bar(mu(6,s),'FaceColor',cmap(s,:));
+    bar(mu(6,ss),'FaceColor',cmap(ss,:));
     hold on
-    errorbar(1,mu(6,s),sig(6,s),'.k','LineWidth',2)
+    errorbar(1,mu(6,ss),sig(6,ss),'.k','LineWidth',2)
     axis([0.1 1.9 0 timeMax])
     if s==show
         ax=axis;

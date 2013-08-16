@@ -1,11 +1,12 @@
+clear all
 close all
 %% INITIALIZE
 k=20;
 maxIter=50;
-HN=5; % there are in total five houses
-TS=1440; % Amount of time slices
+HN=1; % there are in total five houses
+TS=48; % Amount of time slices
 V=6;
-coarse=2;
+coarse=1; % 0:= no time, 1:= coarse grain, 2:= fine grain
 
 %% LOAD DATA
 % addpath ../Data/Old/ALGtranExtData

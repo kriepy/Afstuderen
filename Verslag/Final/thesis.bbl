@@ -38,6 +38,13 @@ Katayoun Farrahi and Daniel Gatica-Perez.
   Learning for Multimodal Interaction}, MLMI '08, pages 173--184, Berlin,
   Heidelberg, 2008. Springer-Verlag.
 
+\bibitem{4912776}
+Tao Gu, Zhanqing Wu, Xianping Tao, H.K. Pung, and Jian Lu.
+\newblock epsicar: An emerging patterns based approach to sequential,
+  interleaved and concurrent activity recognition.
+\newblock In {\em Pervasive Computing and Communications, 2009. PerCom 2009.
+  IEEE International Conference on}, pages 1--9, 2009.
+
 \bibitem{Hong2009236}
 Xin Hong, Chris Nugent, Maurice Mulvenna, Sally McClean, Bryan Scotney, and
   Steven Devlin.
@@ -59,6 +66,12 @@ Ohbyung Kwon, Jae~Moon Shim, and Geunchan Lim.
   of solitary elderly people.
 \newblock {\em Expert Systems with Applications}, 39(5):5774 -- 5783, 2012.
 
+\bibitem{Mubashir2013144}
+Muhammad Mubashir, Ling Shao, and Luke Seed.
+\newblock A survey on fall detection: Principles and approaches.
+\newblock {\em Neurocomputing}, 100(0):144 -- 152, 2013.
+\newblock <ce:title>Special issue: Behaviours in video</ce:title>.
+
 \bibitem{Nagai2010204}
 Norihiro Nagai, Yusaku Fujii, Hiroshi Ueda, Koichi Maru, and Shigeru Kumakura.
 \newblock Pc-based monitoring system for efficient use of day care centers for
@@ -68,9 +81,14 @@ Norihiro Nagai, Yusaku Fujii, Hiroshi Ueda, Koichi Maru, and Shigeru Kumakura.
 \newblock <ce:title>The 1st International Conference on Security Camera
   Network, Privacy Protection and Community Safety 2009</ce:title>.
 
-\bibitem{conf/percom/PhungATVK09}
-Dinh~Q. Phung, Brett Adams, Kha Tran, Svetha Venkatesh, and Mohan Kumar.
-\newblock In {\em PerCom}, pages 1--9. IEEE Computer Society.
+\bibitem{UnitedNations}
+United Nations.
+
+\bibitem{journals/hf/RogersMWF98}
+Wendy~A. Rogers, Beth Meyer, Neff Walker, and Arthur~D. Fisk.
+\newblock Functional limitations to daily living tasks in the aged: A focus
+  group analysis.
+\newblock {\em Human Factors}, (1):111--125.
 
 \bibitem{Tamura1998573}
 Toshiyo Tamura, Tatsuo Togawa, Mitsuhiro Ogawa, and Mikiko Yoda.
@@ -81,6 +99,12 @@ Toshiyo Tamura, Tatsuo Togawa, Mitsuhiro Ogawa, and Mikiko Yoda.
 Emmanuel~Munguia Tapia, Stephen~S. Intille, and Kent Larson.
 \newblock Activity recognition in the home using simple and ubiquitous sensors.
 \newblock In {\em In Pervasive}, pages 158--175, 2004.
+
+\bibitem{vanKasteren:2008:AAR:1409635.1409637}
+Tim van Kasteren, Athanasios Noulas, Gwenn Englebienne, and Ben Kr\"{o}se.
+\newblock Accurate activity recognition in a home setting.
+\newblock In {\em Proceedings of the 10th international conference on
+  Ubiquitous computing}, UbiComp '08, pages 1--9, New York, NY, USA, 2008. ACM.
 
 \bibitem{Wilson:2005:STA:2154273.2154280}
 D.~H. Wilson and C.~Atkeson.

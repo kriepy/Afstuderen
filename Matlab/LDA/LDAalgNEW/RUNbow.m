@@ -27,7 +27,9 @@ end
 
 
 %% Create the dictionary
+getOverview(H);
 Dic=createDic2(H);
+
 
 %% Change the input data for LDA into the good fomat
 for i=1:length(H.day)
