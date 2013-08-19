@@ -3,11 +3,11 @@ clear all
 
 
 %% Initialize
-HN=3; % there are in total five houses
-TS=96; % Amount of time slices
+HN=1; % there are in total five houses
+TS=48; % Amount of time slices
 coarse = 1; % The time is Coarse if this variable is 1, 0 otherwise
 V=6; %the amount of clusters
-k=5; %aantal topics
+k=20; %aantal topics
 maxIter=100; %max aantal iteraties van LDA
 
 %% Laad de data
@@ -32,7 +32,7 @@ end
 
 %% Use LDAbasic on the clustered data
 
-[a,b,l]=ldaBasic(p,k,maxIter,V);
+[a,b,l]=ldaBasic(p,k,maxIter);
 
 %% Visualize the topics
-VisuLDAbasic(p,b,a,50,V)
+%VisuLDAbasic(p,b,a,50,V)

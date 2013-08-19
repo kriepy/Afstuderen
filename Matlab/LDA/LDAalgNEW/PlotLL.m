@@ -18,5 +18,5 @@ subplot(3,2,6); plot(sum(l4)); title d3
  subplot(5,1,5); plot(l4'); title D3
  
  name = strcat(['pics/LikeliClusters', num2str(V),'.png']);
-saveas(h,name); %name is a string
+%saveas(h,name); %name is a string
 end

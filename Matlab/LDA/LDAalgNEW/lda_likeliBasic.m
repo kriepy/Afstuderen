@@ -8,7 +8,6 @@ function [llh,Lalpha,d1,d2,d3,Lgamma] = lda_likeliBasic( d , alpha , beta , gam 
 Lalpha = repmat(gammaln(sum(alpha)),length(d),1) - repmat(sum(gammaln(alpha)),length(d),1)...
          + sum( repmat(alpha-1,length(d),1) .* ( psi(gam)-repmat(psi(sum(gam,2)),1,size(gam,2)) ) ,2);
      
-     
 % the likelihood depending on phi
 % Lphi = sum(sum( phi (psi(gam)-psi(sum(gam))))) ...
 
@@ -21,7 +20,8 @@ for i=1:length(d)
        
        
     %d2=[d2;sum(sum(  (t.phi'*diag(t.cnt))'.* log(beta(t.id,:)) ))];
-    d2 = [d2 ;  sum(sum(t.mat'*t.phi  .* log(beta) )) ];
+    d2 = [d2 ;  sum(sum(t.phi.* (t.mat*log(beta))))];
+    %d2 = [d2 ;  sum(sum(t.mat'*t.phi  .* log(beta) )) ];
     
     d3=[d3;sum(sum(t.phi.*log(t.phi)))];
     d3(isnan([d3]))=0;
@@ -38,5 +38,5 @@ Lgamma = -gammaln(sum(gam,2)) + sum(gammaln(gam),2)...
 
 
 llh= Lalpha + Lphi + Lgamma;
-d3=-d3;
+%d3=-d3;
 end

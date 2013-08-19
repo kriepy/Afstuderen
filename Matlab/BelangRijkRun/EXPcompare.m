@@ -15,6 +15,7 @@ TS=48;
 V=6;
 coarse=0;
 startValue = 5;
+addpath ../LDAextension
 
 %% LOAD DATA
 HN=2; %moet voor alle huizen

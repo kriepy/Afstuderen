@@ -6,8 +6,8 @@
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Sensor Data for two different hours at a day of one person. The fields `kitchen`,'living room','bathroom','bedroom','hallway' are marked with the colors 'yellow', 'blue', 'red', 'green', 'purple' respectively.\relax }}{7}{figure.caption.6}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Vector representation of the data. The data of the sensors is shown in the left image. It is translated in the vector shown on the right-hand side.\relax }}{9}{figure.caption.7}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces \relax }}{11}{figure.caption.9}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces \relax }}{11}{figure.caption.10}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Occurrence of unique observation for house number one.\relax }}{11}{figure.caption.9}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Occurrence of observation per field/dimension in the set of unique words for house number one.\relax }}{11}{figure.caption.10}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Graphical representation of the LDA model\relax }}{14}{figure.caption.11}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces a) The Bag-of-words model with topic assignment. b) Feature space with k-means and topic assignment.\relax }}{15}{figure.caption.12}
@@ -16,7 +16,7 @@
 \contentsline {figure}{\numberline {5.5}{\ignorespaces Approximation of the model.\relax }}{18}{figure.caption.15}
 \contentsline {figure}{\numberline {5.6}{\ignorespaces Graphical representation of the LDA-Poisson model.\relax }}{20}{figure.caption.18}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces a) LDA model applied to clustered data. b) LDA applied to data that is not clustered.\relax }}{22}{figure.caption.19}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces a) LDA model applied to BOW representation with k-means clustering. b) LDA applied to data with simple BOW representation of the data.\relax }}{22}{figure.caption.19}
 \contentsline {figure}{\numberline {6.2}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Gaussian\relax }}{22}{figure.caption.20}
 \contentsline {figure}{\numberline {6.3}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Poisson\relax }}{23}{figure.caption.21}
 \contentsline {figure}{\numberline {6.4}{\ignorespaces House number 1, 20 topics, fine grain time, LDA-Poisson\relax }}{24}{figure.caption.22}

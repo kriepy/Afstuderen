@@ -3,7 +3,7 @@ clear all
 %% INITIALIZE
 k=20;
 maxIter=50;
-HN=5; % there are in total five houses
+HN=1; % there are in total five houses
 TS=48; % Amount of time slices
 V=6;
 coarse=2;
@@ -29,8 +29,8 @@ end
 % so the clusters are not used, but the plain Data.
 for i=1:length(H.day)
     % mat is a N by V matri
-    p{i}.mat=H.day{i}.PreClusteredData;
-    p{i}.mat(:,end)=[1:TS]';
+    p{i}.mat=H.day{i}.PreClusteredData(:,1:5);
+    %p{i}.mat(:,end)=[1:TS]';
 end
 
 

@@ -20,7 +20,8 @@ nt = ones(1,k) * N / k; %init gamma deel
 pnt = nt;
 for j = 1:emmax
   % estep
-  q = mnormalize((d*beta)  .* repmat(exp(psi(alpha0 + nt)),N,1) ,2);
+  q=(d*beta)  .* repmat(exp(psi(alpha0 + nt)),N,1);
+  q = mnormalize(q ,2);
 
   nt = sum(q,1);
   % converge?

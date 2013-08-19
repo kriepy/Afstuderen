@@ -1,0 +1,100 @@
+\begin{thebibliography}{10}
+
+\bibitem{blei2003latent}
+David~M. Blei, Andrew~Y. Ng, and Michael~I. Jordan.
+\newblock Latent dirichlet allocation.
+\newblock {\em J. Mach. Learn. Res.}, 3:993--1022, March 2003.
+
+\bibitem{Casale:2009}
+Pierluigi Casale, Oriol Pujol, Petia Radeva, and Jordi Vitri\`{a}.
+\newblock A first approach to activity recognition using topic models.
+\newblock In {\em Proceedings of the 2009 conference on Artificial Intelligence
+  Research and Development: Proceedings of the 12th International Conference of
+  the Catalan Association for Artificial Intelligence}, pages 74--82,
+  Amsterdam, The Netherlands, The Netherlands, 2009. IOS Press.
+
+\bibitem{EXSY:EXSY12033}
+Federico Castanedo, Diego~L\'{o}pez de~Ipi\~{n}a, Hamid~K. Aghajan, and Richard
+  Kleihorst.
+\newblock Learning routines over long-term sensor data using topic models.
+\newblock {\em Expert Systems}, pages n/a--n/a, 2013.
+
+\bibitem{Cavallo:1315167}
+F~Cavallo, G~van~den Broek, and C~Wehrmann.
+\newblock {\em AALIANCE Ambient Assisted Living Roadmap}.
+\newblock Ambient Intelligence and Smart Environments. IOS Press, Amsterdam,
+  2010.
+
+\bibitem{journals/percom/ChikhaouiWP12}
+Belkacem Chikhaoui, Shengrui Wang, and H\'{e}l\`{e}ne Pigot.
+\newblock Adr-splda: Activity discovery and recognition by combining sequential
+  patterns and latent dirichlet allocation.
+\newblock {\em Pervasive and Mobile Computing}, 8(6):845--862, 2012.
+
+\bibitem{farrahi2008daily}
+Katayoun Farrahi and Daniel Gatica-Perez.
+\newblock Daily routine classification from mobile phone data.
+\newblock In {\em Proceedings of the 5th international workshop on Machine
+  Learning for Multimodal Interaction}, MLMI '08, pages 173--184, Berlin,
+  Heidelberg, 2008. Springer-Verlag.
+
+\bibitem{Hong2009236}
+Xin Hong, Chris Nugent, Maurice Mulvenna, Sally McClean, Bryan Scotney, and
+  Steven Devlin.
+\newblock Evidential fusion of sensor data for activity recognition in smart
+  homes.
+\newblock {\em Pervasive and Mobile Computing}, 5(3):236 -- 252, 2009.
+\newblock <ce:title>Pervasive Health and Wellness Management</ce:title>.
+
+\bibitem{Huynh:2008:DAP:1409635.1409638}
+T\^{a}m Huynh, Mario Fritz, and Bernt Schiele.
+\newblock Discovery of activity patterns using topic models.
+\newblock In {\em Proceedings of the 10th international conference on
+  Ubiquitous computing}, UbiComp '08, pages 10--19, New York, NY, USA, 2008.
+  ACM.
+
+\bibitem{Kwon20125774}
+Ohbyung Kwon, Jae~Moon Shim, and Geunchan Lim.
+\newblock Single activity sensor-based ensemble analysis for health monitoring
+  of solitary elderly people.
+\newblock {\em Expert Systems with Applications}, 39(5):5774 -- 5783, 2012.
+
+\bibitem{Nagai2010204}
+Norihiro Nagai, Yusaku Fujii, Hiroshi Ueda, Koichi Maru, and Shigeru Kumakura.
+\newblock Pc-based monitoring system for efficient use of day care centers for
+  elderly people.
+\newblock {\em Procedia - Social and Behavioral Sciences}, 2(1):204 -- 208,
+  2010.
+\newblock <ce:title>The 1st International Conference on Security Camera
+  Network, Privacy Protection and Community Safety 2009</ce:title>.
+
+\bibitem{PhungATVK09}
+Dinh~Q. Phung, Brett Adams, Kha Tran, Svetha Venkatesh, and Mohan Kumar.
+\newblock In {\em PerCom}, pages 1--9. IEEE Computer Society.
+
+\bibitem{Tamura1998573}
+Toshiyo Tamura, Tatsuo Togawa, Mitsuhiro Ogawa, and Mikiko Yoda.
+\newblock Fully automated health monitoring system in the home.
+\newblock {\em Medical Engineering \& Physics}, 20(8):573 -- 579, 1998.
+
+\bibitem{Tapia04activityrecognition}
+Emmanuel~Munguia Tapia, Stephen~S. Intille, and Kent Larson.
+\newblock Activity recognition in the home using simple and ubiquitous sensors.
+\newblock In {\em In Pervasive}, pages 158--175, 2004.
+
+\bibitem{Wilson:2005:STA:2154273.2154280}
+D.~H. Wilson and C.~Atkeson.
+\newblock Simultaneous tracking and activity recognition (star) using many
+  anonymous, binary sensors.
+\newblock In {\em Proceedings of the Third international conference on
+  Pervasive Computing}, PERVASIVE'05, pages 62--79, Berlin, Heidelberg, 2005.
+  Springer-Verlag.
+
+\bibitem{Wu_2003_4676}
+Huadong Wu.
+\newblock {\em Sensor Fusion for Context-Aware Computing Using Dempster-Shafer
+  Theory}.
+\newblock PhD thesis, Robotics Institute, Carnegie Mellon University,
+  Pittsburgh, PA, December 2003.
+
+\end{thebibliography}

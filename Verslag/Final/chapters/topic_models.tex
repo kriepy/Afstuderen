@@ -9,12 +9,12 @@
 In the first section of this chapter the general idea of topic models is introduced. This section is followed by a description of how this kind of models can be applied the sensor data. After that the extension of the LDA model `LDA-Gaussian' is given, including the EM-algorithm that is used to determine the model parameters. This chapter is finalized with the description of the LDA-Poisson model.
 
 \section{Introduction to Topic Models}
-Topic models are often used in the field of document classification. Given a set of documents (corpus) it is assumed that every document belongs to one or more topic(s). So for example a news article may belong for some percentage, let us say 30 \%,  to the topic `Economy' and for 70 \%  to the topic `Politics'. Another document of the same Corpus may belong to the topic `Economy' with 50 \%, `Politics' with 30 \% and `Finance' with 20 \%. There might be a lot of different topics and the topics can have different level of details. \\
+Topic models are often used in the field of document classification. Given a set of documents (corpus) it is assumed that every document is a mixture of topics. For example a news article may belongs for some percentage, let us say 30 \%,  to the topic `Economy' and for 70 \%  to the topic `Politics'. Another document of the same Corpus may belong to the topic `Economy' with 50 \%, `Politics' with 30 \% and `Finance' with 20 \%. There might be a lot of different topics and the topics can have different level of details. \\
 The topics are defined by several words that can occur in the documents. The topic `Economy' may be defined by the list of words \{'trade', `industry', `GDP'\}. Other topics have different lists of words that describe them. The list might be longer or shorter and the words in the list will depend on the corpus that is used to generate the topics. It might also be the case that one word belongs to multiple topics. Eventually we can find the topic distribution of a document according to the words that are included in this document.\\
 In the topic model `Latent Dirichlet Allocation' (LDA) it is assumed that a Corpus can be made out of a generative process. The parameters that generate the corpus are than used to describe the model of the corpus. The generative process which builds a corpus is as follows:\\
 For every document that is generated in the Corpus
 \begin{enumerate}
- \item Choose the amount of words in the document from $N \sim Possoin(\xi)$.
+ \item Choose the number of words in the document from $N \sim Poisson(\xi)$.
  \item Choose a topic distribution $\theta \sim Dir(\alpha)$ for the document.
  \item For each of the N words $w_n$:
  
@@ -45,12 +45,12 @@ In order to employ the topic model with the sensor data, first the different lev
 \begin{itemize}
  \item \textbf{Dataset/Corpus}: One dataset $C$ describes the sensor data that is obtained in the home of a single person. So for every person there is a separate dataset. This set of data can be compared with a Corpus in document classification.
  \item \textbf{Day/Document}: Every dataset is divided in days, which is a natural choice because daily routines are a good indication for behavior patterns. A day can be compared with a document in a Corpus.
- \item \textbf{Observations/Words}: Finally every day is build of a set of observations, which are already introduced in chapter \ref{chapter:features}. Observations can be roughly compared with words in document classification. A different name for this observations is  `Artificial words'.
+ \item \textbf{Observations/Words}: Finally every day is built of a set of observations, which are already introduced in chapter \ref{chapter:features}. Observations can be roughly compared with words in document classification. A different name for this observations is  `Artificial words'.
 \end{itemize}
 
 There are some differences between the data that is used for topic detection in text documents and in data obtained from binary sensors.
 The main difference is that words that look similar to each other, like ``illusion" and ``allusion", may belong to a totally different topic in the document classification. But in the case of sensor data, two observation that are similar to each other, are more likely to refer to the same topic. So for example if the topic ``preparing breakfast" has the observation $o_n = {2,4,0,3,2,2}$ a similar observation like $o_n={2,4,0,4,2,2}$, where only the fourth value of the vector is changed, may also refer to the same topic. With a BOW model, where every unique observation forms a new dimension, this similarity cannot directly be captured. The only way to capture this relationship is by observing the similar observations with another observation. Say observation A and B are similar to each other. So if observation A is seen with observation C and also B is seen with C, then it might be possible that the LDA algorithm assigns the same topic for A and B. A lot of data is necessary to find these kind of relations.
-Another difference is that in the topic model LDA, it is assumed that the order of the words in the text is not important. However with sensor data the time when an observation is made is of big influence. By adding the time value to the observation we can overcome this problem. The fine grain time representation (see chapter \ref{chapter:features}) will contain more information about the sequential order of the observations than the coarse grain representation.\\
+Another difference is that in the topic model LDA, it is assumed that the order of the words in the text is not important. However with sensor data the time when an observation is made is of big influence. By adding the time value to the observation we can overcome this problem. The fine grained time representation (see chapter \ref{chapter:features}) will contain more information about the sequential order of the observations than the coarse grain representation.\\
 
 
 % Plaatje a) omschrijven
@@ -80,7 +80,7 @@ a) & b)
 \end{figure}
 
 % plaatje c) omschrijven
-The outcome of the LDA model does strongly depend on the outcome of the apriori used cluster algorithm. Choosing the correct amount of clusters for the k-means algorithm can be difficult, as it is also pointed out in the work of Casale \cite{Casale:2009}. And still it can occur that the clusters do not give a good representation of the data. All clusters have the same influence on the LDA model, which is not always desirable. A Gaussian Mixture model (GMM) can give a better description of the clusters and give a degradation of the topics. Every Gaussian distribution can be assigned to a topic with the LDA model. This is shown in figure \ref{fig:GMM+LDA} a) with the red and blue Gaussian distributions. The red distribution is assigned to one topic and the two blue distributions are assigned to another topic.\\
+The outcome of the LDA model does strongly depend on the outcome of the apriori used cluster algorithm. Choosing the correct number of clusters for the k-means algorithm can be difficult, as it is also pointed out in the work of Casale \cite{Casale:2009}. And still it can occur that the clusters do not give a good representation of the data. All clusters have the same influence on the LDA model, which is not always desirable. A Gaussian Mixture model (GMM) can give a better description of the clusters and give a degradation of the topics. Every Gaussian distribution can be assigned to a topic with the LDA model. This is shown in figure \ref{fig:GMM+LDA} a) with the red and blue Gaussian distributions. The red distribution is assigned to one topic and the two blue distributions are assigned to another topic.\\
 
 Combining the clustering and the Topic model directly together can lead to a more global representation of the topics. This is indicated with the green Gaussian distribution in figure \ref{fig:GMM+LDA} b). 
 
@@ -156,7 +156,7 @@ Combining the clustering and the Topic model directly together can lead to a mor
 % With the assumption that the data that we got from the sensor system has the same structure than the data created with the generative process we can find the model parameters $\alpha$ and $\beta$ for LDA with the EM-algorithme described in \cite{blei2003latent}.
 
 \section{LDA-Gaussian Model}
-In this section the LDA-Gaussian model is described. First the model is explained, which is followed by the description of the variational inference. This inferense step is necessary to calculate the model parameters. In this subsection also the two steps of the EM-algorithm are explained.
+In this section the LDA-Gaussian model is described. First the model is explained, which is followed by the description of the variational inference. This inference step is necessary to calculate the model parameters. In this subsection also the two steps of the EM-algorithm are explained.
 
 
 
@@ -173,7 +173,7 @@ In this section the LDA-Gaussian model is described. First the model is explaine
   
   For the model it is assumed that every day in a dataset can be represented as random mixture of latent topics, where every topic can be described as a distribution over observations. The following generative process is assumed for every day $m$ in the data set $C$:
 \begin{enumerate}
- \item The amount of observations on a day $m$ is fixed with size $N$ (for every day the same size).
+ \item The number of observations on a day $m$ is fixed with size $N$ (for every day the same size).
  \item A day has a distribution over the topics given with $\theta \sim Dir(\alpha)$.
  \item For each of the N observations on a day $o_n$:
  
@@ -184,8 +184,8 @@ In this section the LDA-Gaussian model is described. First the model is explaine
 
 \end{enumerate}
   
-In this model the amount of topics $k$ is assumed to be known and fixed and with it the size of the topic variable $z$.
-The probability for the observations is parametrized with two matrices $\boldsymbol\mu$ and $\boldsymbol\sigma$, both of size $D\times k$, where $D$ is the amount of dimensions in an observation and $k$ the amount of topics. They present the mean and standard deviation respectively and for every topic $i$ and every dimension $d$ there is a set of parameters, which describes a Gaussian distribution. Every value of a dimension for an observation $o_{ndi}$ can then be drawn from a Gaussian Distribution $\mathcal{N}(\mu_{di},\sigma_{di})$.\\
+In this model the number of topics $k$ is assumed to be known and fixed and with it the size of the topic variable $z$.
+The probability for the observations is parametrized with two matrices $\boldsymbol\mu$ and $\boldsymbol\sigma$, both of size $D\times k$, where $D$ is the number of dimensions in an observation and $k$ the number of topics. They present the mean and standard deviation respectively and for every topic $i$ and every dimension $d$ there is a set of parameters, which describes a Gaussian distribution. Every value of a dimension for an observation $o_{ndi}$ can then be drawn from a Gaussian Distribution $\mathcal{N}(\mu_{di},\sigma_{di})$.\\
 With the feature representation given in chapter \ref{chapter:features} the size of the dimension is fixed with $D=6$. $\alpha$ represents the Dirichlet parameter and is vector of length $k$.
 
 In figure \ref{fig:modelExt} the graphical representation of the model is shown. It differs from the basic LDA model (figure \ref{fig:modelBasic}) in the description of the topic distribution $\beta$, which is here replaced with $\mu$ and $\sigma$.
@@ -204,17 +204,21 @@ In figure \ref{fig:modelExt} the graphical representation of the model is shown.
   
 Assuming that the generative process described above can describe the available data properly, the optimal parameters need to be found. Therefore the probability for the dataset $C$ needs to be maximized, with respect to the parameters $\alpha$, $\mu$ and $\sigma$.
 This probability looks like this
-\begin{equation}
-p(C|\alpha,\mu,\sigma) = \prod_{m=1}^M p(m|\alpha,\mu,\sigma)
+\begin{equation} \label{eq:Data}
+p(C|\alpha,\mu,\sigma) = \prod_{m=1}^M p(\textbf{o}_m|\alpha,\mu,\sigma)
 \end{equation}
-where $M$ is the amount of days within the dataset and the probability for a day $m$ given the three parameters, which is the marginal distribution over a day, is
-\begin{equation} 
-p(m|\alpha,\mu,\sigma) = \int p(\theta|\alpha)  \left( \prod_{n=1}^N \sum_{z_n} p(z_n|\theta) p(w_n|z_n, \mu,\sigma)  \right) d\theta
-\end{equation}
-This distribution is obtained by integrating the joint distribution \ref{eq:Joint} by $\theta$.
+where $M$ is the number of days within the dataset.\\
+
+For one day the joint distribution of a topic mixture $\theta$, a set of $N$ topics $\textbf{z}$ and a set of $N$ observations $\textbf{o}$ is:
 \begin{equation} \label{eq:Joint}
- p(\theta,\textbf{z},\textbf{w}|\alpha,\mu,\sigma) = p(\theta|\alpha) \prod_{n=1}^N p(z_n|\theta) p(w_n|z_n,\mu,\sigma)
+ p(\theta,\textbf{z},\textbf{o}|\alpha,\mu,\sigma) = p(\theta|\alpha) \prod_{n=1}^N p(z_n|\theta) p(\vec{o}_n|z_n,\mu,\sigma)
+\end{equation}.
+Integrating over $\theta$ and summing over $z$ the marginal distribution of one document is obtained with
+\begin{equation} 
+p(\textbf{o}|\alpha,\mu,\sigma) = \int p(\theta|\alpha)  \left( \prod_{n=1}^N \sum_{z_n} p(z_n|\theta) p(\vec{o}_n|z_n, \mu,\sigma)  \right) d\theta
 \end{equation}
+This probability can then be substituted into the equation \ref{eq:Data}.\\
+
 In the next section it is described how the optimal parameters for the model given a data set can be found.
 
 
@@ -223,8 +227,8 @@ In the next section it is described how the optimal parameters for the model giv
  
 The marginal distribution, which is given in the previous section, can be written in terms of the parameter $\alpha$, $\mu$ and $\sigma$ as
   \begin{equation}
-   p(m|\alpha,\mu,\sigma) = \frac{\Gamma (\sum_i \alpha_i)}{\prod_i \Gamma(\alpha_i)} \int \left( \prod_{i=1}^k \theta_i^{\alpha_i-1} \right)
-   \left( \prod_{n=1}^N \sum_{i=1}^k \prod_{d=1}^D \theta_i \mathcal{N}(o_{nd},\mu_{id},\sigma_{id} ) \right)
+   p(\textbf{o}_m|\alpha,\mu,\sigma) = \frac{\Gamma (\sum_i \alpha_i)}{\prod_i \Gamma(\alpha_i)} \int \left( \prod_{i=1}^k \theta_i^{\alpha_i-1} \right)
+   \left( \prod_{n=1}^N \sum_{i=1}^k \prod_{d=1}^D \theta_i \mathcal{N}(o_{nd};\mu_{id},\sigma_{id} ) \right) d\theta
   \end{equation}
 Due to the coupling between $\theta$ and the Gaussian parameters $\mu$ and $\sigma$ this probability is intractable to compute.	
 
@@ -253,7 +257,7 @@ In this model $\gamma$ represents the Dirichlet parameter and $\phi$ are the mul
   Given the variational distribution for the approximate model the lower bound of the log-likelihood can be estimated with the Jensen inequality
   \begin{equation}
    \begin{split}
-    L(\gamma;\phi;\alpha;\mu;\sigma) =& E_q[\log p(\theta|\alpha)] + E_q[\log p(\textbf{z}|\theta)] + E_q[\log p(\textbf{w}|\textbf{z},\mu,\sigma)] \\
+    L(\gamma;\phi;\alpha;\mu;\sigma) =& E_q[\log p(\theta|\alpha)] + E_q[\log p(\textbf{z}|\theta)] + E_q[\log p(\textbf{o}|\textbf{z},\mu,\sigma)] \\
    & -E_q[\log p(\theta)] - E_q[\log q(\textbf{z})]
    \end{split}
   \end{equation}

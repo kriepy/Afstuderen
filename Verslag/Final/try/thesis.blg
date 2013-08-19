@@ -1,0 +1,61 @@
+This is BibTeX, Version 0.99d (TeX Live 2012/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: thesis.aux
+A level-1 auxiliary file: titlepage.aux
+The style file: plain.bst
+Database file #1: references.bib
+Illegal end of database file---line 360 of file references.bib
+ : }
+ :  
+I'm skipping whatever remains of this entry
+A bad cross reference---entry "PhungATVK09"
+refers to entry "conf/percom/2009", which doesn't exist
+Warning--I didn't find a database entry for "UnitedNations"
+Warning--I didn't find a database entry for "Mubashir2013144"
+Warning--I didn't find a database entry for "4912776"
+Warning--I didn't find a database entry for "journals/hf/RogersMWF98"
+Warning--I didn't find a database entry for "conf/percom/2009"
+Warning--empty title in PhungATVK09
+Warning--empty year in PhungATVK09
+You've used 15 entries,
+            2118 wiz_defined-function locations,
+            620 strings with 7694 characters,
+and the built_in function-call counts, 6242 in all, are:
+= -- 633
+> -- 299
+< -- 7
++ -- 118
+- -- 102
+* -- 462
+:= -- 1002
+add.period$ -- 52
+call.type$ -- 15
+change.case$ -- 93
+chr.to.int$ -- 0
+cite$ -- 17
+duplicate$ -- 235
+empty$ -- 464
+format.name$ -- 102
+if$ -- 1345
+int.to.chr$ -- 0
+int.to.str$ -- 15
+missing$ -- 15
+newline$ -- 79
+num.names$ -- 30
+pop$ -- 92
+preamble$ -- 1
+purify$ -- 81
+quote$ -- 0
+skip$ -- 171
+stack$ -- 0
+substring$ -- 419
+swap$ -- 70
+text.length$ -- 7
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 58
+warning$ -- 2
+while$ -- 57
+width$ -- 17
+write$ -- 182
+(There were 2 error messages)

@@ -1,4 +1,4 @@
-function [alpha,beta,LLH] = ldaBasic(d,k,emmax,demmax,V)
+function [alpha,beta,ppl] = ldaBasic(d,k,emmax,beta)
 % [alpha,beta] = lda(d,k,emmax,demmax)
 % d      : data of documents
 % k      : # of classes to assume
@@ -6,15 +6,17 @@ function [alpha,beta,LLH] = ldaBasic(d,k,emmax,demmax,V)
 % demmax : # of maximum VB-EM iteration for a document (default 20)
 
 if nargin < 4
-  demmax = 20;
+  V = size(d{1}.mat,2); %size of the dictionary (amount of clusters)
+  beta = mnormalize(rand(V,k),1);
   if nargin < 3
     emmax = 100;
   end
 end
 
-M = length(d); %amount of days
 V = size(d{1}.mat,2); %size of the dictionary (amount of clusters)
-beta = mnormalize(rand(V,k),1);
+demmax=20;
+M = length(d); %amount of days
+
 alpha = normalize(fliplr(sort(rand(1,k))));
 
 gammas = zeros(M,k);

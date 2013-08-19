@@ -1,0 +1,46 @@
+%What is done in this thesis?
+In this thesis two novel models, LDA-Gaussian and LDA-Poisson, are presented. The models are both successfully applied to real-life, binary  sensor data, which is gathered from five different houses of elderly people. It is shown that the models can find meaningful topics in relative little data.\\
+
+%How can topics be used?
+The topics and how these topics are distributed over a day can give a good insight on peoples daily behavior. This information can be used to monitor peoples health condition on a long term basis. Changes in the patterns can be a sign of decline in the health of people. These declines can be detect manually or even automatically.\\
+
+% comparing with BOW+k-means
+In the experiments it is shown that a better topic distribution can be found with both the models, LDA-Gaussian and LDA-Poisson. The BOW approach and the BOW + k-means approach were not able to find good results. The new models cannot be compared to the BOW approaches in terms of the likelihood, because of the differences in the data representation. Nevertheless I assume that the topic description give promising results that should be investigate in more detail.\\
+
+% Wat is wrong with the models?
+The experiments show that, when time dimension is not taken into account, the LDA-Poisson model performs better than LDA-Gaussian model. This is an expected outcome, because without the time dimension, the feature representation of all dimension is event based. The Poisson distribution is not appropriate to model the time dimension, because this distribution is not symmetric. The Gaussian distribution is a better fit, but time is periodical and topics that are found during the night might be separated because of the linear representation of the time. The von Mises distribution, which is a continuous probability distribution on a circle, is a potential better choice.\\
+
+%TOTHIER
+% Wat can be done in future work with the model?
+In future work it might be a good idea to combine different distributions for the different dimensions in the observations. Event based dimensions can be modeled with the Poisson distribution and time can be modeled with the von Mises distribution.
+Another idea might be to investigate the LDA-Gaussian model in more detail. In the implementation the covariance is modeled with a diagonal matrix. A fully trained covariance matrix is able to capture relationships between the different dimensions and could lead to better topic descriptions. To be able to find a correct covariance matrix a lot of data needs to be available and this is however contradictory to one main benefits of the new topic models: the fact that it can find topics in relative little data. \\
+
+% Wat is wrong with the feature representation?
+In this thesis a simple feature representation was chosen. In the experiments only a variation in size of non-overlapping time-slices was considered. Small time-slices did lead to a higher likelihood on a hold-out-set, but the topics that were found were not informative enough. In addition, smaller slices leaded to a higher complexity of the model. This is not desirable, because of the high computational costs.
+There are many other representation that could be used to find good features. For example time-slice can be overlapping each other or a word can be a combination of the values from sequential time-slices. In this way the transitions are taken into account. Other possibilities are: Taking the activation length of a sensor into account or looking at every sensor separately than rather put them together in one field. In fact there are infinite ways to combine the data into features and the best representation is probably not yet found. With a more complex representation the computational costs will raise and even more important the features are more likely to overfit the data.\\
+
+% How can the models help to find the best feature represenation?
+Finding the best feature representation is in fact a big challenge. The proposed models give the opportunity to investigate feature representation. For example a Genetic algorithm can be used to investigate the feature space. The likelihood with a combination of a penalty for high complexity can be a good fitness function to automatically find the best feature representation.
+
+
+
+
+
+
+
+
+
+
+
+
+
+% 
+% - tijd kan met poisson niet goed worden gemodeleerd. Het is misschien wel een goed idee om de sensor observaties met poisson te modeleren maar de tijd met een Gaussian distributie.
+% - een andere feature representatie kan misschien wel continue data creeren. Dan zal de LDA-Gaussian methode wel handiger zijn. Of anders misschien een gamma distributie.
+% 
+% 
+% But there are plenty more ways to describe the data so that it can be used in the LDA model. For example the size of the time-slices can be changed. This leads to a higher resolution and may give more detailed information of the behavior.
+% Another way to get a different feature representation is to combine sequential time-slices as it is described in the work of Farrahi et al. \cite{farrahi2008daily}. So for a given time-slice add the observation values of the previous and the subsequent time-slice. This will lead to a 15 dimensional observation plus one dimension for the time value. In this way the transitions are taken more into account, which might contain valuable information over the behavior.\\
+% We also might want to combine different sizes of time-slices into one observations, so that the global and detailed view is combined.\\
+% The different kind of sensor are also maybe important. The reed sensor, which is mostly installed at doors might contain more important information than the motion sensor. The motion sensor is also triggered by small movements, whereelse if a door is opened from a cupboard you can assume that an important action has taken place, as for example the person is grabbing a plate to prepare a meal. So it might be an idea to give a higher weight to sensor activities of reed sensors in house.\\
+% It is obvious that the feature space can be made nearly infinity big and it is quite a challenge to find the best feature representation. The likelihood that is gained from the EM-algorithms might be a good indication for a good feature representation.

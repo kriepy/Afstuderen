@@ -36,22 +36,22 @@ for ss=1:show
         end        
     end
     %for the time
-    subplot(show,4,4*s)
-    bar(mu(6,ss),'FaceColor',cmap(ss,:));
-    hold on
-    errorbar(1,mu(6,ss),sig(6,ss),'.k','LineWidth',2)
-    axis([0.1 1.9 0 timeMax])
-    if s==show
-        ax=axis;
-        axis(axis); % Set the axis limit modes (e.g. XLimMode) to manual
-        Yl = ax(3:4); % Y-axis limits
-        t = text(1,Yl(1)*ones(1),'Time');
-        set(t,'HorizontalAlignment','right','VerticalAlignment','top', ...
-        'Rotation',45);
-        set(gca,'XTicklabel','');
-    else
-        set(gca,'XTicklabel','');
-    end    
+%     subplot(show,4,4*s)
+%     bar(mu(6,ss),'FaceColor',cmap(ss,:));
+%     hold on
+%     errorbar(1,mu(6,ss),sig(6,ss),'.k','LineWidth',2)
+%     axis([0.1 1.9 0 timeMax])
+%     if s==show
+%         ax=axis;
+%         axis(axis); % Set the axis limit modes (e.g. XLimMode) to manual
+%         Yl = ax(3:4); % Y-axis limits
+%         t = text(1,Yl(1)*ones(1),'Time');
+%         set(t,'HorizontalAlignment','right','VerticalAlignment','top', ...
+%         'Rotation',45);
+%         set(gca,'XTicklabel','');
+%     else
+%         set(gca,'XTicklabel','');
+%     end    
 end
 
 
