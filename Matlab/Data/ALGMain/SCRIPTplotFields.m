@@ -8,10 +8,10 @@ h(5)=254;
 
 
 for i=1:5
-    hou=getplotData(h(i));
+    hou=getplotData(h(i),'../SET2/DATAPlain');
     House{i}=hou;
     House{i}.HouseNr=h(i);
 end
 
-path='../DATAMain/NEW';
+path='../SET2/DATAMain';
 save(strcat([path,'/plotFields.mat']),'House');

@@ -18,13 +18,13 @@ In the following figures the number of time-slices on a day is $N=96$. The time 
   \includegraphics[width=0.45\textwidth]{Pictures/DayTopicsTs96k5bow.png}\\
   a) & b)
  \end{tabular}
- \caption{a) LDA model applied to clustered data. b) LDA applied to data that is not clustered.}
+ \caption{a) LDA model applied to BOW representation with k-means clustering. b) LDA applied to data with simple BOW representation of the data.}
  \label{fig:BOWtopics}
 \end{figure}
 
 \pagebreak
  
-The LDA model with a BOW-representation is still able to find different topics in the data, although the BOW representation without the clustering only distinguish between two topics (see figure \ref{fig:BOWtopics} b)). If the data is clustered on forehand LDA is able to find four different topics in the data (see figure \ref{fig:BOWtopics} a)). The number of clusters for the k-means algorithms is set to $V=6$. This was the best value to find the most topics in the data. Before the data was clustered, all dimensions where normalized.\\
+The LDA model with a BOW-representation is still able to find different topics in the data, although the BOW representation without the clustering only distinguishes between two topics (see figure \ref{fig:BOWtopics} b)). If the data is clustered beforehand LDA is able to find four different topics in the data (see figure \ref{fig:BOWtopics} a)). The number of clusters for the k-means algorithms is set to $V=6$. This was the best value to find the most topics in the data. Before the data was clustered, all dimensions where normalized.\\
 
 \begin{figure}
  \centering
@@ -62,33 +62,29 @@ In the figure \ref{fig:Pois96} a) five different topics are found. These topics 
 
 
 \subsection{Semantic topic description}
-In the following figures the topic distribution for different houses are shown. A semantic description of some topics is given to illustrate the usefulness of the models. The number of time-slices is set to $N=48$. In every figure 50 days are shown. In the left images a) the topic distribution of the days are shown and in the left images b) the topic description for every dimension is given with respectively the same color. For more results see the appendix \ref{chapter:appendix_1}.\\
+In the following figures the topic distribution for different houses are shown. A semantic description of some topics is given to illustrate the usefulness of the models. The number of time-slices is set to $N=48$. In every figure 50 days are shown. In the left images a) the topic distribution of the days are shown and in the left images b) the topic description for every dimension is given with respectively the same color. For more results see the appendix \ref{A} and \ref{B}.\\
 
-\begin{figure}
- \centering
- \begin{tabular}{c c}
-  \includegraphics[width=0.45\textwidth]{Pictures/Gaus/fine/DayHN1TS48k20fine.png}
-  &
-  \includegraphics[width=0.45\textwidth]{Pictures/Gaus/fine/TopHN1TS48k20fine.png}\\
- \end{tabular}
-  \caption{House number 1, 20 topics, fine grain time, LDA-Gaussian}
-  \label{fig:HN1Gaus20fine}
-\end{figure}
+In figure \ref{fig:HN1Gaus20fine} the outcome for the LDA-Gaussian model is shown. The time dimension has a fine grained representation. The model is initialized with $k=20$ topics and the 10 most important topics are visualized with a different color, the remaining topics have the color gray in the left image. The first topic (red) is an easy topic to find. In all time-slices that are marked with red no activations of the sensors are captured. The time dimension has a big standard deviation, because this topic can occur all day long. In figure \ref{fig:HN1Pois20fine}, which is outcome of the LDA-Poisson model with same values, thi topic is divided in two different topics (red and orange). These topics only distinguish between the time value. Comparing the two outcomes (figure \ref{fig:HN1Gaus20fine} and \ref{fig:HN1Pois20fine}) one can see that topics of the LDA-Gaussian model are much easier to interpret. For example the ninth topic (purple) can be seen as the topic `preparing for bed'. This topic cannot 
+be 
+found in the outcome of the LDA-Poisson model. The topic `going to toilet', which is the third topic (yellow) in the LDA-Gaussian model is also not shown in the outcome of the LDA-Poisson model.\\
 
-In figure \ref{fig:HN1Gaus20fine} the outcome for the LDA-Gaussian model is shown. The time dimension has a fine grain representation. The model is initialized with $k=20$ topics and the 10 most important topics are visualized with a different color, the remaining topics have the color gray in the left image. The first topic (red) is an easy topic to find. In all time-slices that are marked with red no activations of the sensors are captured. The time dimension has a big standard deviation, because this topic can occur all day long. In figure \ref{fig:HN1Pois20fine}, which is outcome of the LDA-Poisson model with same values, thi topic is divided in two different topics (red and orange). These topics only distinguish between the time value. Comparing the two outcomes (figure \ref{fig:HN1Gaus20fine)} and \ref{fig:HN1Pois20fine}) one can see that topics of the LDA-Gaussian model are much easier to interpret. For example the ninth topic (purple) can be seen as the topic `preparing for bed'. This topic cannot be found in the outcome of the LDA-Poisson model. The topic `going to toilet', which is the third topic (yellow) in the LDA-Gaussian model is also not shown in the outcome of the LDA-Poisson model.\\
+In figure \ref{fig:HN5Gaus20fine} the `going to toilet' is also present. This figure shows the outcome for House number 5 with the LDA-Gaussian model. Here two topics (purple and pink) can be found, which indicates the `morning preparations'. Every week the person seems to leaving the house in the afternoon and comes back around 11 pm. Comparing house number 1 and 5 with each other one can see that the person that is living in house number 5 goes to bed a little bit earlier than the person living in house number 1.\\
 
-\begin{figure}
+Figure \ref{fig:ohneZeitGaus} and \ref{fig:ohneZeitPois} shows the results for the LDA-Gaussian and LDA-Poisson model respectively, disregarding the time dimension. The data is from house number 1 and the number of topics is $k=20$. Both models find similar topics and it cannot be told which model performs best by just looking at the topic distributions per day.\\
+
+More topics can be appointed and for some person it appears easier than for other person. The main point however is that indeed a daily or even weekly structure can be found within the distributions of the topics during a day. 
+
+\begin{figure}[h!]
  \centering
  \begin{tabular}{c c}
   \includegraphics[width=0.45\textwidth]{Pictures/Pois/fine/DayHN1TS48k20fine.png}
   &
   \includegraphics[width=0.45\textwidth]{Pictures/Pois/fine/TopHN1TS48k20fine.png}\\
+  a) & b)
  \end{tabular}
   \caption{House number 1, 20 topics, fine grain time, LDA-Poisson}
   \label{fig:HN1Pois20fine}
 \end{figure}
-
-In figure \ref{fig:HN5Gaus20fine} the `going to toilet' is also present. This figure shows the outcome for House number 5 with the LDA-Gaussian model. Here two topics (purple and pink) can be found, which indicates the `morning preparations'. Every week the person seems to leaving the house in the afternoon and comes back around 11 pm. Comparing house number 1 and 5 with each other one can see that the person that is living in house number 5 goes to bed a little bit earlier than the person living in house number 1.\\
 
 \begin{figure}
  \centering
@@ -96,19 +92,54 @@ In figure \ref{fig:HN5Gaus20fine} the `going to toilet' is also present. This fi
   \includegraphics[width=0.45\textwidth]{Pictures/Gaus/fine/DayHN5TS48k20fine.png}
   &
   \includegraphics[width=0.45\textwidth]{Pictures/Gaus/fine/TopHN5TS48k20fine.png}\\
+  a) & b)
  \end{tabular}
   \caption{House number 5, 20 topics, fine grain time, LDA-Gaussian}
   \label{fig:HN5Gaus20fine}
 \end{figure}
 
-More topics can be appointed and for some person it appears easier than for other person. The main point however is that indeed a daily or even weekly structure can be found with distributions of the topics during a day. 
+\begin{figure}
+ \centering
+ \begin{tabular}{c c}
+  \includegraphics[width=0.45\textwidth]{Pictures/Gaus/fine/DayHN1TS48k20fine.png}
+  &
+  \includegraphics[width=0.45\textwidth]{Pictures/Gaus/fine/TopHN1TS48k20fine.png}\\
+  a) & b)
+ \end{tabular}
+  \caption{House number 1, 20 topics, fine grain time, LDA-Gaussian}
+  \label{fig:HN1Gaus20fine}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \begin{tabular}{c c}
+  \includegraphics[width=0.45\textwidth]{Pictures/DayHN1TS48k20zonerTijd.png}
+  &
+  \includegraphics[width=0.45\textwidth]{Pictures/TopHN1TS48k20zonerTijd.png}\\
+  a) & b)
+ \end{tabular}
+  \caption{House number 1, 20 topics, without time, LDA-Gaussian}
+  \label{fig:ohneZeitGaus}
+\end{figure}
+
+\begin{figure}
+ \centering
+ \begin{tabular}{c c}
+  \includegraphics[width=0.45\textwidth]{Pictures/DayHN1TS48k20zonerTijdPois.png}
+  &
+  \includegraphics[width=0.45\textwidth]{Pictures/TopHN1TS48k20zonerTijdPois.png}\\
+  a) & b)
+ \end{tabular}
+  \caption{House number 1, 20 topics, without time, LDA-Poisson}
+  \label{fig:ohneZeitPois}
+\end{figure}
 
 \pagebreak
 
 \subsection{Quantitative Results}
-The log-likelihood indicates on how well the model with the estimated parameters fits the data. This can easily overfit and new data can not easily modeled with the found parameters. Therefor it is necessary to also find a high log-likelihood on a hold-out-set. The perplexity gives a good indication on how and can be calculated with
+The log-likelihood indicates on how well the model with the estimated parameters fits the data. This can easily overfit and new data can not easily modeled with the found parameters. Therefore, it is necessary to also find a high log-likelihood on a hold-out-set. The perplexity is a good indication and can be calculated with
 \begin{equation}
- perplexity(D_{HOS}) = exp \left\{ - \frac{\sum_{m=1}^M \log p(\textbf{o}_d ) }{M*N} \right\}
+ \text{perplexity}(D_{HOS}) = \exp \left\{ - \frac{\sum_{m=1}^M \log p(\textbf{o}_d ) }{M*N} \right\}
 \end{equation}
 
 A low perplexity value indicates a good result on the hold-out-set.\\
@@ -128,7 +159,7 @@ The data sets vary in length, but as one can see in the figure, the amount of da
 
 \pagebreak
 \paragraph{Comparison LDA-Gaussian and LDA-Poisson}
-The LDA-Poisson model is not capable to model the time dimension properly. To be able to compare both models directly with each other the time dimension is left out in the following experiments. The perplexity is calculated for the hold-out set with different amount of time-slices and the mean of 10 runs for different number of time-slices is shown in figure \ref{fig:CompareTS}. The perplexity gets better if the number of time-slices increases, but at one point the there will be no improvement. If the length of the time-slices becomes so small that only one activation is captured in an observation, the model perplexity becomes indeed very high, because a topic only contains one value. The topics are then however not very informative.\\
+The LDA-Poisson model is not capable to model the time dimension properly. To be able to compare both models directly with each other the time dimension is disregarded in the following experiments. In fact the dimension of the observations becomes 5 because the time dimension is left out. The perplexity is calculated for the hold-out set with different amount of time-slices and the mean of 10 runs for different number of time-slices is shown in figure \ref{fig:CompareTS}. The perplexity gets better if the number of time-slices increases, but at one point the there will be no improvement. If the length of the time-slices becomes so small that only one activation is captured in an observation, the model perplexity becomes indeed very high, because a topic only contains one value. The topics are then however not very informative.\\
 
 \begin{figure}[h!]
  \centering
@@ -140,7 +171,9 @@ The LDA-Poisson model is not capable to model the time dimension properly. To be
 In figure \ref{fig:CompareK} the perplexity for both models is shown with different number of topics. The mean of 10 runs is shown and also the standard deviation is indicated with the vertical errorbar in the figure. The standard deviation increases for a higher number of topics, which is reasonable, because more topics increases the chance of more variation. If the number of topic increases the perplexity first decreases and then increases. If the number of topics is to high the model does overfit on the training data and the perplexity indeed becomes worse.\\
 
 
+The models are not compared with the perplexity of the LDA model with a BOW representation. The difference in the representation and the normalization in the basic LDA model leads to a loglikelihood which is not comparable to the loglikelihood gained from both models, LDA-Gaussian and LDA-Poisson.
 
+causes a  difference 
 
  \begin{figure}[h!]
   \centering
@@ -152,38 +185,3 @@ In figure \ref{fig:CompareK} the perplexity for both models is shown with differ
 
 To creating the figures the data of house number 2 is chosen. For other data sets the outcomes looks similar and are therefore not presented. Both experiments show that the LDA-Poisson model outperforms the LDA-Gaussian model.
  
- 
-% \paragraph{Different length of time-slices}
-% 
-% In figure \ref{fig:PerplTS} we give the perplexity for different length of time-slices for the 5 Houses. We take a again the mean over 10 runs. We take for every house the same amount of days to train and test the data. We can see that with more time-slices the perplexity becomes lower for the hold-out set. For house $H2$ and $H4$ the perplexity is much better for a small amount of time-slices. The perplexities for these two houses drop much faster if the amount of time-slices increases.
-% 
-% \begin{figure}[h!]
-%  \centering
-%  \includegraphics[width = 0.7\textwidth]{Pictures/PerplTS.png}
-%  \caption{Perplexity (x-axis) for the hold-out-set for different amount of time-slices (y-axis)}
-%  \label{fig:PerplTS}
-% \end{figure}
-
-
-% Wat wil ik nou eigenlijk aantonen en kan ik dat ook aantonen?
-% Ik wil aantonen dat het nieuwe model werkt. Ik wil aantonen dat het beter werkt dan normal LDA model. 
-% Het is al door meerdere mensen aangetoond dat topic modellen wel van nut zijn om behavior patronen in sensor data te vinden.
-% en we kunnen dus aantonen dat onze nieuwe methode OOK werkt, want we kunnen patterns vinden. eg: een dag in de week is de persoon in de middag weg, of 's nachts moet die persoon naar het toilet
-
-% QUALITATIVE EXPERIMENTEN
-%Ik wil aantonen dat mijn model werkt en dat je wel zinnige informatie eruit kunt halen. Je kunt een semantische omschrijving van de topics geven.
-%We vergelijken de nieuwe method met de BOW/k-means methode we kunnen hier ook aangeven wat de verhoudingen zijn van worden in de data en unique worden die zijn gevonden. Dit geeft ook al aan dat BOW waarschijnlijk niet werkt
-
-
-%Met de gegeven data en de gekozen feature representation zijn we niet in staat om zinnige informatie uit de BOW model te halen.
-
-% QUANTITATIVE EXPERIMENTEN
-
-
-% In this section we first give some qualitative results, where the topic distribution on some days are shown. 
-% Then we do something else
-% Then we compare the BIC's?
-% And after that we make a small test according to the feature representation.
-
-
-%To test the performance of the topic models we set the variables of the features to fixed values.  In the basic LDA model we use a coarse grain value for the time. This means that the sixth dimension can have 5 different values, where the time intervals are $\{ 3am - 8am, 8am - 1pm, 1pm - 18pm, 18pm - 23pm, 23pm - 3am  \}$.

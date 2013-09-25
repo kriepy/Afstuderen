@@ -15,7 +15,7 @@ if nargin < 4
 end
 n = length(d);
 l = features(d);
-beta = mnormalize(rand(l,k),1);
+beta = mnormalize(rand(l,k),2);
 Inbeta=beta;
 alpha = normalize(fliplr(sort(rand(1,k))));
 Inalpha=alpha;
@@ -45,7 +45,7 @@ for j = 1:emmax
   
   % vb-mstep
   alpha = newton_alpha(gammas);
-  beta = mnormalize(betas,1);
+  beta = mnormalize(betas,2);
   % converge?
    ppl = lda_likeli(d, alpha, beta,gammas);
    %ppl = lda_lik(d,beta,gammas);

@@ -27,7 +27,7 @@ end
 
 
 %% Create the dictionary
-getOverview(H);
+%getOverview(H);
 Dic=createDic2(H);
 
 
@@ -49,7 +49,7 @@ end
 
 %% Use LDAbasic on the clustered data
 
-[a,b,l]=ldaBasic(p,k,maxIter,V);
+[a,b,l]=ldaBasic(p,k,maxIter);
 
 %% Visualize the topics
 VisuLDAbasic(p,b,a,50,V)

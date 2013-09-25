@@ -12,4 +12,4 @@ end
 [ppl,l1,l2,l3,l4,l5] = lda_likeli(HOS, alpha, beta,gammas);
 
 M = size(HOS{1}.mat,1);
-P = exp(-sum(ppl)/(M*len));
+P = exp(-sum(ppl)/(M*len*5));

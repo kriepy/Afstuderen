@@ -13,28 +13,30 @@
 \contentsline {figure}{\numberline {5.2}{\ignorespaces a) The Bag-of-words model with topic assignment. b) Feature space with k-means and topic assignment.\relax }}{15}{figure.caption.12}
 \contentsline {figure}{\numberline {5.3}{\ignorespaces a) GMM and LDA. b) GMM and LDA combined in one model.\relax }}{16}{figure.caption.13}
 \contentsline {figure}{\numberline {5.4}{\ignorespaces Graphical representation of the LDA-Gaussian model\relax }}{17}{figure.caption.14}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Approximation of the model.\relax }}{18}{figure.caption.15}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Graphical representation of the LDA-Poisson model.\relax }}{20}{figure.caption.18}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Approximation of the model.\relax }}{19}{figure.caption.15}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Graphical representation of the LDA-Poisson model.\relax }}{21}{figure.caption.18}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces a) LDA model applied to BOW representation with k-means clustering. b) LDA applied to data with simple BOW representation of the data.\relax }}{22}{figure.caption.19}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Gaussian\relax }}{22}{figure.caption.20}
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Poisson\relax }}{23}{figure.caption.21}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces House number 1, 20 topics, fine grain time, LDA-Poisson\relax }}{24}{figure.caption.22}
-\contentsline {figure}{\numberline {6.5}{\ignorespaces House number 5, 20 topics, fine grain time, LDA-Gaussian\relax }}{25}{figure.caption.23}
-\contentsline {figure}{\numberline {6.6}{\ignorespaces House number 1, 20 topics, fine grain time, LDA-Gaussian\relax }}{25}{figure.caption.24}
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Perplexity for different number of topics for 5 different House\relax }}{26}{figure.caption.26}
-\contentsline {figure}{\numberline {6.8}{\ignorespaces Perplexity for LDA-Gaussian and LDA-Poisson with different amount of time-slices\relax }}{27}{figure.caption.28}
-\contentsline {figure}{\numberline {6.9}{\ignorespaces Perplexity for LDA-Gaussian and LDA-Poisson with different amount of topics\relax }}{28}{figure.caption.29}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces a) LDA model applied to BOW representation with k-means clustering. b) LDA applied to data with simple BOW representation of the data.\relax }}{24}{figure.caption.19}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Gaussian\relax }}{24}{figure.caption.20}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Topic distribution per day and the Topic visualization for LDA-Poisson\relax }}{25}{figure.caption.21}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces House number 1, 20 topics, fine grain time, LDA-Poisson\relax }}{26}{figure.caption.22}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces House number 5, 20 topics, fine grain time, LDA-Gaussian\relax }}{27}{figure.caption.23}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces House number 1, 20 topics, fine grain time, LDA-Gaussian\relax }}{27}{figure.caption.24}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces House number 1, 20 topics, without time, LDA-Gaussian\relax }}{28}{figure.caption.25}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces House number 1, 20 topics, without time, LDA-Poisson\relax }}{28}{figure.caption.26}
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Perplexity for different number of topics for 5 different House\relax }}{29}{figure.caption.28}
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Perplexity for LDA-Gaussian and LDA-Poisson with different amount of time-slices\relax }}{30}{figure.caption.30}
+\contentsline {figure}{\numberline {6.11}{\ignorespaces Perplexity for LDA-Gaussian and LDA-Poisson with different amount of topics for House number one.\relax }}{31}{figure.caption.31}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces House number 1, 20 topics, fine grain time, LDA-Gaussian\relax }}{33}{figure.caption.32}
-\contentsline {figure}{\numberline {A.2}{\ignorespaces House number 2, 20 topics, fine grain time, LDA-Gaussian\relax }}{34}{figure.caption.33}
-\contentsline {figure}{\numberline {A.3}{\ignorespaces House number 3, 20 topics, fine grain time, LDA-Gaussian\relax }}{34}{figure.caption.34}
-\contentsline {figure}{\numberline {A.4}{\ignorespaces House number 4, 20 topics, fine grain time, LDA-Gaussian\relax }}{35}{figure.caption.35}
-\contentsline {figure}{\numberline {A.5}{\ignorespaces House number 5, 20 topics, fine grain time, LDA-Gaussian\relax }}{35}{figure.caption.36}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces House number 1, 20 topics, fine grain time, LDA-Gaussian\relax }}{37}{figure.caption.34}
+\contentsline {figure}{\numberline {A.2}{\ignorespaces House number 2, 20 topics, fine grain time, LDA-Gaussian\relax }}{38}{figure.caption.35}
+\contentsline {figure}{\numberline {A.3}{\ignorespaces House number 3, 20 topics, fine grain time, LDA-Gaussian\relax }}{38}{figure.caption.36}
+\contentsline {figure}{\numberline {A.4}{\ignorespaces House number 4, 20 topics, fine grain time, LDA-Gaussian\relax }}{39}{figure.caption.37}
+\contentsline {figure}{\numberline {A.5}{\ignorespaces House number 5, 20 topics, fine grain time, LDA-Gaussian\relax }}{39}{figure.caption.38}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {B.1}{\ignorespaces House number 1, 20 topics, fine grain time, LDA-Poisson\relax }}{36}{figure.caption.37}
-\contentsline {figure}{\numberline {B.2}{\ignorespaces House number 2, 20 topics, fine grain time, LDA-Poisson\relax }}{37}{figure.caption.38}
-\contentsline {figure}{\numberline {B.3}{\ignorespaces House number 3, 20 topics, fine grain time, LDA-Poisson\relax }}{37}{figure.caption.39}
-\contentsline {figure}{\numberline {B.4}{\ignorespaces House number 4, 20 topics, fine grain time, LDA-Poisson\relax }}{38}{figure.caption.40}
-\contentsline {figure}{\numberline {B.5}{\ignorespaces House number 5, 20 topics, fine grain time, LDA-Poisson\relax }}{38}{figure.caption.41}
+\contentsline {figure}{\numberline {B.1}{\ignorespaces House number 1, 20 topics, fine grain time, LDA-Poisson\relax }}{40}{figure.caption.39}
+\contentsline {figure}{\numberline {B.2}{\ignorespaces House number 2, 20 topics, fine grain time, LDA-Poisson\relax }}{41}{figure.caption.40}
+\contentsline {figure}{\numberline {B.3}{\ignorespaces House number 3, 20 topics, fine grain time, LDA-Poisson\relax }}{41}{figure.caption.41}
+\contentsline {figure}{\numberline {B.4}{\ignorespaces House number 4, 20 topics, fine grain time, LDA-Poisson\relax }}{42}{figure.caption.42}
+\contentsline {figure}{\numberline {B.5}{\ignorespaces House number 5, 20 topics, fine grain time, LDA-Poisson\relax }}{42}{figure.caption.43}

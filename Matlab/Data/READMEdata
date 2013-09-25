@@ -12,3 +12,6 @@ AlgMain:
 Here all algorithms are stored that calculated the mainDate. We assume that these
 algs only have to be used once, but in case that it needs to be looked in again
 the scripts in this folder contains the information how these algs are run.
+
+ALGClusteren:
+Creates the clustered data and stores it in the DATAClustered file.

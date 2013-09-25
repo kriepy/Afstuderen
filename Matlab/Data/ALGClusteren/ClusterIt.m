@@ -1,11 +1,12 @@
-function H=ClusterIt(House,HouseNr,TS,coarse,V)
+function House=ClusterIt(House,HouseNr,TS,coarse,V,type)
 % TS is the amount of time slices
 % coarse is 1 if you want to add the coarse grain time.
 % This function translates the data from House so that it can be clustered and
 % then runs the clustered functions for the given HouseNr
 %
 % The data that is created is used for all LDA models
-path='/home/kristin/UVA/Afstuderen/Afstuderen/Matlab/Data/DATAClustered/';
+% type:= different possible data description 'simple' will have 5+1
+% dimensions, where als 'transitions' will have 15+1 dimensions
 
 DL=86400; % DayLength: amount of seconds on a day
 len=DL/TS;
@@ -88,15 +89,19 @@ for HN=1:5
     H.Clusters=p.Clusters;
     for i=1:length(H.day)
         H.day{i}.ClusteredData=p.dat{i}.dat;
+        H.day{i}.ClusDataIdx=p.ClusData{i}.idx;
     end
     if HN==HouseNr
         d=H.day;
     end
     House{HN}=H;
 end
-H=House{HouseNr};
-pa=strcat([path,'Clustered',num2str(V),'TS',num2str(TS),'Coarse', num2str(coarse)]);
-save(pa,'House');
+
+if strcmp('trans',type)
+    House = addTransData(House);
+end
+
+
 
 
 end

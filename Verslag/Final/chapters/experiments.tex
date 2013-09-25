@@ -1,4 +1,4 @@
-In this chapter the experiments and the results are presented. In the section of the qualitative results visualizations of the topics are given for different models. It is shown that the topics are meaningful and that semantic descriptions can be given to some of these topics.
+In this chapter the experiments and the results are presented. In the section of the qualitative results visualizations of the topics are given for different models. It is shown that the new models can find more topics in the data than the standard approaches. For some topics a semantic description is given, to show the usefulness of the model.
 In the section of the quantitative results the two developed models are compared with each other and the performance of the model for different number of topics and different number of time-slices are shown.
 
 \section{Qualitative Results}
@@ -24,7 +24,7 @@ In the following figures the number of time-slices on a day is $N=96$. The time 
 
 \pagebreak
  
-The LDA model with a BOW-representation is still able to find different topics in the data, although the BOW representation without the clustering only distinguishes between two topics (see figure \ref{fig:BOWtopics} b)). If the data is clustered beforehand LDA is able to find four different topics in the data (see figure \ref{fig:BOWtopics} a)). The number of clusters for the k-means algorithms is set to $V=6$. This was the best value to find the most topics in the data. Before the data was clustered, all dimensions where normalized.\\
+The LDA model with a BOW-representation is still able to find different topics in the data, although the BOW representation without the clustering only distinguishes between two topics (see figure \ref{fig:BOWtopics} b)). This means that from the five topics that are initialized beforehand, three of them are never assigned to one of the time-slices in the data. If the data is clustered in advance with k-means, LDA is able to find four different topics in the data (see figure \ref{fig:BOWtopics} a)) and only one of the initial topic is not assigned to the time-slices. The number of clusters for the k-means algorithms is set to $V=6$. Other sizes of dictionaries $V$ have been tried, but leaded to worse results. Before the data was clustered, all dimensions where normalized.\\
 
 \begin{figure}
  \centering
@@ -113,9 +113,9 @@ More topics can be appointed and for some person it appears easier than for othe
 \begin{figure}
  \centering
  \begin{tabular}{c c}
-  \includegraphics[width=0.45\textwidth]{Pictures/Gaus/fine/DayHN1TS48k20zonerTijd.png}
+  \includegraphics[width=0.45\textwidth]{Pictures/DayHN1TS48k20zonerTijd.png}
   &
-  \includegraphics[width=0.45\textwidth]{Pictures/Gaus/fine/TopHN1TS48k20zonerTijd.png}\\
+  \includegraphics[width=0.45\textwidth]{Pictures/TopHN1TS48k20zonerTijd.png}\\
   a) & b)
  \end{tabular}
   \caption{House number 1, 20 topics, without time, LDA-Gaussian}
@@ -168,53 +168,19 @@ The LDA-Poisson model is not capable to model the time dimension properly. To be
   \label{fig:CompareTS}
 \end{figure}
 
-In figure \ref{fig:CompareK} the perplexity for both models is shown with different number of topics. The mean of 10 runs is shown and also the standard deviation is indicated with the vertical errorbar in the figure. The standard deviation increases for a higher number of topics, which is reasonable, because more topics increases the chance of more variation. If the number of topic increases the perplexity first decreases and then increases. If the number of topics is to high the model does overfit on the training data and the perplexity indeed becomes worse.\\
+In figure \ref{fig:CompareK} the perplexity for both models is shown with different number of topics. The data is cross-validated with 10\% of the data. The mean over all runs is shown and also the standard deviation is indicated with the vertical errorbar in the figure. The standard deviation increases for a higher number of topics, which is reasonable, because more topics increases the chance of more variation. If the number of topic increases the perplexity first decreases and then increases. If the number of topics is to high the model does overfit on the training data and the perplexity indeed becomes worse.\\
 
-
+The models are not compared with the standard LDA model that uses a BOW representation of the data.
+This is because the difference in the representation and the normalization in the basic LDA model leads to a log-likelihood which is not comparable to the log-likelihood obtained from both models, LDA-Gaussian and LDA-Poisson.
 
 
  \begin{figure}[h!]
   \centering
   \includegraphics[width=0.7\textwidth]{Pictures/CompareCrossTops.png}
-\caption{Perplexity for LDA-Gaussian and LDA-Poisson with different amount of topics}
+\caption{Perplexity for LDA-Gaussian and LDA-Poisson with different amount of topics for House number one.}
   \label{fig:CompareK}
  \end{figure}
 
 
 To creating the figures the data of house number 2 is chosen. For other data sets the outcomes looks similar and are therefore not presented. Both experiments show that the LDA-Poisson model outperforms the LDA-Gaussian model.
  
- 
-% \paragraph{Different length of time-slices}
-% 
-% In figure \ref{fig:PerplTS} we give the perplexity for different length of time-slices for the 5 Houses. We take a again the mean over 10 runs. We take for every house the same amount of days to train and test the data. We can see that with more time-slices the perplexity becomes lower for the hold-out set. For house $H2$ and $H4$ the perplexity is much better for a small amount of time-slices. The perplexities for these two houses drop much faster if the amount of time-slices increases.
-% 
-% \begin{figure}[h!]
-%  \centering
-%  \includegraphics[width = 0.7\textwidth]{Pictures/PerplTS.png}
-%  \caption{Perplexity (x-axis) for the hold-out-set for different amount of time-slices (y-axis)}
-%  \label{fig:PerplTS}
-% \end{figure}
-
-
-% Wat wil ik nou eigenlijk aantonen en kan ik dat ook aantonen?
-% Ik wil aantonen dat het nieuwe model werkt. Ik wil aantonen dat het beter werkt dan normal LDA model. 
-% Het is al door meerdere mensen aangetoond dat topic modellen wel van nut zijn om behavior patronen in sensor data te vinden.
-% en we kunnen dus aantonen dat onze nieuwe methode OOK werkt, want we kunnen patterns vinden. eg: een dag in de week is de persoon in de middag weg, of 's nachts moet die persoon naar het toilet
-
-% QUALITATIVE EXPERIMENTEN
-%Ik wil aantonen dat mijn model werkt en dat je wel zinnige informatie eruit kunt halen. Je kunt een semantische omschrijving van de topics geven.
-%We vergelijken de nieuwe method met de BOW/k-means methode we kunnen hier ook aangeven wat de verhoudingen zijn van worden in de data en unique worden die zijn gevonden. Dit geeft ook al aan dat BOW waarschijnlijk niet werkt
-
-
-%Met de gegeven data en de gekozen feature representation zijn we niet in staat om zinnige informatie uit de BOW model te halen.
-
-% QUANTITATIVE EXPERIMENTEN
-
-
-% In this section we first give some qualitative results, where the topic distribution on some days are shown. 
-% Then we do something else
-% Then we compare the BIC's?
-% And after that we make a small test according to the feature representation.
-
-
-%To test the performance of the topic models we set the variables of the features to fixed values.  In the basic LDA model we use a coarse grain value for the time. This means that the sixth dimension can have 5 different values, where the time intervals are $\{ 3am - 8am, 8am - 1pm, 1pm - 18pm, 18pm - 23pm, 23pm - 3am  \}$.

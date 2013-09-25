@@ -60,6 +60,7 @@ H.Clusters.centroids=c;
 
 d=createLDAdata(H,dat);
 H.dat=d;
+H.ClusData=dat;
 
 
 end

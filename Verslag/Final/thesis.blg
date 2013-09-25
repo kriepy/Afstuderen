@@ -4,59 +4,53 @@ The top-level auxiliary file: thesis.aux
 A level-1 auxiliary file: titlepage.aux
 The style file: plain.bst
 Database file #1: references.bib
-You're missing a field name---line 6 of file references.bib
- :     
- :     %citeulike-article-id = {6168305},
+I was expecting a `,' or a `}'---line 377 of file references.bib
+ : 
+ : %Capitalization is very important in references. Be sure to do a double {{ and }} to keep the capitalization of your text in tact.
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Illegal end of database file---line 386 of file references.bib
- : }
- :  
-I'm skipping whatever remains of this entry
-Warning--empty title in UnitedNations
-Warning--empty publisher in UnitedNations
-Warning--empty year in UnitedNations
+Warning--empty journal in UnitedNations
 Warning--there's a number but no volume in journals/hf/RogersMWF98
 Warning--empty year in journals/hf/RogersMWF98
 You've used 19 entries,
             2118 wiz_defined-function locations,
-            633 strings with 8378 characters,
-and the built_in function-call counts, 7663 in all, are:
-= -- 766
+            634 strings with 8401 characters,
+and the built_in function-call counts, 7660 in all, are:
+= -- 771
 > -- 370
 < -- 8
 + -- 147
 - -- 126
-* -- 571
-:= -- 1236
-add.period$ -- 64
+* -- 565
+:= -- 1241
+add.period$ -- 66
 call.type$ -- 19
-change.case$ -- 117
+change.case$ -- 118
 chr.to.int$ -- 0
-cite$ -- 24
-duplicate$ -- 288
-empty$ -- 575
+cite$ -- 22
+duplicate$ -- 286
+empty$ -- 570
 format.name$ -- 126
-if$ -- 1641
+if$ -- 1640
 int.to.chr$ -- 0
 int.to.str$ -- 19
-missing$ -- 20
-newline$ -- 99
+missing$ -- 19
+newline$ -- 101
 num.names$ -- 38
-pop$ -- 121
+pop$ -- 113
 preamble$ -- 1
 purify$ -- 101
 quote$ -- 0
-skip$ -- 202
+skip$ -- 205
 stack$ -- 0
 substring$ -- 504
 swap$ -- 78
 text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 72
-warning$ -- 5
+type$ -- 74
+warning$ -- 3
 while$ -- 70
 width$ -- 21
-write$ -- 226
-(There were 2 error messages)
+write$ -- 230
+(There was 1 error message)

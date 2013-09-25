@@ -1,0 +1,21 @@
+Every folder contains three different textfiles:
+
+sensorreadings.txt:
+all sensor readings are contained in this file, the structure is
+TIMESTAMP SENSOR_NR VALUE
+
+TIMESTAMP:= is the time where an action occurs
+SENSOR_NR:= is the sensor which is involved by this action
+VALUE:=     contains a 1 if the sensor is activated an 0 if it is deactivated
+
+---------------------------------------------------------------------------
+
+sensornames.txt:
+The names of every sensor is contained in this file with the sensorNr
+SENSOR_NR SENSOR_NAME
+
+---------------------------------------------------------------------------
+
+sensorinfo.txt:
+Contains the type of sensor and the location
+SENSOR_NR SENSOR_LOC_Type

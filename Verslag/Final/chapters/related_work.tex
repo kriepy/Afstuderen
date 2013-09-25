@@ -25,24 +25,7 @@ Chikhaoui et al. \cite{journals/percom/ChikhaouiWP12} uses the topic model LDA i
 % Huynh, Casale
 Huyhn et al. \cite{Huynh:2008:DAP:1409635.1409638} and Casale et al. \cite{Casale:2009} both try to discover daily routines from sensor data. Acceleration sensors that are attached to the human body generate a continuous stream of data. The data is quantized in different time intervals and in this ways artificial words are created. The dictionary, which contains all unique words, is quite big, because small variations in the sensor data generates different words. Therefore the authors cluster the data on forehand with the k-means algorithm. In this way the size of the dictionary can be reduced. The choice of $k$ however is of big influence on the outcome of the LDA model. That is why in this thesis a different approach is used to handle the big amount of variations in the artificial words.\\
 
-%that is obtained from acceleration sensors which are attached to the human body. They first create artificial words by clustering the data and than apply LDA to these words. The clustering is necessary to reduce the size of the dictionary.
-
-% 
-% In this way the reduce the size of the vocabulary. This is necessary because otherwise there are to many dimensions and to less data.
-% 
-% waarom moeten ze het clusteren van te voren? 
-% 
-% by applying LDA to sensor data obtained from acceleration sensors that are attached to the body.
-% daily routines
-% 
-% From acceleration features, that are clustered in advance, they generate the artificial words. The clustering is necessary to group similar words together. In this way the size of the dictionary is reduced and LDA can find meaningful topics in the data. Choosing the amount of clusters on forehand is however difficult and has a big influence on the outcome of the LDA model.\\
-% 
-% Lukt het hun wel om zinvolle topics te creeren en als ja hoe?
-
-% % Phung DOEN
-% Phung et al. \cite{PhungATVK09} applys LDA to data that is gained of a WiFi network. They find behavior patterns of people in their work environment.\\
-
-% Farrahi DUIDELIJKER
+% Farrahi
 Farrahi et al. \cite{farrahi2008daily} applies LDA to location data gained from cell information of mobile phones. A lot of data is available and artificial words are created by combining the location of a person at three consecutive time steps and adding the time value. In this way every time of a day is described with a word. This approach of dividing a day into words is also adopted in this thesis. In Farrahi's work only 512 different words are possible, but about 2800 days of 68 different people are available. This ratio of vocabulary size and available data makes their approach a successful way to find latent topics in location data, without the need of clustering the data on forehand. Their way of describing the features is a good option to capture transitions in locations.\\
 
 % Castanedo

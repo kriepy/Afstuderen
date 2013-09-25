@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.5.16)  19 AUG 2013 13:24
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.5.16)  29 AUG 2013 21:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -340,6 +340,21 @@ Package: caption3 2012/01/12 v1.4b caption3 kernel (AR)
 )
 \c@ContinuedFloat=\count128
 )
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
+Package: microtype 2010/01/10 v2.4 Micro-typography with pdfTeX (RS)
+\MT@toks=\toks26
+\MT@count=\count129
+LaTeX Info: Redefining \lsstyle on input line 1597.
+LaTeX Info: Redefining \lslig on input line 1597.
+\MT@outer@space=\skip61
+LaTeX Info: Redefining \textls on input line 1605.
+\MT@outer@kern=\dimen123
+LaTeX Info: Redefining \textmicrotypecontext on input line 2156.
+Package microtype Info: Loading configuration file microtype.cfg.
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.cfg
+File: microtype.cfg 2010/01/10 v2.4 microtype main configuration file (RS)
+))
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2012/05/13 v6.82q Hypertext links for LaTeX
 
@@ -377,14 +392,14 @@ Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
 Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
 Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
 )
-\@linkdim=\dimen123
-\Hy@linkcounter=\count129
-\Hy@pagecounter=\count130
+\@linkdim=\dimen124
+\Hy@linkcounter=\count130
+\Hy@pagecounter=\count131
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count131
+\Hy@SavedSpaceFactor=\count132
 
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -407,16 +422,16 @@ Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 ))
-\c@Hy@tempcnt=\count132
+\c@Hy@tempcnt=\count133
 
 (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4653.
-\Fld@menulength=\count133
-\Field@Width=\dimen124
-\Fld@charsize=\dimen125
+\Fld@menulength=\count134
+\Field@Width=\dimen125
+\Fld@charsize=\dimen126
 Package hyperref Info: Hyper figures OFF on input line 5773.
 Package hyperref Info: Link nesting OFF on input line 5778.
 Package hyperref Info: Hyper index ON on input line 5781.
@@ -426,53 +441,53 @@ Package hyperref Info: Link coloring with OCG OFF on input line 5798.
 Package hyperref Info: PDF/A mode OFF on input line 5803.
 LaTeX Info: Redefining \ref on input line 5843.
 LaTeX Info: Redefining \pageref on input line 5847.
-\Hy@abspage=\count134
-\c@Item=\count135
-\c@Hfootnote=\count136
+\Hy@abspage=\count135
+\c@Item=\count136
+\c@Hfootnote=\count137
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2012/05/13 v6.82q Hyperref driver for pdfTeX
-\Fld@listcount=\count137
-\c@bookmark@seq@number=\count138
-\Hy@SectionHShift=\skip61
+\Fld@listcount=\count138
+\c@bookmark@seq@number=\count139
+\Hy@SectionHShift=\skip62
 ) (./lineno.sty
 Package: lineno 2005/11/02 line numbers on paragraphs v4.41
-\linenopenalty=\count139
-\output=\toks26
-\linenoprevgraf=\count140
-\linenumbersep=\dimen126
-\linenumberwidth=\dimen127
-\c@linenumber=\count141
-\c@pagewiselinenumber=\count142
-\c@LN@truepage=\count143
-\c@internallinenumber=\count144
-\c@internallinenumbers=\count145
-\quotelinenumbersep=\dimen128
-\bframerule=\dimen129
-\bframesep=\dimen130
+\linenopenalty=\count140
+\output=\toks27
+\linenoprevgraf=\count141
+\linenumbersep=\dimen127
+\linenumberwidth=\dimen128
+\c@linenumber=\count142
+\c@pagewiselinenumber=\count143
+\c@LN@truepage=\count144
+\c@internallinenumber=\count145
+\c@internallinenumbers=\count146
+\quotelinenumbersep=\dimen129
+\bframerule=\dimen130
+\bframesep=\dimen131
 \bframebox=\box28
 LaTeX Info: Redefining \\ on input line 3056.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
-\LTleft=\skip62
-\LTright=\skip63
-\LTpre=\skip64
-\LTpost=\skip65
-\LTchunksize=\count146
-\LTcapwidth=\dimen131
+\LTleft=\skip63
+\LTright=\skip64
+\LTpre=\skip65
+\LTpost=\skip66
+\LTchunksize=\count147
+\LTcapwidth=\dimen132
 \LT@head=\box29
 \LT@firsthead=\box30
 \LT@foot=\box31
 \LT@lastfoot=\box32
-\LT@cols=\count147
-\LT@rows=\count148
-\c@LT@tables=\count149
-\c@LT@chunks=\count150
-\LT@p@ftn=\toks27
+\LT@cols=\count148
+\LT@rows=\count149
+\c@LT@tables=\count150
+\c@LT@chunks=\count151
+\LT@p@ftn=\toks28
 )
 (/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty
 Package: placeins 2005/04/18  v 2.2
@@ -482,47 +497,47 @@ Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
 )
 (/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
-\c@KVtest=\count151
-\sf@farskip=\skip66
-\sf@captopadj=\dimen132
-\sf@capskip=\skip67
-\sf@nearskip=\skip68
-\c@subfigure=\count152
-\c@subfigure@save=\count153
-\c@lofdepth=\count154
-\c@subtable=\count155
-\c@subtable@save=\count156
-\c@lotdepth=\count157
-\sf@top=\skip69
-\sf@bottom=\skip70
+\c@KVtest=\count152
+\sf@farskip=\skip67
+\sf@captopadj=\dimen133
+\sf@capskip=\skip68
+\sf@nearskip=\skip69
+\c@subfigure=\count153
+\c@subfigure@save=\count154
+\c@lofdepth=\count155
+\c@subtable=\count156
+\c@subtable@save=\count157
+\c@lotdepth=\count158
+\sf@top=\skip70
+\sf@bottom=\skip71
 )
 (/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2005/04/14 v1.61803 publication quality tables
-\heavyrulewidth=\dimen133
-\lightrulewidth=\dimen134
-\cmidrulewidth=\dimen135
-\belowrulesep=\dimen136
-\belowbottomsep=\dimen137
-\aboverulesep=\dimen138
-\abovetopsep=\dimen139
-\cmidrulesep=\dimen140
-\cmidrulekern=\dimen141
-\defaultaddspace=\dimen142
-\@cmidla=\count158
-\@cmidlb=\count159
-\@aboverulesep=\dimen143
-\@belowrulesep=\dimen144
-\@thisruleclass=\count160
-\@lastruleclass=\count161
-\@thisrulewidth=\dimen145
+\heavyrulewidth=\dimen134
+\lightrulewidth=\dimen135
+\cmidrulewidth=\dimen136
+\belowrulesep=\dimen137
+\belowbottomsep=\dimen138
+\aboverulesep=\dimen139
+\abovetopsep=\dimen140
+\cmidrulesep=\dimen141
+\cmidrulekern=\dimen142
+\defaultaddspace=\dimen143
+\@cmidla=\count159
+\@cmidlb=\count160
+\@aboverulesep=\dimen144
+\@belowrulesep=\dimen145
+\@thisruleclass=\count161
+\@lastruleclass=\count162
+\@thisrulewidth=\dimen146
 )
 (/usr/share/texlive/texmf-dist/tex/latex/rotating/rotating.sty
 Package: rotating 2009/03/28 v2.16a rotated objects in LaTeX
-\c@r@tfl@t=\count162
-\rotFPtop=\skip71
-\rotFPbot=\skip72
+\c@r@tfl@t=\count163
+\rotFPtop=\skip72
+\rotFPbot=\skip73
 \rot@float@box=\box33
-\rot@mess@toks=\toks28
+\rot@mess@toks=\toks29
 )
 (/usr/share/texlive/texmf-dist/tex/latex/textpos/textpos.sty
 Package: textpos 2012/06/01 v1.7h
@@ -533,36 +548,36 @@ Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 )
 \TP@textbox=\box34
 \TP@holdbox=\box35
-\TPHorizModule=\dimen146
-\TPVertModule=\dimen147
-\TP@margin=\dimen148
-\TP@absmargin=\dimen149
+\TPHorizModule=\dimen147
+\TPVertModule=\dimen148
+\TP@margin=\dimen149
+\TP@absmargin=\dimen150
 
 Grid set 16 x 16 = 37.34424pt x 52.81541pt
-\TPboxrulesize=\dimen150
-\TP@ox=\dimen151
-\TP@oy=\dimen152
-\TP@tbargs=\toks29
-\TP@prevdepth=\dimen153
+\TPboxrulesize=\dimen151
+\TP@ox=\dimen152
+\TP@oy=\dimen153
+\TP@tbargs=\toks30
+\TP@prevdepth=\dimen154
 TextBlockOrigin set to 0pt x 0pt
 ) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count163
+\lst@mode=\count164
 \lst@gtempboxa=\box36
-\lst@token=\toks30
-\lst@length=\count164
-\lst@currlwidth=\dimen154
-\lst@column=\count165
-\lst@pos=\count166
-\lst@lostspace=\dimen155
-\lst@width=\dimen156
-\lst@newlines=\count167
-\lst@lineno=\count168
-\lst@maxwidth=\dimen157
+\lst@token=\toks31
+\lst@length=\count165
+\lst@currlwidth=\dimen155
+\lst@column=\count166
+\lst@pos=\count167
+\lst@lostspace=\dimen156
+\lst@width=\dimen157
+\lst@newlines=\count168
+\lst@lineno=\count169
+\lst@maxwidth=\dimen158
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-\c@lstnumber=\count169
-\lst@skipnumbers=\count170
+\c@lstnumber=\count170
+\lst@skipnumbers=\count171
 \lst@framebox=\box37
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
@@ -602,17 +617,17 @@ LaTeX Font Info:    ... okay on input line 43.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count171
-\scratchdimen=\dimen158
+\scratchcounter=\count172
+\scratchdimen=\dimen159
 \scratchbox=\box38
-\nofMPsegments=\count172
-\nofMParguments=\count173
-\everyMPshowfont=\toks31
-\MPscratchCnt=\count174
-\MPscratchDim=\dimen159
-\MPnumerator=\count175
-\makeMPintoPDFobject=\count176
-\everyMPtoPDFconversion=\toks32
+\nofMPsegments=\count173
+\nofMParguments=\count174
+\everyMPshowfont=\toks32
+\MPscratchCnt=\count175
+\MPscratchDim=\dimen160
+\MPnumerator=\count176
+\makeMPintoPDFobject=\count177
+\everyMPtoPDFconversion=\toks33
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -639,6 +654,21 @@ Package: ltcaption 2011/09/12 v1.3 longtable captions (AR)
 )
 Package caption Info: rotating package is loaded.
 Package caption Info: End \AtBeginDocument code.
+LaTeX Info: Redefining \microtypecontext on input line 43.
+Package microtype Info: Generating PDF output.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using default protrusion set `alltext'.
+Package microtype Info: Automatic font expansion enabled (level 2),
+(microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
+Package microtype Info: Using default expansion set `basictext'.
+Package microtype Info: No tracking.
+Package microtype Info: No adjustment of interword spacing.
+Package microtype Info: No adjustment of character kerning.
+
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2009/11/09 v2.0 microtype config. file: Computer Modern Roman 
+(RS)
+)
 \AtBeginShipoutBox=\box39
 Package hyperref Info: Link coloring ON on input line 43.
 
@@ -648,7 +678,7 @@ Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count177
+\c@section@level=\count178
 )
 LaTeX Info: Redefining \ref on input line 43.
 LaTeX Info: Redefining \pageref on input line 43.
@@ -659,7 +689,7 @@ LaTeX Info: Redefining \nameref on input line 43.
 \openout3 = `thesis.out'.
 
  ABD: EveryShipout initializing macros
-\c@lstlisting=\count178
+\c@lstlisting=\count179
 \openout2 = `titlepage.aux'.
 
 
@@ -669,7 +699,7 @@ File: figures/logo-UvA-wide.jpg Graphic file (type jpg)
 <use figures/logo-UvA-wide.jpg>
 Package pdftex.def Info: figures/logo-UvA-wide.jpg used on input line 3.
 (pdftex.def)             Requested size: 380.37437pt x 56.9055pt.
-\backupparindent=\skip73
+\backupparindent=\skip74
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
@@ -695,9 +725,7 @@ Package pdftex.def Info: figures/logo-UvA-wide.jpg used on input line 3.
 
  [7
 
-] [8
-
-]
+] [8]
 Chapter 1.
 (./chapters/introduction.tex
 Underfull \hbox (badness 10000) in paragraph at lines 5--6
@@ -715,14 +743,20 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--13
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 15--19
+Underfull \hbox (badness 10000) in paragraph at lines 15--17
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--21
 
  []
 
 [1
 
+
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 21--25
+Underfull \hbox (badness 10000) in paragraph at lines 23--27
 
  []
 
@@ -757,19 +791,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 26--27
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 46--47
+Underfull \hbox (badness 10000) in paragraph at lines 29--30
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 49--50
+Underfull \hbox (badness 10000) in paragraph at lines 32--33
 
  []
 
 ) [4]
 Chapter 3.
 (./chapters/data_description.tex
-<Pictures/floorplan.png, id=317, 542.025pt x 704.6325pt>
+<Pictures/floorplan.png, id=321, 542.025pt x 704.6325pt>
 File: Pictures/floorplan.png Graphic file (type png)
 
 <use Pictures/floorplan.png>
@@ -779,7 +813,7 @@ Package pdftex.def Info: Pictures/floorplan.png used on input line 9.
 
 
 ] [6 <./Pictures/floorplan.png>]
-<Pictures/SensorsMorningHN3Day34.png, id=332, 411.136pt x 432.817pt>
+<Pictures/SensorsMorningHN3Day34.png, id=336, 411.136pt x 432.817pt>
 File: Pictures/SensorsMorningHN3Day34.png Graphic file (type png)
 
 <use Pictures/SensorsMorningHN3Day34.png>
@@ -787,7 +821,7 @@ Package pdftex.def Info: Pictures/SensorsMorningHN3Day34.png used on input line
  44.
 (pdftex.def)             Requested size: 191.0625pt x 201.13895pt.
 
-<Pictures/SensorsNoonHN3Day34.png, id=333, 411.136pt x 432.817pt>
+<Pictures/SensorsNoonHN3Day34.png, id=337, 411.136pt x 432.817pt>
 File: Pictures/SensorsNoonHN3Day34.png Graphic file (type png)
 
 <use Pictures/SensorsNoonHN3Day34.png>
@@ -814,7 +848,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--5
 
  []
 
-<Pictures/FeatExample.png, id=345, 411.136pt x 308.352pt>
+<Pictures/FeatExample.png, id=349, 411.136pt x 308.352pt>
 File: Pictures/FeatExample.png Graphic file (type png)
 
 <use Pictures/FeatExample.png>
@@ -832,7 +866,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 41--43
 
  []
 
-<Pictures/Occ.png, id=360, 411.136pt x 308.352pt>
+<Pictures/Occ.png, id=364, 411.136pt x 308.352pt>
 File: Pictures/Occ.png Graphic file (type png)
  <use Pictures/Occ.png>
 Package pdftex.def Info: Pictures/Occ.png used on input line 62.
@@ -846,7 +880,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 68--69
 
  []
 
-<Pictures/OccField2.png, id=362, 411.136pt x 308.352pt>
+<Pictures/OccField2.png, id=366, 411.136pt x 308.352pt>
 File: Pictures/OccField2.png Graphic file (type png)
 
 <use Pictures/OccField2.png>
@@ -861,16 +895,16 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 ]
 Chapter 5.
 (./chapters/topic_models.tex
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 13.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 7.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 13.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 7.
 
 (./Pictures/ModelBasic.pdf_tex
-<Pictures/ModelBasic.pdf, id=381, 397.3244pt x 217.05782pt>
+<Pictures/ModelBasic.pdf, id=385, 397.3244pt x 217.05782pt>
 File: Pictures/ModelBasic.pdf Graphic file (type pdf)
 
 <use Pictures/ModelBasic.pdf>
@@ -883,41 +917,41 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [13
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 51--54
+Underfull \hbox (badness 10000) in paragraph at lines 45--48
 
  []
 
 [14 <./Pictures/ModelBasic.pdf>]
-<Pictures/BOW.png, id=401, 623.32875pt x 793.96625pt>
+<Pictures/BOW.png, id=405, 623.32875pt x 793.96625pt>
 File: Pictures/BOW.png Graphic file (type png)
  <use Pictures/BOW.png>
-Package pdftex.def Info: Pictures/BOW.png used on input line 61.
+Package pdftex.def Info: Pictures/BOW.png used on input line 55.
 (pdftex.def)             Requested size: 212.29312pt x 270.40532pt.
 
-<Pictures/kMeans.png, id=402, 625.33624pt x 790.955pt>
+<Pictures/kMeans.png, id=406, 625.33624pt x 790.955pt>
 File: Pictures/kMeans.png Graphic file (type png)
 
 <use Pictures/kMeans.png>
-Package pdftex.def Info: Pictures/kMeans.png used on input line 61.
+Package pdftex.def Info: Pictures/kMeans.png used on input line 55.
 (pdftex.def)             Requested size: 212.29312pt x 268.5108pt.
 
-Overfull \hbox (24.0pt too wide) in paragraph at lines 60--64
+Overfull \hbox (24.0pt too wide) in paragraph at lines 54--58
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--71
+Underfull \hbox (badness 10000) in paragraph at lines 63--64
 
  []
 
-(./Pictures/GMM1.pdf_tex <Pictures/GMM1.pdf, id=404, 368.2257pt x 453.12144pt>
+(./Pictures/GMM1.pdf_tex <Pictures/GMM1.pdf, id=408, 368.2257pt x 453.12144pt>
 File: Pictures/GMM1.pdf Graphic file (type pdf)
 
 <use Pictures/GMM1.pdf>
 Package pdftex.def Info: Pictures/GMM1.pdf used on input line 52.
 (pdftex.def)             Requested size: 191.0625pt x 235.11285pt.
 ) (./Pictures/GMM2.pdf_tex
-<Pictures/GMM2.pdf, id=405, 368.2257pt x 453.12144pt>
+<Pictures/GMM2.pdf, id=409, 368.2257pt x 453.12144pt>
 File: Pictures/GMM2.pdf Graphic file (type pdf)
  <use Pictures/GMM2.pdf>
 Package pdftex.def Info: Pictures/GMM2.pdf used on input line 52.
@@ -927,33 +961,36 @@ Package pdftex.def Info: Pictures/GMM2.pdf used on input line 52.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 83--84
+Underfull \hbox (badness 10000) in paragraph at lines 76--77
 
  []
 
-[15 <./Pictures/BOW.png> <./Pictures/kMeans.png>] [16 <./Pictures/GMM1.pdf> <./
-Pictures/GMM2.pdf
+
+Underfull \vbox (badness 6380) has occurred while \output is active []
+
+ [15 <./Pictures/BOW.png> <./Pictures/kMeans.png>] [16 <./Pictures/GMM1.pdf> <.
+/Pictures/GMM2.pdf
 
 pdfTeX warning: /usr/bin/pdflatex (file ./Pictures/GMM2.pdf): PDF inclusion: mu
 ltiple pdfs with page group included in a single page
 >] (./Pictures/ModelExt.pdf_tex
-<Pictures/ModelExt.pdf, id=432, 363.76862pt x 219.29428pt>
+<Pictures/ModelExt.pdf, id=429, 363.76862pt x 219.29428pt>
 File: Pictures/ModelExt.pdf Graphic file (type pdf)
 
 <use Pictures/ModelExt.pdf>
 Package pdftex.def Info: Pictures/ModelExt.pdf used on input line 52.
 (pdftex.def)             Requested size: 339.67029pt x 204.77475pt.
-)
-Underfull \hbox (badness 10000) in paragraph at lines 209--211
+) [17 <./Pictures/ModelExt.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 124--126
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 219--221
+Underfull \hbox (badness 10000) in paragraph at lines 134--136
 
  []
 
-[17 <./Pictures/ModelExt.pdf>] (./Pictures/approxModel2.pdf_tex
+(./Pictures/approxModel2.pdf_tex
 <Pictures/approxModel2.pdf, id=446, 476.30939pt x 395.879pt>
 File: Pictures/approxModel2.pdf Graphic file (type pdf)
 
@@ -961,28 +998,38 @@ File: Pictures/approxModel2.pdf Graphic file (type pdf)
 Package pdftex.def Info: Pictures/approxModel2.pdf used on input line 52.
 (pdftex.def)             Requested size: 169.8319pt x 141.15114pt.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 275--277
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 190--192
 
  []
 
-[18 <./Pictures/approxModel2.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 295--297
+[19 <./Pictures/approxModel2.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 210--212
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 314--315
+Underfull \hbox (badness 10000) in paragraph at lines 228--229
 
  []
 
-[19] (./Pictures/ModelPois.pdf_tex
-<Pictures/ModelPois.pdf, id=480, 363.76862pt x 219.29428pt>
+(./Pictures/ModelPois.pdf_tex
+<Pictures/ModelPois.pdf, id=478, 363.76862pt x 219.29428pt>
 File: Pictures/ModelPois.pdf Graphic file (type pdf)
 
 <use Pictures/ModelPois.pdf>
 Package pdftex.def Info: Pictures/ModelPois.pdf used on input line 52.
 (pdftex.def)             Requested size: 339.67029pt x 204.77475pt.
-)) [20 <./Pictures/ModelPois.pdf>]
+)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+) [20] [21 <./Pictures/ModelPois.pdf>] [22
+
+]
 Chapter 6.
 (./chapters/experiments.tex
 Underfull \hbox (badness 10000) in paragraph at lines 7--8
@@ -994,7 +1041,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 10--11
 
  []
 
-<Pictures/DayTopicsTs96k5Clus.png, id=495, 411.136pt x 308.352pt>
+<Pictures/DayTopicsTs96k5Clus.png, id=507, 411.136pt x 308.352pt>
 File: Pictures/DayTopicsTs96k5Clus.png Graphic file (type png)
 
 <use Pictures/DayTopicsTs96k5Clus.png>
@@ -1002,7 +1049,7 @@ Package pdftex.def Info: Pictures/DayTopicsTs96k5Clus.png used on input line 16
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/DayTopicsTs96k5bow.png, id=496, 411.136pt x 308.352pt>
+<Pictures/DayTopicsTs96k5bow.png, id=508, 411.136pt x 308.352pt>
 File: Pictures/DayTopicsTs96k5bow.png Graphic file (type png)
 
 <use Pictures/DayTopicsTs96k5bow.png>
@@ -1012,15 +1059,14 @@ Package pdftex.def Info: Pictures/DayTopicsTs96k5bow.png used on input line 18.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [21
-
+ [23
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 27--28
 
  []
 
-<Pictures/TopDayHN3TS96k5Gaus.png, id=503, 411.136pt x 308.352pt>
+<Pictures/TopDayHN3TS96k5Gaus.png, id=516, 411.136pt x 308.352pt>
 File: Pictures/TopDayHN3TS96k5Gaus.png Graphic file (type png)
 
 <use Pictures/TopDayHN3TS96k5Gaus.png>
@@ -1028,7 +1074,7 @@ Package pdftex.def Info: Pictures/TopDayHN3TS96k5Gaus.png used on input line 33
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/TopVisuHN3TS96k5Gaus.png, id=504, 411.136pt x 308.352pt>
+<Pictures/TopVisuHN3TS96k5Gaus.png, id=517, 411.136pt x 308.352pt>
 File: Pictures/TopVisuHN3TS96k5Gaus.png Graphic file (type png)
 
 <use Pictures/TopVisuHN3TS96k5Gaus.png>
@@ -1041,12 +1087,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 42--43
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 2285) has occurred while \output is active []
 
- [22 <./Pictures/DayTopicsTs96k5Clus.png (PNG copy)> <./Pictures/DayTopicsTs96k
+ [24 <./Pictures/DayTopicsTs96k5Clus.png (PNG copy)> <./Pictures/DayTopicsTs96k
 5bow.png (PNG copy)> <./Pictures/TopDayHN3TS96k5Gaus.png (PNG copy)> <./Picture
 s/TopVisuHN3TS96k5Gaus.png (PNG copy)>]
-<Pictures/TopDayHN3TS96k5Pois.png, id=512, 411.136pt x 308.352pt>
+<Pictures/TopDayHN3TS96k5Pois.png, id=525, 411.136pt x 308.352pt>
 File: Pictures/TopDayHN3TS96k5Pois.png Graphic file (type png)
 
 <use Pictures/TopDayHN3TS96k5Pois.png>
@@ -1054,7 +1100,7 @@ Package pdftex.def Info: Pictures/TopDayHN3TS96k5Pois.png used on input line 49
 .
 (pdftex.def)             Requested size: 191.0625pt x 143.2975pt.
 
-<Pictures/TopVisuHN3TS96k5Pois.png, id=513, 411.136pt x 308.352pt>
+<Pictures/TopVisuHN3TS96k5Pois.png, id=526, 411.136pt x 308.352pt>
 File: Pictures/TopVisuHN3TS96k5Pois.png Graphic file (type png)
 
 <use Pictures/TopVisuHN3TS96k5Pois.png>
@@ -1067,114 +1113,156 @@ Underfull \hbox (badness 10000) in paragraph at lines 65--66
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 67--69
+Underfull \hbox (badness 10000) in paragraph at lines 67--70
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 70--71
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
 
  []
 
-[23 <./Pictures/TopDayHN3TS96k5Pois.png (PNG copy)> <./Pictures/TopVisuHN3TS96k
+
+Underfull \hbox (badness 10000) in paragraph at lines 73--74
+
+ []
+
+[25 <./Pictures/TopDayHN3TS96k5Pois.png (PNG copy)> <./Pictures/TopVisuHN3TS96k
 5Pois.png (PNG copy)>]
-<Pictures/Pois/fine/DayHN1TS48k20fine.png, id=529, 411.136pt x 459.316pt>
+<Pictures/Pois/fine/DayHN1TS48k20fine.png, id=543, 411.136pt x 459.316pt>
 File: Pictures/Pois/fine/DayHN1TS48k20fine.png Graphic file (type png)
 
 <use Pictures/Pois/fine/DayHN1TS48k20fine.png>
 Package pdftex.def Info: Pictures/Pois/fine/DayHN1TS48k20fine.png used on input
- line 77.
+ line 80.
 (pdftex.def)             Requested size: 191.0625pt x 213.45357pt.
 
-<Pictures/Pois/fine/TopHN1TS48k20fine.png, id=530, 411.136pt x 460.922pt>
+<Pictures/Pois/fine/TopHN1TS48k20fine.png, id=544, 411.136pt x 460.922pt>
 File: Pictures/Pois/fine/TopHN1TS48k20fine.png Graphic file (type png)
 
 <use Pictures/Pois/fine/TopHN1TS48k20fine.png>
 Package pdftex.def Info: Pictures/Pois/fine/TopHN1TS48k20fine.png used on input
- line 79.
+ line 82.
 (pdftex.def)             Requested size: 191.0625pt x 214.1999pt.
 
-<Pictures/Gaus/fine/DayHN5TS48k20fine.png, id=531, 411.136pt x 481.8pt>
+<Pictures/Gaus/fine/DayHN5TS48k20fine.png, id=545, 411.136pt x 481.8pt>
 File: Pictures/Gaus/fine/DayHN5TS48k20fine.png Graphic file (type png)
 
 <use Pictures/Gaus/fine/DayHN5TS48k20fine.png>
 Package pdftex.def Info: Pictures/Gaus/fine/DayHN5TS48k20fine.png used on input
- line 89.
+ line 92.
 (pdftex.def)             Requested size: 191.0625pt x 223.90234pt.
 
-<Pictures/Gaus/fine/TopHN5TS48k20fine.png, id=532, 411.136pt x 482.603pt>
+<Pictures/Gaus/fine/TopHN5TS48k20fine.png, id=546, 411.136pt x 482.603pt>
 File: Pictures/Gaus/fine/TopHN5TS48k20fine.png Graphic file (type png)
 
 <use Pictures/Gaus/fine/TopHN5TS48k20fine.png>
 Package pdftex.def Info: Pictures/Gaus/fine/TopHN5TS48k20fine.png used on input
- line 91.
+ line 94.
 (pdftex.def)             Requested size: 191.0625pt x 224.27553pt.
 
-<Pictures/Gaus/fine/DayHN1TS48k20fine.png, id=533, 411.136pt x 479.391pt>
+<Pictures/Gaus/fine/DayHN1TS48k20fine.png, id=547, 411.136pt x 479.391pt>
 File: Pictures/Gaus/fine/DayHN1TS48k20fine.png Graphic file (type png)
 
 <use Pictures/Gaus/fine/DayHN1TS48k20fine.png>
 Package pdftex.def Info: Pictures/Gaus/fine/DayHN1TS48k20fine.png used on input
- line 101.
+ line 104.
 (pdftex.def)             Requested size: 191.0625pt x 222.78284pt.
 
-<Pictures/Gaus/fine/TopHN1TS48k20fine.png, id=534, 411.136pt x 480.997pt>
+<Pictures/Gaus/fine/TopHN1TS48k20fine.png, id=548, 411.136pt x 480.997pt>
 File: Pictures/Gaus/fine/TopHN1TS48k20fine.png Graphic file (type png)
 
 <use Pictures/Gaus/fine/TopHN1TS48k20fine.png>
 Package pdftex.def Info: Pictures/Gaus/fine/TopHN1TS48k20fine.png used on input
- line 103.
+ line 106.
 (pdftex.def)             Requested size: 191.0625pt x 223.52917pt.
+
+<Pictures/DayHN1TS48k20zonerTijd.png, id=549, 411.136pt x 452.892pt>
+File: Pictures/DayHN1TS48k20zonerTijd.png Graphic file (type png)
+
+<use Pictures/DayHN1TS48k20zonerTijd.png>
+Package pdftex.def Info: Pictures/DayHN1TS48k20zonerTijd.png used on input line
+ 116.
+(pdftex.def)             Requested size: 191.0625pt x 210.4682pt.
+
+<Pictures/TopHN1TS48k20zonerTijd.png, id=550, 411.136pt x 451.286pt>
+File: Pictures/TopHN1TS48k20zonerTijd.png Graphic file (type png)
+
+<use Pictures/TopHN1TS48k20zonerTijd.png>
+Package pdftex.def Info: Pictures/TopHN1TS48k20zonerTijd.png used on input line
+ 118.
+(pdftex.def)             Requested size: 191.0625pt x 209.72186pt.
+
+<Pictures/DayHN1TS48k20zonerTijdPois.png, id=551, 411.136pt x 446.468pt>
+File: Pictures/DayHN1TS48k20zonerTijdPois.png Graphic file (type png)
+
+<use Pictures/DayHN1TS48k20zonerTijdPois.png>
+Package pdftex.def Info: Pictures/DayHN1TS48k20zonerTijdPois.png used on input 
+line 128.
+(pdftex.def)             Requested size: 191.0625pt x 207.48285pt.
+
+<Pictures/TopHN1TS48k20zonerTijdPois.png, id=552, 411.136pt x 450.483pt>
+File: Pictures/TopHN1TS48k20zonerTijdPois.png Graphic file (type png)
+
+<use Pictures/TopHN1TS48k20zonerTijdPois.png>
+Package pdftex.def Info: Pictures/TopHN1TS48k20zonerTijdPois.png used on input 
+line 130.
+(pdftex.def)             Requested size: 191.0625pt x 209.3487pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [24 <./Pictures/Pois/fine/DayHN1TS48k20fine.png (PNG copy)> <./Pictures/Pois/f
-ine/TopHN1TS48k20fine.png (PNG copy)>] [25 <./Pictures/Gaus/fine/DayHN5TS48k20f
+ [26 <./Pictures/Pois/fine/DayHN1TS48k20fine.png (PNG copy)> <./Pictures/Pois/f
+ine/TopHN1TS48k20fine.png (PNG copy)>] [27 <./Pictures/Gaus/fine/DayHN5TS48k20f
 ine.png (PNG copy)> <./Pictures/Gaus/fine/TopHN5TS48k20fine.png (PNG copy)> <./
 Pictures/Gaus/fine/DayHN1TS48k20fine.png (PNG copy)> <./Pictures/Gaus/fine/TopH
-N1TS48k20fine.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 118--119
+N1TS48k20fine.png (PNG copy)>] [28 <./Pictures/DayHN1TS48k20zonerTijd.png (PNG 
+copy)> <./Pictures/TopHN1TS48k20zonerTijd.png (PNG copy)> <./Pictures/DayHN1TS4
+8k20zonerTijdPois.png (PNG copy)> <./Pictures/TopHN1TS48k20zonerTijdPois.png (P
+NG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 145--146
 
  []
 
-<Pictures/PerplGaus.png, id=544, 573.342pt x 317.185pt>
+<Pictures/PerplGaus.png, id=567, 573.342pt x 317.185pt>
 File: Pictures/PerplGaus.png Graphic file (type png)
 
 <use Pictures/PerplGaus.png>
-Package pdftex.def Info: Pictures/PerplGaus.png used on input line 128.
+Package pdftex.def Info: Pictures/PerplGaus.png used on input line 155.
 (pdftex.def)             Requested size: 297.20906pt x 164.42896pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [26 <./Pictures/PerplGaus.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 135--136
+ [29 <./Pictures/PerplGaus.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 162--163
 
  []
 
-<Pictures/CompareTSgausPois.png, id=552, 411.136pt x 308.352pt>
+<Pictures/CompareTSgausPois.png, id=576, 411.136pt x 308.352pt>
 File: Pictures/CompareTSgausPois.png Graphic file (type png)
 
 <use Pictures/CompareTSgausPois.png>
-Package pdftex.def Info: Pictures/CompareTSgausPois.png used on input line 139.
+Package pdftex.def Info: Pictures/CompareTSgausPois.png used on input line 166.
 
 (pdftex.def)             Requested size: 297.20906pt x 222.91193pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 144--145
+Underfull \hbox (badness 10000) in paragraph at lines 171--172
 
  []
 
-<Pictures/CompareCrossTops.png, id=554, 449.68pt x 337.26pt>
+<Pictures/CompareCrossTops.png, id=578, 449.68pt x 337.26pt>
 File: Pictures/CompareCrossTops.png Graphic file (type png)
 
 <use Pictures/CompareCrossTops.png>
-Package pdftex.def Info: Pictures/CompareCrossTops.png used on input line 151.
+Package pdftex.def Info: Pictures/CompareCrossTops.png used on input line 179.
 (pdftex.def)             Requested size: 297.20906pt x 222.91649pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-) [27 <./Pictures/CompareTSgausPois.png (PNG copy)>] [28 <./Pictures/CompareCro
-ssTops.png (PNG copy)>]
+) [30 <./Pictures/CompareTSgausPois.png (PNG copy)>] [31 <./Pictures/CompareCro
+ssTops.png (PNG copy)>] [32
+
+]
 Chapter 7.
 (./chapters/conclusions.tex
 Underfull \hbox (badness 10000) in paragraph at lines 2--3
@@ -1192,26 +1280,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 8--9
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 12--14
+Underfull \hbox (badness 10000) in paragraph at lines 11--12
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 16--18
+Underfull \hbox (badness 10000) in paragraph at lines 15--17
 
  []
 
-[29
 
+Underfull \hbox (badness 10000) in paragraph at lines 19--21
 
-]) [30] (./thesis.bbl (./thesis.brf)
+ []
+
+[33
+
+]) [34] (./thesis.bbl (./thesis.brf)
 \tf@brf=\write6
 \openout6 = `thesis.brf'.
 
- [31
+ [35
 
 
-]) [32] (./appendices/main.tex
+]) [36] (./appendices/main.tex
 Appendix A.
 File: Pictures/Gaus/fine/DayHN1TS48k20fine.png Graphic file (type png)
 <use Pictures/Gaus/fine/DayHN1TS48k20fine.png>
@@ -1225,7 +1317,7 @@ Package pdftex.def Info: Pictures/Gaus/fine/TopHN1TS48k20fine.png used on input
  line 13.
 (pdftex.def)             Requested size: 191.0625pt x 223.52917pt.
 
-<Pictures/Gaus/fine/DayHN2TS48k20fine.png, id=617, 411.136pt x 480.194pt>
+<Pictures/Gaus/fine/DayHN2TS48k20fine.png, id=645, 411.136pt x 480.194pt>
 File: Pictures/Gaus/fine/DayHN2TS48k20fine.png Graphic file (type png)
 
 <use Pictures/Gaus/fine/DayHN2TS48k20fine.png>
@@ -1233,7 +1325,7 @@ Package pdftex.def Info: Pictures/Gaus/fine/DayHN2TS48k20fine.png used on input
  line 22.
 (pdftex.def)             Requested size: 191.0625pt x 223.156pt.
 
-<Pictures/Gaus/fine/TopHN2TS48k20fine.png, id=618, 411.136pt x 479.391pt>
+<Pictures/Gaus/fine/TopHN2TS48k20fine.png, id=646, 411.136pt x 479.391pt>
 File: Pictures/Gaus/fine/TopHN2TS48k20fine.png Graphic file (type png)
 
 <use Pictures/Gaus/fine/TopHN2TS48k20fine.png>
@@ -1244,7 +1336,7 @@ Package pdftex.def Info: Pictures/Gaus/fine/TopHN2TS48k20fine.png used on input
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Pictures/Gaus/fine/DayHN3TS48k20fine.png, id=619, 411.136pt x 480.194pt>
+<Pictures/Gaus/fine/DayHN3TS48k20fine.png, id=647, 411.136pt x 480.194pt>
 File: Pictures/Gaus/fine/DayHN3TS48k20fine.png Graphic file (type png)
 
 <use Pictures/Gaus/fine/DayHN3TS48k20fine.png>
@@ -1252,7 +1344,7 @@ Package pdftex.def Info: Pictures/Gaus/fine/DayHN3TS48k20fine.png used on input
  line 33.
 (pdftex.def)             Requested size: 191.0625pt x 223.156pt.
 
-<Pictures/Gaus/fine/TopHN3TS48k20fine.png, id=620, 411.136pt x 481.8pt>
+<Pictures/Gaus/fine/TopHN3TS48k20fine.png, id=648, 411.136pt x 481.8pt>
 File: Pictures/Gaus/fine/TopHN3TS48k20fine.png Graphic file (type png)
 
 <use Pictures/Gaus/fine/TopHN3TS48k20fine.png>
@@ -1263,7 +1355,7 @@ Package pdftex.def Info: Pictures/Gaus/fine/TopHN3TS48k20fine.png used on input
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Pictures/Gaus/fine/DayHN4TS48k20fine.png, id=621, 411.136pt x 480.194pt>
+<Pictures/Gaus/fine/DayHN4TS48k20fine.png, id=649, 411.136pt x 480.194pt>
 File: Pictures/Gaus/fine/DayHN4TS48k20fine.png Graphic file (type png)
 
 <use Pictures/Gaus/fine/DayHN4TS48k20fine.png>
@@ -1271,7 +1363,7 @@ Package pdftex.def Info: Pictures/Gaus/fine/DayHN4TS48k20fine.png used on input
  line 44.
 (pdftex.def)             Requested size: 191.0625pt x 223.156pt.
 
-<Pictures/Gaus/fine/TopHN4TS48k20fine.png, id=622, 411.136pt x 478.588pt>
+<Pictures/Gaus/fine/TopHN4TS48k20fine.png, id=650, 411.136pt x 478.588pt>
 File: Pictures/Gaus/fine/TopHN4TS48k20fine.png Graphic file (type png)
 
 <use Pictures/Gaus/fine/TopHN4TS48k20fine.png>
@@ -1297,13 +1389,13 @@ Package pdftex.def Info: Pictures/Gaus/fine/TopHN5TS48k20fine.png used on input
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[33
+[37
 
 
-] [34 <./Pictures/Gaus/fine/DayHN2TS48k20fine.png (PNG copy)> <./Pictures/Gaus/
+] [38 <./Pictures/Gaus/fine/DayHN2TS48k20fine.png (PNG copy)> <./Pictures/Gaus/
 fine/TopHN2TS48k20fine.png (PNG copy)> <./Pictures/Gaus/fine/DayHN3TS48k20fine.
 png (PNG copy)> <./Pictures/Gaus/fine/TopHN3TS48k20fine.png (PNG copy)>]
-[35 <./Pictures/Gaus/fine/DayHN4TS48k20fine.png (PNG copy)> <./Pictures/Gaus/fi
+[39 <./Pictures/Gaus/fine/DayHN4TS48k20fine.png (PNG copy)> <./Pictures/Gaus/fi
 ne/TopHN4TS48k20fine.png (PNG copy)>]
 Appendix B.
 File: Pictures/Pois/fine/DayHN1TS48k20fine.png Graphic file (type png)
@@ -1318,7 +1410,7 @@ Package pdftex.def Info: Pictures/Pois/fine/TopHN1TS48k20fine.png used on input
  line 73.
 (pdftex.def)             Requested size: 191.0625pt x 214.1999pt.
 
-<Pictures/Pois/fine/DayHN2TS48k20fine.png, id=637, 411.136pt x 479.391pt>
+<Pictures/Pois/fine/DayHN2TS48k20fine.png, id=665, 411.136pt x 479.391pt>
 File: Pictures/Pois/fine/DayHN2TS48k20fine.png Graphic file (type png)
 
 <use Pictures/Pois/fine/DayHN2TS48k20fine.png>
@@ -1326,7 +1418,7 @@ Package pdftex.def Info: Pictures/Pois/fine/DayHN2TS48k20fine.png used on input
  line 82.
 (pdftex.def)             Requested size: 191.0625pt x 222.78284pt.
 
-<Pictures/Pois/fine/TopHN2TS48k20fine.png, id=638, 411.136pt x 480.997pt>
+<Pictures/Pois/fine/TopHN2TS48k20fine.png, id=666, 411.136pt x 480.997pt>
 File: Pictures/Pois/fine/TopHN2TS48k20fine.png Graphic file (type png)
 
 <use Pictures/Pois/fine/TopHN2TS48k20fine.png>
@@ -1337,7 +1429,7 @@ Package pdftex.def Info: Pictures/Pois/fine/TopHN2TS48k20fine.png used on input
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Pictures/Pois/fine/DayHN3TS48k20fine.png, id=639, 411.136pt x 478.588pt>
+<Pictures/Pois/fine/DayHN3TS48k20fine.png, id=667, 411.136pt x 478.588pt>
 File: Pictures/Pois/fine/DayHN3TS48k20fine.png Graphic file (type png)
 
 <use Pictures/Pois/fine/DayHN3TS48k20fine.png>
@@ -1345,7 +1437,7 @@ Package pdftex.def Info: Pictures/Pois/fine/DayHN3TS48k20fine.png used on input
  line 93.
 (pdftex.def)             Requested size: 191.0625pt x 222.40967pt.
 
-<Pictures/Pois/fine/TopHN3TS48k20fine.png, id=640, 411.136pt x 483.406pt>
+<Pictures/Pois/fine/TopHN3TS48k20fine.png, id=668, 411.136pt x 483.406pt>
 File: Pictures/Pois/fine/TopHN3TS48k20fine.png Graphic file (type png)
 
 <use Pictures/Pois/fine/TopHN3TS48k20fine.png>
@@ -1356,7 +1448,7 @@ Package pdftex.def Info: Pictures/Pois/fine/TopHN3TS48k20fine.png used on input
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Pictures/Pois/fine/DayHN4TS48k20fine.png, id=641, 411.136pt x 483.406pt>
+<Pictures/Pois/fine/DayHN4TS48k20fine.png, id=669, 411.136pt x 483.406pt>
 File: Pictures/Pois/fine/DayHN4TS48k20fine.png Graphic file (type png)
 
 <use Pictures/Pois/fine/DayHN4TS48k20fine.png>
@@ -1364,7 +1456,7 @@ Package pdftex.def Info: Pictures/Pois/fine/DayHN4TS48k20fine.png used on input
  line 104.
 (pdftex.def)             Requested size: 191.0625pt x 224.6487pt.
 
-<Pictures/Pois/fine/TopHN4TS48k20fine.png, id=642, 411.136pt x 483.406pt>
+<Pictures/Pois/fine/TopHN4TS48k20fine.png, id=670, 411.136pt x 483.406pt>
 File: Pictures/Pois/fine/TopHN4TS48k20fine.png Graphic file (type png)
 
 <use Pictures/Pois/fine/TopHN4TS48k20fine.png>
@@ -1375,7 +1467,7 @@ Package pdftex.def Info: Pictures/Pois/fine/TopHN4TS48k20fine.png used on input
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<Pictures/Pois/fine/DayHN5TS48k20fine.png, id=643, 411.136pt x 477.785pt>
+<Pictures/Pois/fine/DayHN5TS48k20fine.png, id=671, 411.136pt x 477.785pt>
 File: Pictures/Pois/fine/DayHN5TS48k20fine.png Graphic file (type png)
 
 <use Pictures/Pois/fine/DayHN5TS48k20fine.png>
@@ -1383,7 +1475,7 @@ Package pdftex.def Info: Pictures/Pois/fine/DayHN5TS48k20fine.png used on input
  line 115.
 (pdftex.def)             Requested size: 191.0625pt x 222.0365pt.
 
-<Pictures/Pois/fine/TopHN5TS48k20fine.png, id=644, 411.136pt x 478.588pt>
+<Pictures/Pois/fine/TopHN5TS48k20fine.png, id=672, 411.136pt x 478.588pt>
 File: Pictures/Pois/fine/TopHN5TS48k20fine.png Graphic file (type png)
 
 <use Pictures/Pois/fine/TopHN5TS48k20fine.png>
@@ -1396,12 +1488,12 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 146.
- [36
+ [40
 
-] [37 <./Pictures/Pois/fine/DayHN2TS48k20fine.png (PNG copy)> <./Pictures/Pois/
+] [41 <./Pictures/Pois/fine/DayHN2TS48k20fine.png (PNG copy)> <./Pictures/Pois/
 fine/TopHN2TS48k20fine.png (PNG copy)> <./Pictures/Pois/fine/DayHN3TS48k20fine.
 png (PNG copy)> <./Pictures/Pois/fine/TopHN3TS48k20fine.png (PNG copy)>]
-[38 <./Pictures/Pois/fine/DayHN4TS48k20fine.png (PNG copy)> <./Pictures/Pois/fi
+[42 <./Pictures/Pois/fine/DayHN4TS48k20fine.png (PNG copy)> <./Pictures/Pois/fi
 ne/TopHN4TS48k20fine.png (PNG copy)> <./Pictures/Pois/fine/DayHN5TS48k20fine.pn
 g (PNG copy)> <./Pictures/Pois/fine/TopHN5TS48k20fine.png (PNG copy)>]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 146.
@@ -1410,19 +1502,19 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 146.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 146.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 146.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 3B92865587D42F565F354594712335DA;1515.
+(rerunfilecheck)             Checksum: 846ED60AED4E2C2A15E64DA6525B0576;1531.
 Package rerunfilecheck Info: File `thesis.brf' has not changed.
-(rerunfilecheck)             Checksum: C4FCF0A9379A66222A8D313D85DE9495;1658.
+(rerunfilecheck)             Checksum: 8C7AD073A122368FF01B21F88270A628;1707.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 146.
  ) 
 Here is how much of TeX's memory you used:
- 10939 strings out of 495059
- 168855 string characters out of 3182030
- 297997 words of memory out of 3000000
- 13675 multiletter control sequences out of 15000+200000
- 14121 words of font info for 49 fonts, out of 3000000 for 9000
+ 12479 strings out of 495059
+ 195337 string characters out of 3182030
+ 349343 words of memory out of 3000000
+ 15084 multiletter control sequences out of 15000+200000
+ 17647 words of font info for 105 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 43i,17n,51p,1087b,488s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 43i,17n,51p,1083b,500s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
@@ -1437,10 +1529,10 @@ msl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
 pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on thesis.pdf (46 pages, 978587 bytes).
+Output written on thesis.pdf (50 pages, 1016491 bytes).
 PDF statistics:
- 743 PDF objects out of 1000 (max. 8388607)
- 622 compressed objects within 7 object streams
- 156 named destinations out of 1000 (max. 500000)
- 429 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 772 PDF objects out of 1000 (max. 8388607)
+ 643 compressed objects within 7 object streams
+ 162 named destinations out of 1000 (max. 500000)
+ 17857 words of extra memory for PDF output out of 20736 (max. 10000000)
 

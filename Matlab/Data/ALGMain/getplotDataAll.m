@@ -1,4 +1,4 @@
-function House=getplotDataAll( houseNr )
+function House=getplotDataAll( houseNr , pathReadings )
 % this function creates the data for plotting. It uses the plain data as
 % input and stores it in the same struct as all other files
 %% TODO:
@@ -6,16 +6,16 @@ function House=getplotDataAll( houseNr )
 % data. This will always stays the same and can be handy to look at the
 % data while debugging LDA.
 
-if nargin<1
-    houseNr=251;
-end
+
 
 % constanten
 dagIsec = 86400;
+info = importdata(strcat('../SET1/DATAPlain/', num2str(houseNr),'/sensorinfo.txt'));
+sensornames = importdata(strcat('../SET1/DATAPlain/',num2str(houseNr),'/sensornames.txt'));
 
-data = importdata(strcat('../DATAPlain/NEW/',num2str(houseNr),'/sensorreadings.txt'));
-info = importdata(strcat('../DATAPlain/', num2str(houseNr),'/sensorinfo.txt'));
-sensornames = importdata(strcat('../DATAPlain/',num2str(houseNr),'/sensornames.txt'));
+% load data
+data = importdata(strcat(pathReadings,'/',num2str(houseNr),'/sensorreadings.txt'));
+
 
 
 % For all sensors

@@ -2,10 +2,10 @@ clear all
 close all
 %initialize variables
 path='../DATAMain/plotSensors.mat';
-HN = 3; %this is HouseNr 251
-dag = 34; %this is which day we choose
+HN = 4; %this is HouseNr 251
+dag = 36; %this is which day we choose
 start = [6,0,0]; %defines the time from where to start to visualize
-timeSpan = 60; %defines how long the window is to show the data (given in minutes) 
+timeSpan = 360; %defines how long the window is to show the data (given in minutes) 
 cmap=colormap(hsv(5));
 
 %Load
@@ -54,7 +54,7 @@ set(gca,'YTicklabel',SensNames);
 % This is for setting the x-as and might be different for different sizes
 % of timespans
 set(gca,'XLim',[beginStamp endStamp]);
-ticky=beginStamp:900:endStamp;
+ticky=beginStamp:3600:endStamp;
 set(gca,'XTick',ticky);
 tic=stamp2vec(ticky);
 TickLab=[];

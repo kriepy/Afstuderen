@@ -4,10 +4,10 @@ clear all
 
 %% Initialize
 HN=1; % there are in total five houses
-TS=48; % Amount of time slices
-coarse = 1; % The time is Coarse if this variable is 1, 0 otherwise
+TS=96; % Amount of time slices
+coarse = 2; % The time is Coarse if this variable is 1, 0 otherwise
 V=6; %the amount of clusters
-k=20; %aantal topics
+k=5; %aantal topics
 maxIter=100; %max aantal iteraties van LDA
 
 %% Laad de data
@@ -35,4 +35,17 @@ end
 [a,b,l]=ldaBasic(p,k,maxIter);
 
 %% Visualize the topics
-%VisuLDAbasic(p,b,a,50,V)
+most=10;
+figure(1)
+VisuLDAbasic(most,p,b,a,50,V)
+
+%% Visualize the clusters
+figure(2)
+VisuClusters(House{HN});
+
+%% Visulize clusters perday
+figure(3)
+VisuClusDays(House{HN}.day,V);
+
+%% show beta
+b

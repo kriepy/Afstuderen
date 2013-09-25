@@ -1,4 +1,4 @@
-function House=getplotData( houseNr )
+function House=getplotData( houseNr, pathReadings )
 % this function can be used to plot the data. It uses the plain data as
 % input and stores it in the same struct as all other files
 %% TODO:
@@ -7,15 +7,16 @@ function House=getplotData( houseNr )
 % data while debugging LDA.
 
 
-if nargin<1
-    houseNr=247;
-end
-
 % constanten
 dagIsec = 86400;
+info = importdata(strcat('../SET1/DATAPlain/', num2str(houseNr),'/sensorinfo.txt'));
 
-data = importdata(strcat('../DATAPlain/NEW/',num2str(houseNr),'/sensorreadings.txt'));
-info = importdata(strcat('../DATAPlain/', num2str(houseNr),'/sensorinfo.txt'));
+% load the data from path SET<x>
+data = importdata(strcat(pathReadings,'/',num2str(houseNr),'/sensorreadings.txt'));
+
+
+
+
 %sensornames = importdata(strcat('C:\Users\Kristin\UVA\Afstuderen\Afstuderen\Matlab\Data\DATAPlain\',num2str(houseNr),'\sensornames.txt'));
 
 

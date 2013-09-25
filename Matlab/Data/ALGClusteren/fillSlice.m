@@ -48,4 +48,5 @@ switch method
             
             dat=[dat triggers];
         end
+        
 end

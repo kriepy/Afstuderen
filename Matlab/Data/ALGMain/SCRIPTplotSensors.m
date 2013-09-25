@@ -9,10 +9,10 @@ h(5)=254;
 
 
 for i=1:5
-    hou=getplotDataAll(h(i));
+    hou=getplotDataAll(h(i),'../SET2/DATAPlain');
     House{i}=hou;
     House{i}.HouseNr=h(i);
 end
 
-path='../DATAMain/NEW';
+path='../SET2/DATAMain';
 save(strcat([path,'/plotSensors.mat']),'House');
